@@ -24,8 +24,8 @@ export default function Tree({ data, width, height }) {
             return (
               <g key={node.id} transform={`translate(${node.x},${node.y})`}>
                 <rect
-                  x={-node.width / 2}
-                  y={-node.height / 2}
+                  x={0}
+                  y={0}
                   width={node.width}
                   height={node.height}
                   fill="#fff"

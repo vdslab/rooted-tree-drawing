@@ -23,60 +23,53 @@ function createDammuy(root, data, dummyLeaves) {
 }
 
 //van der ploegのアルゴリズムを実装する関数
-// function vanderPloeg(root, y) {
-//   let leftSiblings = {};
-//   leftSiblings = { ...root };
-//   let rCountur = [];
-//   let lCountur = [];
-//   if (root.children) {
-//     leftSiblings.children = [];
-//     for (const child of root.children) {
-//       let currentTree = vanderPloeg(child, root.y + root.height);
-//       leftCountur(child, currentTree, lCountur);
-//       rightCountur(leftSiblings, root, rCountur);
-//       separate(rCountur, lCountur, currentTree);
-//       leftSiblings.children.push(currentTree);
-//       leftSiblings = d3.stratify(leftSiblings.descendants());
-//     }
-//     //rootの位置設定
-//     leftSiblings.x = leftSiblings.children ? (rightmostSiblingNode(leftSiblings.children) + leftMostSiblingNode(leftSiblings.children)) / 2 : leftSiblings.x;
-//   }
-//   return leftSiblings;
-// }
-
 function vanderploeg(root, startify) {
   if (root.children) {
-    let data = [root.data];
+    let leftData = [{ ...root.data }];
+    const t = leftData[0].parent;
+    leftData[0].parent = "";
     let leftSiblings;
     let currentTree;
     for (const child of root.children) {
-      child.y = root.y + root.height;
-      data.push(vanderploeg(child, startify).data);
-      currentTree = startify(data);
-      separate()
+      let currentData = [{ ...root.data }];
+      currentData[0].parent = "";
+      child.data.y = root.data.y + root.data.height;
+      currentData.push(...vanderploeg(child, startify));
+      currentTree = startify(currentData);
+      leftSiblings = startify(leftData);
+      const move = separate(leftSiblings.children ? rightCountur(leftSiblings, rightMostSiblingNode(leftSiblings.children)) : [], leftCountur(currentTree, leftMostSiblingNode(currentTree.children)));
+      for (let item of currentData) {
+        item.x += move;
+      }
+      currentData.shift();
+      leftData.push(...currentData);
     }
-    return data;
+    leftSiblings = startify(leftData);
+    leftData[0].x = (leftMostSiblingNode(leftSiblings.children).data.x + rightMostSiblingNode(leftSiblings.children).data.x) / 2;
+    leftData[0].parent = t;
+    return leftData;
   } else {
-    return root.data;
+    return [{ ...root.data }];
   }
 }
 
-function separate(leftSiblings, currentSubtree, currentTree) {
+//左の兄弟ツリーに現在のサブツリーを、左からくっつけるための最小移動距離を返す関数
+function separate(leftSiblings, currentSubtree) {
   let currentRightCounturNode = leftSiblings;
   let currentLeftCounturNode = currentSubtree;
   let l = 0;
   let r = 0;
+  let diffSum = 0;
   while (currentRightCounturNode[r] && currentLeftCounturNode[l]) {
-    console.log(currentLeftCounturNode[l]);
-    let xl = currentLeftCounturNode[l].x;
-    let xr = currentRightCounturNode[r].x;
-    if (xl < xr) {
-      for (let node of currentTree.descendants()) {
-        node.x += xr - xl;
-      }
+    // debugger;
+    let xl = currentLeftCounturNode[l].data.x;
+    let xr = currentRightCounturNode[r].data.x + currentRightCounturNode[r].data.width;
+    if (xl + diffSum < xr) {
+      const diff = xr - xl - diffSum;
+      diffSum += diff;
     }
-    let yl = currentLeftCounturNode[l].y + currentLeftCounturNode[l].height;
-    let yr = currentRightCounturNode[r].y + currentRightCounturNode[r].height;
+    let yl = currentLeftCounturNode[l].data.y + currentLeftCounturNode[l].data.height;
+    let yr = currentRightCounturNode[r].data.y + currentRightCounturNode[r].data.height;
     if (yl <= yr) {
       l += 1;
     }
@@ -84,13 +77,14 @@ function separate(leftSiblings, currentSubtree, currentTree) {
       r += 1;
     }
   }
+  return diffSum;
 }
 
 //兄弟の右端を返す関数
 function rightMostSiblingNode(siblings) {
   let rightMost = siblings[0];
   for (let i = 1; i < siblings.length; i++) {
-    rightMost = rightMost.x < siblings[i].x ? siblings[i] : rightMost;
+    rightMost = rightMost.data.x < siblings[i].data.x ? siblings[i] : rightMost;
   }
   return rightMost;
 }
@@ -98,22 +92,21 @@ function rightMostSiblingNode(siblings) {
 function leftMostSiblingNode(siblings) {
   let leftMost = siblings[0];
   for (let i = 1; i < siblings.length; i++) {
-    leftMost = leftMost.x > siblings[i].x ? siblings[i] : leftMost;
+    leftMost = leftMost.data.x > siblings[i].data.x ? siblings[i] : leftMost;
   }
   return leftMost;
 }
 
-// //引数counturに右輪郭ノードを格納する関数
+//rightMostNodeからの右輪郭ノードを返す関数
 function rightCountur(root, rightMostNode) {
-  debugger;
   let countur;
-  if (rightMostNode.chidlren) {
-     countur = [rightMostNode, ...rightCountur(root, rightMostSiblingNode(rightMostNode.children))];
+  if (rightMostNode.children) {
+    countur = [rightMostNode, ...rightCountur(root, rightMostSiblingNode(rightMostNode.children))];
     return countur;
   } else {
     let kouho = null;
     for (const node of root.descendants()) {
-      if ((rightMostNode.y + rightMostNode.height < node.y + node.height) && (kouho === null || kouho.y >= node.y && kouho.x <= node.x || rightMostNode.y + rightMostNode.height < kouho.y && rightMostNode.y + rightMostNode.height > node.y)) {
+      if ((rightMostNode.data.y + rightMostNode.data.height < node.data.y + node.data.height) && (kouho === null || kouho.data.y >= node.data.y && kouho.data.x <= node.data.x || rightMostNode.data.y + rightMostNode.data.height < kouho.data.y && rightMostNode.data.y + rightMostNode.data.height > node.data.y)) {
         kouho = node;
       }
     }
@@ -122,16 +115,16 @@ function rightCountur(root, rightMostNode) {
   }
 }
 
-//引数counturに左輪郭ノードを格納する関数
+//leftMostNodeからの左輪郭ノードを返す関数
 function leftCountur(root, leftMostNode) {
   let countur;
   if (leftMostNode.children) {
-     countur = [leftMostNode, ...leftCountur(root, leftMostSiblingNode(leftMostNode.children))];
+    countur = [leftMostNode, ...leftCountur(root, leftMostSiblingNode(leftMostNode.children))];
     return countur;
   } else {
     let kouho = null;
     for (const node of root.descendants()) {
-      if ((leftMostNode.y + leftMostNode.height < node.y + node.height) && (kouho === null || kouho.y >= node.y && kouho.x >= node.x || leftMostNode.y + leftMostNode.height < kouho.y && leftMostNode.y + leftMostNode.height > node.y)) {
+      if ((leftMostNode.data.y + leftMostNode.data.height < node.data.y + node.data.height) && (kouho === null || kouho.data.y >= node.data.y && kouho.data.x >= node.data.x || leftMostNode.data.y + leftMostNode.data.height < kouho.data.y && leftMostNode.data.y + leftMostNode.data.height > node.data.y)) {
         kouho = node;
       }
     }
@@ -145,14 +138,23 @@ function leftCountur(root, leftMostNode) {
 
 //ダミーノードを含んだ根付き木で、それぞれのノードの横幅・縦幅を設定
 function initRoot(root, w, h, xMargin, yMargin, dummyLeaves) {
-  root.width = w + xMargin;
-  root.height = root.data.dummy ? dummyLeaves[root.id].length * (h + yMargin) : h + yMargin;
-  root.x = 0;
-  root.y = 0;
+  root.data.width = (w + xMargin);
+  root.data.height = root.data.dummy ? dummyLeaves[root.id].length * (h + yMargin) : h + yMargin;
+  root.data.x = 0;
+  root.data.y = 0;
   if (root.children) {
     for (let child of root.children) {
       initRoot(child, w, h, xMargin, yMargin, dummyLeaves);
     }
+  }
+}
+
+function format(root) {
+  for(let node of root.descendants())  {
+    node.x = node.data.x;
+    node.y = node.data.y;
+    node.width = node.data.width;
+    node.height = node.data.height;
   }
 }
 
@@ -170,33 +172,28 @@ export function layout(data, width, height) {
 
 
   let root = stratify(data);
-  // let dummyData = [...data];
-  let dummyData = data.map((item) => {
-    let newItem = { ...item };
-    newItem.isDisplay = false;
-    return newItem;
-  })
+  let dummyData = [...data];
   let dummyLeaves = {};
   dummyData = areaAdaptive(root, dummyData, dummyLeaves);
   root = stratify(dummyData);
-  // initRoot(root, nodeWidth, nodeHeight, xMargin, yMargin, dummyLeaves);
-  const tree = d3
-    .tree()
-    .size([width, height])
-    .nodeSize([nodeWidth + xMargin, nodeHeight + yMargin])
-    .separation(() => 1);
-  tree(root);
+  initRoot(root, nodeWidth, nodeHeight, xMargin, yMargin, dummyLeaves);
+  // const tree = d3
+  //   .tree()
+  //   .size([width, height])
+  //   .nodeSize([nodeWidth + xMargin, nodeHeight + yMargin])
+  //   .separation(() => 1);
+  // tree(root);
 
-  // const leftSiblings = vanderPloeg(root);
-
-  console.log(leftCountur(root, leftMostSiblingNode(root.children)));
+  const newData = vanderploeg(root, stratify);
+  root = stratify(newData);
+  format(root);
 
 
   // normalize
   const left = d3.min(root.descendants(), (node) => node.x - nodeWidth / 2);
   const right = d3.max(root.descendants(), (node) => node.x + nodeWidth / 2);
-  const top = d3.min(root.descendants(), (node) => node.y - nodeHeight / 2);
-  const bottom = d3.max(root.descendants(), (node) => node.y + nodeHeight / 2);
+  const top = d3.min(root.descendants(), (node) => node.y - node.height / 2);
+  const bottom = d3.max(root.descendants(), (node) => node.y + node.height / 2);
   const layoutWidth = right - left;
   const layoutHeight = bottom - top;
   const scale = Math.min(width / layoutWidth, height / layoutHeight);
@@ -204,7 +201,7 @@ export function layout(data, width, height) {
     node.x = (node.x - left - layoutWidth / 2) * scale + width / 2;
     node.y = (node.y - top - layoutHeight / 2) * scale + height / 2;
     node.width = nodeWidth * scale;
-    node.height = nodeHeight * scale;
+    node.height = node.height * scale;
   }
 
 
