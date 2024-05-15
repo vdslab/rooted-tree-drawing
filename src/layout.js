@@ -33,7 +33,7 @@ function vanderploeg(root, startify) {
     for (const child of root.children) {
       let currentData = [{ ...root.data }];
       currentData[0].parent = "";
-      child.data.y = root.data.y + root.data.height;
+      child.data.y = root.data.y + root.data.height / 2 + child.data.height / 2;
       currentData.push(...vanderploeg(child, startify));
       currentTree = startify(currentData);
       leftSiblings = startify(leftData);
@@ -49,27 +49,26 @@ function vanderploeg(root, startify) {
     leftData[0].parent = t;
     return leftData;
   } else {
-    return [{ ...root.data }];
+    return [root.data];
   }
 }
 
 //左の兄弟ツリーに現在のサブツリーを、左からくっつけるための最小移動距離を返す関数
-function separate(leftSiblings, currentSubtree) {
-  let currentRightCounturNode = leftSiblings;
-  let currentLeftCounturNode = currentSubtree;
+function separate(leftSiblingsRightCounturList, curentSubTreeLeftCounturList) {
+  let currentRightCounturNode = leftSiblingsRightCounturList;
+  let currentLeftCounturNode = curentSubTreeLeftCounturList;
   let l = 0;
   let r = 0;
   let diffSum = 0;
   while (currentRightCounturNode[r] && currentLeftCounturNode[l]) {
-    // debugger;
-    let xl = currentLeftCounturNode[l].data.x;
-    let xr = currentRightCounturNode[r].data.x + currentRightCounturNode[r].data.width;
+    let xl = currentLeftCounturNode[l].data.x - currentLeftCounturNode[l].data.width / 2;
+    let xr = currentRightCounturNode[r].data.x + currentRightCounturNode[r].data.width / 2;
     if (xl + diffSum < xr) {
       const diff = xr - xl - diffSum;
       diffSum += diff;
     }
-    let yl = currentLeftCounturNode[l].data.y + currentLeftCounturNode[l].data.height;
-    let yr = currentRightCounturNode[r].data.y + currentRightCounturNode[r].data.height;
+    let yl = currentLeftCounturNode[l].data.y + currentLeftCounturNode[l].data.height / 2;
+    let yr = currentRightCounturNode[r].data.y + currentRightCounturNode[r].data.height / 2;
     if (yl <= yr) {
       l += 1;
     }
@@ -81,18 +80,18 @@ function separate(leftSiblings, currentSubtree) {
 }
 
 //兄弟の右端を返す関数
-function rightMostSiblingNode(siblings) {
-  let rightMost = siblings[0];
-  for (let i = 1; i < siblings.length; i++) {
-    rightMost = rightMost.data.x < siblings[i].data.x ? siblings[i] : rightMost;
+function rightMostSiblingNode(children) {
+  let rightMost = children[0];
+  for (let i = 1; i < children.length; i++) {
+    rightMost = rightMost.data.x - rightMost.data.width / 2 < children[i].data.x - children[i].data.width / 2 ? children[i] : rightMost;
   }
   return rightMost;
 }
 //兄弟の左端を返す関数
-function leftMostSiblingNode(siblings) {
-  let leftMost = siblings[0];
-  for (let i = 1; i < siblings.length; i++) {
-    leftMost = leftMost.data.x > siblings[i].data.x ? siblings[i] : leftMost;
+function leftMostSiblingNode(children) {
+  let leftMost = children[0];
+  for (let i = 1; i < children.length; i++) {
+    leftMost = leftMost.data.x - leftMost.data.height > children[i].data.x - children[i].data.width ? children[i] : leftMost;
   }
   return leftMost;
 }
@@ -106,7 +105,7 @@ function rightCountur(root, rightMostNode) {
   } else {
     let kouho = null;
     for (const node of root.descendants()) {
-      if ((rightMostNode.data.y + rightMostNode.data.height < node.data.y + node.data.height) && (kouho === null || kouho.data.y >= node.data.y && kouho.data.x <= node.data.x || rightMostNode.data.y + rightMostNode.data.height < kouho.data.y && rightMostNode.data.y + rightMostNode.data.height > node.data.y)) {
+      if ((rightMostNode.data.y + rightMostNode.data.height / 2 < node.data.y + node.data.height / 2) && (kouho === null || kouho.data.y - kouho.data.width / 2 >= node.data.y - node.data.width / 2 && kouho.data.x + kouho.data.width / 2 <= node.data.x + node.data.width / 2 || rightMostNode.data.y + rightMostNode.data.heigh / 2 < kouho.data.y - kouho.data.heigh / 2 && rightMostNode.data.y - rightMostNode.data.height / 2 > kouho.data.y - kouho.data.heigh / 2)) {
         kouho = node;
       }
     }
@@ -124,7 +123,7 @@ function leftCountur(root, leftMostNode) {
   } else {
     let kouho = null;
     for (const node of root.descendants()) {
-      if ((leftMostNode.data.y + leftMostNode.data.height < node.data.y + node.data.height) && (kouho === null || kouho.data.y >= node.data.y && kouho.data.x >= node.data.x || leftMostNode.data.y + leftMostNode.data.height < kouho.data.y && leftMostNode.data.y + leftMostNode.data.height > node.data.y)) {
+      if ((leftMostNode.data.y + leftMostNode.data.height / 2 < node.data.y + node.data.height / 2) && (kouho === null || kouho.data.y - kouho.data.width / 2 >= node.data.y - node.data.width / 2 && kouho.data.x - kouho.data.width / 2 >= node.data.x - node.data.width / 2 || leftMostNode.data.y + leftMostNode.data.heigh / 2 < kouho.data.y - kouho.data.heigh / 2 && leftMostNode.data.y - leftMostNode.data.height / 2 > kouho.data.y - kouho.data.heigh / 2)) {
         kouho = node;
       }
     }
@@ -140,8 +139,8 @@ function leftCountur(root, leftMostNode) {
 function initRoot(root, w, h, xMargin, yMargin, dummyLeaves) {
   root.data.width = (w + xMargin);
   root.data.height = root.data.dummy ? dummyLeaves[root.id].length * (h + yMargin) : h + yMargin;
-  root.data.x = 0;
-  root.data.y = 0;
+  root.data.x = root.data.width / 2;
+  root.data.y = root.data.height / 2;;
   if (root.children) {
     for (let child of root.children) {
       initRoot(child, w, h, xMargin, yMargin, dummyLeaves);
@@ -149,13 +148,45 @@ function initRoot(root, w, h, xMargin, yMargin, dummyLeaves) {
   }
 }
 
-function format(root) {
-  for(let node of root.descendants())  {
+//余白を取り除く関数
+function format(root, xMargin, yMargin) {
+  for (let node of root.descendants()) {
     node.x = node.data.x;
     node.y = node.data.y;
-    node.width = node.data.width;
-    node.height = node.data.height;
+    node.width = node.data.width - xMargin * 2;
+    node.height = node.data.height - yMargin * 2;
   }
+}
+
+//リンクを作る関数
+function createLinks(root, xMargin, yMargin) {
+  let links = [];
+  for (const link of root.links()) {
+    links.push(
+      {
+        id: `${link.source.id}toChild${link.target.id}`,
+        segments: [
+          [link.source.x, link.source.y + link.source.height / 2],
+          [link.source.x, link.source.y + link.source.height / 2 + yMargin],
+        ]
+      },
+      {
+        id: `${link.source.id}:${link.target.id}`,
+        segments: [
+          [link.source.x, link.source.y + link.source.height / 2 + yMargin],
+          [link.target.x, link.target.y - link.target.height / 2 - yMargin],
+        ]
+      },
+      {
+        id: `${link.target.id}toParent${link.source.id}`,
+        segments: [
+          [link.target.x, link.target.y - link.target.height / 2],
+          [link.target.x, link.target.y - link.target.height / 2 - yMargin ],
+        ]
+      },
+    );
+  }
+  return links;
 }
 
 export function layout(data, width, height) {
@@ -186,7 +217,8 @@ export function layout(data, width, height) {
 
   const newData = vanderploeg(root, stratify);
   root = stratify(newData);
-  format(root);
+  format(root, xMargin, yMargin);
+
 
 
   // normalize
@@ -200,23 +232,16 @@ export function layout(data, width, height) {
   for (const node of root.descendants()) {
     node.x = (node.x - left - layoutWidth / 2) * scale + width / 2;
     node.y = (node.y - top - layoutHeight / 2) * scale + height / 2;
-    node.width = nodeWidth * scale;
+    node.width = node.width * scale;
     node.height = node.height * scale;
   }
 
+  const links = createLinks(root, xMargin * scale, yMargin * scale);
 
   return {
     nodes: root.descendants().map(({ id, x, y, width, height }) => {
       return { id, x, y, width, height };
     }),
-    links: root.links().map(({ source, target }) => {
-      return {
-        id: `${source.id}:${target.id}`,
-        segments: [
-          [source.x, source.y],
-          [target.x, target.y],
-        ],
-      };
-    }),
+    links: links
   };
 }
