@@ -17,7 +17,7 @@ function createDammuy(root, data, dummyLeaves) {
   }
   if (dummy.length > 0) {
     dummyLeaves[root.data.name + "leaves"] = dummy;
-    data.push({ "name": root.data.name + "leaves", "parent": root.data.name, "dummy": true });
+    data.push({ "name": root.data.name + "leaves", "parent": root.data.name, "leaves": dummy, "columns": 1 });
   }
   return data;
 }
@@ -83,15 +83,16 @@ function separate(leftSiblingsRightCounturList, curentSubTreeLeftCounturList) {
 function rightMostSiblingNode(children) {
   let rightMost = children[0];
   for (let i = 1; i < children.length; i++) {
-    rightMost = rightMost.data.x - rightMost.data.width / 2 < children[i].data.x - children[i].data.width / 2 ? children[i] : rightMost;
+    rightMost = rightMost.data.x + rightMost.data.width / 2 < children[i].data.x + children[i].data.width / 2 ? children[i] : rightMost;
   }
   return rightMost;
 }
+
 //兄弟の左端を返す関数
 function leftMostSiblingNode(children) {
   let leftMost = children[0];
   for (let i = 1; i < children.length; i++) {
-    leftMost = leftMost.data.x - leftMost.data.height > children[i].data.x - children[i].data.width ? children[i] : leftMost;
+    leftMost = leftMost.data.x - leftMost.data.width / 2 > children[i].data.x - children[i].data.width / 2 ? children[i] : leftMost;
   }
   return leftMost;
 }
@@ -132,18 +133,15 @@ function leftCountur(root, leftMostNode) {
   }
 }
 
-
-
-
 //ダミーノードを含んだ根付き木で、それぞれのノードの横幅・縦幅を設定
-function initRoot(root, w, h, xMargin, yMargin, dummyLeaves) {
-  root.data.width = (w + xMargin);
-  root.data.height = root.data.dummy ? dummyLeaves[root.id].length * (h + yMargin) : h + yMargin;
+function initRoot(root, w, h, xMargin, yMargin) {
+  root.data.width = root.data.leaves ? root.data.columns * (w + xMargin) : w + xMargin;
+  root.data.height = root.data.leaves ? Math.ceil(root.data.leaves.length / root.data.columns) * (h + yMargin) : h + yMargin;
   root.data.x = root.data.width / 2;
   root.data.y = root.data.height / 2;;
   if (root.children) {
     for (let child of root.children) {
-      initRoot(child, w, h, xMargin, yMargin, dummyLeaves);
+      initRoot(child, w, h, xMargin, yMargin);
     }
   }
 }
@@ -181,12 +179,52 @@ function createLinks(root, xMargin, yMargin) {
         id: `${link.target.id}toParent${link.source.id}`,
         segments: [
           [link.target.x, link.target.y - link.target.height / 2],
-          [link.target.x, link.target.y - link.target.height / 2 - yMargin ],
+          [link.target.x, link.target.y - link.target.height / 2 - yMargin],
+          
         ]
       },
     );
   }
   return links;
+}
+
+//底辺のノードを返す関数
+function searchBottomNode(root) {
+  let descendants = root.descendants();
+  let max = 0;
+  for (let i = 1; i < descendants.length; i++) {
+    max = descendants[max].data.y + descendants[max].data.height / 2 < descendants[i].data.y + descendants[i].data.height / 2 ? i : max;
+  }
+  return descendants[max];
+}
+
+//アスペクト比を返す関数
+function calcAspectRatio(root) {
+  const left = d3.min(root.descendants(), (node) => node.data.x - node.data.width / 2);
+  const right = d3.max(root.descendants(), (node) => node.data.x + node.data.width / 2);
+  const top = d3.min(root.descendants(), (node) => node.data.y - node.data.height / 2);
+  const bottom = d3.max(root.descendants(), (node) => node.data.y + node.data.height / 2);
+  const layoutWidth = right - left;
+  const layoutHeight = bottom - top;
+  return layoutWidth / layoutHeight;
+}
+
+//アスペクト比が最適になるまで底辺ノードの列数を増やす関数
+function localFoldingLayout(root, at, w, h, xMargin, yMargin, stratify) {
+  let a = calcAspectRatio(root);
+  while (at > a) {
+    const bottomNode = searchBottomNode(root);
+    if (bottomNode.data.leaves && bottomNode.data.columns < bottomNode.data.leaves.length) {
+      bottomNode.data.columns += 1;
+      // bottomNode.data.width += w + xMargin;
+      // bottomNode.data.height = Math.ceil(bottomNode.data.leaves.length / root.data.columns) * (h + yMargin);
+      initRoot(root, w, h, xMargin, yMargin);
+      root = stratify(vanderploeg(root, stratify));
+      a = calcAspectRatio(root);
+    } else {
+      break;
+    }
+  }
 }
 
 export function layout(data, width, height) {
@@ -207,7 +245,7 @@ export function layout(data, width, height) {
   let dummyLeaves = {};
   dummyData = areaAdaptive(root, dummyData, dummyLeaves);
   root = stratify(dummyData);
-  initRoot(root, nodeWidth, nodeHeight, xMargin, yMargin, dummyLeaves);
+  initRoot(root, nodeWidth, nodeHeight, xMargin, yMargin);
   // const tree = d3
   //   .tree()
   //   .size([width, height])
@@ -217,8 +255,9 @@ export function layout(data, width, height) {
 
   const newData = vanderploeg(root, stratify);
   root = stratify(newData);
+  localFoldingLayout(root, width / height, nodeWidth, nodeHeight, xMargin, yMargin, stratify);
+  root = stratify(vanderploeg(root, stratify));
   format(root, xMargin, yMargin);
-
 
 
   // normalize
