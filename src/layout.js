@@ -1,22 +1,21 @@
 import * as d3 from "d3";
 //折りたたみレイアウト実装する関数
-function areaAdaptive(root, data, dummyLeaves) {
-  return createDammuy(root, data, dummyLeaves);
+function areaAdaptive(root, data) {
+  return createDammuy(root, data);
 }
 
 //同じ親のを持つ葉群でダミーノードを作る関数
-function createDammuy(root, data, dummyLeaves) {
+function createDammuy(root, data) {
   let dummy = [];
   for (const child of root.children) {
     if (child.children) {
-      data = createDammuy(child, data, dummyLeaves);
+      data = createDammuy(child, data);
     } else {
-      data = data.filter(item => item.name != child.data.name)
-      dummy.push(child)
+      data = data.filter(item => item.name != child.id);
+      dummy.push(child.data);
     }
   }
   if (dummy.length > 0) {
-    dummyLeaves[root.data.name + "leaves"] = dummy;
     data.push({ "name": root.data.name + "leaves", "parent": root.data.name, "leaves": dummy, "columns": 1 });
   }
   return data;
@@ -135,8 +134,8 @@ function leftCountur(root, leftMostNode) {
 
 //ダミーノードを含んだ根付き木で、それぞれのノードの横幅・縦幅を設定
 function initRoot(root, w, h, xMargin, yMargin) {
-  root.data.width = root.data.leaves ? root.data.columns * (w + xMargin) : w + xMargin;
-  root.data.height = root.data.leaves ? Math.ceil(root.data.leaves.length / root.data.columns) * (h + yMargin) : h + yMargin;
+  root.data.width = root.data.leaves ? root.data.columns * (w + xMargin * 2) : w + xMargin * 2;
+  root.data.height = root.data.leaves ? Math.ceil(root.data.leaves.length / root.data.columns) * (h + yMargin * 2) : h + yMargin * 2;
   root.data.x = root.data.width / 2;
   root.data.y = root.data.height / 2;;
   if (root.children) {
@@ -180,7 +179,7 @@ function createLinks(root, xMargin, yMargin) {
         segments: [
           [link.target.x, link.target.y - link.target.height / 2],
           [link.target.x, link.target.y - link.target.height / 2 - yMargin],
-          
+
         ]
       },
     );
@@ -216,16 +215,36 @@ function localFoldingLayout(root, at, w, h, xMargin, yMargin, stratify) {
     const bottomNode = searchBottomNode(root);
     if (bottomNode.data.leaves && bottomNode.data.columns < bottomNode.data.leaves.length) {
       bottomNode.data.columns += 1;
-      // bottomNode.data.width += w + xMargin;
-      // bottomNode.data.height = Math.ceil(bottomNode.data.leaves.length / root.data.columns) * (h + yMargin);
       initRoot(root, w, h, xMargin, yMargin);
+      console.log(vanderploeg(root, stratify));
       root = stratify(vanderploeg(root, stratify));
       a = calcAspectRatio(root);
     } else {
       break;
     }
   }
+  return root;
 }
+
+//ダミーノードを元に戻す
+function undoDummyNode(root, w, h, xMargin, yMargin) {
+  const data = root.descendants().flatMap((node) => {
+    if (node.data.leaves) {
+      return node.data.leaves.map((leaf, j) => {
+        leaf.width = w + xMargin * 2;
+        leaf.height = h + yMargin * 2;
+        leaf.x = Math.trunc(j / node.data.columns) % 2 === 0 ? leaf.width / 2 + (j % node.data.columns) * leaf.width + node.data.x - node.data.width / 2 : (node.data.columns - 1) * leaf.width + leaf.width / 2 - (j % node.data.columns) * leaf.width + node.data.x - node.data.width / 2;
+        leaf.y = leaf.height / 2 + Math.trunc(j / node.data.columns) * leaf.height + node.data.y - node.data.height / 2;
+        return leaf;
+      });
+    } else {
+      return [node.data];
+    }
+  });
+
+  return data;
+}
+
 
 export function layout(data, width, height) {
   const nodeWidth = 1000;
@@ -242,8 +261,7 @@ export function layout(data, width, height) {
 
   let root = stratify(data);
   let dummyData = [...data];
-  let dummyLeaves = {};
-  dummyData = areaAdaptive(root, dummyData, dummyLeaves);
+  dummyData = areaAdaptive(root, dummyData);
   root = stratify(dummyData);
   initRoot(root, nodeWidth, nodeHeight, xMargin, yMargin);
   // const tree = d3
@@ -253,12 +271,10 @@ export function layout(data, width, height) {
   //   .separation(() => 1);
   // tree(root);
 
-  const newData = vanderploeg(root, stratify);
-  root = stratify(newData);
-  localFoldingLayout(root, width / height, nodeWidth, nodeHeight, xMargin, yMargin, stratify);
   root = stratify(vanderploeg(root, stratify));
+  root = localFoldingLayout(root, width / height, nodeWidth, nodeHeight, xMargin, yMargin, stratify);
+   root = stratify(undoDummyNode(root, nodeWidth, nodeHeight, xMargin, yMargin));
   format(root, xMargin, yMargin);
-
 
   // normalize
   const left = d3.min(root.descendants(), (node) => node.x - nodeWidth / 2);
@@ -276,6 +292,7 @@ export function layout(data, width, height) {
   }
 
   const links = createLinks(root, xMargin * scale, yMargin * scale);
+
 
   return {
     nodes: root.descendants().map(({ id, x, y, width, height }) => {
