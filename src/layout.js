@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 
+//葉群をダミーノードにする関数
 function createDammuy(root) {
   if (root.children) {
     let data = [{ ...root.data }];
@@ -153,6 +154,7 @@ function format(root, xMargin, yMargin) {
   }
 }
 
+//リンクを作る関数
 function createLinks(root, nodeWidth, nodeHeight, xMargin, yMargin) {
   if (root.children) {
     let links = [];
@@ -245,7 +247,7 @@ function createLinks(root, nodeWidth, nodeHeight, xMargin, yMargin) {
               {
                 id: `${child.id}dummyHorizon${child.data.leaves.length - 1}`,
                 segments: [
-                  [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin * 2 + nodeWidth / 2 - (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns) : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
+                  [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2 - (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns) : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
                   [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns), child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
                 ]
               },
@@ -434,7 +436,6 @@ export function layout(data, width, height) {
   const dummyData = createDammuy(root);
   root = stratify(dummyData);
   initRoot(root, nodeWidth, nodeHeight, xMargin, yMargin);
-
   root = stratify(vanderploeg(root, stratify));
   root = localFoldingLayout(root, width / height, nodeWidth, nodeHeight, xMargin, yMargin, stratify);
   const links = createLinks(root, nodeWidth, nodeHeight, xMargin, yMargin);
@@ -444,8 +445,8 @@ export function layout(data, width, height) {
   // normalize
   const left = d3.min(root.descendants(), (node) => node.x - nodeWidth / 2) - xMargin;
   const right = d3.max(root.descendants(), (node) => node.x + nodeWidth / 2) + xMargin;
-  const top = d3.min(root.descendants(), (node) => node.y - node.height / 2);
-  const bottom = d3.max(root.descendants(), (node) => node.y + node.height / 2);
+  const top = d3.min(root.descendants(), (node) => node.y - nodeHeight / 2);
+  const bottom = d3.max(root.descendants(), (node) => node.y + nodeHeight / 2);
   const layoutWidth = right - left;
   const layoutHeight = bottom - top;
   const scale = Math.min(width / layoutWidth, height / layoutHeight);
