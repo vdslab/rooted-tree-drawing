@@ -4,13 +4,23 @@ import * as d3 from "d3";
 function createDammuy(root) {
   if (root.children) {
     let data = [{ ...root.data }];
-    let dummyLesaves = []
-    let dummyData = []
+    let dummyLesaves = [[]];
+    let dummyData = [];
     for (const child of root.children) {
       const childData = createDammuy(child);
-      childData.length <= 1 ? dummyLesaves.push(...childData) : dummyData.push(...childData);
+      childData.length <= 1
+        ? dummyLesaves[0].push(...childData)
+        : dummyData.push(...childData);
     }
-    dummyLesaves.length <= 1 ? data.push(...dummyLesaves) : data.push({ "name": root.data.name + "leaves", "parent": root.data.name, "leaves": dummyLesaves, "columns": 1 });
+    dummyLesaves[0].length <= 1
+      ? data.push(...dummyLesaves[0])
+      : data.push({
+        name: root.data.name + "leaves",
+        parent: root.data.name,
+        leaves: dummyLesaves,
+        columns: 1,
+        leavesNum: dummyLesaves[0].length,
+      });
     data.push(...dummyData);
     return data;
   } else {
@@ -33,7 +43,15 @@ function vanderploeg(root, startify) {
       currentData.push(...vanderploeg(child, startify));
       currentTree = startify(currentData);
       leftSiblings = startify(leftData);
-      const move = separate(leftSiblings.children ? rightCountur(leftSiblings, rightMostSiblingNode(leftSiblings.children)) : [], leftCountur(currentTree, leftMostSiblingNode(currentTree.children)));
+      const move = separate(
+        leftSiblings.children
+          ? rightCountur(
+            leftSiblings,
+            rightMostSiblingNode(leftSiblings.children),
+          )
+          : [],
+        leftCountur(currentTree, leftMostSiblingNode(currentTree.children)),
+      );
       for (let item of currentData) {
         item.x += move;
       }
@@ -43,7 +61,12 @@ function vanderploeg(root, startify) {
     leftSiblings = startify(leftData);
     const leftMostNode = leftMostSiblingNode(leftSiblings.children);
     const rightMostNode = rightMostSiblingNode(leftSiblings.children);
-    leftData[0].x = (leftMostNode.data.x - leftMostNode.data.width / 2 + rightMostNode.data.x + rightMostNode.data.width / 2) / 2;
+    leftData[0].x =
+      (leftMostNode.data.x -
+        leftMostNode.data.width / 2 +
+        rightMostNode.data.x +
+        rightMostNode.data.width / 2) /
+      2;
     leftData[0].parent = t;
     return leftData;
   } else {
@@ -59,14 +82,22 @@ function separate(leftSiblingsRightCounturList, curentSubTreeLeftCounturList) {
   let r = 0;
   let diffSum = 0;
   while (currentRightCounturNode[r] && currentLeftCounturNode[l]) {
-    let xl = currentLeftCounturNode[l].data.x - currentLeftCounturNode[l].data.width / 2;
-    let xr = currentRightCounturNode[r].data.x + currentRightCounturNode[r].data.width / 2;
+    let xl =
+      currentLeftCounturNode[l].data.x -
+      currentLeftCounturNode[l].data.width / 2;
+    let xr =
+      currentRightCounturNode[r].data.x +
+      currentRightCounturNode[r].data.width / 2;
     if (xl + diffSum < xr) {
       const diff = xr - xl - diffSum;
       diffSum += diff;
     }
-    let yl = currentLeftCounturNode[l].data.y + currentLeftCounturNode[l].data.height / 2;
-    let yr = currentRightCounturNode[r].data.y + currentRightCounturNode[r].data.height / 2;
+    let yl =
+      currentLeftCounturNode[l].data.y +
+      currentLeftCounturNode[l].data.height / 2;
+    let yr =
+      currentRightCounturNode[r].data.y +
+      currentRightCounturNode[r].data.height / 2;
     if (yl <= yr) {
       l += 1;
     }
@@ -81,7 +112,11 @@ function separate(leftSiblingsRightCounturList, curentSubTreeLeftCounturList) {
 function rightMostSiblingNode(children) {
   let rightMost = children[0];
   for (let i = 1; i < children.length; i++) {
-    rightMost = rightMost.data.x + rightMost.data.width / 2 < children[i].data.x + children[i].data.width / 2 ? children[i] : rightMost;
+    rightMost =
+      rightMost.data.x + rightMost.data.width / 2 <
+        children[i].data.x + children[i].data.width / 2
+        ? children[i]
+        : rightMost;
   }
   return rightMost;
 }
@@ -90,7 +125,11 @@ function rightMostSiblingNode(children) {
 function leftMostSiblingNode(children) {
   let leftMost = children[0];
   for (let i = 1; i < children.length; i++) {
-    leftMost = leftMost.data.x - leftMost.data.width / 2 > children[i].data.x - children[i].data.width / 2 ? children[i] : leftMost;
+    leftMost =
+      leftMost.data.x - leftMost.data.width / 2 >
+        children[i].data.x - children[i].data.width / 2
+        ? children[i]
+        : leftMost;
   }
   return leftMost;
 }
@@ -99,16 +138,33 @@ function leftMostSiblingNode(children) {
 function rightCountur(root, rightMostNode) {
   let countur;
   if (rightMostNode.children) {
-    countur = [rightMostNode, ...rightCountur(root, rightMostSiblingNode(rightMostNode.children))];
+    countur = [
+      rightMostNode,
+      ...rightCountur(root, rightMostSiblingNode(rightMostNode.children)),
+    ];
     return countur;
   } else {
     let kouho = null;
     for (const node of root.descendants()) {
-      if ((rightMostNode.data.y + rightMostNode.data.height / 2 < node.data.y + node.data.height / 2) && (kouho === null || kouho.data.y - kouho.data.width / 2 >= node.data.y - node.data.width / 2 && kouho.data.x + kouho.data.width / 2 <= node.data.x + node.data.width / 2 || rightMostNode.data.y + rightMostNode.data.heigh / 2 < kouho.data.y - kouho.data.heigh / 2 && rightMostNode.data.y - rightMostNode.data.height / 2 > kouho.data.y - kouho.data.heigh / 2)) {
+      if (
+        rightMostNode.data.y + rightMostNode.data.height / 2 <
+        node.data.y + node.data.height / 2 &&
+        (kouho === null ||
+          (kouho.data.y - kouho.data.width / 2 >=
+            node.data.y - node.data.width / 2 &&
+            kouho.data.x + kouho.data.width / 2 <=
+            node.data.x + node.data.width / 2) ||
+          (rightMostNode.data.y + rightMostNode.data.heigh / 2 <
+            kouho.data.y - kouho.data.heigh / 2 &&
+            rightMostNode.data.y - rightMostNode.data.height / 2 >
+            kouho.data.y - kouho.data.heigh / 2))
+      ) {
         kouho = node;
       }
     }
-    countur = kouho ? [rightMostNode, ...rightCountur(root, kouho)] : [rightMostNode];
+    countur = kouho
+      ? [rightMostNode, ...rightCountur(root, kouho)]
+      : [rightMostNode];
     return countur;
   }
 }
@@ -117,29 +173,73 @@ function rightCountur(root, rightMostNode) {
 function leftCountur(root, leftMostNode) {
   let countur;
   if (leftMostNode.children) {
-    countur = [leftMostNode, ...leftCountur(root, leftMostSiblingNode(leftMostNode.children))];
+    countur = [
+      leftMostNode,
+      ...leftCountur(root, leftMostSiblingNode(leftMostNode.children)),
+    ];
     return countur;
   } else {
     let kouho = null;
     for (const node of root.descendants()) {
-      if ((leftMostNode.data.y + leftMostNode.data.height / 2 < node.data.y + node.data.height / 2) && (kouho === null || kouho.data.y - kouho.data.width / 2 >= node.data.y - node.data.width / 2 && kouho.data.x - kouho.data.width / 2 >= node.data.x - node.data.width / 2 || leftMostNode.data.y + leftMostNode.data.heigh / 2 < kouho.data.y - kouho.data.heigh / 2 && leftMostNode.data.y - leftMostNode.data.height / 2 > kouho.data.y - kouho.data.heigh / 2)) {
+      if (
+        leftMostNode.data.y + leftMostNode.data.height / 2 <
+        node.data.y + node.data.height / 2 &&
+        (kouho === null ||
+          (kouho.data.y - kouho.data.width / 2 >=
+            node.data.y - node.data.width / 2 &&
+            kouho.data.x - kouho.data.width / 2 >=
+            node.data.x - node.data.width / 2) ||
+          (leftMostNode.data.y + leftMostNode.data.heigh / 2 <
+            kouho.data.y - kouho.data.heigh / 2 &&
+            leftMostNode.data.y - leftMostNode.data.height / 2 >
+            kouho.data.y - kouho.data.heigh / 2))
+      ) {
         kouho = node;
       }
     }
-    countur = kouho ? [leftMostNode, ...leftCountur(root, kouho)] : [leftMostNode];
+    countur = kouho
+      ? [leftMostNode, ...leftCountur(root, kouho)]
+      : [leftMostNode];
     return countur;
   }
 }
 
 //ダミーノードを含んだ根付き木で、それぞれのノードの横幅・縦幅を設定
-function initRoot(root, w, h, xMargin, yMargin) {
-  root.data.width = root.data.leaves ? root.data.columns * (w + xMargin * 2) + 2 * xMargin : w + xMargin * 2;
-  root.data.height = root.data.leaves ? Math.ceil(root.data.leaves.length / root.data.columns) * (h + yMargin * 2) : h + yMargin * 2;
+function initRoot(root, xMargin, yMargin) {
+  if (root.data.leaves) {
+    let maxWidth = 0;
+    for (let i = 0; i < root.data.leaves[0].length; i++) {
+      let rowSum = 0;
+      for (let j = 0; j < root.data.leaves.length; j++) {
+        if (isNotEmptyObject(root.data.leaves[j][i])) {
+          root.data.leaves[j][i].width += xMargin;
+        }
+        rowSum += root.data.leaves[j][i].width;
+      }
+      maxWidth = maxWidth < rowSum ? rowSum : maxWidth;
+    }
+    root.data.width = maxWidth + xMargin;
+    let maxHeight = 0;
+    for (let j = 0; j < root.data.leaves.length; j++) {
+      let columnSum = 0;
+      for (let i = 0; i < root.data.leaves[0].length; i++) {
+        if (isNotEmptyObject(root.data.leaves[j][i])) {
+          root.data.leaves[j][i].height += 2 * yMargin;
+        }
+        columnSum += root.data.leaves[j][i].height;
+      }
+      maxHeight = maxHeight < columnSum ? columnSum : maxHeight;
+    }
+    root.data.height = maxHeight + 2 * yMargin;
+  } else {
+    root.data.width = root.data.width + xMargin;
+    root.data.height = root.data.height + yMargin;
+  }
   root.data.x = root.data.width / 2;
-  root.data.y = root.data.height / 2;;
+  root.data.y = root.data.height / 2;
   if (root.children) {
     for (let child of root.children) {
-      initRoot(child, w, h, xMargin, yMargin);
+      initRoot(child, xMargin, yMargin);
     }
   }
 }
@@ -149,195 +249,197 @@ function format(root, xMargin, yMargin) {
   for (let node of root.descendants()) {
     node.x = node.data.x;
     node.y = node.data.y;
-    node.width = node.data.width - xMargin * 2;
+    node.width = node.data.width - xMargin;
     node.height = node.data.height - yMargin * 2;
   }
 }
 
 //リンクを作る関数
-function createLinks(root, nodeWidth, nodeHeight, xMargin, yMargin) {
+function createLinks(root, xMargin, yMargin) {
   if (root.children) {
     let links = [];
     const leftMostNode = leftMostSiblingNode(root.children);
     const rightMostNode = rightMostSiblingNode(root.children);
 
     links.push(
-      {
-        id: `${root.id}toChild`,
-        segments: [
-          [root.data.x, root.data.y],
-          [root.data.x, root.data.y + nodeHeight / 2 + yMargin],
-        ]
-      },
-      {
-        id: `${root.id}Horizon`,
-        segments: [
-          [leftMostNode.data.x, root.data.y + nodeHeight / 2 + yMargin],
-          [rightMostNode.data.x, root.data.y + nodeHeight / 2 + yMargin],
-        ]
-      },
+      createPath(
+        `${root.id}toChild`,
+        root.data.x,
+        root.data.x,
+        root.data.y + root.data.height / 2 - yMargin,
+        root.data.y + root.data.height / 2,
+      ),
+      createPath(
+        `${root.id}Horizon`,
+        leftMostNode.data.x,
+        rightMostNode.data.x,
+        root.data.y + root.data.height / 2,
+        root.data.y + root.data.height / 2,
+      ),
     );
     for (const child of root.children) {
-      links.push(...createLinks(child, nodeWidth, nodeHeight, xMargin, yMargin));
+      links.push(...createLinks(child, xMargin, yMargin));
       if (child.data.columns) {
-        if (child.data.columns === 1) {//列数が1の時
-          links.push(
-            {
-              id: `${child.id}dummyHorizon`,
-              segments: [
-                [child.data.x, child.data.y - child.data.height / 2],
-                [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
-              ]
-            },
-            {
-              id: `${child.id}dummyVertical`,
-              segments: [
-                [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
-                [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (child.data.leaves.length - 1) * (nodeHeight + (yMargin * 2))],
-              ]
-            },
-            ...child.data.leaves.map((item, index) => {
-              return {
-                id: `${item.name}Path`,
-                segments: [
-                  [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (nodeHeight + yMargin * 2) * index],
-                  [child.data.x - child.data.width / 2 + xMargin * 2, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (nodeHeight + yMargin * 2) * index],
-                ]
-              }
-            })
-          );
-        } else if (child.data.columns === child.data.leaves.length) {//行数が1の時の時
-          links.push(
-            {
-              id: `${child.id}dummyHorizon`,
-              segments: [
-                [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2, child.data.y - child.data.height / 2],
-                [child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2, child.data.y - child.data.height / 2],
-              ]
-            },
-            ...child.data.leaves.map((item, index) => {
-              return {
-                id: `${item.name}Path`,
-                segments: [
-                  [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * index, child.data.y - child.data.height / 2],
-                  [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * index, child.data.y - child.data.height / 2 + yMargin],
-                ]
-              }
-            })
-          )
-        } else {//2行２列以上の時
-          const rows = Math.ceil(child.data.leaves.length / child.data.columns);
-          //親より右側にある時
-          if (child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2 > child.parent.data.x) {
-            links.push(
-              {
-                id: `${child.id}dummyHorizon0`,
-                segments: [
-                  [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2, child.data.y - child.data.height / 2],
-                  [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2],
-                ]
-              },
-              {
-                id: `${child.id}dummyVertical0`,
-                segments: [
-                  [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2],
-                  [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + nodeHeight + yMargin * 2],
-                ]
-              },
-              {
-                id: `${child.id}dummyHorizon${child.data.leaves.length - 1}`,
-                segments: [
-                  [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2 - (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns) : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
-                  [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns), child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
-                ]
-              },
-              ...child.data.leaves.map((item, index) => {
-                return {
-                  id: `${item.name}Path`,
-                  segments: [
-                    [Math.trunc(index / child.data.columns) % 2 === 0 ? (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
-                    [Math.trunc(index / child.data.columns) % 2 === 0 ? (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, yMargin + Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
-                  ]
-                }
-              })
-            );
-            for (let i = 1; i < rows - 1; i++) {
-              links.push({
-                id: `${child.id}dummyHorizon${i}`,
-                segments: [
-                  [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-                  [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-                ]
-              },
-                {
-                  id: `${child.id}dummyVertical${i}`,
-                  segments: [
-                    [i % 2 == 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-                    [i % 2 == 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2) + nodeHeight + yMargin * 2],
-                  ]
-                }
-              )
-            }
-          } else {
-            links.push(
-              {
-                id: `${child.id}dummyHorizon0`,
-                segments: [
-                  [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
-                  [child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2, child.data.y - child.data.height / 2],
-                ]
-              },
-              {
-                id: `${child.id}dummyVertical0`,
-                segments: [
-                  [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
-                  [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + nodeHeight + yMargin * 2],
-                ]
-              },
-              {
-                id: `${child.id}dummyHorizon${child.data.leaves.length - 1}`,
-                segments: [
-                  [rows % 2 !== 0 ? child.data.x + child.data.width / 2 - xMargin * 2 + nodeWidth / 2 - (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns) : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
-                  [rows % 2 !== 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns), child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
-                ]
-              },
-              ...child.data.leaves.map((item, index) => {
-                return {
-                  id: `${item.name}Path`,
-                  segments: [
-                    [Math.trunc(index / child.data.columns) % 2 === 0 ?  (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
-                    [Math.trunc(index / child.data.columns) % 2 === 0 ?  (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, yMargin + Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
-                  ]
-                }
-              })
-            );
-            for (let i = 1; i < rows - 1; i++) {
-              links.push({
-                id: `${child.id}dummyHorizon${i}`,
-                segments: [
-                  [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-                  [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-                ]
-              },
-                {
-                  id: `${child.id}dummyVertical${i}`,
-                  segments: [
-                    [i % 2 == 0 ? child.data.x - child.data.width / 2 + xMargin : child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-                    [i % 2 == 0 ? child.data.x - child.data.width / 2 + xMargin : child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2) + nodeHeight + yMargin * 2],
-                  ]
-                }
-              )
-            }
-          }
-        }
+        //   if (child.data.columns === 1) {//列数が1の時
+        //     links.push(
+        //       {
+        //         id: `${child.id}dummyHorizon`,
+        //         segments: [
+        //           [child.data.x, child.data.y - child.data.height / 2],
+        //           [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
+        //         ]
+        //       },
+        //       {
+        //         id: `${child.id}dummyVertical`,
+        //         segments: [
+        //           [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
+        //           [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (child.data.leaves.length - 1) * (nodeHeight + (yMargin * 2))],
+        //         ]
+        //       },
+        //       ...child.data.leaves.map((item, index) => {
+        //         return {
+        //           id: `${item.name}Path`,
+        //           segments: [
+        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (nodeHeight + yMargin * 2) * index],
+        //             [child.data.x - child.data.width / 2 + xMargin * 2, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (nodeHeight + yMargin * 2) * index],
+        //           ]
+        //         }
+        //       })
+        //     );
+        //   } else if (child.data.columns === child.data.leaves.length) {//行数が1の時の時
+        //     links.push(
+        //       {
+        //         id: `${child.id}dummyHorizon`,
+        //         segments: [
+        //           [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2, child.data.y - child.data.height / 2],
+        //           [child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2, child.data.y - child.data.height / 2],
+        //         ]
+        //       },
+        //       ...child.data.leaves.map((item, index) => {
+        //         return {
+        //           id: `${item.name}Path`,
+        //           segments: [
+        //             [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * index, child.data.y - child.data.height / 2],
+        //             [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * index, child.data.y - child.data.height / 2 + yMargin],
+        //           ]
+        //         }
+        //       })
+        //     )
+        //   } else {//2行２列以上の時
+        //     const rows = Math.ceil(child.data.leaves.length / child.data.columns);
+        //     //親より右側にある時
+        //     if (child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2 > child.parent.data.x) {
+        //       links.push(
+        //         {
+        //           id: `${child.id}dummyHorizon0`,
+        //           segments: [
+        //             [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2, child.data.y - child.data.height / 2],
+        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2],
+        //           ]
+        //         },
+        //         {
+        //           id: `${child.id}dummyVertical0`,
+        //           segments: [
+        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2],
+        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + nodeHeight + yMargin * 2],
+        //           ]
+        //         },
+        //         {
+        //           id: `${child.id}dummyHorizon${child.data.leaves.length - 1}`,
+        //           segments: [
+        //             [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2 - (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns) : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
+        //             [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns), child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
+        //           ]
+        //         },
+        //         ...child.data.leaves.map((item, index) => {
+        //           return {
+        //             id: `${item.name}Path`,
+        //             segments: [
+        //               [Math.trunc(index / child.data.columns) % 2 === 0 ? (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
+        //               [Math.trunc(index / child.data.columns) % 2 === 0 ? (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, yMargin + Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
+        //             ]
+        //           }
+        //         })
+        //       );
+        //       for (let i = 1; i < rows - 1; i++) {
+        //         links.push({
+        //           id: `${child.id}dummyHorizon${i}`,
+        //           segments: [
+        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
+        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
+        //           ]
+        //         },
+        //           {
+        //             id: `${child.id}dummyVertical${i}`,
+        //             segments: [
+        //               [i % 2 == 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
+        //               [i % 2 == 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2) + nodeHeight + yMargin * 2],
+        //             ]
+        //           }
+        //         )
+        //       }
+        //     } else {
+        //       links.push(
+        //         {
+        //           id: `${child.id}dummyHorizon0`,
+        //           segments: [
+        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
+        //             [child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2, child.data.y - child.data.height / 2],
+        //           ]
+        //         },
+        //         {
+        //           id: `${child.id}dummyVertical0`,
+        //           segments: [
+        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
+        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + nodeHeight + yMargin * 2],
+        //           ]
+        //         },
+        //         {
+        //           id: `${child.id}dummyHorizon${child.data.leaves.length - 1}`,
+        //           segments: [
+        //             [rows % 2 !== 0 ? child.data.x + child.data.width / 2 - xMargin * 2 + nodeWidth / 2 - (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns) : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
+        //             [rows % 2 !== 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns), child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
+        //           ]
+        //         },
+        //         ...child.data.leaves.map((item, index) => {
+        //           return {
+        //             id: `${item.name}Path`,
+        //             segments: [
+        //               [Math.trunc(index / child.data.columns) % 2 === 0 ? (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
+        //               [Math.trunc(index / child.data.columns) % 2 === 0 ? (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, yMargin + Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
+        //             ]
+        //           }
+        //         })
+        //       );
+        //       for (let i = 1; i < rows - 1; i++) {
+        //         links.push({
+        //           id: `${child.id}dummyHorizon${i}`,
+        //           segments: [
+        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
+        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
+        //           ]
+        //         },
+        //           {
+        //             id: `${child.id}dummyVertical${i}`,
+        //             segments: [
+        //               [i % 2 == 0 ? child.data.x - child.data.width / 2 + xMargin : child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
+        //               [i % 2 == 0 ? child.data.x - child.data.width / 2 + xMargin : child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2) + nodeHeight + yMargin * 2],
+        //             ]
+        //           }
+        //         )
+        //       }
+        //     }
+        //   }
       } else {
-        links.push({
-          id: `${child.id}toParent`,
-          segments: [
-            [child.data.x, child.data.y - nodeHeight / 2 - yMargin],
-            [child.data.x, child.data.y - nodeHeight / 2],
-          ]
-        })
+        links.push(
+          createPath(
+            `${child.id}toParent`,
+            child.data.x,
+            child.data.x,
+            child.data.y - child.data.height / 2,
+            child.data.y - child.data.height / 2 + yMargin,
+          ),
+        );
       }
     }
     return links;
@@ -346,35 +448,77 @@ function createLinks(root, nodeWidth, nodeHeight, xMargin, yMargin) {
   }
 }
 
+function createPath(pathId, x1, x2, y1, y2) {
+  return {
+    id: pathId,
+    segments: [
+      [x1, y1],
+      [x2, y2],
+    ],
+  };
+}
+
 //底辺のノードを返す関数
 function searchBottomNode(root) {
   let descendants = root.descendants();
   let max = 0;
   for (let i = 1; i < descendants.length; i++) {
-    max = descendants[max].data.y + descendants[max].data.height / 2 < descendants[i].data.y + descendants[i].data.height / 2 ? i : max;
+    max =
+      descendants[max].data.y + descendants[max].data.height / 2 <
+        descendants[i].data.y + descendants[i].data.height / 2
+        ? i
+        : max;
   }
   return descendants[max];
 }
 
 //ツリーのアスペクト比を返す関数
 function calcAspectRatio(root) {
-  const left = d3.min(root.descendants(), (node) => node.data.x - node.data.width / 2);
-  const right = d3.max(root.descendants(), (node) => node.data.x + node.data.width / 2);
-  const top = d3.min(root.descendants(), (node) => node.data.y - node.data.height / 2);
-  const bottom = d3.max(root.descendants(), (node) => node.data.y + node.data.height / 2);
+  const left = d3.min(
+    root.descendants(),
+    (node) => node.data.x - node.data.width / 2,
+  );
+  const right = d3.max(
+    root.descendants(),
+    (node) => node.data.x + node.data.width / 2,
+  );
+  const top = d3.min(
+    root.descendants(),
+    (node) => node.data.y - node.data.height / 2,
+  );
+  const bottom = d3.max(
+    root.descendants(),
+    (node) => node.data.y + node.data.height / 2,
+  );
   const layoutWidth = right - left;
   const layoutHeight = bottom - top;
   return layoutWidth / layoutHeight;
 }
 
 //アスペクト比が最適になるまで底辺ノードの列数を増やす関数
-function localFoldingLayout(root, at, w, h, xMargin, yMargin, stratify) {
+function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
   let a = calcAspectRatio(root);
   while (at > a) {
     const bottomNode = searchBottomNode(root);
-    if (bottomNode.data.leaves && bottomNode.data.columns < bottomNode.data.leaves.length) {
+    if (
+      bottomNode.data.leaves &&
+      bottomNode.data.columns < bottomNode.data.leavesNum
+    ) {
       bottomNode.data.columns += 1;
-      initRoot(root, w, h, xMargin, yMargin);
+      const leaves1D = to1D(bottomNode.data.leaves);
+      const rowCount = Math.ceil(
+        bottomNode.data.leavesNum / bottomNode.data.columns,
+      );
+      let newLeaves = create2DArray(rowCount, bottomNode.data.columns);
+      for (let i = 0; i < rowCount; i++) {
+        for (let j = 0; j < bottomNode.data.columns; j++) {
+          newLeaves[j][i] = leaves1D[i * bottomNode.data.columns + j]
+            ? leaves1D[i * bottomNode.data.columns + j]
+            : {};
+        }
+      }
+      bottomNode.data.leaves = newLeaves;
+      initRoot(root, xMargin, yMargin);
       root = stratify(vanderploeg(root, stratify));
       a = calcAspectRatio(root);
     } else {
@@ -384,27 +528,288 @@ function localFoldingLayout(root, at, w, h, xMargin, yMargin, stratify) {
   return root;
 }
 
-//ダミーノードを元に戻す
-function undoDummyNode(root, w, h, xMargin, yMargin,) {
+// //ダミーノードを元に戻す関数
+// function undoDummyNode(root, w, h, xMargin, yMargin,) {
+//   const data = root.descendants().flatMap((node) => {
+//     if (node.data.leaves) {
+//       const rowCount = Math.ceil(node.data.leavesNum / node.data.columns);
+//       //ダミーノードの右端ノードの中心が、親ノードの中心より右側にある時
+//       if (node.data.x + node.data.width / 2 - xMargin - node.data.leaves[node.data.columns - 1][0].width / 2 > node.parent.data.x) {
+//         let rowMaxHeight = 0;
+//         for (let j = 0; j < node.data.columns; j++) {
+//           node.data.leaves[j][0].y = node.data.y - node.data.height / 2 + node.data.leaves[j][0].height / 2;
+//           rowMaxHeight = node.data.leaves[j][0].y + node.data.leaves[j][0].height / 2 > rowMaxHeight ? node.data.leaves[j][0].y + node.data.leaves[j][0].height / 2 : rowMaxHeight;
+//         }
+//         for (let i = 0; i < rowCount; i++) {
+//           node.data.leaves[0][i].x = i % 2 === 0 ? node.data.x - node.data.width / 2 + xMargin / 2 : node.data.x + node.data.width / 2 - xMargin / 2;
+//           let newMaxHeight = rowMaxHeight;
+//           for (let j = 0; j < node.data.columns; j++) {
+//             if (isNotEmptyObject(node.data.leaves[j][i])) {
+//               if (!node.data.leaves[j][i].x) {
+//                 node.data.leaves[j][i].x = i % 2 === 0 ? node.data.leaves[j - 1][i].x + node.data.leaves[j - 1][i].width / 2 + node.data.leaves[j][i].width / 2 : node.data.leaves[j - 1][i].x - node.data.leaves[j - 1][i].width / 2 - node.data.leaves[j][i].width / 2;
+//               }
+//               if (!node.data.leaves[j][i].y) {
+//                 node.data.leaves[j][i].y = rowMaxHeight + node.data.leaves[j][i].height / 2;
+//               }
+//               newMaxHeight = node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2 > newMaxHeight ? node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2 : newMaxHeight;
+//             }
+//           }
+//           rowMaxHeight = newMaxHeight;
+//         }
+//         return to1D(node.data.leaves);
+//         //ダミーノードの右端ノードの中心が、親ノードの中心より左側にある時
+//       } else {
+//         let rowMaxHeight = 0;
+//         for (let j = 0; j < node.data.columns; j++) {
+//           node.data.leaves[j][0].y = node.data.y - node.data.height / 2 + node.data.leaves[j][0].height / 2;
+//           rowMaxHeight = node.data.leaves[j][0].y + node.data.leaves[j][0].height / 2 > rowMaxHeight ? node.data.leaves[j][0].y + node.data.leaves[j][0].height / 2 : rowMaxHeight;
+//         }
+//         for (let i = 0; i < rowCount; i++) {
+//           node.data.leaves[0][i].x = i % 2 === 0 ? node.data.x + node.data.width / 2 - xMargin / 2 : node.data.x - node.data.width / 2 + xMargin / 2;
+//           let newMaxHeight = rowMaxHeight;
+//           for (let j = 0; j < node.data.columns; j++) {
+//             if (isNotEmptyObject(node.data.leaves[j][i])) {
+//               if (!node.data.leaves[j][i].x) {
+//                 node.data.leaves[j][i].x = i % 2 === 0 ? node.data.leaves[j - 1][i].x - node.data.leaves[j - 1][i].width / 2 - node.data.leaves[j][i].width / 2 : node.data.leaves[j - 1][i].x + node.data.leaves[j - 1][i].width / 2 + node.data.leaves[j][i].width / 2;
+//               }
+//               if (!node.data.leaves[j][i].y) {
+//                 node.data.leaves[j][i].y = rowMaxHeight + node.data.leaves[j][i].height / 2;
+//               }
+//               newMaxHeight = node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2 > newMaxHeight ? node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2 : newMaxHeight;
+//             }
+//           }
+//           rowMaxHeight = newMaxHeight;
+//         }
+//         return to1D(node.data.leaves).filter((item) => isNotEmptyObject(item));
+//       }
+//     } else {
+//       return [node.data];
+//     }
+//   });
+
+//   return data;
+// }
+
+function undoDummyNode(root, xMargin, yMargin, links) {
   const data = root.descendants().flatMap((node) => {
     if (node.data.leaves) {
-      if (node.data.x + node.data.width / 2 - xMargin - w / 2 > node.parent.data.x) {
-        return node.data.leaves.map((leaf, j) => {
-          leaf.width = w + xMargin * 2;
-          leaf.height = h + yMargin * 2;
-          leaf.x = Math.trunc(j / node.data.columns) % 2 === 0 ? leaf.width / 2 + (j % node.data.columns) * leaf.width + node.data.x - node.data.width / 2 + xMargin : (node.data.columns - 1) * leaf.width + leaf.width / 2 - (j % node.data.columns) * leaf.width + node.data.x - node.data.width / 2 + xMargin;
-          leaf.y = leaf.height / 2 + Math.trunc(j / node.data.columns) * leaf.height + node.data.y - node.data.height / 2;
-          return leaf;
-        });
-      } else {
-        return node.data.leaves.map((leaf, j) => {
-          leaf.width = w + xMargin * 2;
-          leaf.height = h + yMargin * 2;
-          leaf.x = Math.trunc(j / node.data.columns) % 2 === 0 ? (node.data.columns - 1) * leaf.width + leaf.width / 2 - (j % node.data.columns) * leaf.width + node.data.x - node.data.width / 2 + xMargin : leaf.width / 2 + (j % node.data.columns) * leaf.width + node.data.x - node.data.width / 2 + xMargin;
-          leaf.y = leaf.height / 2 + Math.trunc(j / node.data.columns) * leaf.height + node.data.y - node.data.height / 2;
-          return leaf;
-        });
+      const rowCount = Math.ceil(node.data.leavesNum / node.data.columns);
+      const isRightOfParentCenter =
+        node.data.x +
+        node.data.width / 2 -
+        xMargin -
+        node.data.leaves[node.data.columns - 1][0].width / 2 >
+        node.parent.data.x;
+      let rowMaxHeight = node.data.y - node.data.height / 2;
+      for (let j = 0; j < node.data.columns; j++) {
+        node.data.leaves[j][0].y =
+          node.data.y -
+          node.data.height / 2 +
+          node.data.leaves[j][0].height / 2;
       }
+      //列数が１かどうか
+      let isMultipleColumns = true;
+      for (let i = 0; i < rowCount; i++) {
+        if (node.data.columns > 1) {
+          node.data.leaves[0][i].x = isRightOfParentCenter
+            ? i % 2 === 0
+              ? node.data.x -
+              node.data.width / 2 +
+              node.data.leaves[0][i].width / 2 +
+              xMargin / 2
+              : node.data.x +
+              node.data.width / 2 -
+              node.data.leaves[0][i].width / 2 -
+              xMargin / 2
+            : i % 2 === 0
+              ? node.data.x +
+              node.data.width / 2 -
+              node.data.leaves[0][i].width / 2 -
+              xMargin / 2
+              : node.data.x -
+              node.data.width / 2 +
+              node.data.leaves[0][i].width / 2 +
+              xMargin / 2;
+        } else {
+          isMultipleColumns = false;
+          node.data.leaves[0][i].x =
+            node.data.x -
+            node.data.width / 2 +
+            node.data.leaves[0][i].width / 2 +
+            xMargin / 2;
+        }
+
+        let newMaxHeight = rowMaxHeight;
+        for (let j = 0; j < node.data.columns; j++) {
+          if (isNotEmptyObject(node.data.leaves[j][i])) {
+            if (!node.data.leaves[j][i].x) {
+              node.data.leaves[j][i].x = isRightOfParentCenter
+                ? i % 2 === 0
+                  ? node.data.leaves[j - 1][i].x +
+                  node.data.leaves[j - 1][i].width / 2 +
+                  node.data.leaves[j][i].width / 2
+                  : node.data.leaves[j - 1][i].x -
+                  node.data.leaves[j - 1][i].width / 2 -
+                  node.data.leaves[j][i].width / 2
+                : i % 2 === 0
+                  ? node.data.leaves[j - 1][i].x -
+                  node.data.leaves[j - 1][i].width / 2 -
+                  node.data.leaves[j][i].width / 2
+                  : node.data.leaves[j - 1][i].x +
+                  node.data.leaves[j - 1][i].width / 2 +
+                  node.data.leaves[j][i].width / 2;
+            }
+            if (!node.data.leaves[j][i].y) {
+              node.data.leaves[j][i].y =
+                rowMaxHeight + node.data.leaves[j][i].height / 2;
+            }
+            links.push(
+              isMultipleColumns
+                ? createPath(
+                  `${node.data.leaves[j][i].name}`,
+                  node.data.leaves[j][i].x,
+                  node.data.leaves[j][i].x,
+                  rowMaxHeight,
+                  rowMaxHeight + yMargin,
+                )
+                : createPath(
+                  `${node.data.leaves[j][i].name}`,
+                  node.data.leaves[j][i].x - node.data.leaves[j][i].width / 2,
+                  node.data.leaves[j][i].x -
+                  node.data.leaves[j][i].width / 2 +
+                  xMargin / 2,
+                  node.data.leaves[j][i].y,
+                  node.data.leaves[j][i].y,
+                ),
+            );
+            newMaxHeight = Math.max(
+              newMaxHeight,
+              node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2,
+            );
+          }
+        }
+        if (isMultipleColumns) {
+          if (i < 1) {
+            const firstNodeX = isRightOfParentCenter
+              ? mostLeftXInRow(node, i)
+              : node.data.x - node.data.width / 2 + xMargin / 2;
+            const pathX = isRightOfParentCenter
+              ? node.data.x + node.data.width / 2 - xMargin / 2
+              : node.data.x - node.data.width / 2 + xMargin / 2;
+            links.push(
+              createPath(
+                `dummyHorizon${node.data.name + i}`,
+                firstNodeX,
+                node.data.x,
+                rowMaxHeight,
+                rowMaxHeight,
+              ),
+            );
+            if (node.data.columns !== node.data.leavesNum) {
+              links.push(createPath(
+                `dummyHorizon${node.data.name}0`,
+                node.parent.data.x,
+                pathX,
+                rowMaxHeight,
+                rowMaxHeight,
+              ));
+              links.push(
+                createPath(
+                  `dummyVarticle${node.data.name + i}`,
+                  pathX,
+                  pathX,
+                  rowMaxHeight,
+                  newMaxHeight,
+                ),
+              );
+            } else {
+              links.push(
+                createPath(
+                  `dummyHorizon${node.name}0`,
+                  node.parent.data.x,
+                  mostRightXInRow(node, i),
+                  rowMaxHeight,
+                  rowMaxHeight,
+                ),
+              );
+            }
+          } else if (i < rowCount - 1) {
+            const pathX = isRightOfParentCenter
+              ? i % 2 == 0
+                ? node.data.x + node.data.width / 2 - xMargin / 2
+                : node.data.x - node.data.width / 2 + xMargin / 2
+              : i % 2 == 0
+                ? node.data.x - node.data.width / 2 + xMargin / 2
+                : node.data.x + node.data.width / 2 - xMargin / 2;
+            links.push(
+              createPath(
+                `dummyHorizon${i}`,
+                node.data.x - node.data.width / 2 + xMargin / 2,
+                node.data.x + node.data.width / 2 - xMargin / 2,
+                rowMaxHeight,
+                rowMaxHeight,
+              ),
+            );
+            links.push(
+              createPath(
+                `dummyVarticle${node.data.name + i}`,
+                pathX,
+                pathX,
+                rowMaxHeight,
+                newMaxHeight,
+              ),
+            );
+          } else {
+            const pathX = !isRightOfParentCenter
+              ? i % 2 == 0
+                ? node.data.x + node.data.width / 2 - xMargin / 2
+                : node.data.x - node.data.width / 2 + xMargin / 2
+              : i % 2 == 0
+                ? node.data.x - node.data.width / 2 + xMargin / 2
+                : node.data.x + node.data.width / 2 - xMargin / 2;
+            const finaNodeX = isRightOfParentCenter
+              ? i % 2 == 0
+                ? mostRightXInRow(node, i)
+                : mostLeftXInRow(node, i)
+              : i % 2 == 0
+                ? mostLeftXInRow(node, i)
+                : mostRightXInRow(node, i);
+            links.push(
+              createPath(
+                `dummyVarticle${node.data.name + i}`,
+                pathX,
+                finaNodeX,
+                rowMaxHeight,
+                rowMaxHeight,
+              ),
+            );
+          }
+        }
+
+        rowMaxHeight = newMaxHeight;
+      }
+      if (!isMultipleColumns) {
+        links.push(
+          createPath(
+            `dummyVarticle${node.data.name}`,
+            node.data.x - node.data.width / 2 + xMargin / 2,
+            node.data.x - node.data.width / 2 + xMargin / 2,
+            node.data.y - node.data.height / 2,
+            node.data.leaves[0][rowCount - 1].y,
+          ),
+        );
+        links.push(
+          createPath(
+            `dummyHorizon${node.data.name}`,
+            node.data.x - node.data.width / 2 + xMargin / 2,
+            node.data.x,
+            node.data.y - node.data.height / 2,
+            node.data.y - node.data.height / 2,
+          ),
+        );
+      }
+
+      return to1D(node.data.leaves).filter((item) => isNotEmptyObject(item));
     } else {
       return [node.data];
     }
@@ -413,11 +818,66 @@ function undoDummyNode(root, w, h, xMargin, yMargin,) {
   return data;
 }
 
+//ダミーノードで指定された行の一番右のx座標を返す関
+function mostRightXInRow(dummyNode, row) {
+  const leaves = dummyNode.data.leaves;
+  let max = dummyNode.data.x - dummyNode.data.width / 2;
+  for (let j = 0; j < dummyNode.data.columns; j++) {
+    max = isNotEmptyObject(leaves[j][row])
+      ? Math.max(leaves[j][row].x, max)
+      : max;
+  }
+  return max;
+}
+
+//ダミーノードで指定された行の一番左のx座標を返す関
+function mostLeftXInRow(dummyNode, row) {
+  const leaves = dummyNode.data.leaves;
+  let min = dummyNode.data.x + dummyNode.data.width / 2;
+  for (let j = 0; j < dummyNode.data.columns; j++) {
+    min = isNotEmptyObject(leaves[j][row])
+      ? Math.min(leaves[j][row].x, min)
+      : min;
+  }
+  console.log(min);
+  return min;
+}
+
+//2次元配列を1次元にして返す関数
+function to1D(array2D) {
+  let array1D = [];
+  for (let j = 0; j < array2D[0].length; j++) {
+    for (let i = 0; i < array2D.length; i++) {
+      if (array2D[i][j]) {
+        array1D.push(array2D[i][j]);
+      } else {
+        break;
+      }
+    }
+  }
+  return array1D;
+}
+
+//の2次元配列を作る関数
+function create2DArray(rowNum, columnNum) {
+  let array2D = [];
+  for (var j = 0; j < columnNum; j++) {
+    array2D[j] = [];
+    for (var i = 0; i < rowNum; i++) {
+      array2D[j][i] = {};
+    }
+  }
+  return array2D;
+}
+
+function isNotEmptyObject(obj) {
+  return obj && typeof obj === "object" && Object.keys(obj).length > 0;
+}
 
 export function layout(data, width, height) {
-  const nodeWidth = 1000;
-  const nodeHeight = 500;
-  const xMargin = 100;
+  // const nodeWidth = 1000;
+  // const nodeHeight = 500;
+  const xMargin = 200;
   const yMargin = 200;
   const stratify = d3
     .stratify()
@@ -432,21 +892,31 @@ export function layout(data, width, height) {
   //   .separation(() => 1);
   // tree(root);
 
-  let root = stratify(data);
+  //dataにランダムなノード幅と高さを設定
+  const newData = data.map((item) => {
+    item.width = 500 + Math.floor(Math.random() * 1000);
+    item.height = 500 + Math.floor(Math.random() * 1000);
+    return item;
+  });
+
+  let root = stratify(newData);
   const dummyData = createDammuy(root);
   root = stratify(dummyData);
-  initRoot(root, nodeWidth, nodeHeight, xMargin, yMargin);
+  initRoot(root, xMargin, yMargin);
   root = stratify(vanderploeg(root, stratify));
-  root = localFoldingLayout(root, width / height, nodeWidth, nodeHeight, xMargin, yMargin, stratify);
-  const links = createLinks(root, nodeWidth, nodeHeight, xMargin, yMargin);
-  root = stratify(undoDummyNode(root, nodeWidth, nodeHeight, xMargin, yMargin));
+  root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
+  const links = createLinks(root, xMargin, yMargin);
+  root = stratify(undoDummyNode(root, xMargin, yMargin, links));
+  console.log(undoDummyNode(root, xMargin, yMargin, links));
   format(root, xMargin, yMargin);
 
   // normalize
-  const left = d3.min(root.descendants(), (node) => node.x - nodeWidth / 2) - xMargin;
-  const right = d3.max(root.descendants(), (node) => node.x + nodeWidth / 2) + xMargin;
-  const top = d3.min(root.descendants(), (node) => node.y - nodeHeight / 2);
-  const bottom = d3.max(root.descendants(), (node) => node.y + nodeHeight / 2);
+  const left =
+    d3.min(root.descendants(), (node) => node.x - node.width / 2) - xMargin;
+  const right =
+    d3.max(root.descendants(), (node) => node.x + node.width / 2) + xMargin;
+  const top = d3.min(root.descendants(), (node) => node.y - node.height / 2);
+  const bottom = d3.max(root.descendants(), (node) => node.y + node.height / 2);
   const layoutWidth = right - left;
   const layoutHeight = bottom - top;
   const scale = Math.min(width / layoutWidth, height / layoutHeight);
@@ -457,18 +927,23 @@ export function layout(data, width, height) {
     node.height = node.height * scale;
   }
 
+  console.log(links);
   const scaledLinks = links.map((link) => {
-    link.segments[0][0] = (link.segments[0][0] - left - layoutWidth / 2) * scale + width / 2;
-    link.segments[0][1] = (link.segments[0][1] - top - layoutHeight / 2) * scale + height / 2;
-    link.segments[1][0] = (link.segments[1][0] - left - layoutWidth / 2) * scale + width / 2;
-    link.segments[1][1] = (link.segments[1][1] - top - layoutHeight / 2) * scale + height / 2;
+    link.segments[0][0] =
+      (link.segments[0][0] - left - layoutWidth / 2) * scale + width / 2;
+    link.segments[0][1] =
+      (link.segments[0][1] - top - layoutHeight / 2) * scale + height / 2;
+    link.segments[1][0] =
+      (link.segments[1][0] - left - layoutWidth / 2) * scale + width / 2;
+    link.segments[1][1] =
+      (link.segments[1][1] - top - layoutHeight / 2) * scale + height / 2;
     return link;
-  })
+  });
 
   return {
     nodes: root.descendants().map(({ id, x, y, width, height }) => {
       return { id, x, y, width, height };
     }),
-    links: scaledLinks
+    links: scaledLinks,
   };
 }

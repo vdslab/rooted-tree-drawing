@@ -13,7 +13,7 @@ export default function Tree({ data, width, height }) {
         <g>
           {links.map((link) => {
             return (
-              <g key={link.id}>
+              <g key={link.id} id={link.id}>
                 <path d={line(link.segments)} fill="none" stroke="#888" />
               </g>
             );
