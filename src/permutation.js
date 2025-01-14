@@ -1,14 +1,22 @@
 import * as d3 from "d3";
 
 export function permutation(data, width, height) {
-  const row = 4;
+  const row = 3;
+  let rowArray = initialRowArray(data);
+  let diff = rowArray.length - row
+  while (diff > 0) {
+    rowArray = createRowArray(rowArray);
+    diff--;
+  }
+  // const rowsArray = 
+  // const diff = sortedData - row;
   const columnCount = 10;
   const xMargin = 10;
   const yMargin = 20;
   let result = []; // 配置後の座標付きのオブジェクトを格納
   let minArea = Infinity;
   let optimalLayout = null;
-
+  let rectsData = null;
   const permuData = getPermutations(data);
 
   permuData.forEach((data, index) => {
@@ -19,6 +27,7 @@ export function permutation(data, width, height) {
 
       if (area < minArea) {
         minArea = area;
+        rectsData = areaResult
         optimalLayout = areaResult.layout; // 最小面積を持つレイアウトを保存
       }
     });
@@ -41,6 +50,7 @@ export function permutation(data, width, height) {
     node.height *= scale;
   });
 
+  console.log("全通りの場合 幅、高さ、面積", rectsData.width, rectsData.height, rectsData.area);
   return optimalLayout;
 }
 

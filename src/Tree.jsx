@@ -1,10 +1,11 @@
 import { useMemo } from "react";
 // import * as d3 from "d3";
 import { permutation } from "./permutation";
+import { bin } from "./bin";
 
-export default function Tree({ data, width, height }) {
+export default function Tree({ data, width, height, func }) {
   const nodes = useMemo(() => {
-    return permutation(data, width, height, 2);
+    return func(data, width, height, 2);
   }, [data, width, height]);
   // const line = d3.line();
   return (
