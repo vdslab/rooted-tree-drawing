@@ -280,156 +280,6 @@ function createLinks(root, xMargin, yMargin) {
     for (const child of root.children) {
       links.push(...createLinks(child, xMargin, yMargin));
       if (child.data.columns) {
-        //   if (child.data.columns === 1) {//列数が1の時
-        //     links.push(
-        //       {
-        //         id: `${child.id}dummyHorizon`,
-        //         segments: [
-        //           [child.data.x, child.data.y - child.data.height / 2],
-        //           [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
-        //         ]
-        //       },
-        //       {
-        //         id: `${child.id}dummyVertical`,
-        //         segments: [
-        //           [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
-        //           [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (child.data.leaves.length - 1) * (nodeHeight + (yMargin * 2))],
-        //         ]
-        //       },
-        //       ...child.data.leaves.map((item, index) => {
-        //         return {
-        //           id: `${item.name}Path`,
-        //           segments: [
-        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (nodeHeight + yMargin * 2) * index],
-        //             [child.data.x - child.data.width / 2 + xMargin * 2, child.data.y - child.data.height / 2 + yMargin + nodeHeight / 2 + (nodeHeight + yMargin * 2) * index],
-        //           ]
-        //         }
-        //       })
-        //     );
-        //   } else if (child.data.columns === child.data.leaves.length) {//行数が1の時の時
-        //     links.push(
-        //       {
-        //         id: `${child.id}dummyHorizon`,
-        //         segments: [
-        //           [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2, child.data.y - child.data.height / 2],
-        //           [child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2, child.data.y - child.data.height / 2],
-        //         ]
-        //       },
-        //       ...child.data.leaves.map((item, index) => {
-        //         return {
-        //           id: `${item.name}Path`,
-        //           segments: [
-        //             [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * index, child.data.y - child.data.height / 2],
-        //             [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * index, child.data.y - child.data.height / 2 + yMargin],
-        //           ]
-        //         }
-        //       })
-        //     )
-        //   } else {//2行２列以上の時
-        //     const rows = Math.ceil(child.data.leaves.length / child.data.columns);
-        //     //親より右側にある時
-        //     if (child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2 > child.parent.data.x) {
-        //       links.push(
-        //         {
-        //           id: `${child.id}dummyHorizon0`,
-        //           segments: [
-        //             [child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2, child.data.y - child.data.height / 2],
-        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2],
-        //           ]
-        //         },
-        //         {
-        //           id: `${child.id}dummyVertical0`,
-        //           segments: [
-        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2],
-        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + nodeHeight + yMargin * 2],
-        //           ]
-        //         },
-        //         {
-        //           id: `${child.id}dummyHorizon${child.data.leaves.length - 1}`,
-        //           segments: [
-        //             [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2 - (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns) : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
-        //             [rows % 2 === 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns), child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
-        //           ]
-        //         },
-        //         ...child.data.leaves.map((item, index) => {
-        //           return {
-        //             id: `${item.name}Path`,
-        //             segments: [
-        //               [Math.trunc(index / child.data.columns) % 2 === 0 ? (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
-        //               [Math.trunc(index / child.data.columns) % 2 === 0 ? (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, yMargin + Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
-        //             ]
-        //           }
-        //         })
-        //       );
-        //       for (let i = 1; i < rows - 1; i++) {
-        //         links.push({
-        //           id: `${child.id}dummyHorizon${i}`,
-        //           segments: [
-        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-        //           ]
-        //         },
-        //           {
-        //             id: `${child.id}dummyVertical${i}`,
-        //             segments: [
-        //               [i % 2 == 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-        //               [i % 2 == 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2) + nodeHeight + yMargin * 2],
-        //             ]
-        //           }
-        //         )
-        //       }
-        //     } else {
-        //       links.push(
-        //         {
-        //           id: `${child.id}dummyHorizon0`,
-        //           segments: [
-        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
-        //             [child.data.x + child.data.width / 2 - xMargin * 2 - nodeWidth / 2, child.data.y - child.data.height / 2],
-        //           ]
-        //         },
-        //         {
-        //           id: `${child.id}dummyVertical0`,
-        //           segments: [
-        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2],
-        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + nodeHeight + yMargin * 2],
-        //           ]
-        //         },
-        //         {
-        //           id: `${child.id}dummyHorizon${child.data.leaves.length - 1}`,
-        //           segments: [
-        //             [rows % 2 !== 0 ? child.data.x + child.data.width / 2 - xMargin * 2 + nodeWidth / 2 - (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns) : child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
-        //             [rows % 2 !== 0 ? child.data.x + child.data.width / 2 - xMargin : child.data.x - child.data.width / 2 + xMargin * 2 + nodeWidth / 2 + (nodeWidth + xMargin * 2) * ((child.data.leaves.length + child.data.columns - 1) % child.data.columns), child.data.y - child.data.height / 2 + (rows - 1) * (nodeHeight + yMargin * 2)],
-        //           ]
-        //         },
-        //         ...child.data.leaves.map((item, index) => {
-        //           return {
-        //             id: `${item.name}Path`,
-        //             segments: [
-        //               [Math.trunc(index / child.data.columns) % 2 === 0 ? (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
-        //               [Math.trunc(index / child.data.columns) % 2 === 0 ? (child.data.columns - 1) * (nodeWidth + xMargin * 2) + (nodeWidth + xMargin * 2) / 2 - (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin : (nodeWidth + xMargin * 2) / 2 + (index % child.data.columns) * (nodeWidth + xMargin * 2) + child.data.x - child.data.width / 2 + xMargin, yMargin + Math.trunc(index / child.data.columns) * (nodeHeight + yMargin * 2) + child.data.y - child.data.height / 2],
-        //             ]
-        //           }
-        //         })
-        //       );
-        //       for (let i = 1; i < rows - 1; i++) {
-        //         links.push({
-        //           id: `${child.id}dummyHorizon${i}`,
-        //           segments: [
-        //             [child.data.x - child.data.width / 2 + xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-        //             [child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-        //           ]
-        //         },
-        //           {
-        //             id: `${child.id}dummyVertical${i}`,
-        //             segments: [
-        //               [i % 2 == 0 ? child.data.x - child.data.width / 2 + xMargin : child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2)],
-        //               [i % 2 == 0 ? child.data.x - child.data.width / 2 + xMargin : child.data.x + child.data.width / 2 - xMargin, child.data.y - child.data.height / 2 + i * (nodeHeight + yMargin * 2) + nodeHeight + yMargin * 2],
-        //             ]
-        //           }
-        //         )
-        //       }
-        //     }
-        //   }
       } else {
         links.push(
           createPath(
@@ -495,6 +345,17 @@ function calcAspectRatio(root) {
   return layoutWidth / layoutHeight;
 }
 
+function createRowArray(rowArray) {
+    const sortedData = rowArray.sort((a, b) => a.width - b.width);
+    const combineRow = {
+      "width": rowWidth([sortedData[0], sortedData[1]]),
+      "height": rowHeight([sortedData[0], sortedData[1]]),
+      "rects": [...sortedData[0].rects, ...sortedData[1].rects]
+    };
+    sortedData.splice(0, 2);
+    return [combineRow, ...sortedData];
+  }
+
 //アスペクト比が最適になるまで底辺ノードの列数を増やす関数
 function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
   let a = calcAspectRatio(root);
@@ -527,68 +388,6 @@ function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
   }
   return root;
 }
-
-// //ダミーノードを元に戻す関数
-// function undoDummyNode(root, w, h, xMargin, yMargin,) {
-//   const data = root.descendants().flatMap((node) => {
-//     if (node.data.leaves) {
-//       const rowCount = Math.ceil(node.data.leavesNum / node.data.columns);
-//       //ダミーノードの右端ノードの中心が、親ノードの中心より右側にある時
-//       if (node.data.x + node.data.width / 2 - xMargin - node.data.leaves[node.data.columns - 1][0].width / 2 > node.parent.data.x) {
-//         let rowMaxHeight = 0;
-//         for (let j = 0; j < node.data.columns; j++) {
-//           node.data.leaves[j][0].y = node.data.y - node.data.height / 2 + node.data.leaves[j][0].height / 2;
-//           rowMaxHeight = node.data.leaves[j][0].y + node.data.leaves[j][0].height / 2 > rowMaxHeight ? node.data.leaves[j][0].y + node.data.leaves[j][0].height / 2 : rowMaxHeight;
-//         }
-//         for (let i = 0; i < rowCount; i++) {
-//           node.data.leaves[0][i].x = i % 2 === 0 ? node.data.x - node.data.width / 2 + xMargin / 2 : node.data.x + node.data.width / 2 - xMargin / 2;
-//           let newMaxHeight = rowMaxHeight;
-//           for (let j = 0; j < node.data.columns; j++) {
-//             if (isNotEmptyObject(node.data.leaves[j][i])) {
-//               if (!node.data.leaves[j][i].x) {
-//                 node.data.leaves[j][i].x = i % 2 === 0 ? node.data.leaves[j - 1][i].x + node.data.leaves[j - 1][i].width / 2 + node.data.leaves[j][i].width / 2 : node.data.leaves[j - 1][i].x - node.data.leaves[j - 1][i].width / 2 - node.data.leaves[j][i].width / 2;
-//               }
-//               if (!node.data.leaves[j][i].y) {
-//                 node.data.leaves[j][i].y = rowMaxHeight + node.data.leaves[j][i].height / 2;
-//               }
-//               newMaxHeight = node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2 > newMaxHeight ? node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2 : newMaxHeight;
-//             }
-//           }
-//           rowMaxHeight = newMaxHeight;
-//         }
-//         return to1D(node.data.leaves);
-//         //ダミーノードの右端ノードの中心が、親ノードの中心より左側にある時
-//       } else {
-//         let rowMaxHeight = 0;
-//         for (let j = 0; j < node.data.columns; j++) {
-//           node.data.leaves[j][0].y = node.data.y - node.data.height / 2 + node.data.leaves[j][0].height / 2;
-//           rowMaxHeight = node.data.leaves[j][0].y + node.data.leaves[j][0].height / 2 > rowMaxHeight ? node.data.leaves[j][0].y + node.data.leaves[j][0].height / 2 : rowMaxHeight;
-//         }
-//         for (let i = 0; i < rowCount; i++) {
-//           node.data.leaves[0][i].x = i % 2 === 0 ? node.data.x + node.data.width / 2 - xMargin / 2 : node.data.x - node.data.width / 2 + xMargin / 2;
-//           let newMaxHeight = rowMaxHeight;
-//           for (let j = 0; j < node.data.columns; j++) {
-//             if (isNotEmptyObject(node.data.leaves[j][i])) {
-//               if (!node.data.leaves[j][i].x) {
-//                 node.data.leaves[j][i].x = i % 2 === 0 ? node.data.leaves[j - 1][i].x - node.data.leaves[j - 1][i].width / 2 - node.data.leaves[j][i].width / 2 : node.data.leaves[j - 1][i].x + node.data.leaves[j - 1][i].width / 2 + node.data.leaves[j][i].width / 2;
-//               }
-//               if (!node.data.leaves[j][i].y) {
-//                 node.data.leaves[j][i].y = rowMaxHeight + node.data.leaves[j][i].height / 2;
-//               }
-//               newMaxHeight = node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2 > newMaxHeight ? node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2 : newMaxHeight;
-//             }
-//           }
-//           rowMaxHeight = newMaxHeight;
-//         }
-//         return to1D(node.data.leaves).filter((item) => isNotEmptyObject(item));
-//       }
-//     } else {
-//       return [node.data];
-//     }
-//   });
-
-//   return data;
-// }
 
 function undoDummyNode(root, xMargin, yMargin, links) {
   const data = root.descendants().flatMap((node) => {
@@ -883,14 +682,6 @@ export function layout(data, width, height) {
     .id((d) => d.name)
     .parentId((d) => d.parent);
 
-  // 仮のレイアウト
-  // const tree = d3
-  //   .tree()
-  //   .size([width, height])
-  //   .nodeSize([nodeWidth + xMargin, nodeHeight + yMargin])
-  //   .separation(() => 1);
-  // tree(root);
-
   //dataにランダムなノード幅と高さを設定
   const newData = data.map((item) => {
     item.width = 500 + Math.floor(Math.random() * 1000);
@@ -906,6 +697,7 @@ export function layout(data, width, height) {
   root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
   const links = createLinks(root, xMargin, yMargin);
   root = stratify(undoDummyNode(root, xMargin, yMargin, links));
+  console.log(undoDummyNode(root, xMargin, yMargin, links));
   format(root, xMargin, yMargin);
 
   // normalize
@@ -925,6 +717,7 @@ export function layout(data, width, height) {
     node.height = node.height * scale;
   }
 
+  console.log(links);
   const scaledLinks = links.map((link) => {
     link.segments[0][0] =
       (link.segments[0][0] - left - layoutWidth / 2) * scale + width / 2;
