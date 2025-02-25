@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import * as d3 from "d3";
 import { layout } from "./layout";
-
+// import {layout} from "./newLayout"
 export default function Tree({ data, width, height }) {
   const { nodes, links } = useMemo(() => {
     return layout(data, width, height);

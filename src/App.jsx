@@ -1,6 +1,6 @@
 import Tree from "./Tree";
 import { useState } from "react";
-
+import { generateTree } from "./randomData";
 function createData() {
   return [
     // { name: "Eve", parent: "" },
@@ -73,7 +73,7 @@ function createData() {
 }
 
 export default function App() {
-  const data = createData();
+  const data = generateTree(50, 0.5);
   const [width, setWidth] = useState(1000);
   const [height, setHeight] = useState(1000);
   return (
