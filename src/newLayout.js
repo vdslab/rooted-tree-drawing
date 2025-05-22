@@ -1,30 +1,40 @@
 import * as d3 from "d3";
 
 //葉群をダミーノードにする関数
-function createDammuy(root) {
+function createDammuy(root, xMargin, yMargin) {
   if (root.children) {
-    let data = [{ ...root.data }];
-    let dummyLesaves = [[]];
-    let dummyData = [];
+    const data = [{ ...root.data, x: 0, y: 0 }];
+    const dummyLesaves = [];
     for (const child of root.children) {
-      const childData = createDammuy(child);
-      childData.length <= 1
-        ? dummyLesaves[0].push(...childData)
-        : dummyData.push(...childData);
+      const childData = createDammuy(child, xMargin, yMargin);
+
+      //childDataが葉だったら
+      if (childData.length == 1) {
+        const childObj = childData[0];
+        childObj.width += xMargin;
+        childObj.height += yMargin * 2;
+        dummyLesaves.push(childObj);
+      } else {
+        data.push(...childData);
+      }
     }
-    dummyLesaves[0].length <= 1
-      ? data.push(...dummyLesaves[0])
-      : data.push({
+    dummyLesaves.length <= 1
+      ? data.push(...dummyLesaves)
+      : data.unshift({
         name: root.data.name + "leaves",
         parent: root.data.name,
         leaves: dummyLesaves,
-        columns: 1,
-        leavesNum: dummyLesaves[0].length,
+        rows: dummyLesaves.length,
+        // columns: 1,
+        leavesNum: dummyLesaves.length,
+        width: 0,
+        height: 0,
+        x: 0,
+        y: 0,
       });
-    data.push(...dummyData);
     return data;
   } else {
-    return [root.data];
+    return [{ ...root.data, x: 0, y: 0 }];
   }
 }
 
@@ -47,10 +57,10 @@ function vanderploeg(root, startify) {
         leftSiblings.children
           ? rightCountur(
             leftSiblings,
-            rightMostSiblingNode(leftSiblings.children),
+            rightMostSiblingNode(leftSiblings.children)
           )
           : [],
-        leftCountur(currentTree, leftMostSiblingNode(currentTree.children)),
+        leftCountur(currentTree, leftMostSiblingNode(currentTree.children))
       );
       for (let item of currentData) {
         item.x += move;
@@ -154,10 +164,10 @@ function rightCountur(root, rightMostNode) {
             node.data.y - node.data.width / 2 &&
             kouho.data.x + kouho.data.width / 2 <=
             node.data.x + node.data.width / 2) ||
-          (rightMostNode.data.y + rightMostNode.data.heigh / 2 <
-            kouho.data.y - kouho.data.heigh / 2 &&
+          (rightMostNode.data.y + rightMostNode.data.height / 2 <
+            kouho.data.y - kouho.data.height / 2 &&
             rightMostNode.data.y - rightMostNode.data.height / 2 >
-            kouho.data.y - kouho.data.heigh / 2))
+            kouho.data.y - kouho.data.height / 2))
       ) {
         kouho = node;
       }
@@ -189,10 +199,10 @@ function leftCountur(root, leftMostNode) {
             node.data.y - node.data.width / 2 &&
             kouho.data.x - kouho.data.width / 2 >=
             node.data.x - node.data.width / 2) ||
-          (leftMostNode.data.y + leftMostNode.data.heigh / 2 <
-            kouho.data.y - kouho.data.heigh / 2 &&
+          (leftMostNode.data.y + leftMostNode.data.height / 2 <
+            kouho.data.y - kouho.data.height / 2 &&
             leftMostNode.data.y - leftMostNode.data.height / 2 >
-            kouho.data.y - kouho.data.heigh / 2))
+            kouho.data.y - kouho.data.height / 2))
       ) {
         kouho = node;
       }
@@ -204,44 +214,72 @@ function leftCountur(root, leftMostNode) {
   }
 }
 
-//ダミーノードを含んだ根付き木で、それぞれのノードの横幅・縦幅を設定
-function initRoot(root, xMargin, yMargin) {
-  if (root.data.leaves) {
-    let maxWidth = 0;
-    for (let i = 0; i < root.data.leaves[0].length; i++) {
-      let rowSum = 0;
-      for (let j = 0; j < root.data.leaves.length; j++) {
-        if (isNotEmptyObject(root.data.leaves[j][i])) {
-          root.data.leaves[j][i].width += xMargin;
-        }
-        rowSum += root.data.leaves[j][i].width;
-      }
-      maxWidth = maxWidth < rowSum ? rowSum : maxWidth;
-    }
-    root.data.width = maxWidth + xMargin;
-    let maxHeight = 0;
-    for (let j = 0; j < root.data.leaves.length; j++) {
-      let columnSum = 0;
-      for (let i = 0; i < root.data.leaves[0].length; i++) {
-        if (isNotEmptyObject(root.data.leaves[j][i])) {
-          root.data.leaves[j][i].height += 2 * yMargin;
-        }
-        columnSum += root.data.leaves[j][i].height;
-      }
-      maxHeight = maxHeight < columnSum ? columnSum : maxHeight;
-    }
-    root.data.height = maxHeight + 2 * yMargin;
+//ダミーノードを含んだ根付き木で、それぞれのノードサイズを余白付きに変更
+function addMargin(root, xMargin, yMargin) {
+  if (root.data?.leaves) {
+    root.data = {
+      ...root.data, ...setDummyNodeSize(root.data.leaves, xMargin, yMargin)
+    };
   } else {
     root.data.width = root.data.width + xMargin;
-    root.data.height = root.data.height + yMargin;
+    root.data.height = root.data.height + yMargin * 2;
   }
-  root.data.x = root.data.width / 2;
-  root.data.y = root.data.height / 2;
-  if (root.children) {
-    for (let child of root.children) {
-      initRoot(child, xMargin, yMargin);
+  if (root?.children) {
+    for (const child of root.children) {
+      addMargin(child, xMargin, yMargin);
     }
   }
+}
+
+//ダミーノードの余白を計算し設定
+function setDummyMargin(root, xMargin, yMargin) {
+  if (root.data?.leaves) {
+    root.data = {
+      ...root.data, ...setDummyNodeSize(root.data.leaves, xMargin, yMargin)
+    };
+  }
+  if (root?.children) {
+    for (const child of root.children) {
+      setDummyMargin(child, xMargin, yMargin);
+    }
+  }
+}
+
+
+
+//ダミーノードの幅を計算
+function calcDummyDataWidth(leaves) {
+  let maxRowWitdh = 0;
+  for (const rowLeaves of leaves) {
+    maxRowWitdh = Math.max(rowLeaves.reduce((acc, { width }) => acc + width, 0), maxRowWitdh);
+  }
+  return maxRowWitdh;
+}
+
+//ダミーノードの高さを計算
+function calcDummyNodeHeight(leaves) {
+  let height = 0;
+  for (const rowLeaves of leaves) {
+    height += rowLeaves.reduce((maxHeight, { height }) => Math.max(maxHeight, height), Number.NEGATIVE_INFINITY);
+  }
+  return height;
+}
+
+//ダミーノードの横・縦幅を設定
+function setDummyNodeSize(leaves) {
+  return { width: calcDummyDataWidth(leaves), height: calcDummyNodeHeight(leaves) };
+}
+
+//最初に、ダミーノードを含んだデータからN*1の２次元葉群データを作成
+function initDammyData([...dummyData]) {
+  return (
+    dummyData.map((item) => {
+      if (item?.leaves) {
+        item.leaves = item.leaves.map((leaf) => [leaf]);
+      }
+      return item;
+    })
+  );
 }
 
 //余白を取り除く関数
@@ -254,50 +292,7 @@ function format(root, xMargin, yMargin) {
   }
 }
 
-//リンクを作る関数
-function createLinks(root, xMargin, yMargin) {
-  if (root.children) {
-    let links = [];
-    const leftMostNode = leftMostSiblingNode(root.children);
-    const rightMostNode = rightMostSiblingNode(root.children);
-
-    links.push(
-      createPath(
-        `${root.id}toChild`,
-        root.data.x,
-        root.data.x,
-        root.data.y + root.data.height / 2 - yMargin,
-        root.data.y + root.data.height / 2,
-      ),
-      createPath(
-        `${root.id}Horizon`,
-        leftMostNode.data.x,
-        rightMostNode.data.x,
-        root.data.y + root.data.height / 2,
-        root.data.y + root.data.height / 2,
-      ),
-    );
-    for (const child of root.children) {
-      links.push(...createLinks(child, xMargin, yMargin));
-      if (child.data.columns) {
-      } else {
-        links.push(
-          createPath(
-            `${child.id}toParent`,
-            child.data.x,
-            child.data.x,
-            child.data.y - child.data.height / 2,
-            child.data.y - child.data.height / 2 + yMargin,
-          ),
-        );
-      }
-    }
-    return links;
-  } else {
-    return [];
-  }
-}
-
+// 現在は使用されていません
 function createPath(pathId, x1, x2, y1, y2) {
   return {
     id: pathId,
@@ -326,35 +321,56 @@ function searchBottomNode(root) {
 function calcAspectRatio(root) {
   const left = d3.min(
     root.descendants(),
-    (node) => node.data.x - node.data.width / 2,
+    (node) => node.data.x - node.data.width / 2
   );
   const right = d3.max(
     root.descendants(),
-    (node) => node.data.x + node.data.width / 2,
+    (node) => node.data.x + node.data.width / 2
   );
   const top = d3.min(
     root.descendants(),
-    (node) => node.data.y - node.data.height / 2,
+    (node) => node.data.y - node.data.height / 2
   );
   const bottom = d3.max(
     root.descendants(),
-    (node) => node.data.y + node.data.height / 2,
+    (node) => node.data.y + node.data.height / 2
   );
   const layoutWidth = right - left;
   const layoutHeight = bottom - top;
   return layoutWidth / layoutHeight;
 }
 
-function createRowArray(rowArray) {
-    const sortedData = rowArray.sort((a, b) => a.width - b.width);
-    const combineRow = {
-      "width": rowWidth([sortedData[0], sortedData[1]]),
-      "height": rowHeight([sortedData[0], sortedData[1]]),
-      "rects": [...sortedData[0].rects, ...sortedData[1].rects]
-    };
-    sortedData.splice(0, 2);
-    return [combineRow, ...sortedData];
+// 各行のノードの幅の合計が小さい2つの行を1つの行にまとめる関数
+function combineRowArray(leaves) {
+  if (!leaves || leaves.length <= 1) {
+    return leaves; // 行が1つ以下の場合は何もしない
   }
+
+  // 各行の幅の合計を計算
+  const rowWidths = leaves.map(row => {
+    return {
+      row: row,
+      totalWidth: row.reduce((sum, node) => sum + (node.width || 0), 0)
+    };
+  });
+
+  // 幅の合計が小さい順にソート
+  rowWidths.sort((a, b) => a.totalWidth - b.totalWidth);
+
+  // 最も幅の合計が小さい2つの行を取得
+  const smallestRows = rowWidths.slice(0, 2);
+
+  // 2つの行を1つの行にマージ
+  const mergedRow = [...smallestRows[0].row, ...smallestRows[1].row];
+
+  // 新しいleaves配列を作成（マージした行を含む）
+  const newLeaves = leaves.filter(
+    row => row !== smallestRows[0].row && row !== smallestRows[1].row
+  );
+  newLeaves.push(mergedRow);
+  // 結果を返す
+  return newLeaves;
+}
 
 //アスペクト比が最適になるまで底辺ノードの列数を増やす関数
 function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
@@ -363,23 +379,11 @@ function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
     const bottomNode = searchBottomNode(root);
     if (
       bottomNode.data.leaves &&
-      bottomNode.data.columns < bottomNode.data.leavesNum
+      bottomNode.data.rows > 1
     ) {
-      bottomNode.data.columns += 1;
-      const leaves1D = to1D(bottomNode.data.leaves);
-      const rowCount = Math.ceil(
-        bottomNode.data.leavesNum / bottomNode.data.columns,
-      );
-      let newLeaves = create2DArray(rowCount, bottomNode.data.columns);
-      for (let i = 0; i < rowCount; i++) {
-        for (let j = 0; j < bottomNode.data.columns; j++) {
-          newLeaves[j][i] = leaves1D[i * bottomNode.data.columns + j]
-            ? leaves1D[i * bottomNode.data.columns + j]
-            : {};
-        }
-      }
-      bottomNode.data.leaves = newLeaves;
-      initRoot(root, xMargin, yMargin);
+      bottomNode.data.leaves = combineRowArray(bottomNode.data.leaves);
+      bottomNode.data.rows -= 1;
+      setDummyMargin(root, xMargin, yMargin);
       root = stratify(vanderploeg(root, stratify));
       a = calcAspectRatio(root);
     } else {
@@ -389,289 +393,191 @@ function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
   return root;
 }
 
-function undoDummyNode(root, xMargin, yMargin, links) {
-  const data = root.descendants().flatMap((node) => {
-    if (node.data.leaves) {
-      const rowCount = Math.ceil(node.data.leavesNum / node.data.columns);
-      const isRightOfParentCenter =
-        node.data.x +
-        node.data.width / 2 -
-        xMargin -
-        node.data.leaves[node.data.columns - 1][0].width / 2 >
-        node.parent.data.x;
-      let rowMaxHeight = node.data.y - node.data.height / 2;
-      for (let j = 0; j < node.data.columns; j++) {
-        node.data.leaves[j][0].y =
-          node.data.y -
-          node.data.height / 2 +
-          node.data.leaves[j][0].height / 2;
-      }
-      //列数が１かどうか
-      let isMultipleColumns = true;
-      for (let i = 0; i < rowCount; i++) {
-        if (node.data.columns > 1) {
-          node.data.leaves[0][i].x = isRightOfParentCenter
-            ? i % 2 === 0
-              ? node.data.x -
-              node.data.width / 2 +
-              node.data.leaves[0][i].width / 2 +
-              xMargin / 2
-              : node.data.x +
-              node.data.width / 2 -
-              node.data.leaves[0][i].width / 2 -
-              xMargin / 2
-            : i % 2 === 0
-              ? node.data.x +
-              node.data.width / 2 -
-              node.data.leaves[0][i].width / 2 -
-              xMargin / 2
-              : node.data.x -
-              node.data.width / 2 +
-              node.data.leaves[0][i].width / 2 +
-              xMargin / 2;
+
+function undoDummyNode(root) {
+  const newData = root.descendants().flatMap((item) => {
+    const { data, parent } = item;
+    if (data?.leaves) {
+      const leaves = [];
+      const { x, y, height, width } = data;
+      const top = y - height / 2;
+      const left = x - width / 2;
+      const right = x + width / 2;
+      if (data?.rows === data?.leavesNum) {//1列の時
+        let tx = left;
+        let ty = top;
+        for (let i = 0; i < data.leavesNum; i++) {
+          data.leaves[i][0].x = tx + data.leaves[i][0].width / 2;
+          data.leaves[i][0].y = ty + data.leaves[i][0].height / 2;
+          // tx += data.leaves[i][0].width;
+          ty += data.leaves[i][0].height;
+          leaves.push({ ...data.leaves[i][0] });
+        }
+      } else if (data.rows === 1) {//1行の時
+        let tx = left;
+        for (let i = 0; i < data.leavesNum; i++) {
+          data.leaves[0][i].x = tx + data.leaves[0][i].width / 2;
+          data.leaves[0][i].y = top + data.leaves[0][i].height / 2;
+          tx += data.leaves[0][i].width;
+          leaves.push({ ...data.leaves[0][i] });
+        }
+      } else {//複数行複数列の時
+        const isRightOfParentCenter =
+          data.x +
+          data.width / 2 -
+          data.leaves[0][data.leaves[0].length - 1].width / 2 >
+          parent.data.x;
+        let ty = top;
+        let maxHeight = ty;
+        if (isRightOfParentCenter) {
+          data.leaves.forEach((row, rowIndex) => {
+            const isEven = rowIndex % 2 === 0;
+            let tx = isEven ? left : right;
+            row.forEach((node) => {
+              node.x = isEven ? tx + node.width / 2 : tx - node.width / 2;
+              node.y = ty + node.height / 2;
+              tx += isEven ? node.width : -node.width;
+              maxHeight = Math.max(maxHeight, ty + node.height);
+              leaves.push({ ...node });
+            });
+            ty = maxHeight;
+          });
         } else {
-          isMultipleColumns = false;
-          node.data.leaves[0][i].x =
-            node.data.x -
-            node.data.width / 2 +
-            node.data.leaves[0][i].width / 2 +
-            xMargin / 2;
+          data.leaves.forEach((row, rowIndex) => {
+            const isEven = rowIndex % 2 === 0;
+            let tx = isEven ? right : left;
+            row.forEach((node) => {
+              node.x = isEven ? tx - node.width / 2 : tx + node.width / 2;
+              node.y = ty + node.height / 2;
+              tx += isEven ? -node.width : node.width;
+              maxHeight = Math.max(maxHeight, ty + node.height);
+              leaves.push({ ...node });
+            });
+            ty = maxHeight;
+          });
         }
-
-        let newMaxHeight = rowMaxHeight;
-        for (let j = 0; j < node.data.columns; j++) {
-          if (isNotEmptyObject(node.data.leaves[j][i])) {
-            if (!node.data.leaves[j][i].x) {
-              node.data.leaves[j][i].x = isRightOfParentCenter
-                ? i % 2 === 0
-                  ? node.data.leaves[j - 1][i].x +
-                  node.data.leaves[j - 1][i].width / 2 +
-                  node.data.leaves[j][i].width / 2
-                  : node.data.leaves[j - 1][i].x -
-                  node.data.leaves[j - 1][i].width / 2 -
-                  node.data.leaves[j][i].width / 2
-                : i % 2 === 0
-                  ? node.data.leaves[j - 1][i].x -
-                  node.data.leaves[j - 1][i].width / 2 -
-                  node.data.leaves[j][i].width / 2
-                  : node.data.leaves[j - 1][i].x +
-                  node.data.leaves[j - 1][i].width / 2 +
-                  node.data.leaves[j][i].width / 2;
-            }
-            if (!node.data.leaves[j][i].y) {
-              node.data.leaves[j][i].y =
-                rowMaxHeight + node.data.leaves[j][i].height / 2;
-            }
-            links.push(
-              isMultipleColumns
-                ? createPath(
-                  `${node.data.leaves[j][i].name}`,
-                  node.data.leaves[j][i].x,
-                  node.data.leaves[j][i].x,
-                  rowMaxHeight,
-                  rowMaxHeight + yMargin,
-                )
-                : createPath(
-                  `${node.data.leaves[j][i].name}`,
-                  node.data.leaves[j][i].x - node.data.leaves[j][i].width / 2,
-                  node.data.leaves[j][i].x -
-                  node.data.leaves[j][i].width / 2 +
-                  xMargin / 2,
-                  node.data.leaves[j][i].y,
-                  node.data.leaves[j][i].y,
-                ),
-            );
-            newMaxHeight = Math.max(
-              newMaxHeight,
-              node.data.leaves[j][i].y + node.data.leaves[j][i].height / 2,
-            );
-          }
-        }
-        if (isMultipleColumns) {
-          if (i < 1) {
-            const firstNodeX = isRightOfParentCenter
-              ? mostLeftXInRow(node, i)
-              : node.data.x - node.data.width / 2 + xMargin / 2;
-            const pathX = isRightOfParentCenter
-              ? node.data.x + node.data.width / 2 - xMargin / 2
-              : node.data.x - node.data.width / 2 + xMargin / 2;
-            links.push(
-              createPath(
-                `dummyHorizon${node.data.name + i}`,
-                firstNodeX,
-                node.data.x,
-                rowMaxHeight,
-                rowMaxHeight,
-              ),
-            );
-            if (node.data.columns !== node.data.leavesNum) {
-              links.push(createPath(
-                `dummyHorizon${node.data.name}0`,
-                node.parent.data.x,
-                pathX,
-                rowMaxHeight,
-                rowMaxHeight,
-              ));
-              links.push(
-                createPath(
-                  `dummyVarticle${node.data.name + i}`,
-                  pathX,
-                  pathX,
-                  rowMaxHeight,
-                  newMaxHeight,
-                ),
-              );
-            } else {
-              links.push(
-                createPath(
-                  `dummyHorizon${node.name}0`,
-                  node.parent.data.x,
-                  mostRightXInRow(node, i),
-                  rowMaxHeight,
-                  rowMaxHeight,
-                ),
-              );
-            }
-          } else if (i < rowCount - 1) {
-            const pathX = isRightOfParentCenter
-              ? i % 2 == 0
-                ? node.data.x + node.data.width / 2 - xMargin / 2
-                : node.data.x - node.data.width / 2 + xMargin / 2
-              : i % 2 == 0
-                ? node.data.x - node.data.width / 2 + xMargin / 2
-                : node.data.x + node.data.width / 2 - xMargin / 2;
-            links.push(
-              createPath(
-                `dummyHorizon${i}`,
-                node.data.x - node.data.width / 2 + xMargin / 2,
-                node.data.x + node.data.width / 2 - xMargin / 2,
-                rowMaxHeight,
-                rowMaxHeight,
-              ),
-            );
-            links.push(
-              createPath(
-                `dummyVarticle${node.data.name + i}`,
-                pathX,
-                pathX,
-                rowMaxHeight,
-                newMaxHeight,
-              ),
-            );
-          } else {
-            const pathX = !isRightOfParentCenter
-              ? i % 2 == 0
-                ? node.data.x + node.data.width / 2 - xMargin / 2
-                : node.data.x - node.data.width / 2 + xMargin / 2
-              : i % 2 == 0
-                ? node.data.x - node.data.width / 2 + xMargin / 2
-                : node.data.x + node.data.width / 2 - xMargin / 2;
-            const finaNodeX = isRightOfParentCenter
-              ? i % 2 == 0
-                ? mostRightXInRow(node, i)
-                : mostLeftXInRow(node, i)
-              : i % 2 == 0
-                ? mostLeftXInRow(node, i)
-                : mostRightXInRow(node, i);
-            links.push(
-              createPath(
-                `dummyVarticle${node.data.name + i}`,
-                pathX,
-                finaNodeX,
-                rowMaxHeight,
-                rowMaxHeight,
-              ),
-            );
-          }
-        }
-
-        rowMaxHeight = newMaxHeight;
       }
-      if (!isMultipleColumns) {
-        links.push(
-          createPath(
-            `dummyVarticle${node.data.name}`,
-            node.data.x - node.data.width / 2 + xMargin / 2,
-            node.data.x - node.data.width / 2 + xMargin / 2,
-            node.data.y - node.data.height / 2,
-            node.data.leaves[0][rowCount - 1].y,
-          ),
-        );
-        links.push(
-          createPath(
-            `dummyHorizon${node.data.name}`,
-            node.data.x - node.data.width / 2 + xMargin / 2,
-            node.data.x,
-            node.data.y - node.data.height / 2,
-            node.data.y - node.data.height / 2,
-          ),
-        );
-      }
-
-      return to1D(node.data.leaves).filter((item) => isNotEmptyObject(item));
+      return leaves;
     } else {
-      return [node.data];
+      return [data];
     }
   });
 
-  return data;
+  return newData;
 }
 
-//ダミーノードで指定された行の一番右のx座標を返す関
-function mostRightXInRow(dummyNode, row) {
-  const leaves = dummyNode.data.leaves;
-  let max = dummyNode.data.x - dummyNode.data.width / 2;
-  for (let j = 0; j < dummyNode.data.columns; j++) {
-    max = isNotEmptyObject(leaves[j][row])
-      ? Math.max(leaves[j][row].x, max)
-      : max;
+// 配線を作る関数
+function createLinks(root, xMargin, yMargin) {
+  if (root.children) {
+    const links = [];
+    const leftMostNode = leftMostSiblingNode(root.children);
+    const rightMostNode = rightMostSiblingNode(root.children);
+    links.push(
+      createPath(
+        `${root.id}toChild`,
+        root.data.x,
+        root.data.x,
+        root.data.y + root.data.height / 2 - yMargin,
+        root.data.y + root.data.height / 2,
+      ),
+      createPath(
+        `${root.id}Horizon`,
+        leftMostNode.data.x,
+        rightMostNode.data.x,
+        root.data.y + root.data.height / 2,
+        root.data.y + root.data.height / 2,
+      ),
+    );
+    for (const child of root.children) {
+      !child.data?.leaves && links.push(
+        createPath(
+          `${child.id}toParent`,
+          child.data.x,
+          child.data.x,
+          child.data.y - child.data.height / 2,
+          child.data.y - child.data.height / 2 + yMargin,
+        ),
+      );
+      links.push(...createLinks(child, xMargin, yMargin));
+    }
+    return links;
+  } else if (root.data?.leaves) {
+    return createDummyLinks(root, yMargin);
+  } else {
+    return [];
   }
-  return max;
 }
 
-//ダミーノードで指定された行の一番左のx座標を返す関
-function mostLeftXInRow(dummyNode, row) {
-  const leaves = dummyNode.data.leaves;
-  let min = dummyNode.data.x + dummyNode.data.width / 2;
-  for (let j = 0; j < dummyNode.data.columns; j++) {
-    min = isNotEmptyObject(leaves[j][row])
-      ? Math.min(leaves[j][row].x, min)
-      : min;
-  }
-  console.log(min);
-  return min;
-}
-
-//2次元配列を1次元にして返す関数
-function to1D(array2D) {
-  let array1D = [];
-  for (let j = 0; j < array2D[0].length; j++) {
-    for (let i = 0; i < array2D.length; i++) {
-      if (array2D[i][j]) {
-        array1D.push(array2D[i][j]);
-      } else {
-        break;
+//ダミーノードないのリンクを作成する関数
+function createDummyLinks(dummyNode, yMargin) {
+  if (dummyNode.data?.leaves) {
+    const links = [];
+    const data = dummyNode.data;
+    const { leaves, x, y, height, width } = dummyNode.data;
+    if (data?.rows === data?.leavesNum) {//1列の時
+      const bottom = leaves.reduce((acc, [node]) => {
+        return Math.max(acc, node.y);
+      }, -Infinity);
+      links.push(createPath(`${dummyNode.id}Horizon`, x - width / 2, x, y - height / 2, y - height / 2));
+      links.push(createPath(`${dummyNode.id}Verticl`, x - width / 2, x - width / 2, y - height / 2, bottom));
+      for (const [node] of leaves) {
+        links.push(createPath(`${node.name}Horizon`, node.x - node.width / 2, node.x, node.y, node.y));
       }
+    } else if (data.rows === 1) {//1行の時
+      const left = mostLeftXInrow(leaves[0]);
+      const right = mostRightXInrow(leaves[0]);
+      console.log(left, right);
+      links.push(createPath(`${dummyNode.id}Horizon`, left, right, y - height / 2, y - height / 2));
+      for (const node of leaves[0]) {
+        console.log(node, node.x);
+        links.push(createPath(`${node.name}toParent`, node.x, node.x, y - height / 2, node.y - node.height / 2 + yMargin));
+      }
+    } else {//複数行複数列の時
+      const left = x - width / 2;
+      const right = x + width / 2;
+      const isRightOfParentCenter =
+        data.x +
+        data.width / 2 -
+        data.leaves[0][data.leaves[0].length - 1].width / 2 >
+        dummyNode.parent.data.x;
+      leaves.forEach((row, rowIndex) => {
+        const isEven = rowIndex % 2 === 0;
+        let ty = row[0].y - row[0].height / 2;
+        if (rowIndex === 0) {
+          links.push(createPath(`${dummyNode.id}Horizon${rowIndex}`, isRightOfParentCenter ? mostLeftXInrow(row) : left, isRightOfParentCenter ? right : mostRightXInrow(row), ty, ty));
+          links.push(createPath(`${dummyNode.id}verticle${rowIndex}`, isRightOfParentCenter ? right : left, isRightOfParentCenter ? right : left, ty, leaves[1][0].y - leaves[1][0].height / 2));
+        } else if (rowIndex === leaves.length - 1) {
+          console.log(left, mostRightXInrow(row), mostLeftXInrow(row), right, ty);
+          (isRightOfParentCenter && isEven || !isRightOfParentCenter && !isEven) ?
+            links.push(createPath(`${dummyNode.id}Horizon${rowIndex}}`, left, mostRightXInrow(row), ty, ty)) :
+            links.push(createPath(`${dummyNode.id}Horizon${rowIndex}}`, mostLeftXInrow(row), right, ty, ty));
+        } else {
+          links.push(createPath(`${dummyNode.id}Horizon${rowIndex}`, left, right, ty, ty));
+          (isRightOfParentCenter && isEven || !isRightOfParentCenter && !isEven) ?
+            links.push(createPath(`${dummyNode.id}verticle${rowIndex}`, right, right, ty, leaves[rowIndex + 1][0].y - leaves[rowIndex + 1][0].height / 2)) :
+            links.push(createPath(`${dummyNode.id}verticle${rowIndex}`, left, left, ty, leaves[rowIndex + 1][0].y - leaves[rowIndex + 1][0].height / 2));
+        }
+        row.forEach((node) => {
+          links.push(createPath(`${node.name}Parent`, node.x, node.x, node.y - node.height / 2, node.y - node.height / 2 + yMargin));
+        });
+      });
     }
+    return links;
+  } else {
+    return [];
   }
-  return array1D;
 }
 
-//の2次元配列を作る関数
-function create2DArray(rowNum, columnNum) {
-  let array2D = [];
-  for (var j = 0; j < columnNum; j++) {
-    array2D[j] = [];
-    for (var i = 0; i < rowNum; i++) {
-      array2D[j][i] = {};
-    }
-  }
-  return array2D;
+//ダミーノードで指定された行の一番左のx座標を返す関数
+function mostLeftXInrow(rowArray) {
+  return rowArray.reduce((acc, item) => Math.min(acc, item.x), Infinity);
 }
 
-function isNotEmptyObject(obj) {
-  return obj && typeof obj === "object" && Object.keys(obj).length > 0;
+//ダミーノードで指定された行の一番右のx座標を返す関数
+function mostRightXInrow(rowArray) {
+  return rowArray.reduce((acc, item) => Math.max(acc, item.x), -Infinity);
 }
+
 
 export function layout(data, width, height) {
   // const nodeWidth = 1000;
@@ -683,26 +589,21 @@ export function layout(data, width, height) {
     .id((d) => d.name)
     .parentId((d) => d.parent);
 
-  //dataにランダムなノード幅と高さを設定
-  const newData = data.map((item) => {
-    item.width = 500 + Math.floor(Math.random() * 1000);
-    item.height = 500 + Math.floor(Math.random() * 1000);
-    return item;
-  });
-
-  let root = stratify(newData);
-  const dummyData = createDammuy(root);
+  let root = stratify(data);
+  const dummyData = createDammuy(root, xMargin, yMargin);
+  initDammyData(dummyData);
   root = stratify(dummyData);
-  initRoot(root, xMargin, yMargin);
+  addMargin(root, xMargin, yMargin);
   root = stratify(vanderploeg(root, stratify));
   root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
-  console.log(root);
+  const layoutedData = undoDummyNode(root);
   const links = createLinks(root, xMargin, yMargin);
-  root = stratify(undoDummyNode(root, xMargin, yMargin, links));
-  console.log(undoDummyNode(root, xMargin, yMargin, links));
+  root = stratify(layoutedData);
   format(root, xMargin, yMargin);
+  console.log(root.descendants());
 
-  // normalize
+
+  // // normalize
   const left =
     d3.min(root.descendants(), (node) => node.x - node.width / 2) - xMargin;
   const right =
@@ -718,8 +619,10 @@ export function layout(data, width, height) {
     node.width = node.width * scale;
     node.height = node.height * scale;
   }
+  root.descendants().forEach((item) => {
+    console.log(item.id, item.width, item.height, item.data);
+  });
 
-  console.log(links);
   const scaledLinks = links.map((link) => {
     link.segments[0][0] =
       (link.segments[0][0] - left - layoutWidth / 2) * scale + width / 2;
@@ -731,7 +634,6 @@ export function layout(data, width, height) {
       (link.segments[1][1] - top - layoutHeight / 2) * scale + height / 2;
     return link;
   });
-
   return {
     nodes: root.descendants().map(({ id, x, y, width, height }) => {
       return { id, x, y, width, height };
