@@ -89,7 +89,9 @@ export default function App() {
             <button
               type="submit"
               style={{ backgroundColor: "#00bfff", padding: "5px" }}
-            ></button>
+            >
+              set
+            </button>
           </form>
 
           <div className="box">

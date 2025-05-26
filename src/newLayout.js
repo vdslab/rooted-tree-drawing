@@ -248,12 +248,12 @@ function setDummyMargin(root, xMargin, yMargin) {
 
 
 //ダミーノードの幅を計算
-function calcDummyDataWidth(leaves) {
+function calcDummyDataWidth(leaves, xMargin) {
   let maxRowWitdh = 0;
   for (const rowLeaves of leaves) {
     maxRowWitdh = Math.max(rowLeaves.reduce((acc, { width }) => acc + width, 0), maxRowWitdh);
   }
-  return maxRowWitdh;
+  return maxRowWitdh + xMargin;
 }
 
 //ダミーノードの高さを計算
@@ -266,8 +266,8 @@ function calcDummyNodeHeight(leaves) {
 }
 
 //ダミーノードの横・縦幅を設定
-function setDummyNodeSize(leaves) {
-  return { width: calcDummyDataWidth(leaves), height: calcDummyNodeHeight(leaves) };
+function setDummyNodeSize(leaves, xMargin) {
+  return { width: calcDummyDataWidth(leaves, xMargin), height: calcDummyNodeHeight(leaves) };
 }
 
 //最初に、ダミーノードを含んだデータからN*1の２次元葉群データを作成
@@ -394,15 +394,15 @@ function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
 }
 
 
-function undoDummyNode(root) {
+function undoDummyNode(root, xMargin) {
   const newData = root.descendants().flatMap((item) => {
     const { data, parent } = item;
     if (data?.leaves) {
       const leaves = [];
       const { x, y, height, width } = data;
       const top = y - height / 2;
-      const left = x - width / 2;
-      const right = x + width / 2;
+      const left = x - width / 2 + xMargin / 2;
+      const right = x + width / 2 + xMargin / 2;
       if (data?.rows === data?.leavesNum) {//1列の時
         let tx = left;
         let ty = top;
@@ -502,39 +502,37 @@ function createLinks(root, xMargin, yMargin) {
     }
     return links;
   } else if (root.data?.leaves) {
-    return createDummyLinks(root, yMargin);
+    return createDummyLinks(root, xMargin, yMargin);
   } else {
     return [];
   }
 }
 
 //ダミーノードないのリンクを作成する関数
-function createDummyLinks(dummyNode, yMargin) {
+function createDummyLinks(dummyNode, xMrgin, yMargin) {
   if (dummyNode.data?.leaves) {
     const links = [];
     const data = dummyNode.data;
     const { leaves, x, y, height, width } = dummyNode.data;
+    const left = x - width / 2 + xMrgin / 2;
+    const right = x + width / 2 - xMrgin / 2;
     if (data?.rows === data?.leavesNum) {//1列の時
       const bottom = leaves.reduce((acc, [node]) => {
         return Math.max(acc, node.y);
       }, -Infinity);
-      links.push(createPath(`${dummyNode.id}Horizon`, x - width / 2, x, y - height / 2, y - height / 2));
-      links.push(createPath(`${dummyNode.id}Verticl`, x - width / 2, x - width / 2, y - height / 2, bottom));
+      links.push(createPath(`${dummyNode.id}Horizon`, left, x, y - height / 2, y - height / 2));
+      links.push(createPath(`${dummyNode.id}Verticl`, left, left, y - height / 2, bottom));
       for (const [node] of leaves) {
         links.push(createPath(`${node.name}Horizon`, node.x - node.width / 2, node.x, node.y, node.y));
       }
     } else if (data.rows === 1) {//1行の時
       const left = mostLeftXInrow(leaves[0]);
       const right = mostRightXInrow(leaves[0]);
-      console.log(left, right);
       links.push(createPath(`${dummyNode.id}Horizon`, left, right, y - height / 2, y - height / 2));
       for (const node of leaves[0]) {
-        console.log(node, node.x);
         links.push(createPath(`${node.name}toParent`, node.x, node.x, y - height / 2, node.y - node.height / 2 + yMargin));
       }
     } else {//複数行複数列の時
-      const left = x - width / 2;
-      const right = x + width / 2;
       const isRightOfParentCenter =
         data.x +
         data.width / 2 -
@@ -547,7 +545,6 @@ function createDummyLinks(dummyNode, yMargin) {
           links.push(createPath(`${dummyNode.id}Horizon${rowIndex}`, isRightOfParentCenter ? mostLeftXInrow(row) : left, isRightOfParentCenter ? right : mostRightXInrow(row), ty, ty));
           links.push(createPath(`${dummyNode.id}verticle${rowIndex}`, isRightOfParentCenter ? right : left, isRightOfParentCenter ? right : left, ty, leaves[1][0].y - leaves[1][0].height / 2));
         } else if (rowIndex === leaves.length - 1) {
-          console.log(left, mostRightXInrow(row), mostLeftXInrow(row), right, ty);
           (isRightOfParentCenter && isEven || !isRightOfParentCenter && !isEven) ?
             links.push(createPath(`${dummyNode.id}Horizon${rowIndex}}`, left, mostRightXInrow(row), ty, ty)) :
             links.push(createPath(`${dummyNode.id}Horizon${rowIndex}}`, mostLeftXInrow(row), right, ty, ty));
@@ -596,11 +593,10 @@ export function layout(data, width, height) {
   addMargin(root, xMargin, yMargin);
   root = stratify(vanderploeg(root, stratify));
   root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
-  const layoutedData = undoDummyNode(root);
+  const layoutedData = undoDummyNode(root, xMargin);
   const links = createLinks(root, xMargin, yMargin);
   root = stratify(layoutedData);
   format(root, xMargin, yMargin);
-  console.log(root.descendants());
 
 
   // // normalize
@@ -619,9 +615,6 @@ export function layout(data, width, height) {
     node.width = node.width * scale;
     node.height = node.height * scale;
   }
-  root.descendants().forEach((item) => {
-    console.log(item.id, item.width, item.height, item.data);
-  });
 
   const scaledLinks = links.map((link) => {
     link.segments[0][0] =
