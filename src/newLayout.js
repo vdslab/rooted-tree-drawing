@@ -402,7 +402,7 @@ function undoDummyNode(root, xMargin) {
       const { x, y, height, width } = data;
       const top = y - height / 2;
       const left = x - width / 2 + xMargin / 2;
-      const right = x + width / 2 + xMargin / 2;
+      const right = x + width / 2 - xMargin / 2;
       if (data?.rows === data?.leavesNum) {//1列の時
         let tx = left;
         let ty = top;
@@ -577,6 +577,7 @@ function mostRightXInrow(rowArray) {
 
 
 export function layout(data, width, height) {
+  console.log(data);
   // const nodeWidth = 1000;
   // const nodeHeight = 500;
   const xMargin = 200;
