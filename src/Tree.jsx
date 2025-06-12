@@ -1,17 +1,16 @@
 import { useMemo } from "react";
-// import * as d3 from "d3";
-import { permutation } from "./permutation";
-import { bin } from "./bin";
-
-export default function Tree({ data, width, height, func }) {
-  const nodes = useMemo(() => {
-    return func(data, width, height, 2);
+import * as d3 from "d3";
+import { layout } from "./permutaionLayout";
+// import {layout} from "./newLayout"
+export default function Tree({ data, width, height }) {
+  const { nodes, links } = useMemo(() => {
+    return layout(data, width, height);
   }, [data, width, height]);
-  // const line = d3.line();
+  const line = d3.line();
   return (
     <svg className="has-ratio" viewBox={`0 0 ${width} ${height}`}>
       <g>
-        {/* <g>
+        <g>
           {links.map((link) => {
             return (
               <g key={link.id} id={link.id}>
@@ -19,9 +18,8 @@ export default function Tree({ data, width, height, func }) {
               </g>
             );
           })}
-        </g> */}
+        </g>
         <g>
-          {console.log(nodes)}
           {nodes.map((node) => {
             return (
               <g key={node.id} transform={`translate(${node.x},${node.y})`}>
