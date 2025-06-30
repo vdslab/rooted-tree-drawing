@@ -4,7 +4,7 @@ import { useState } from "react";
 function createData() {
   return [
     { name: "Eve", parent: "", width: 1825, height: 828 },
-    { name: "SSSKG", parent: "Eve", width: 20000, height: 828 },
+    { name: "SSSKG", parent: "Eve", width: 2000, height: 828 },
     { name: "JPIKV", parent: "SSSKG", width: 1173, height: 624 },
     { name: "OXWES", parent: "Eve", width: 1537, height: 1039 },
     { name: "XBGRW", parent: "Eve", width: 1356, height: 905 },
@@ -55,7 +55,59 @@ function createData() {
 }
 
 export default function App() {
-  const data = createData();
+  // const data = createData();
+  const data = [
+    { name: "Eve", parent: "", width: 822, height: 498 },
+    { name: "HAVET", parent: "Eve", width: 996, height: 688 },
+    { name: "YCACA", parent: "Eve", width: 516, height: 2001 },
+    { name: "MHPHE", parent: "HAVET", width: 544, height: 1622 },
+    { name: "FQFKA", parent: "HAVET", width: 1425, height: 845 },
+    { name: "KFBWY", parent: "HAVET", width: 838, height: 1192 },
+    { name: "HACGG", parent: "Eve", width: 1233, height: 1064 },
+    { name: "LLZGV", parent: "Eve", width: 1716, height: 2019 },
+    { name: "OKLEC", parent: "LLZGV", width: 803, height: 211 },
+    { name: "WSBWT", parent: "Eve", width: 1177, height: 769 },
+    { name: "OMTDC", parent: "HAVET", width: 1695, height: 1693 },
+    { name: "BFDYJ", parent: "Eve", width: 663, height: 1026 },
+    { name: "GHBDS", parent: "OMTDC", width: 1208, height: 1064 },
+    { name: "HTXKC", parent: "HAVET", width: 698, height: 788 },
+    { name: "JALMK", parent: "Eve", width: 1171, height: 728 },
+    { name: "GDZVC", parent: "Eve", width: 1207, height: 163 },
+    { name: "FVQJB", parent: "HAVET", width: 147, height: 437 },
+    { name: "ETYML", parent: "HAVET", width: 408, height: 1063 },
+    { name: "DPMWG", parent: "ETYML", width: 924, height: 1615 },
+    { name: "EFBGF", parent: "OMTDC", width: 406, height: 950 },
+    { name: "FHZRR", parent: "HAVET", width: 1859, height: 728 },
+    { name: "WREGU", parent: "OMTDC", width: 437, height: 1148 },
+    { name: "FCUCY", parent: "ETYML", width: 1910, height: 1401 },
+    { name: "KNBIX", parent: "HAVET", width: 1896, height: 1954 },
+    { name: "NPAIF", parent: "OMTDC", width: 1779, height: 1504 },
+    { name: "RHWJM", parent: "HAVET", width: 2015, height: 1643 },
+    { name: "GIXGO", parent: "LLZGV", width: 415, height: 160 },
+    { name: "VKLXQ", parent: "ETYML", width: 182, height: 117 },
+    { name: "GBFYM", parent: "ETYML", width: 849, height: 938 },
+    { name: "RLVNJ", parent: "Eve", width: 1249, height: 1220 },
+    { name: "WIMHU", parent: "Eve", width: 1510, height: 315 },
+    { name: "DXHXS", parent: "OMTDC", width: 1162, height: 1694 },
+    { name: "XFYLI", parent: "ETYML", width: 371, height: 966 },
+    { name: "DMSRZ", parent: "MHPHE", width: 197, height: 1110 },
+    { name: "OIPZC", parent: "RHWJM", width: 685, height: 1125 },
+    { name: "QZWAN", parent: "ETYML", width: 2001, height: 526 },
+    { name: "NAYSZ", parent: "ETYML", width: 463, height: 838 },
+    { name: "KJVAB", parent: "RHWJM", width: 623, height: 698 },
+    { name: "KJDYK", parent: "ETYML", width: 1210, height: 1420 },
+    { name: "RLTWK", parent: "ETYML", width: 2004, height: 304 },
+    { name: "JDELO", parent: "MHPHE", width: 1318, height: 501 },
+    { name: "JALDK", parent: "OMTDC", width: 620, height: 987 },
+    { name: "UNJVE", parent: "OIPZC", width: 1076, height: 1868 },
+    { name: "ETKIS", parent: "LLZGV", width: 1848, height: 2024 },
+    { name: "DPTFB", parent: "DPMWG", width: 614, height: 926 },
+    { name: "TLRBZ", parent: "ETYML", width: 513, height: 1154 },
+    { name: "SLFNU", parent: "MHPHE", width: 730, height: 522 },
+    { name: "GSVDM", parent: "OIPZC", width: 319, height: 1899 },
+    { name: "PKVMP", parent: "OIPZC", width: 1202, height: 962 },
+    { name: "ZIGLP", parent: "OMTDC", width: 659, height: 854 },
+  ];
   const [width, setWidth] = useState(1000);
   const [height, setHeight] = useState(1000);
   return (
