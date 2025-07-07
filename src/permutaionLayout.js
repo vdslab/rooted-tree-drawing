@@ -340,19 +340,21 @@ function calcAspectRatio(root) {
   return layoutWidth / layoutHeight;
 }
 
-// 各行のノードの幅の合計が小さい2つの行を1つの行にまとめる関数
-// 各行のノードの幅の合計が小さい2つの行を1つの行にまとめる関数
+// 全探索し最適なノードグループを返す関数
 function fullSerch(dummLeaves, n, xMargin) {
   const leaves = to1D(dummLeaves);
   console.log(leaves);
   const allPartitions = partitionSet(leaves, n);
   let minWidth = Infinity;
   let minIndex = 0;
-  allPartitions.forEach((item, i) => {
-    const width = calcDummyDataWidth(item, xMargin);
-    if (width < minWidth) {
+  let minHeight = Infinity;
+  allPartitions.forEach((leaves, i) => {
+    const width = calcDummyDataWidth(leaves, xMargin);
+    const height = calcDummyNodeHeight(leaves);
+    if ((width < minWidth) || (width == minWidth && height < minHeight)) {
       minWidth = width;
       minIndex = i;
+      minHeight = height;
     }
   });
   return allPartitions[minIndex];
@@ -719,6 +721,7 @@ function partitionSet(balls, n) {
       finalResult.push(sortedInner);
     }
   }
+  console.log(finalResult);
   return finalResult;
 }
 
