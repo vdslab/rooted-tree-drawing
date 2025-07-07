@@ -563,7 +563,7 @@ function undoDummyNode(root, xMargin, yMargin, links) {
                 : node.data.x + node.data.width / 2 - xMargin / 2;
             links.push(
               createPath(
-                `dummyHorizon${i}`,
+                `dummyHorizon${node.data.name + i}`,
                 node.data.x - node.data.width / 2 + xMargin / 2,
                 node.data.x + node.data.width / 2 - xMargin / 2,
                 rowMaxHeight,
@@ -724,6 +724,7 @@ export function layout(data, width, height) {
   initRoot(root, xMargin, yMargin);
   root = stratify(vanderploeg(root, stratify));
   root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
+  const { max_ori, sum_ori } = oritatamiCount(root);
   const links = createLinks(root, xMargin, yMargin);
   root = stratify(undoDummyNode(root, xMargin, yMargin, links));
   format(root, xMargin, yMargin);
@@ -762,5 +763,52 @@ export function layout(data, width, height) {
       return { id, x, y, width, height };
     }),
     links: scaledLinks,
+    max_ori,
+    sum_ori
   };
+}
+
+function oritatamiCount(root) {
+  let current_node_max_ori = -Infinity; // このノード自身のori、またはサブツリーを含めた最大値の候補
+  let current_node_sum_ori = 0;   // このノード自身のori、またはサブツリーを含めた合計値の候補
+
+  // 1. このノード自身の `ori` を計算
+  if (root.data && typeof root.data.leavesNum === 'number' && typeof root.data.rows === 'number') {
+    const ori = root.data.leavesNum / Math.ceil(
+      root.data.leavesNum / root.data.columns,
+    );
+    // console.log(`Node: ${root.data.name || 'Unnamed'}, leavesNum: ${root.data.leavesNum}, rows: ${root.data.rows}, ori: ${ori}`); // デバッグ用
+
+    current_node_max_ori = ori; // このノードのoriを最大値の初期候補とする
+    current_node_sum_ori = ori;   // このノードのoriを合計値の初期値とする
+  } else {
+    // このノードでoriが計算できない場合、
+    // maxの初期値は-Infinity (他の有効なoriが見つかれば上書きされる)
+    // sumの初期値は0 (このノードは合計に寄与しない)
+    // console.log(`Node: ${root.data.name || 'Unnamed'}, no leavesNum/rows, ori not calculated.`); // デバッグ用
+  }
+
+  // 2. 子ノードがあれば、再帰的に処理し結果を集約
+  if (root.children && root.children.length > 0) {
+    for (const child of root.children) {
+      const child_result = oritatamiCount(child); // 子のサブツリーの結果を取得
+
+      // console.log(`  Child ${child.data.name || 'Unnamed'} returned: max_ori=${child_result.max_ori}, sum_ori=${child_result.sum_ori}`); // デバッグ用
+
+      // サブツリー全体の最大値を更新
+      // (現在のノードのori、または既に処理した他の兄弟サブツリーのmax、と今処理した子のサブツリーのmaxを比較)
+      current_node_max_ori = Math.max(current_node_max_ori, child_result.max_ori);
+
+      // サブツリー全体の合計値に加算
+      // (現在のノードのoriは既にcurrent_node_sum_oriの初期値として入っているか、0なので、
+      //  子のサブツリーの合計を加えるだけでよい)
+      current_node_sum_ori += child_result.sum_ori;
+    }
+  }
+  // 葉ノード (childrenがない) または oriが計算できないが子孫は持つノードの場合、
+  // current_node_max_ori と current_node_sum_ori は適切に初期化されているか、
+  // 子からの結果で更新されています。
+
+  // console.log(`Returning for ${root.data.name || 'Unnamed'}: max_ori=${current_node_max_ori}, sum_ori=${current_node_sum_ori}`); // デバッグ用
+  return { max_ori: current_node_max_ori, sum_ori: current_node_sum_ori };
 }

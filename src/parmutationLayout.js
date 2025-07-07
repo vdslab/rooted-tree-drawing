@@ -341,37 +341,22 @@ function calcAspectRatio(root) {
 }
 
 // 各行のノードの幅の合計が小さい2つの行を1つの行にまとめる関数
-function combineRowArray(leaves) {
-  if (!leaves || leaves.length <= 1) {
-    return leaves; // 行が1つ以下の場合は何もしない
-  }
-
-  // 各行の幅の合計を計算
-  const rowWidths = leaves.map(row => {
-    return {
-      row: row,
-      totalWidth: row.reduce((sum, node) => sum + (node.width || 0), 0)
-    };
+// 各行のノードの幅の合計が小さい2つの行を1つの行にまとめる関数
+function fullSerch(dummLeaves, n, xMargin) {
+  const leaves = to1D(dummLeaves);
+  const allPartitions = partitionSet(leaves, n);
+  let minWidth = Infinity;
+  let minIndex = 0;
+  allPartitions.forEach((item, i) => {
+    const width = calcDummyDataWidth(item, xMargin);
+    if (width < minWidth) {
+      minWidth = width;
+      minIndex = i;
+    }
   });
+  return allPartitions[minIndex];
 
-  // 幅の合計が小さい順にソート
-  rowWidths.sort((a, b) => a.totalWidth - b.totalWidth);
-
-  // 最も幅の合計が小さい2つの行を取得
-  const smallestRows = rowWidths.slice(0, 2);
-
-  // 2つの行を1つの行にマージ
-  const mergedRow = [...smallestRows[0].row, ...smallestRows[1].row];
-
-  // 新しいleaves配列を作成（マージした行を含む）
-  const newLeaves = leaves.filter(
-    row => row !== smallestRows[0].row && row !== smallestRows[1].row
-  );
-  newLeaves.push(mergedRow);
-  // 結果を返す
-  return newLeaves;
 }
-
 //アスペクト比が最適になるまで底辺ノードの列数を増やす関数
 function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
   let a = calcAspectRatio(root);
@@ -381,7 +366,7 @@ function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
       bottomNode.data.leaves &&
       bottomNode.data.rows > 1
     ) {
-      bottomNode.data.leaves = combineRowArray(bottomNode.data.leaves);
+      bottomNode.data.leaves = fullSerch(bottomNode.data.leaves, bottomNode.data.rows - 1, xMargin);
       bottomNode.data.rows -= 1;
       setDummyMargin(root, xMargin, yMargin);
       root = stratify(vanderploeg(root, stratify));
@@ -593,7 +578,6 @@ export function layout(data, width, height) {
   addMargin(root, xMargin, yMargin);
   root = stratify(vanderploeg(root, stratify));
   root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
-  const { max_ori, sum_ori } = oritatamiCount(root);
   const layoutedData = undoDummyNode(root, xMargin);
   const links = createLinks(root, xMargin, yMargin);
   root = stratify(layoutedData);
@@ -610,7 +594,6 @@ export function layout(data, width, height) {
   const layoutWidth = right - left;
   const layoutHeight = bottom - top;
   const scale = Math.min(width / layoutWidth, height / layoutHeight);
-  // console.log(scale);
   for (const node of root.descendants()) {
     node.x = (node.x - left - layoutWidth / 2) * scale + width / 2;
     node.y = (node.y - top - layoutHeight / 2) * scale + height / 2;
@@ -634,52 +617,113 @@ export function layout(data, width, height) {
       return { id, x, y, width, height };
     }),
     links: scaledLinks,
-    max_ori,
-    sum_ori
   };
 }
 
 
-//*実験よう折りたたみ回数の計数
-function oritatamiCount(root) {
-  let current_node_max_ori = -Infinity; // このノード自身のori、またはサブツリーを含めた最大値の候補
-  let current_node_sum_ori = 0;   // このノード自身のori、またはサブツリーを含めた合計値の候補
 
-  // 1. このノード自身の `ori` を計算
-  if (root.data && typeof root.data.leavesNum === 'number' && typeof root.data.rows === 'number') {
-    const ori = root.data.leavesNum / root.data.rows;
-    // console.log(`Node: ${root.data.name || 'Unnamed'}, leavesNum: ${root.data.leavesNum}, rows: ${root.data.rows}, ori: ${ori}`); // デバッグ用
 
-    current_node_max_ori = ori; // このノードのoriを最大値の初期候補とする
-    current_node_sum_ori = ori;   // このノードのoriを合計値の初期値とする
-  } else {
-    // このノードでoriが計算できない場合、
-    // maxの初期値は-Infinity (他の有効なoriが見つかれば上書きされる)
-    // sumの初期値は0 (このノードは合計に寄与しない)
-    // console.log(`Node: ${root.data.name || 'Unnamed'}, no leavesNum/rows, ori not calculated.`); // デバッグ用
+
+
+
+
+
+/**
+ * 区別可能なボールを、区別不可能なn個の非空グループに分割する組み合わせをすべて生成します。
+ * (集合の分割)
+ *
+ * @param {Array<any>} balls 分割するボールの配列 (例: [1, 2, 3, 4])
+ * @param {number} n グループの数
+ * @returns {Array<Array<Array<any>>>} 分割の組み合わせの配列
+ */
+function partitionSet(balls, n) {
+  // --- 入力値のバリデーション ---
+  if (!Array.isArray(balls) || typeof n !== "number" || n < 1) {
+    console.error("引数が正しくありません。ballsは配列、nは1以上の数値を指定してください。");
+    return [];
+  }
+  // 空のグループは許されないため、グループ数がボールの数を超えることはできない
+  if (n > balls.length) {
+    return [];
   }
 
-  // 2. 子ノードがあれば、再帰的に処理し結果を集約
-  if (root.children && root.children.length > 0) {
-    for (const child of root.children) {
-      const child_result = oritatamiCount(child); // 子のサブツリーの結果を取得
+  // --- 重複を排除し、結果を整形するためのヘルパー ---
+  const uniquePartitions = new Set();
+  const finalResult = [];
 
-      // console.log(`  Child ${child.data.name || 'Unnamed'} returned: max_ori=${child_result.max_ori}, sum_ori=${child_result.sum_ori}`); // デバッグ用
+  // メモ化（計算結果のキャッシュ）のためのオブジェクト
+  const memo = {};
 
-      // サブツリー全体の最大値を更新
-      // (現在のノードのori、または既に処理した他の兄弟サブツリーのmax、と今処理した子のサブツリーのmaxを比較)
-      current_node_max_ori = Math.max(current_node_max_ori, child_result.max_ori);
+  // --- 再帰的に分割を行う内部関数 ---
+  function findPartitionsRecursive(currentBalls, k) {
+    // メモ化のキーを作成（ボールの内容とグループ数で一意に決まる）
+    // ボールをソートしておくことで、[1,2]と[2,1]が同じキーになり、キャッシュが効きやすくなる
+    const sortedBalls = [...currentBalls].sort();
+    const memoKey = JSON.stringify({ balls: sortedBalls, k });
+    if (memo[memoKey]) {
+      return memo[memoKey];
+    }
 
-      // サブツリー全体の合計値に加算
-      // (現在のノードのoriは既にcurrent_node_sum_oriの初期値として入っているか、0なので、
-      //  子のサブツリーの合計を加えるだけでよい)
-      current_node_sum_ori += child_result.sum_ori;
+    // --- ベースケース（再帰の終了条件） ---
+    // グループ数が1なら、すべてのボールを1つのグループに入れるしかない
+    if (k === 1) {
+      return [[sortedBalls]];
+    }
+    // ボールの数とグループの数が同じなら、各ボールが1つのグループになるしかない
+    if (sortedBalls.length === k) {
+      return [sortedBalls.map(ball => [ball])];
+    }
+
+    // --- 再帰ステップ ---
+    // 最初のボールと残りのボールに分ける
+    const [firstBall, ...restOfBalls] = sortedBalls;
+    let partitions = [];
+
+    // パターンA: firstBallが既存のk個のグループに入る
+    const partitionsIntoK = findPartitionsRecursive(restOfBalls, k);
+    for (const p of partitionsIntoK) {
+      for (let i = 0; i < p.length; i++) {
+        // pをコピーして、i番目のグループにfirstBallを追加した新しい分割を作る
+        const newPartition = p.map((group, index) =>
+          index === i ? [...group, firstBall] : [...group]
+        );
+        partitions.push(newPartition);
+      }
+    }
+
+    // パターンB: firstBallが新しいグループを作る
+    const partitionsIntoKMinus1 = findPartitionsRecursive(restOfBalls, k - 1);
+    for (const p of partitionsIntoKMinus1) {
+      partitions.push([...p, [firstBall]]);
+    }
+
+    memo[memoKey] = partitions;
+    return partitions;
+  }
+
+  // --- 実行と結果の整形 ---
+  const rawPartitions = findPartitionsRecursive(balls, n);
+
+  // グループ間の順序を区別しないため、結果を「正規化」して重複を排除する
+  for (const p of rawPartitions) {
+    // 1. 各グループ内の要素をソート
+    const sortedInner = p.map(group => [...group].sort((a, b) => a - b));
+    // 2. グループ自体をソート (JSON文字列で比較すると簡単)
+    sortedInner.sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));
+
+    const stringified = JSON.stringify(sortedInner);
+    if (!uniquePartitions.has(stringified)) {
+      uniquePartitions.add(stringified);
+      finalResult.push(sortedInner);
     }
   }
-  // 葉ノード (childrenがない) または oriが計算できないが子孫は持つノードの場合、
-  // current_node_max_ori と current_node_sum_ori は適切に初期化されているか、
-  // 子からの結果で更新されています。
+  return finalResult;
+}
 
-  // console.log(`Returning for ${root.data.name || 'Unnamed'}: max_ori=${current_node_max_ori}, sum_ori=${current_node_sum_ori}`); // デバッグ用
-  return { max_ori: current_node_max_ori, sum_ori: current_node_sum_ori };
+function to1D(leaves) {
+  const arr = [];
+  leaves.forEach((item) => {
+    arr.push(...item);
+  });
+  return arr;
 }

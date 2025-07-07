@@ -1,11 +1,12 @@
 import { useMemo } from "react";
 import * as d3 from "d3";
-import { layout } from "./layout";
+import { layout } from "./newLayout";
 
 export default function Tree({ data, width, height }) {
   const { nodes, links } = useMemo(() => {
     return layout(data, width, height);
   }, [data, width, height]);
+  // console.log(nodes);
   const line = d3.line();
   return (
     <svg className="has-ratio" viewBox={`0 0 ${width} ${height}`}>
@@ -24,8 +25,8 @@ export default function Tree({ data, width, height }) {
             return (
               <g key={node.id} transform={`translate(${node.x},${node.y})`}>
                 <rect
-                  x={-node.width/2}
-                  y={-node.height/2}
+                  x={-node.width / 2}
+                  y={-node.height / 2}
                   width={node.width}
                   height={node.height}
                   fill="#fff"

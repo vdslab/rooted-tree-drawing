@@ -1,23 +1,38 @@
-// Node.js環境で実行する場合はfsモジュールを使用
-// import { writeFile } from "fs";
 function generateRandomName() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   return Array.from({ length: 5 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 }
 
-export function generateTree(numNodes, alpha) {
+export function generateTree(numNodes, alpha, maxChildrenPerParent = null) {
   const existingNames = new Set();
   existingNames.add("Eve");
   const nodes = [{ name: "Eve", parent: "", width: 100 + Math.floor(Math.random() * 2000), height: 100 + Math.floor(Math.random() * 2000) }]; // ルートノード
   const childrenCount = { "Eve": 0 }; // 各ノードの子の数
 
   while (nodes.length < numNodes) {
-    // 各ノードの重みを計算
     let maxWeight = -Infinity;
     let selectedNode = null;
+    let potentialParents = []; // 子を追加できる可能性のある親ノードのリスト
 
+    // 子を追加できる親ノード候補をフィルタリング
     for (let node of nodes) {
+      // maxChildrenPerParentが設定されていて、かつ現在の子の数が上限に達していないか、
+      // またはmaxChildrenPerParentが設定されていない（上限なし）場合
+      if (maxChildrenPerParent === null || (childrenCount[node.name] || 0) < maxChildrenPerParent) {
+        potentialParents.push(node);
+      }
+    }
+
+    if (potentialParents.length === 0) {
+      // どの子も追加できない状況（すべての既存ノードが子の上限に達しているなど）
+      // この場合、numNodesに達する前にループが終了する可能性がある
+      // console.warn("警告: 新しい子ノードを追加できる親がいません。目標ノード数に達する前に処理を終了する可能性があります。");
+      break;
+    }
+
+    for (let node of potentialParents) { // フィルタリングされた親候補から選択
       let s = Math.random();
+      // 優先的選択のアルゴリズムにおける重み計算
       let weight = s * Math.pow((childrenCount[node.name] || 0) + 1, alpha);
 
       if (weight > maxWeight) {
@@ -34,31 +49,14 @@ export function generateTree(numNodes, alpha) {
       existingNames.add(newNodeName);
       nodes.push({ name: newNodeName, parent: selectedNode.name, width: 100 + Math.floor(Math.random() * 2000), height: 100 + Math.floor(Math.random() * 2000) });
       childrenCount[selectedNode.name] = (childrenCount[selectedNode.name] || 0) + 1;
-      childrenCount[newNodeName] = 0;
+      childrenCount[newNodeName] = 0; // 新しいノードの子の数は0で初期化
+    } else if (nodes.length < numNodes) {
+      // selectedNodeが見つからなかったが、まだ目標ノード数に達していない場合
+      // (potentialParentsが空ではないのにselectedNodeがnullになることは通常ないはずだが念のため)
+      // console.warn("警告: 親ノードの選択に失敗しました。目標ノード数に達する前に処理を終了する可能性があります。");
+      break;
     }
   }
 
   return nodes;
 }
-
-// // Node.js環境でJSONファイルを生成する関数
-// const createFile = (pathName, source) => {
-//   const toJSON = JSON.stringify(source);
-//   writeFile(pathName, toJSON, (err) => {
-//     if (err) console.error(err);
-//     if (!err) {
-//       console.log("JSONファイルを生成しました");
-//     }
-//   });
-// };
-
-// // このファイルがNode.js環境で直接実行された場合のみ実行
-// // Node.jsでESMを使用する場合は、以下のコマンドで実行します：
-// // node --experimental-json-modules src/randomData.js
-// if (typeof process !== "undefined") {
-//   // ブラウザ環境ではなくNode.js環境で実行されている場合
-//   const isDirectlyExecuted = process.argv[1] && process.argv[1].endsWith("randomData.js");
-//   if (isDirectlyExecuted) {
-//     createFile("newObj.json", generateTree(50, 0.5));
-//   }
-// }
