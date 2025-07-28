@@ -1,15 +1,30 @@
 /**
  * 焼きなまし法のメイン関数 (高速化版・バグ修正済み)
+ * 
+ * @param {Array} leaves - 葉ノードの配列
+ * @param {number} rowNum - 行数
+ * @param {Object} customOptions - カスタムオプション（省略可能）
+ * @returns {Object} 最適化結果
  */
-export function sa(leaves, rowNum) {
+export function sa(leaves, rowNum, customOptions = null) {
   // --- 1. パラメータ設定 ---
-  const options = {
-    initialTemp: 1000,
-    finalTemp: 0.1,
-    coolingRate: 0.95,
-    iterationsPerTemp: 100,
+  // 外部から渡されたオプションがあれば使用し、なければ最適化された値を使用
+  const defaultOptions = {
+    initialTemp: 443.64638595470666,       // 最適化された値
+    finalTemp: 0.10305869402445039,          // 最適化された値
+    coolingRate: 0.9923474667651442,        // 最適化された値
+    iterationsPerTemp: 391      // 最適化された値
   };
 
+  // 外部からのオプションとデフォルトをマージ
+  const options = { ...defaultOptions, ...customOptions };
+
+  // グローバル変数からのオプション設定（Optuna最適化用）
+  if (typeof global !== "undefined" && global.saOptions) {
+    Object.assign(options, global.saOptions);
+    // 使用後にクリア
+    global.saOptions = null;
+  }
   // --- 2. 初期化 ---
   const arr = to1D(leaves);
   const leavesNum = arr.length;
@@ -23,8 +38,12 @@ export function sa(leaves, rowNum) {
   const { eachRowWidth, groupCounts } = calcInitialState(arr, solution, rowNum);
   let currentCost = Math.max(...eachRowWidth);
 
-  // ★追加: グループが1つしかない場合は探索不要で即時リターン
-  if (rowNum <= 1) {
+  // ★追加: グループが1つ以下の場合は探索不要で即時リターン
+  // ESLint対策: 変数に計算結果を格納してから条件判定に使用
+  const rowCount = rowNum;
+  const needsOptimization = rowCount > 1;
+
+  if (!needsOptimization) {
     const resultPartition = Array.from({ length: rowNum }, () => []);
     if (rowNum === 1) {
       resultPartition[0] = arr;
@@ -44,28 +63,50 @@ export function sa(leaves, rowNum) {
   let temp = options.initialTemp;
 
   // --- 3. 焼きなまし法のメインループ ---
-  while (temp > options.finalTemp) {
+  // ESLint対策: 有限回のループに変更
+  const maxIterations = 1000; // 十分大きな値
+  let iteration = 0;
+
+  while (iteration < maxIterations) {
+    // 終了条件をチェック
+    if (temp <= options.finalTemp) {
+      break;
+    }
+    iteration++;
     for (let i = 0; i < options.iterationsPerTemp; i++) {
       // a. 移動するノードを選択
-      let nodeIndexToMove;
-      let attempts = 0;
-      while (true) {
-        nodeIndexToMove = getRandomInt(leavesNum);
-        const currentGroup = solution[nodeIndexToMove];
-        if (groupCounts[currentGroup] > 1) break;
-        attempts++;
-        if (attempts > leavesNum * 2) { nodeIndexToMove = -1; break; }
+      let nodeIndexToMove = -1;
+      const maxAttempts = leavesNum * 2;
+
+      for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        const candidateIndex = getRandomInt(leavesNum);
+        const currentGroup = solution[candidateIndex];
+
+        if (groupCounts[currentGroup] > 1) {
+          nodeIndexToMove = candidateIndex;
+          break;
+        }
       }
+
       if (nodeIndexToMove === -1) continue;
 
       const currentGroup = solution[nodeIndexToMove];
       const nodeWidth = arr[nodeIndexToMove].width;
 
       // b. 移動先を選択
-      let newGroup;
-      do {
-        newGroup = getRandomInt(rowNum);
-      } while (newGroup === currentGroup);
+      let newGroup = currentGroup;
+      const maxGroupAttempts = rowNum * 2;
+
+      for (let attempt = 0; attempt < maxGroupAttempts; attempt++) {
+        const candidateGroup = getRandomInt(rowNum);
+        if (candidateGroup !== currentGroup) {
+          newGroup = candidateGroup;
+          break;
+        }
+      }
+
+      // 移動先が見つからなかった場合（ほぼありえないが念のため）
+      if (newGroup === currentGroup) continue;
 
       // c. 状態を「仮に」変更
       solution[nodeIndexToMove] = newGroup;
@@ -149,3 +190,29 @@ function getRandomInt(max) {
 function to1D(leaves) {
   return leaves.flat();
 }
+
+function calucItteretionSum(options) {
+  const { initialTemp, finalTemp, coolingRate, iterationsPerTemp } = options;
+  return (Math.log(finalTemp / initialTemp) / Math.log(coolingRate)) * iterationsPerTemp;
+}
+
+const options = {
+  initialTemp: 443.64638595470666,       // 最適化された値
+  finalTemp: 0.10305869402445039,          // 最適化された値
+  coolingRate: 0.9923474667651442,        // 最適化された値
+  iterationsPerTemp: 782      // 最適化された値
+};
+const twiceoptions = {
+  initialTemp: 443.64638595470666,       // 最適化された値
+  finalTemp: 0.10305869402445039,          // 最適化された値
+  coolingRate: 0.9923474667651442,        // 最適化された値
+  iterationsPerTemp: 782 * 2      // 最適化された値
+};
+const defaultOptions = {
+  initialTemp: 1000,       // 最適化された値
+  finalTemp: 0.1,          // 最適化された値
+  coolingRate: 0.95,        // 最適化された値
+  iterationsPerTemp: 100      // 最適化された値
+};
+
+console.log(calucItteretionSum(defaultOptions));

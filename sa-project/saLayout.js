@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { sa } from "./sa.js";
+import { sa } from "../src/sa.js";
 //葉群をダミーノードにする関数
 function createDammuy(root, xMargin, yMargin) {
   if (root.children) {
@@ -373,7 +373,7 @@ function combineRowArray(leaves) {
 }
 
 //アスペクト比が最適になるまで底辺ノードの列数を増やす関数
-function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
+function localFoldingLayout(root, at, xMargin, yMargin, stratify, saOptions) {
   let a = calcAspectRatio(root);
   while (at > a) {
     const bottomNode = searchBottomNode(root);
@@ -382,7 +382,7 @@ function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
       bottomNode.data?.rows > 1
     ) {
       bottomNode.data.rows -= 1;
-      bottomNode.data.leaves = sa(bottomNode.data.leaves, bottomNode.data.rows).bestPartition;
+      bottomNode.data.leaves = sa(bottomNode.data.leaves, bottomNode.data.rows, saOptions).bestPartition;
       setDummyMargin(root, xMargin, yMargin);
       root = stratify(vanderploeg(root, stratify));
       a = calcAspectRatio(root);
@@ -594,7 +594,7 @@ function calcMaxRowWidth() {
 
 }
 
-export function layout(data, width, height) {
+export function layout(data, width, height, saOptions) {
   // console.log(data);
   // const nodeWidth = 1000;
   // const nodeHeight = 500;
@@ -611,7 +611,7 @@ export function layout(data, width, height) {
   root = stratify(dummyData);
   addMargin(root, xMargin, yMargin);
   root = stratify(vanderploeg(root, stratify));
-  root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
+  root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify, saOptions);
   const layoutedData = undoDummyNode(root, xMargin);
   const links = createLinks(root, xMargin, yMargin);
   root = stratify(layoutedData);

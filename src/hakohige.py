@@ -2,25 +2,18 @@ import json
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
+import glob  # ファイル一覧を取得するために追加
+import os    # ファイルパスを操作するために追加
 
 # --- 設定箇所 ---
-# 各アルゴリズムのデータファイルパス
-BASELINE_ALGORITHM_FILE = 'resultData/kison-randomParm.json'
-PROPOSED_HEURISTIC_ALGORITHM_FILE = 'resultData/new-randomParm.json'
-SA_FILE = 'resultData/sa-randomParm.json'
-EXHAUSTIVE_SEARCH_FILE = 'resultData/zen-randomParm.json'
-
-# 各アルゴリズムの凡例名
-BASELINE_ALGORITHM_LABEL = 'Baseline Algorithm (Original Paper)'
-PROPOSED_HEURISTIC_ALGORITHM_LABEL = 'Proposed Heuristic Algorithm'
-SA_LABEL = 'SA Algorithm'
-EXHAUSTIVE_SEARCH_LABEL = 'Exhaustive Search (Optimal Solution)'
+# データが格納されているフォルダのパス
+DATA_FOLDER = 'resultData'
 # --- 設定箇所ここまで ---
 
 def load_json_data(filepath):
     """指定されたJSONファイルを読み込み、データを返す"""
     try:
-        with open(filepath, 'r', encoding='utf-8') as f: # encoding='utf-8' を追加
+        with open(filepath, 'r', encoding='utf-8') as f:
             raw_data = json.load(f)
         return raw_data
     except FileNotFoundError:
@@ -30,70 +23,75 @@ def load_json_data(filepath):
         print(f"エラー: ファイル '{filepath}' のJSON形式が不正です。")
         return []
 
-# 各アルゴリズムの生データを読み込む
-baseline_raw_data = load_json_data(BASELINE_ALGORITHM_FILE)
-heuristic_raw_data = load_json_data(PROPOSED_HEURISTIC_ALGORITHM_FILE)
-sa_data = load_json_data(SA_FILE)
-optimal_raw_data = load_json_data(EXHAUSTIVE_SEARCH_FILE)
+def create_violin_plot():
+    """指定されたフォルダのデータからバイオリンプロットを作成する"""
+    
+    # 指定されたフォルダ内のすべての.jsonファイルのパスを取得
+    json_files = glob.glob(os.path.join(DATA_FOLDER, '*.json'))
 
-# 各データから 'result' の値を抽出
-# 各アイテムが辞書であり、'result' キーが存在する場合のみ抽出
-baseline_results = [item['result'] for item in baseline_raw_data if isinstance(item, dict) and 'result' in item]
-heuristic_results = [item['result'] for item in heuristic_raw_data if isinstance(item, dict) and 'result' in item]
-sa_results = [item['result'] for item in sa_data if isinstance(item, dict) and 'result' in item]
-optimal_results = [item['result'] for item in optimal_raw_data if isinstance(item, dict) and 'result' in item]
+    if not json_files:
+        print(f"エラー: フォルダ '{DATA_FOLDER}' 内にJSONファイルが見つかりませんでした。")
+        return
 
-# プロットできる有効なデータがあるか確認
-if not baseline_results and not heuristic_results and not sa_results and not optimal_results:
-    print("プロットできる有効なデータがありません。処理を終了します。")
-else:
+    all_results_values = []
+    algorithm_labels = []
+
+    # 各JSONファイルをループ処理
+    for filepath in json_files:
+        # ファイル名からアルゴリズム名（凡例）を生成
+        # 例: 'resultData/kison-randomParm.json' -> 'kison-randomParm'
+        filename = os.path.basename(filepath)
+        algorithm_name, _ = os.path.splitext(filename)
+        
+        # データを読み込み、'result'の値を抽出
+        raw_data = load_json_data(filepath)
+        results = [item['result'] for item in raw_data if isinstance(item, dict) and 'result' in item]
+
+        # 有効なデータがあった場合のみリストに追加
+        if results:
+            all_results_values.extend(results)
+            algorithm_labels.extend([algorithm_name] * len(results))
+        else:
+            print(f"警告: ファイル '{filepath}' から有効なデータが抽出できませんでした。スキップします。")
+
+    # プロットできる有効なデータがあるか確認
+    if not all_results_values:
+        print("プロットできる有効なデータがありません。処理を終了します。")
+        return
+
     # データを長い形式に変換（pandasのDataFrame）
-    all_results_values = baseline_results + heuristic_results + sa_results + optimal_results
-
-    algorithm_labels = ([BASELINE_ALGORITHM_LABEL] * len(baseline_results) +
-                        [PROPOSED_HEURISTIC_ALGORITHM_LABEL] * len(heuristic_results) +
-                        [SA_LABEL] * len(heuristic_results) +
-                        [EXHAUSTIVE_SEARCH_LABEL] * len(optimal_results))
-
-    # 英語のラベルを使う場合（もし国際的な文脈で使うなら）
-    # BASELINE_ALGORITHM_LABEL_EN = 'Baseline Algorithm (Original Paper)'
-    # PROPOSED_HEURISTIC_ALGORITHM_LABEL_EN = 'Proposed Heuristic Algorithm'
-    # EXHAUSTIVE_SEARCH_LABEL_EN = 'Exhaustive Search (Optimal Solution)'
-    # algorithm_labels_en = ([BASELINE_ALGORITHM_LABEL_EN] * len(baseline_results) +
-    #                     [PROPOSED_HEURISTIC_ALGORITHM_LABEL_EN] * len(heuristic_results) +
-    #                     [EXHAUSTIVE_SEARCH_LABEL_EN] * len(optimal_results))
-
-
     df_results = pd.DataFrame({
-        'Result Value': all_results_values, # Y軸のラベルに合わせて列名を変更
-        'Algorithm': algorithm_labels      # X軸のラベルに合わせて列名を変更
-        # 'Algorithm_EN': algorithm_labels_en # 英語ラベル版
+        'Result Value': all_results_values,
+        'Algorithm': algorithm_labels
     })
 
     # バイオリンプロットを作成
-    plt.figure(figsize=(12, 7)) # プロットのサイズを少し調整
+    # ファイル数に応じて横幅を動的に調整しても良い
+    fig_width = max(12, len(json_files) * 2) 
+    plt.figure(figsize=(fig_width, 7))
     
-    # 日本語フォントの設定 (matplotlibで日本語が表示されない場合)
-    # 使用する環境に合わせてフォント名を指定してください
-    # 例: Windowsなら 'Yu Gothic', macOSなら 'Hiragino Sans' など
-    # plt.rcParams['font.family'] = 'IPAexGothic' # もしインストールされていれば
-    # plt.rcParams['font.sans-serif'] = ['Hiragino Maru Gothic Pro', 'Yu Gothic', 'Meirio', 'Takao', 'IPAexGothic', 'IPAPGothic'] # フォント候補
-    # plt.rcParams['axes.unicode_minus'] = False # マイナス記号の文字化け対策
-
+    # --- 日本語フォントの設定 (必要な場合) ---
+    # plt.rcParams['font.family'] = 'IPAexGothic'
+    # plt.rcParams['font.sans-serif'] = ['Hiragino Maru Gothic Pro', 'Yu Gothic', 'Meirio']
+    # plt.rcParams['axes.unicode_minus'] = False
+    
     sns.violinplot(x='Algorithm', y='Result Value', data=df_results, inner='box', palette='Pastel1', cut=0)
-    # `cut=0` を追加して、データの範囲外にバイオリンが伸びないようにする (データの最小値・最大値で止める)
-
+    
     # タイトルとラベル
     plt.title('Algorithm Performance Comparison: Distribution of Result Values', fontsize=16)
-    plt.ylabel('Result Value (e.g., Score, Objective Function Value)', fontsize=12) # Y軸ラベルをより具体的に
-    plt.xlabel('Algorithm / Method', fontsize=12) # X軸ラベルを変更
+    plt.ylabel('Result Value (e.g., Score, Objective Function Value)', fontsize=12)
+    plt.xlabel('Algorithm / Method', fontsize=12)
 
-    # X軸のラベルが長い場合に回転させる (任意)
-    plt.xticks(rotation=15, ha="right", fontsize=10) # ha="right" で右寄せ
+    # X軸のラベルが長い場合に回転させる
+    plt.xticks(rotation=30, ha="right", fontsize=10)
 
-    # グリッドを追加して見やすくする (任意)
+    # グリッドを追加
     plt.grid(axis='y', linestyle='--', alpha=0.7)
 
-    # グラフ表示
-    plt.tight_layout() # レイアウトを調整
+    # レイアウトを調整してグラフを表示
+    plt.tight_layout()
     plt.show()
+
+# メイン処理の実行
+if __name__ == '__main__':
+    create_violin_plot()

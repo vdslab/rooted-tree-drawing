@@ -1,0 +1,15 @@
+{
+  "name": "sa-optimization",
+  "version": "1.0.0",
+  "description": "Simulated Annealing parameter optimization",
+  "main": "sa_worker.js",
+  "type": "module",
+  "scripts": {
+    "optimize": "python3.10 optimaize.py",
+    "test": "python3.10 test_sa_optimization.py",
+    "quick-optimize": "python3.10 optimaize.py --trials=10"
+  },
+  "dependencies": {
+    "d3": "^7.8.5"
+  }
+}

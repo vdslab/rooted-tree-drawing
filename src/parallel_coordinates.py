@@ -37,9 +37,8 @@ df = pd.DataFrame(processed_data)
 # 3. パラレルコーディネートプロットの作成
 # プロットに含める列（次元）を選択します。
 # "result" を含め、影響を分析したい他の数値列を指定します。
-dimensions_to_plot = ['result', 'max_ori', 'sum_ori', 'alpha',
-        'nodesNum',
-        'aspect']
+dimensions_to_plot = ['result', 'alpha',
+        'nodesNum']
 # もし上記で 'sum_val_in_data' のような特徴量も作成していたら、それもリストに追加できます。
 # dimensions_to_plot = ['result', 'max_ori', 'sum_ori', 'num_items_in_data', 'sum_val_in_data']
 
