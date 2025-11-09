@@ -21,7 +21,9 @@ export function sa(leaves, rowNum) {
 
   const solution = generateInitialSolutionNoEmpty(rowNum, leavesNum);
   const { eachRowWidth, groupCounts } = calcInitialState(arr, solution, rowNum);
-  let currentCost = Math.max(...eachRowWidth);
+  let eachRowMaxHeight = calcEachRowMaxHeight(arr, solution, rowNum);
+  let currentWidthCost = Math.max(...eachRowWidth);
+  let currentHeightCost = sum(eachRowMaxHeight);
 
   // ★追加: グループが1つしかない場合は探索不要で即時リターン
   if (rowNum <= 1) {
@@ -30,17 +32,20 @@ export function sa(leaves, rowNum) {
       resultPartition[0] = arr;
     }
     const finalWidths = resultPartition.map(group => group.reduce((sum, node) => sum + node.width, 0));
+    const finalHeightCost = rowNum === 0 ? 0 : Math.max(0, ...resultPartition.map(group => group.reduce((m, n) => Math.max(m, n.height || 0), 0)));
 
     return {
       bestPartition: resultPartition,
-      maxWidth: currentCost,
+      maxWidth: currentWidthCost,
+      totalRowMaxHeights: finalHeightCost,
       groupWidths: finalWidths,
     };
   }
 
   // 最良解の保存用
   let bestSolution = [...solution];
-  let bestCost = currentCost;
+  let bestWidthCost = currentWidthCost;
+  let bestHeightCost = currentHeightCost;
   let temp = options.initialTemp;
 
   // --- 3. 焼きなまし法のメインループ ---
@@ -49,7 +54,7 @@ export function sa(leaves, rowNum) {
       // a. 移動するノードを選択
       let nodeIndexToMove;
       let attempts = 0;
-      while (true) {
+      while (attempts <= leavesNum * 2) {
         nodeIndexToMove = getRandomInt(leavesNum);
         const currentGroup = solution[nodeIndexToMove];
         if (groupCounts[currentGroup] > 1) break;
@@ -74,12 +79,26 @@ export function sa(leaves, rowNum) {
       groupCounts[currentGroup]--;
       groupCounts[newGroup]++;
 
-      const newCost = Math.max(...eachRowWidth);
-      const costDelta = newCost - currentCost;
+      // 高さ評価（2行のみ再計算）
+      const oldHeightCurrent = eachRowMaxHeight[currentGroup];
+      const oldHeightNew = eachRowMaxHeight[newGroup];
+      eachRowMaxHeight[currentGroup] = recomputeGroupMaxHeight(arr, solution, currentGroup);
+      eachRowMaxHeight[newGroup] = recomputeGroupMaxHeight(arr, solution, newGroup);
 
-      // 採択判定
-      if (costDelta < 0 || Math.random() < Math.exp(-costDelta / temp)) {
-        currentCost = newCost;
+      const newWidthCost = Math.max(...eachRowWidth);
+      const newHeightCost = sum(eachRowMaxHeight);
+
+      // 幅優先のレキシコグラフィック評価
+      const widthDelta = newWidthCost - currentWidthCost;
+      const heightDelta = newHeightCost - currentHeightCost;
+      const accept =
+        widthDelta < 0 ||
+        (widthDelta === 0 && (heightDelta < 0 || Math.random() < Math.exp(-heightDelta / Math.max(temp, 1e-9)))) ||
+        (widthDelta > 0 && Math.random() < Math.exp(-widthDelta / Math.max(temp, 1e-9)));
+
+      if (accept) {
+        currentWidthCost = newWidthCost;
+        currentHeightCost = newHeightCost;
       } else {
         // 不採択: 変更を元に戻す
         solution[nodeIndexToMove] = currentGroup;
@@ -87,11 +106,17 @@ export function sa(leaves, rowNum) {
         eachRowWidth[newGroup] -= nodeWidth;
         groupCounts[currentGroup]++;
         groupCounts[newGroup]--;
+        eachRowMaxHeight[currentGroup] = oldHeightCurrent;
+        eachRowMaxHeight[newGroup] = oldHeightNew;
       }
 
-      // 最良解の更新
-      if (currentCost < bestCost) {
-        bestCost = currentCost;
+      // 最良解の更新（幅→高さの順で比較）
+      if (
+        currentWidthCost < bestWidthCost ||
+        (currentWidthCost === bestWidthCost && currentHeightCost < bestHeightCost)
+      ) {
+        bestWidthCost = currentWidthCost;
+        bestHeightCost = currentHeightCost;
         bestSolution = [...solution];
       }
     }
@@ -104,10 +129,15 @@ export function sa(leaves, rowNum) {
     resultPartition[bestSolution[i]].push(arr[i]);
   }
   const finalWidths = resultPartition.map(group => group.reduce((sum, node) => sum + node.width, 0));
+  const finalHeightCost = resultPartition.reduce((acc, group) => {
+    const mh = group.reduce((m, n) => Math.max(m, n.height || 0), 0);
+    return acc + mh;
+  }, 0);
 
   return {
     bestPartition: resultPartition,
-    maxWidth: bestCost,
+    maxWidth: bestWidthCost,
+    totalRowMaxHeights: finalHeightCost,
     groupWidths: finalWidths.sort((a, b) => b - a),
   };
 }
@@ -124,6 +154,31 @@ function calcInitialState(arr, solution, rowNum) {
     groupCounts[groupIndex]++;
   });
   return { eachRowWidth, groupCounts };
+}
+
+function calcEachRowMaxHeight(arr, solution, rowNum) {
+  const maxHeights = new Array(rowNum).fill(0);
+  for (let i = 0; i < arr.length; i++) {
+    const g = solution[i];
+    const h = arr[i].height || 0;
+    if (h > maxHeights[g]) maxHeights[g] = h;
+  }
+  return maxHeights;
+}
+
+function recomputeGroupMaxHeight(arr, solution, groupIndex) {
+  let maxH = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (solution[i] === groupIndex) {
+      const h = arr[i].height || 0;
+      if (h > maxH) maxH = h;
+    }
+  }
+  return maxH;
+}
+
+function sum(arr) {
+  return arr.reduce((s, v) => s + v, 0);
 }
 
 function generateInitialSolutionNoEmpty(rowNum, leavesNum) {
@@ -145,37 +200,3 @@ function getRandomInt(max) {
 function to1D(leaves) {
   return leaves.flat();
 }
-
-
-
-// --- 実行例 ---
-const data = [
-  [
-    { name: "a", width: 212, height: 2134 }, { name: "b", width: 995, height: 85 },
-    { name: "c", width: 38, height: 85 }
-  ],
-  [
-    { name: "d", width: 262, height: 5254 }, { name: "e", width: 34, height: 985 },
-    { name: "f", width: 965, height: 484 }, { name: "g", width: 838, height: 774 },
-    { name: "h", width: 844, height: 88 }, { name: "i", width: 333, height: 477 }
-  ],
-  [
-    { name: "j", width: 777, height: 77 }, { name: "k", width: 43, height: 968 }
-  ],
-];
-
-const result = sa(data, 1);
-
-// 結果の表示
-console.log("--- 焼きなまし法による最適化結果 ---");
-console.log(`最小化された最大幅 (コスト): ${result.maxWidth}\n`);
-
-console.log("各グループの幅の合計 (降順):");
-console.log(result.groupWidths);
-
-console.log("\n最終的なグループ分け:");
-result.bestPartition.forEach((group, i) => {
-  const groupContent = group.map(node => `${node.name}(w:${node.width})`).join(", ");
-  const groupTotalWidth = group.reduce((sum, node) => sum + node.width, 0);
-  console.log(`  グループ ${i} (幅: ${groupTotalWidth}): [${groupContent}]`);
-});

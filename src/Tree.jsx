@@ -8,7 +8,12 @@ export default function Tree({ data, width, height }) {
   }, [data, width, height]);
   const line = d3.line();
   return (
-    <svg className="has-ratio" viewBox={`0 0 ${width} ${height}`}>
+    <svg
+      className="has-ratio"
+      // width={width}
+      // height={height}
+      viewBox={`0 0 ${width} ${height}`}
+    >
       <g>
         <g>
           {links.map((link) => {
@@ -31,9 +36,9 @@ export default function Tree({ data, width, height }) {
                   fill="#fff"
                   stroke="#888"
                 />
-                <text textAnchor="middle" dominantBaseline="central">
+                {/* <text textAnchor="middle" dominantBaseline="central">
                   {node.id}
-                </text>
+                </text> */}
               </g>
             );
           })}

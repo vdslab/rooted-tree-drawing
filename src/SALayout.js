@@ -372,22 +372,68 @@ function combineRowArray(leaves) {
   return newLeaves;
 }
 
+// アスペクト比の差に応じて減らす行数を決定する関数
+function calculateRowsToReduce(currentAspect, targetAspect, currentRows) {
+  const aspectDiff = targetAspect - currentAspect;
+
+  // 目標に既に到達している、または超えている場合
+  if (aspectDiff <= 0) return 0;
+
+  const aspectRatio = aspectDiff / targetAspect; // 0〜1の範囲に正規化
+
+  // 指数関数的に減らす行数を計算
+  // aspectRatio が大きい（目標まで遠い）→ 多く減らす
+  // aspectRatio が小さい（目標に近い）→ 少なく減らす
+  // 指数を調整することで減り方の急峻さを変更可能（0.5: 緩やか、1: 線形、2: 急峻）
+  const exponent = 1; // この値を調整することで減り方を変更可能
+  const maxReduction = currentRows * 0.5; // 一度に減らせる最大割合（50%）
+  const rowsToReduce = Math.ceil(maxReduction * Math.pow(aspectRatio, exponent));
+
+  // 最低1行、最大でも現在の行数-1まで
+  return Math.max(1, Math.min(rowsToReduce, currentRows - 1));
+}
+
 //アスペクト比が最適になるまで底辺ノードの列数を増やす関数
 function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
   let a = calcAspectRatio(root);
+  let previousAspect = a;
+
   while (at > a) {
     const bottomNode = searchBottomNode(root);
     if (
       bottomNode.data?.leaves &&
       bottomNode.data?.rows > 1
     ) {
-      bottomNode.data.rows -= 1;
-      const ne = sa(bottomNode.data.leaves, bottomNode.data.rows).bestPartition;
-      console.log(ne);
+      // 減らす行数を動的に決定
+      const rowsToReduce = calculateRowsToReduce(a, at, bottomNode.data.rows);
+      const newRows = Math.max(1, bottomNode.data.rows - rowsToReduce);
+
+      // 前の状態を保存（オーバーシュート時に戻すため）
+      const previousRows = bottomNode.data.rows;
+      const previousLeaves = JSON.parse(JSON.stringify(bottomNode.data.leaves));
+
+      // 行数を減らして最適化
+      bottomNode.data.rows = newRows;
       bottomNode.data.leaves = sa(bottomNode.data.leaves, bottomNode.data.rows).bestPartition;
       setDummyMargin(root, xMargin, yMargin);
       root = stratify(vanderploeg(root, stratify));
       a = calcAspectRatio(root);
+
+      // オーバーシュート検出: 目標を大きく超えた場合は1行戻す
+      if (a > at && rowsToReduce > 1) {
+        bottomNode.data.rows = previousRows - 1;
+        bottomNode.data.leaves = sa(previousLeaves, bottomNode.data.rows).bestPartition;
+        setDummyMargin(root, xMargin, yMargin);
+        root = stratify(vanderploeg(root, stratify));
+        a = calcAspectRatio(root);
+      }
+
+      // 改善が見られない場合は終了
+      if (Math.abs(a - previousAspect) < 0.001) {
+        break;
+      }
+
+      previousAspect = a;
     } else {
       break;
     }
@@ -630,7 +676,6 @@ export function layout(data, width, height) {
   const layoutWidth = right - left;
   const layoutHeight = bottom - top;
   const scale = Math.min(width / layoutWidth, height / layoutHeight);
-  console.log(scale);
   for (const node of root.descendants()) {
     node.x = (node.x - left - layoutWidth / 2) * scale + width / 2;
     node.y = (node.y - top - layoutHeight / 2) * scale + height / 2;
