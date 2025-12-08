@@ -1,0 +1,1514 @@
+[
+  {
+    "name": "flare",
+    "parent": "",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "analytics",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "cluster",
+    "parent": "analytics",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "AgglomerativeCluster",
+    "parent": "cluster",
+    "width": 500,
+    "height": 3938
+  },
+  {
+    "name": "CommunityStructure",
+    "parent": "cluster",
+    "width": 500,
+    "height": 3812
+  },
+  {
+    "name": "HierarchicalCluster",
+    "parent": "cluster",
+    "width": 500,
+    "height": 6714
+  },
+  {
+    "name": "MergeEdge",
+    "parent": "cluster",
+    "width": 500,
+    "height": 743
+  },
+  {
+    "name": "graph",
+    "parent": "analytics",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "BetweennessCentrality",
+    "parent": "graph",
+    "width": 500,
+    "height": 3534
+  },
+  {
+    "name": "LinkDistance",
+    "parent": "graph",
+    "width": 500,
+    "height": 5731
+  },
+  {
+    "name": "MaxFlowMinCut",
+    "parent": "graph",
+    "width": 500,
+    "height": 7840
+  },
+  {
+    "name": "ShortestPaths",
+    "parent": "graph",
+    "width": 500,
+    "height": 5914
+  },
+  {
+    "name": "SpanningTree",
+    "parent": "graph",
+    "width": 500,
+    "height": 3416
+  },
+  {
+    "name": "optimization",
+    "parent": "analytics",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "AspectRatioBanker",
+    "parent": "optimization",
+    "width": 500,
+    "height": 7074
+  },
+  {
+    "name": "animate",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "Easing",
+    "parent": "animate",
+    "width": 500,
+    "height": 17010
+  },
+  {
+    "name": "FunctionSequence",
+    "parent": "animate",
+    "width": 500,
+    "height": 5842
+  },
+  {
+    "name": "interpolate",
+    "parent": "animate",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "ArrayInterpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 1983
+  },
+  {
+    "name": "ColorInterpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 2047
+  },
+  {
+    "name": "DateInterpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 1375
+  },
+  {
+    "name": "Interpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 8746
+  },
+  {
+    "name": "MatrixInterpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 2202
+  },
+  {
+    "name": "NumberInterpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 1382
+  },
+  {
+    "name": "ObjectInterpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 1629
+  },
+  {
+    "name": "PointInterpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 1675
+  },
+  {
+    "name": "RectangleInterpolator",
+    "parent": "interpolate",
+    "width": 500,
+    "height": 2042
+  },
+  {
+    "name": "ISchedulable",
+    "parent": "animate",
+    "width": 500,
+    "height": 1041
+  },
+  {
+    "name": "Parallel",
+    "parent": "animate",
+    "width": 500,
+    "height": 5176
+  },
+  {
+    "name": "Pause",
+    "parent": "animate",
+    "width": 500,
+    "height": 449
+  },
+  {
+    "name": "Scheduler",
+    "parent": "animate",
+    "width": 500,
+    "height": 5593
+  },
+  {
+    "name": "Sequence",
+    "parent": "animate",
+    "width": 500,
+    "height": 5534
+  },
+  {
+    "name": "Transition",
+    "parent": "animate",
+    "width": 500,
+    "height": 9201
+  },
+  {
+    "name": "Transitioner",
+    "parent": "animate",
+    "width": 500,
+    "height": 19975
+  },
+  {
+    "name": "TransitionEvent",
+    "parent": "animate",
+    "width": 500,
+    "height": 1116
+  },
+  {
+    "name": "Tween",
+    "parent": "animate",
+    "width": 500,
+    "height": 6006
+  },
+  {
+    "name": "data",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "converters",
+    "parent": "data",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "Converters",
+    "parent": "converters",
+    "width": 500,
+    "height": 721
+  },
+  {
+    "name": "DelimitedTextConverter",
+    "parent": "converters",
+    "width": 500,
+    "height": 4294
+  },
+  {
+    "name": "GraphMLConverter",
+    "parent": "converters",
+    "width": 500,
+    "height": 9800
+  },
+  {
+    "name": "IDataConverter",
+    "parent": "converters",
+    "width": 500,
+    "height": 1314
+  },
+  {
+    "name": "JSONConverter",
+    "parent": "converters",
+    "width": 500,
+    "height": 2220
+  },
+  {
+    "name": "DataField",
+    "parent": "data",
+    "width": 500,
+    "height": 1759
+  },
+  {
+    "name": "DataSchema",
+    "parent": "data",
+    "width": 500,
+    "height": 2165
+  },
+  {
+    "name": "DataSet",
+    "parent": "data",
+    "width": 500,
+    "height": 586
+  },
+  {
+    "name": "DataSource",
+    "parent": "data",
+    "width": 500,
+    "height": 3331
+  },
+  {
+    "name": "DataTable",
+    "parent": "data",
+    "width": 500,
+    "height": 772
+  },
+  {
+    "name": "DataUtil",
+    "parent": "data",
+    "width": 500,
+    "height": 3322
+  },
+  {
+    "name": "display",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "DirtySprite",
+    "parent": "display",
+    "width": 500,
+    "height": 8833
+  },
+  {
+    "name": "LineSprite",
+    "parent": "display",
+    "width": 500,
+    "height": 1732
+  },
+  {
+    "name": "RectSprite",
+    "parent": "display",
+    "width": 500,
+    "height": 3623
+  },
+  {
+    "name": "TextSprite",
+    "parent": "display",
+    "width": 500,
+    "height": 10066
+  },
+  {
+    "name": "flex",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "FlareVis",
+    "parent": "flex",
+    "width": 500,
+    "height": 4116
+  },
+  {
+    "name": "physics",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "DragForce",
+    "parent": "physics",
+    "width": 500,
+    "height": 1082
+  },
+  {
+    "name": "GravityForce",
+    "parent": "physics",
+    "width": 500,
+    "height": 1336
+  },
+  {
+    "name": "IForce",
+    "parent": "physics",
+    "width": 500,
+    "height": 319
+  },
+  {
+    "name": "NBodyForce",
+    "parent": "physics",
+    "width": 500,
+    "height": 10498
+  },
+  {
+    "name": "Particle",
+    "parent": "physics",
+    "width": 500,
+    "height": 2822
+  },
+  {
+    "name": "Simulation",
+    "parent": "physics",
+    "width": 500,
+    "height": 9983
+  },
+  {
+    "name": "Spring",
+    "parent": "physics",
+    "width": 500,
+    "height": 2213
+  },
+  {
+    "name": "SpringForce",
+    "parent": "physics",
+    "width": 500,
+    "height": 1681
+  },
+  {
+    "name": "query",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "AggregateExpression",
+    "parent": "query",
+    "width": 500,
+    "height": 1616
+  },
+  {
+    "name": "And",
+    "parent": "query",
+    "width": 500,
+    "height": 1027
+  },
+  {
+    "name": "Arithmetic",
+    "parent": "query",
+    "width": 500,
+    "height": 3891
+  },
+  {
+    "name": "Average",
+    "parent": "query",
+    "width": 500,
+    "height": 891
+  },
+  {
+    "name": "BinaryExpression",
+    "parent": "query",
+    "width": 500,
+    "height": 2893
+  },
+  {
+    "name": "Comparison",
+    "parent": "query",
+    "width": 500,
+    "height": 5103
+  },
+  {
+    "name": "CompositeExpression",
+    "parent": "query",
+    "width": 500,
+    "height": 3677
+  },
+  {
+    "name": "Count",
+    "parent": "query",
+    "width": 500,
+    "height": 781
+  },
+  {
+    "name": "DateUtil",
+    "parent": "query",
+    "width": 500,
+    "height": 4141
+  },
+  {
+    "name": "Distinct",
+    "parent": "query",
+    "width": 500,
+    "height": 933
+  },
+  {
+    "name": "Expression",
+    "parent": "query",
+    "width": 500,
+    "height": 5130
+  },
+  {
+    "name": "ExpressionIterator",
+    "parent": "query",
+    "width": 500,
+    "height": 3617
+  },
+  {
+    "name": "Fn",
+    "parent": "query",
+    "width": 500,
+    "height": 3240
+  },
+  {
+    "name": "If",
+    "parent": "query",
+    "width": 500,
+    "height": 2732
+  },
+  {
+    "name": "IsA",
+    "parent": "query",
+    "width": 500,
+    "height": 2039
+  },
+  {
+    "name": "Literal",
+    "parent": "query",
+    "width": 500,
+    "height": 1214
+  },
+  {
+    "name": "Match",
+    "parent": "query",
+    "width": 500,
+    "height": 3748
+  },
+  {
+    "name": "Maximum",
+    "parent": "query",
+    "width": 500,
+    "height": 843
+  },
+  {
+    "name": "methods",
+    "parent": "query",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "add",
+    "parent": "methods",
+    "width": 500,
+    "height": 593
+  },
+  {
+    "name": "and_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 330
+  },
+  {
+    "name": "average_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 287
+  },
+  {
+    "name": "count_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 277
+  },
+  {
+    "name": "distinct_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 292
+  },
+  {
+    "name": "div",
+    "parent": "methods",
+    "width": 500,
+    "height": 595
+  },
+  {
+    "name": "eq",
+    "parent": "methods",
+    "width": 500,
+    "height": 594
+  },
+  {
+    "name": "fn_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 460
+  },
+  {
+    "name": "gt",
+    "parent": "methods",
+    "width": 500,
+    "height": 603
+  },
+  {
+    "name": "gte",
+    "parent": "methods",
+    "width": 500,
+    "height": 625
+  },
+  {
+    "name": "iff",
+    "parent": "methods",
+    "width": 500,
+    "height": 748
+  },
+  {
+    "name": "isa",
+    "parent": "methods",
+    "width": 500,
+    "height": 461
+  },
+  {
+    "name": "lt",
+    "parent": "methods",
+    "width": 500,
+    "height": 597
+  },
+  {
+    "name": "lte",
+    "parent": "methods",
+    "width": 500,
+    "height": 619
+  },
+  {
+    "name": "max",
+    "parent": "methods",
+    "width": 500,
+    "height": 283
+  },
+  {
+    "name": "min",
+    "parent": "methods",
+    "width": 500,
+    "height": 283
+  },
+  {
+    "name": "mod",
+    "parent": "methods",
+    "width": 500,
+    "height": 591
+  },
+  {
+    "name": "mul",
+    "parent": "methods",
+    "width": 500,
+    "height": 603
+  },
+  {
+    "name": "neq",
+    "parent": "methods",
+    "width": 500,
+    "height": 599
+  },
+  {
+    "name": "not_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 386
+  },
+  {
+    "name": "or_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 323
+  },
+  {
+    "name": "orderby",
+    "parent": "methods",
+    "width": 500,
+    "height": 307
+  },
+  {
+    "name": "range_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 772
+  },
+  {
+    "name": "select",
+    "parent": "methods",
+    "width": 500,
+    "height": 296
+  },
+  {
+    "name": "stddev",
+    "parent": "methods",
+    "width": 500,
+    "height": 363
+  },
+  {
+    "name": "sub",
+    "parent": "methods",
+    "width": 500,
+    "height": 600
+  },
+  {
+    "name": "sum_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 280
+  },
+  {
+    "name": "update",
+    "parent": "methods",
+    "width": 500,
+    "height": 307
+  },
+  {
+    "name": "variance_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 335
+  },
+  {
+    "name": "where",
+    "parent": "methods",
+    "width": 500,
+    "height": 299
+  },
+  {
+    "name": "xor_method",
+    "parent": "methods",
+    "width": 500,
+    "height": 354
+  },
+  {
+    "name": "underscore",
+    "parent": "methods",
+    "width": 500,
+    "height": 264
+  },
+  {
+    "name": "Minimum",
+    "parent": "query",
+    "width": 500,
+    "height": 843
+  },
+  {
+    "name": "Not",
+    "parent": "query",
+    "width": 500,
+    "height": 1554
+  },
+  {
+    "name": "Or",
+    "parent": "query",
+    "width": 500,
+    "height": 970
+  },
+  {
+    "name": "Query",
+    "parent": "query",
+    "width": 500,
+    "height": 13896
+  },
+  {
+    "name": "Range",
+    "parent": "query",
+    "width": 500,
+    "height": 1594
+  },
+  {
+    "name": "StringUtil",
+    "parent": "query",
+    "width": 500,
+    "height": 4130
+  },
+  {
+    "name": "Sum",
+    "parent": "query",
+    "width": 500,
+    "height": 791
+  },
+  {
+    "name": "Variable",
+    "parent": "query",
+    "width": 500,
+    "height": 1124
+  },
+  {
+    "name": "Variance",
+    "parent": "query",
+    "width": 500,
+    "height": 1876
+  },
+  {
+    "name": "Xor",
+    "parent": "query",
+    "width": 500,
+    "height": 1101
+  },
+  {
+    "name": "scale",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "IScaleMap",
+    "parent": "scale",
+    "width": 500,
+    "height": 2105
+  },
+  {
+    "name": "LinearScale",
+    "parent": "scale",
+    "width": 500,
+    "height": 1316
+  },
+  {
+    "name": "LogScale",
+    "parent": "scale",
+    "width": 500,
+    "height": 3151
+  },
+  {
+    "name": "OrdinalScale",
+    "parent": "scale",
+    "width": 500,
+    "height": 3770
+  },
+  {
+    "name": "QuantileScale",
+    "parent": "scale",
+    "width": 500,
+    "height": 2435
+  },
+  {
+    "name": "QuantitativeScale",
+    "parent": "scale",
+    "width": 500,
+    "height": 4839
+  },
+  {
+    "name": "RootScale",
+    "parent": "scale",
+    "width": 500,
+    "height": 1756
+  },
+  {
+    "name": "Scale",
+    "parent": "scale",
+    "width": 500,
+    "height": 4268
+  },
+  {
+    "name": "ScaleType",
+    "parent": "scale",
+    "width": 500,
+    "height": 1821
+  },
+  {
+    "name": "TimeScale",
+    "parent": "scale",
+    "width": 500,
+    "height": 5833
+  },
+  {
+    "name": "util",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "Arrays",
+    "parent": "util",
+    "width": 500,
+    "height": 8258
+  },
+  {
+    "name": "Colors",
+    "parent": "util",
+    "width": 500,
+    "height": 10001
+  },
+  {
+    "name": "Dates",
+    "parent": "util",
+    "width": 500,
+    "height": 8217
+  },
+  {
+    "name": "Displays",
+    "parent": "util",
+    "width": 500,
+    "height": 12555
+  },
+  {
+    "name": "Filter",
+    "parent": "util",
+    "width": 500,
+    "height": 2324
+  },
+  {
+    "name": "Geometry",
+    "parent": "util",
+    "width": 500,
+    "height": 10993
+  },
+  {
+    "name": "heap",
+    "parent": "util",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "FibonacciHeap",
+    "parent": "heap",
+    "width": 500,
+    "height": 9354
+  },
+  {
+    "name": "HeapNode",
+    "parent": "heap",
+    "width": 500,
+    "height": 1233
+  },
+  {
+    "name": "IEvaluable",
+    "parent": "util",
+    "width": 500,
+    "height": 335
+  },
+  {
+    "name": "IPredicate",
+    "parent": "util",
+    "width": 500,
+    "height": 383
+  },
+  {
+    "name": "IValueProxy",
+    "parent": "util",
+    "width": 500,
+    "height": 874
+  },
+  {
+    "name": "math",
+    "parent": "util",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "DenseMatrix",
+    "parent": "math",
+    "width": 500,
+    "height": 3165
+  },
+  {
+    "name": "IMatrix",
+    "parent": "math",
+    "width": 500,
+    "height": 2815
+  },
+  {
+    "name": "SparseMatrix",
+    "parent": "math",
+    "width": 500,
+    "height": 3366
+  },
+  {
+    "name": "Maths",
+    "parent": "util",
+    "width": 500,
+    "height": 17705
+  },
+  {
+    "name": "Orientation",
+    "parent": "util",
+    "width": 500,
+    "height": 1486
+  },
+  {
+    "name": "palette",
+    "parent": "util",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "ColorPalette",
+    "parent": "palette",
+    "width": 500,
+    "height": 6367
+  },
+  {
+    "name": "Palette",
+    "parent": "palette",
+    "width": 500,
+    "height": 1229
+  },
+  {
+    "name": "ShapePalette",
+    "parent": "palette",
+    "width": 500,
+    "height": 2059
+  },
+  {
+    "name": "SizePalette",
+    "parent": "palette",
+    "width": 500,
+    "height": 2291
+  },
+  {
+    "name": "Property",
+    "parent": "util",
+    "width": 500,
+    "height": 5559
+  },
+  {
+    "name": "Shapes",
+    "parent": "util",
+    "width": 500,
+    "height": 19118
+  },
+  {
+    "name": "Sort",
+    "parent": "util",
+    "width": 500,
+    "height": 6887
+  },
+  {
+    "name": "Stats",
+    "parent": "util",
+    "width": 500,
+    "height": 6557
+  },
+  {
+    "name": "Strings",
+    "parent": "util",
+    "width": 500,
+    "height": 22026
+  },
+  {
+    "name": "vis",
+    "parent": "flare",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "axis",
+    "parent": "vis",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "Axes",
+    "parent": "axis",
+    "width": 500,
+    "height": 1302
+  },
+  {
+    "name": "Axis",
+    "parent": "axis",
+    "width": 500,
+    "height": 24593
+  },
+  {
+    "name": "AxisGridLine",
+    "parent": "axis",
+    "width": 500,
+    "height": 652
+  },
+  {
+    "name": "AxisLabel",
+    "parent": "axis",
+    "width": 500,
+    "height": 636
+  },
+  {
+    "name": "CartesianAxes",
+    "parent": "axis",
+    "width": 500,
+    "height": 6703
+  },
+  {
+    "name": "controls",
+    "parent": "vis",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "AnchorControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 2138
+  },
+  {
+    "name": "ClickControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 3824
+  },
+  {
+    "name": "Control",
+    "parent": "controls",
+    "width": 500,
+    "height": 1353
+  },
+  {
+    "name": "ControlList",
+    "parent": "controls",
+    "width": 500,
+    "height": 4665
+  },
+  {
+    "name": "DragControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 2649
+  },
+  {
+    "name": "ExpandControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 2832
+  },
+  {
+    "name": "HoverControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 4896
+  },
+  {
+    "name": "IControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 763
+  },
+  {
+    "name": "PanZoomControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 5222
+  },
+  {
+    "name": "SelectionControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 7862
+  },
+  {
+    "name": "TooltipControl",
+    "parent": "controls",
+    "width": 500,
+    "height": 8435
+  },
+  {
+    "name": "visdata",
+    "parent": "vis",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "Data",
+    "parent": "visdata",
+    "width": 500,
+    "height": 20544
+  },
+  {
+    "name": "DataList",
+    "parent": "visdata",
+    "width": 500,
+    "height": 19788
+  },
+  {
+    "name": "DataSprite",
+    "parent": "visdata",
+    "width": 500,
+    "height": 10349
+  },
+  {
+    "name": "EdgeSprite",
+    "parent": "visdata",
+    "width": 500,
+    "height": 3301
+  },
+  {
+    "name": "NodeSprite",
+    "parent": "visdata",
+    "width": 500,
+    "height": 19382
+  },
+  {
+    "name": "render",
+    "parent": "visdata",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "ArrowType",
+    "parent": "render",
+    "width": 500,
+    "height": 698
+  },
+  {
+    "name": "EdgeRenderer",
+    "parent": "render",
+    "width": 500,
+    "height": 5569
+  },
+  {
+    "name": "IRenderer",
+    "parent": "render",
+    "width": 500,
+    "height": 353
+  },
+  {
+    "name": "ShapeRenderer",
+    "parent": "render",
+    "width": 500,
+    "height": 2247
+  },
+  {
+    "name": "ScaleBinding",
+    "parent": "visdata",
+    "width": 500,
+    "height": 11275
+  },
+  {
+    "name": "Tree",
+    "parent": "visdata",
+    "width": 500,
+    "height": 7147
+  },
+  {
+    "name": "TreeBuilder",
+    "parent": "visdata",
+    "width": 500,
+    "height": 9930
+  },
+  {
+    "name": "events",
+    "parent": "vis",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "DataEvent",
+    "parent": "events",
+    "width": 500,
+    "height": 2313
+  },
+  {
+    "name": "SelectionEvent",
+    "parent": "events",
+    "width": 500,
+    "height": 1880
+  },
+  {
+    "name": "TooltipEvent",
+    "parent": "events",
+    "width": 500,
+    "height": 1701
+  },
+  {
+    "name": "VisualizationEvent",
+    "parent": "events",
+    "width": 500,
+    "height": 1117
+  },
+  {
+    "name": "legend",
+    "parent": "vis",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "Legend",
+    "parent": "legend",
+    "width": 500,
+    "height": 20859
+  },
+  {
+    "name": "LegendItem",
+    "parent": "legend",
+    "width": 500,
+    "height": 4614
+  },
+  {
+    "name": "LegendRange",
+    "parent": "legend",
+    "width": 500,
+    "height": 10530
+  },
+  {
+    "name": "operator",
+    "parent": "vis",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "distortion",
+    "parent": "operator",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "BifocalDistortion",
+    "parent": "distortion",
+    "width": 500,
+    "height": 4461
+  },
+  {
+    "name": "Distortion",
+    "parent": "distortion",
+    "width": 500,
+    "height": 6314
+  },
+  {
+    "name": "FisheyeDistortion",
+    "parent": "distortion",
+    "width": 500,
+    "height": 3444
+  },
+  {
+    "name": "encoder",
+    "parent": "operator",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "ColorEncoder",
+    "parent": "encoder",
+    "width": 500,
+    "height": 3179
+  },
+  {
+    "name": "Encoder",
+    "parent": "encoder",
+    "width": 500,
+    "height": 4060
+  },
+  {
+    "name": "PropertyEncoder",
+    "parent": "encoder",
+    "width": 500,
+    "height": 4138
+  },
+  {
+    "name": "ShapeEncoder",
+    "parent": "encoder",
+    "width": 500,
+    "height": 1690
+  },
+  {
+    "name": "SizeEncoder",
+    "parent": "encoder",
+    "width": 500,
+    "height": 1830
+  },
+  {
+    "name": "filter",
+    "parent": "operator",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "FisheyeTreeFilter",
+    "parent": "filter",
+    "width": 500,
+    "height": 5219
+  },
+  {
+    "name": "GraphDistanceFilter",
+    "parent": "filter",
+    "width": 500,
+    "height": 3165
+  },
+  {
+    "name": "VisibilityFilter",
+    "parent": "filter",
+    "width": 500,
+    "height": 3509
+  },
+  {
+    "name": "IOperator",
+    "parent": "operator",
+    "width": 500,
+    "height": 1286
+  },
+  {
+    "name": "label",
+    "parent": "operator",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "Labeler",
+    "parent": "label",
+    "width": 500,
+    "height": 9956
+  },
+  {
+    "name": "RadialLabeler",
+    "parent": "label",
+    "width": 500,
+    "height": 3899
+  },
+  {
+    "name": "StackedAreaLabeler",
+    "parent": "label",
+    "width": 500,
+    "height": 3202
+  },
+  {
+    "name": "layout",
+    "parent": "operator",
+    "width": 500,
+    "height": 100
+  },
+  {
+    "name": "AxisLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 6725
+  },
+  {
+    "name": "BundledEdgeRouter",
+    "parent": "layout",
+    "width": 500,
+    "height": 3727
+  },
+  {
+    "name": "CircleLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 9317
+  },
+  {
+    "name": "CirclePackingLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 12003
+  },
+  {
+    "name": "DendrogramLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 4853
+  },
+  {
+    "name": "ForceDirectedLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 8411
+  },
+  {
+    "name": "IcicleTreeLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 4864
+  },
+  {
+    "name": "IndentedTreeLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 3174
+  },
+  {
+    "name": "Layout",
+    "parent": "layout",
+    "width": 500,
+    "height": 7881
+  },
+  {
+    "name": "NodeLinkTreeLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 12870
+  },
+  {
+    "name": "PieLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 2728
+  },
+  {
+    "name": "RadialTreeLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 12348
+  },
+  {
+    "name": "RandomLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 870
+  },
+  {
+    "name": "StackedAreaLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 9121
+  },
+  {
+    "name": "TreeMapLayout",
+    "parent": "layout",
+    "width": 500,
+    "height": 9191
+  },
+  {
+    "name": "Operator",
+    "parent": "operator",
+    "width": 500,
+    "height": 2490
+  },
+  {
+    "name": "OperatorList",
+    "parent": "operator",
+    "width": 500,
+    "height": 5248
+  },
+  {
+    "name": "OperatorSequence",
+    "parent": "operator",
+    "width": 500,
+    "height": 4190
+  },
+  {
+    "name": "OperatorSwitch",
+    "parent": "operator",
+    "width": 500,
+    "height": 2581
+  },
+  {
+    "name": "SortOperator",
+    "parent": "operator",
+    "width": 500,
+    "height": 2023
+  },
+  {
+    "name": "Visualization",
+    "parent": "vis",
+    "width": 500,
+    "height": 16540
+  }
+]

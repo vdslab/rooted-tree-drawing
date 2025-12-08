@@ -1,8 +1,11 @@
 import { useMemo } from "react";
 import * as d3 from "d3";
-import { layout } from "./SALayout";
-// import {layout} from "./newLayout"
+// 行管理版
+// import { layout } from "./SALayout";
+// 列管理版
+import { layout } from "./saColumnLayout";
 export default function Tree({ data, width, height }) {
+  // debugger;
   const { nodes, links } = useMemo(() => {
     return layout(data, width, height);
   }, [data, width, height]);
@@ -33,8 +36,8 @@ export default function Tree({ data, width, height }) {
                   y={-node.height / 2}
                   width={node.width}
                   height={node.height}
-                  fill="#fff"
-                  stroke="#888"
+                  fill={node.isLeaf ? "#e3f2fd" : "#fff3e0"}
+                  stroke={node.isLeaf ? "#1976d2" : "#f57c00"}
                 />
                 {/* <text textAnchor="middle" dominantBaseline="central">
                   {node.id}
