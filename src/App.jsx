@@ -33,9 +33,7 @@ export default function App() {
     <>
       <section className="section">
         <div className="container">
-          <h1 className="title">
-            Rooted Tree Drawing (Flare Dataset - {flareData.length} nodes)
-          </h1>
+          <h1 className="title">Rooted Tree Drawing</h1>
           <form
             className="input"
             onSubmit={(e) => {

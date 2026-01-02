@@ -256,15 +256,18 @@ function setDummyMargin(root, xMargin, yMargin) {
       maxWidth = maxWidth < rowSum ? rowSum : maxWidth;
     }
     root.data.width = maxWidth + xMargin;
-    let maxHeight = 0;
-    for (let j = 0; j < root.data.leaves.length; j++) {
-      let columnSum = 0;
-      for (let i = 0; i < root.data.leaves[0].length; i++) {
-        columnSum += root.data.leaves[j][i].height;
+    // 各行の最大高さを合計する（グリッド配置に対応）
+    let totalHeight = 0;
+    for (let i = 0; i < root.data.leaves[0].length; i++) {
+      let maxHeightInRow = 0;
+      for (let j = 0; j < root.data.leaves.length; j++) {
+        if (isNotEmptyObject(root.data.leaves[j][i])) {
+          maxHeightInRow = Math.max(maxHeightInRow, root.data.leaves[j][i].height);
+        }
       }
-      maxHeight = maxHeight < columnSum ? columnSum : maxHeight;
+      totalHeight += maxHeightInRow;
     }
-    root.data.height = maxHeight + 2 * yMargin;
+    root.data.height = totalHeight + 2 * yMargin;
   }
   root.data.x = root.data.width / 2;
   root.data.y = root.data.height / 2;
@@ -525,6 +528,19 @@ function undoDummyNode(root, xMargin, yMargin, links) {
                 rowMaxHeight,
               ),
             );
+            // 親ノードから右側への横線
+            const lastNodeX = isRightOfParentCenter
+              ? node.data.x + node.data.width / 2 - xMargin / 2
+              : mostRightXInRow(node, i);
+            links.push(
+              createPath(
+                `dummyHorizon${node.data.name + i}2`,
+                node.data.x,
+                lastNodeX,
+                rowMaxHeight,
+                rowMaxHeight,
+              ),
+            );
             if (node.data.columns !== node.data.leavesNum) {
               // links.push(createPath(
               //   `dummyHorizon${node.data.name}0`,
@@ -563,7 +579,7 @@ function undoDummyNode(root, xMargin, yMargin, links) {
                 : node.data.x + node.data.width / 2 - xMargin / 2;
             links.push(
               createPath(
-                `dummyHorizon${i}`,
+                `dummyHorizon${node.data.name}_${i}`,
                 node.data.x - node.data.width / 2 + xMargin / 2,
                 node.data.x + node.data.width / 2 - xMargin / 2,
                 rowMaxHeight,

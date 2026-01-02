@@ -4,8 +4,11 @@ import * as d3 from "d3";
 // import { layout } from "./SALayout";
 // 列管理版
 import { layout } from "./saColumnLayout";
+// import { layout } from "./layout";
 export default function Tree({ data, width, height }) {
   // debugger;
+  // const data1 = data.map((d) => ({ ...d, width: 1000 }));
+  // console.log(data1);
   const { nodes, links } = useMemo(() => {
     return layout(data, width, height);
   }, [data, width, height]);
@@ -15,6 +18,7 @@ export default function Tree({ data, width, height }) {
       className="has-ratio"
       // width={width}
       // height={height}
+      style={{ backgroundColor: d3.gray }}
       viewBox={`0 0 ${width} ${height}`}
     >
       <g>
@@ -36,12 +40,14 @@ export default function Tree({ data, width, height }) {
                   y={-node.height / 2}
                   width={node.width}
                   height={node.height}
-                  fill={node.isLeaf ? "#e3f2fd" : "#fff3e0"}
-                  stroke={node.isLeaf ? "#1976d2" : "#f57c00"}
-                />
-                {/* <text textAnchor="middle" dominantBaseline="central">
-                  {node.id}
-                </text> */}
+                  // fill={node.isLeaf ? "#e3f2fd" : "#fff3e0"}
+                  // stroke={node.isLeaf ? "#1976d2" : "#f57c00"}
+                  fill={"#e3f2fd"}
+                  stroke={"#1976d2"}
+                  style={{ cursor: "pointer" }}
+                >
+                  <title>{node.id}</title>
+                </rect>
               </g>
             );
           })}

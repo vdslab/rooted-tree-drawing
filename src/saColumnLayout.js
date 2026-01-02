@@ -7,11 +7,12 @@ import * as d3 from "d3";
  */
 export function saColumn(leaves, colNum) {
   // --- 1. パラメータ設定 ---
+  //100万回以内
   const options = {
-    initialTemp: 1000,
-    finalTemp: 0.1,
-    coolingRate: 0.995,
-    iterationsPerTemp: 200,
+    initialTemp: 443.64638595470666,       // 最適化された値
+    finalTemp: 0.10305869402445039,          // 最適化された値
+    coolingRate: 0.9923474667651442,        // 最適化された値
+    iterationsPerTemp: 782      // 最適化された値
   };
 
   // --- 2. 初期化 ---
@@ -173,18 +174,20 @@ function to1D(leaves) {
 // ========================================
 
 //葉群をダミーノードにする関数
-function createDammuy(root, xMargin, yMargin) {
+function createDammuy(root, xMargin, yMargin, innerYMargin) {
   if (root.children) {
     const data = [{ ...root.data, x: 0, y: 0 }];
     const dummyLesaves = [];
     for (const child of root.children) {
-      const childData = createDammuy(child, xMargin, yMargin);
+      const childData = createDammuy(child, xMargin, yMargin, innerYMargin);
 
       //childDataが葉だったら
       if (childData.length == 1) {
         const childObj = childData[0];
         childObj.width += xMargin;
-        childObj.height += yMargin * 2;
+        // ★ 変更: ダミーノード内部のノードには innerYMargin を適用
+        childObj.height += innerYMargin * 2;
+        childObj.isInner = true; // 識別フラグ
         dummyLesaves.push(childObj);
       } else {
         data.push(...childData);
@@ -395,6 +398,9 @@ function addMargin(root, xMargin, yMargin) {
     root.data.width = root.data.width + xMargin;
     root.data.height = root.data.height + yMargin * 2;
   }
+  // 初期座標を設定（layout.js の initRoot と同様）
+  root.data.x = root.data.width / 2;
+  root.data.y = root.data.height / 2;
   if (root?.children) {
     for (const child of root.children) {
       addMargin(child, xMargin, yMargin);
@@ -409,6 +415,9 @@ function setDummyMargin(root, xMargin, yMargin) {
       ...root.data, ...setDummyNodeSize(root.data.leaves, xMargin, yMargin)
     };
   }
+  // 初期座標を更新（layout.js の setDummyMargin と同様）
+  root.data.x = root.data.width / 2;
+  root.data.y = root.data.height / 2;
   if (root?.children) {
     for (const child of root.children) {
       setDummyMargin(child, xMargin, yMargin);
@@ -433,9 +442,11 @@ function calcDummyDataWidth(leaves, xMargin) {
 function calcDummyNodeHeight(leaves, yMargin) {
   let maxHeight = 0;
   for (const colLeaves of leaves) {
+    // 各列の高さ合計（内部ノードはすでに innerYMargin 込みの高さを持っている）
     const colHeight = colLeaves.reduce((sum, node) => sum + (node.height || 0), 0);
     maxHeight = Math.max(maxHeight, colHeight);
   }
+  // 外枠のマージンは yMargin を使用
   return maxHeight + yMargin * 2;
 }
 
@@ -461,26 +472,17 @@ function initDammyData([...dummyData]) {
 }
 
 //余白を取り除く関数
-function format(root, xMargin, yMargin) {
+function format(root, xMargin, yMargin, innerYMargin) {
   for (let node of root.descendants()) {
     node.x = node.data.x;
     node.y = node.data.y;
 
-    // 葉ノードかどうかを判定
-    const isLeaf = !node.children || node.children.length === 0;
+    // ★ 変更: 内部ノードの場合は innerYMargin を引く
+    const marginY = node.data.isInner ? innerYMargin : yMargin;
 
-    if (isLeaf) {
-      // 葉ノード: 通常のマージン処理
-      node.width = node.data.width - xMargin;
-      node.height = node.data.height - yMargin * 2;
-    } else {
-      // 内部ノード: 正方形にする（幅と高さの大きい方に合わせる）
-      const displayWidth = node.data.width - xMargin;
-      const displayHeight = node.data.height - yMargin * 2;
-      const size = Math.max(displayWidth, displayHeight) / 2;
-      node.width = size;
-      node.height = size;
-    }
+    // 通常のマージン処理
+    node.width = node.data.width - xMargin;
+    node.height = node.data.height - marginY * 2;
   }
 }
 
@@ -494,18 +496,34 @@ function createPath(pathId, x1, x2, y1, y2) {
   };
 }
 
-//底辺のノードを返す関数
+// ノードの表示サイズを計算するヘルパー関数
+function getDisplaySize(node, xMargin, yMargin) {
+  // 通常のマージン処理（全ノード共通）
+  return {
+    width: node.data.width - xMargin,
+    height: node.data.height - yMargin * 2
+  };
+}
+
+//底辺のダミーノード（leaves を持つノード）を返す関数
 function searchBottomNode(root) {
   let descendants = root.descendants();
+  // ダミーノード（leaves を持つノード）のみをフィルタリング
+  let dummyNodes = descendants.filter(node => node.data?.leaves);
+
+  if (dummyNodes.length === 0) {
+    return null; // ダミーノードがない場合
+  }
+
   let max = 0;
-  for (let i = 1; i < descendants.length; i++) {
+  for (let i = 1; i < dummyNodes.length; i++) {
     max =
-      descendants[max].data.y + descendants[max].data.height / 2 <
-        descendants[i].data.y + descendants[i].data.height / 2
+      dummyNodes[max].data.y + dummyNodes[max].data.height / 2 <
+        dummyNodes[i].data.y + dummyNodes[i].data.height / 2
         ? i
         : max;
   }
-  return descendants[max];
+  return dummyNodes[max];
 }
 
 //ツリーのアスペクト比を返す関数
@@ -551,71 +569,53 @@ function calculateColumnsToAdd(currentAspect, targetAspect, currentColumns, maxC
 // 列管理版：アスペクト比が最適になるまで列数を増やす関数
 function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
   let a = calcAspectRatio(root);
-  let previousAspect = a;
+
 
   // 列管理：アスペクト比が目標より小さい（縦長すぎる）場合、列を増やして横長にする
+  let iteration = 0;
   while (a < at) {
+    iteration++;
     const bottomNode = searchBottomNode(root);
-    if (
-      bottomNode.data?.leaves &&
-      bottomNode.data?.columns < bottomNode.data?.leavesNum
-    ) {
-      // 増やす列数を動的に決定
-      const columnsToAdd = calculateColumnsToAdd(a, at, bottomNode.data.columns, bottomNode.data.leavesNum);
-      const newColumns = Math.min(bottomNode.data.leavesNum, bottomNode.data.columns + columnsToAdd);
+    // console.log(`Iteration ${iteration}: bottomNode = ${bottomNode?.id}, columns = ${bottomNode?.data?.columns}, leavesNum = ${bottomNode?.data?.leavesNum}`);
 
-      // 前の状態を保存
-      const previousColumns = bottomNode.data.columns;
-      const previousLeaves = JSON.parse(JSON.stringify(bottomNode.data.leaves));
-
-      // 列数を増やして最適化（saColumnを使用）
-      bottomNode.data.columns = newColumns;
-      const saResult = saColumn(bottomNode.data.leaves, bottomNode.data.columns);
-      if (saResult) {
-        bottomNode.data.leaves = saResult.bestPartition;
-      }
-      setDummyMargin(root, xMargin, yMargin);
-      root = stratify(vanderploeg(root, stratify));
-      a = calcAspectRatio(root);
-
-      // オーバーシュート検出：目標を大きく超えた場合は1列戻す
-      if (a > at && columnsToAdd > 1) {
-        bottomNode.data.columns = previousColumns + 1;
-        const saResult2 = saColumn(previousLeaves, bottomNode.data.columns);
-        if (saResult2) {
-          bottomNode.data.leaves = saResult2.bestPartition;
-        }
-        setDummyMargin(root, xMargin, yMargin);
-        root = stratify(vanderploeg(root, stratify));
-        a = calcAspectRatio(root);
-      }
-
-      // 改善が見られない場合は終了
-      if (Math.abs(a - previousAspect) < 0.001) {
-        break;
-      }
-
-      previousAspect = a;
-    } else {
+    // ダミーノードがない、または全てのダミーノードが展開済みの場合は終了
+    if (!bottomNode || bottomNode.data?.columns >= bottomNode.data?.leavesNum) {
       break;
     }
+
+    // 列数を1つ増やす（layout.jsと同様）
+    bottomNode.data.columns += 1;
+    // console.log(`  Expanding columns to: ${bottomNode.data.columns}`);
+
+    // saColumnで最適化
+    const saResult = saColumn(bottomNode.data.leaves, bottomNode.data.columns);
+    if (saResult) {
+      bottomNode.data.leaves = saResult.bestPartition;
+      // console.log(`  SA result: maxHeight = ${saResult.maxHeight}, partitions = ${saResult.bestPartition.length}`);
+    }
+
+    setDummyMargin(root, xMargin, yMargin);
+    root = stratify(vanderploeg(root, stratify));
+    a = calcAspectRatio(root);
+    // console.log(`  New aspect ratio: ${a}`);
   }
+
   return root;
 }
 
 // 列管理版：ダミーノードを展開する関数
-function undoDummyNode(root, xMargin, yMargin) {
+function undoDummyNode(root, xMargin, yMargin, innerYMargin) {
   const newData = root.descendants().flatMap((item) => {
     const { data, parent } = item;
     if (data?.leaves) {
       const leaves = [];
       const { x, y, height, width } = data;
+      // top座標の計算：ダミーノードの外枠（yMargin）を使用
       const top = y - height / 2 + yMargin;
       const left = x - width / 2 + xMargin / 2;
 
       if (data?.columns === data?.leavesNum) {
         // 1行（各列に1ノードずつ）：横に並べる
-        // 各列の幅（ノード幅）を取得
         const colWidths = data.leaves.map(col => col[0].width);
         let tx = left;
         for (let i = 0; i < data.leavesNum; i++) {
@@ -633,6 +633,7 @@ function undoDummyNode(root, xMargin, yMargin) {
           const node = data.leaves[0][i];
           node.x = left + node.width / 2;
           node.y = ty + node.height / 2;
+          // 次のノードへの位置更新（node.height は innerYMargin 込み）
           ty += node.height;
           leaves.push({ ...node });
         }
@@ -652,6 +653,7 @@ function undoDummyNode(root, xMargin, yMargin) {
           col.forEach((node) => {
             node.x = tx + colWidth / 2;
             node.y = ty + node.height / 2;
+            // 次のノードへの位置更新（node.height は innerYMargin 込み）
             ty += node.height;
             leaves.push({ ...node });
           });
@@ -670,22 +672,24 @@ function undoDummyNode(root, xMargin, yMargin) {
 }
 
 // 配線を作る関数
-function createLinks(root, xMargin, yMargin) {
+function createLinks(root, xMargin, yMargin, innerYMargin) {
   if (root.children) {
     const links = [];
     const leftMostNode = leftMostSiblingNode(root.children);
     const rightMostNode = rightMostSiblingNode(root.children);
 
-    // 表示サイズ（format後のサイズ）で計算
-    const displayHeight = root.data.height - yMargin * 2;
+    // 表示サイズ（内部ノードは正方形）で計算
+    const rootDisplaySize = getDisplaySize(root, xMargin, yMargin);
 
     // 親の下端
-    const parentBottom = root.data.y + displayHeight / 2;
+    const parentBottom = root.data.y + rootDisplaySize.height / 2;
 
     // 子ノードの上端を計算
     const childTops = root.children.map(child => {
-      const childDisplayHeight = child.data.height - yMargin * 2;
-      return child.data.y - childDisplayHeight / 2;
+      // 内部ノードかどうかでサイズ計算を分ける
+      const marginY = child.data.isInner ? innerYMargin : yMargin;
+      const childHeight = child.data.height - marginY * 2;
+      return child.data.y - childHeight / 2;
     });
     const minChildTop = Math.min(...childTops);
 
@@ -713,8 +717,9 @@ function createLinks(root, xMargin, yMargin) {
 
     for (const child of root.children) {
       // 子の表示サイズで上端を計算
-      const childDisplayHeight = child.data.height - yMargin * 2;
-      const childTop = child.data.y - childDisplayHeight / 2;
+      const marginY = child.data.isInner ? innerYMargin : yMargin;
+      const childHeight = child.data.height - marginY * 2;
+      const childTop = child.data.y - childHeight / 2;
 
       // 水平線から子の上端への縦線
       links.push(
@@ -726,18 +731,18 @@ function createLinks(root, xMargin, yMargin) {
           childTop,
         ),
       );
-      links.push(...createLinks(child, xMargin, yMargin));
+      links.push(...createLinks(child, xMargin, yMargin, innerYMargin));
     }
     return links;
   } else if (root.data?.leaves) {
-    return createDummyLinks(root, xMargin, yMargin);
+    return createDummyLinks(root, xMargin, yMargin, innerYMargin);
   } else {
     return [];
   }
 }
 
 //ダミーノード内のリンクを作成する関数（列管理版）
-function createDummyLinks(dummyNode, xMargin, yMargin) {
+function createDummyLinks(dummyNode, xMargin, yMargin, innerYMargin) {
   if (dummyNode.data?.leaves) {
     const links = [];
     const data = dummyNode.data;
@@ -750,12 +755,13 @@ function createDummyLinks(dummyNode, xMargin, yMargin) {
     const left = x - width / 2 + xMargin / 2;
 
     // 最初の葉ノードの表示上の上端を計算
+    // ★ 変更: innerYMargin を使用
     const firstLeafHeight = leaves[0][0].height;
-    const firstLeafDisplayHeight = firstLeafHeight - yMargin * 2;
+    const firstLeafDisplayHeight = firstLeafHeight - innerYMargin * 2;
     const firstLeafTop = leafStartY + firstLeafHeight / 2 - firstLeafDisplayHeight / 2;
 
-    // 水平線の位置: ダミーノードの上端と最初の葉の上端の中間点
-    const horizonY = (dummyTop + firstLeafTop) / 2;
+    // 水平線の位置: 最初の葉の上端から yMargin 分上に配置
+    const horizonY = firstLeafTop - innerYMargin;
 
     // 親からの接続点から水平線への縦線
     links.push(createPath(`${dummyNode.id}FromParent`, x, x, dummyTop, horizonY));
@@ -766,7 +772,7 @@ function createDummyLinks(dummyNode, xMargin, yMargin) {
     );
 
     if (data?.columns === data?.leavesNum) {
-      // 1行（各列に1ノードずつ）：ノード座標を計算
+      // 1行
       const colWidths = leaves.map(col => col[0].width);
       let tx = left;
       const nodePositions = [];
@@ -774,7 +780,8 @@ function createDummyLinks(dummyNode, xMargin, yMargin) {
         const node = leaves[i][0];
         const colWidth = colWidths[i];
         const displayWidth = colWidth - xMargin;
-        const displayNodeHeight = node.height - yMargin * 2;
+        // ★ 変更: innerYMargin を使用
+        const displayNodeHeight = node.height - innerYMargin * 2;
         const nodeX = tx + colWidth / 2;
         const nodeY = leafStartY + node.height / 2;
         nodePositions.push({ x: nodeX, y: nodeY, displayWidth, displayHeight: displayNodeHeight, node });
@@ -788,39 +795,36 @@ function createDummyLinks(dummyNode, xMargin, yMargin) {
       links.push(createPath(`${dummyNode.id}Horizon`, horizonStartX, horizonEndX, horizonY, horizonY));
 
       nodePositions.forEach((pos) => {
-        // 水平線からノードの上端まで縦線（表示サイズで計算）
         const nodeTop = pos.y - pos.displayHeight / 2;
         links.push(createPath(`${pos.node.name}toParent`, pos.x, pos.x, horizonY, nodeTop));
       });
 
     } else if (data.columns === 1) {
-      // 1列（全ノードが縦に並ぶ）：ノード座標を計算
+      // 1列
       let ty = leafStartY;
       const nodePositions = [];
       for (const node of leaves[0]) {
         const nodeX = left + node.width / 2;
         const nodeY = ty + node.height / 2;
         const displayWidth = node.width - xMargin;
-        const displayNodeHeight = node.height - yMargin * 2;
+        // ★ 変更: innerYMargin を使用
+        const displayNodeHeight = node.height - innerYMargin * 2;
         nodePositions.push({ x: nodeX, y: nodeY, displayWidth, displayHeight: displayNodeHeight, node });
         ty += node.height;
       }
 
-      // 最後のノードの中心Y座標（縦線の終点）
       const lastPos = nodePositions[nodePositions.length - 1];
       const bottomY = lastPos.y;
-      // 親の中心から縦線の位置まで水平線
       links.push(createPath(`${dummyNode.id}Horizon`, x, left, horizonY, horizonY));
-      // 縦線（水平線から最後のノードの中心まで）
       links.push(createPath(`${dummyNode.id}Vertical`, left, left, horizonY, bottomY));
-      // 各ノードへの水平接続（縦線からノードの左端まで）- 表示サイズで計算
+
       for (const pos of nodePositions) {
         const nodeLeft = pos.x - pos.displayWidth / 2;
         links.push(createPath(`${pos.node.name}Horizon`, left, nodeLeft, pos.y, pos.y));
       }
 
     } else {
-      // 複数列：ノード座標を計算
+      // 複数列
       let tx = left;
       const allNodePositions = [];
 
@@ -833,7 +837,8 @@ function createDummyLinks(dummyNode, xMargin, yMargin) {
           const nodeX = tx + colWidth / 2;
           const nodeY = ty + node.height / 2;
           const displayWidth = node.width - xMargin;
-          const displayNodeHeight = node.height - yMargin * 2;
+          // ★ 変更: innerYMargin を使用
+          const displayNodeHeight = node.height - innerYMargin * 2;
           colPositions.push({ x: nodeX, y: nodeY, displayWidth, displayHeight: displayNodeHeight, node });
           ty += node.height;
         });
@@ -842,7 +847,6 @@ function createDummyLinks(dummyNode, xMargin, yMargin) {
         tx += colWidth + xMargin;
       });
 
-      // 各列の縦線位置（列の左端）
       const colVerticalXs = [];
       tx = left;
       for (let i = 0; i < data.columns; i++) {
@@ -850,23 +854,19 @@ function createDummyLinks(dummyNode, xMargin, yMargin) {
         tx += colMaxWidths[i] + xMargin;
       }
 
-      // 全ての列の縦線と親の中心xを含む水平線
       const firstVerticalX = colVerticalXs[0];
       const lastVerticalX = colVerticalXs[data.columns - 1];
       const horizonStartX = Math.min(x, firstVerticalX);
       const horizonEndX = Math.max(x, lastVerticalX);
       links.push(createPath(`${dummyNode.id}HorizontalMain`, horizonStartX, horizonEndX, horizonY, horizonY));
 
-      // 各列に対して縦線とノードへの接続を描画
       allNodePositions.forEach((colPositions, colIndex) => {
         const lastPos = colPositions[colPositions.length - 1];
-        const colBottom = lastPos.y; // 最後のノードの中心Y座標
+        const colBottom = lastPos.y;
         const verticalX = colVerticalXs[colIndex];
 
-        // 縦線（水平線から最後のノードの中心まで）
         links.push(createPath(`${dummyNode.id}Col${colIndex}Vertical`, verticalX, verticalX, horizonY, colBottom));
 
-        // 各ノードへの水平接続（縦線からノードの左端まで）- 表示サイズで計算
         colPositions.forEach((pos) => {
           const nodeLeft = pos.x - pos.displayWidth / 2;
           links.push(createPath(`${pos.node.name}toLink`, verticalX, nodeLeft, pos.y, pos.y));
@@ -880,28 +880,48 @@ function createDummyLinks(dummyNode, xMargin, yMargin) {
 }
 
 export function layout(data, width, height) {
-  const xMargin = 200;
-  const yMargin = 200;
-  // const newData = data.map((item) => ({ ...item, width: 500, height: item.height }));
+  const xMargin = 400;
+  const yMargin = 400;
+  // ★ 追加: 内部マージンを半分に設定
+  const innerYMargin = yMargin / 2;
+
   const stratify = d3
     .stratify()
     .id((d) => d.name)
     .parentId((d) => d.parent);
   let root = stratify(data);
-  const dummyData = createDammuy(root, xMargin, yMargin);
-  initDammyData(dummyData);
-  root = stratify(dummyData);
+  // ★ createDammuy に innerYMargin を渡す
+  const dummyData = createDammuy(root, xMargin, yMargin, innerYMargin);
+  const initializedDummyData = initDammyData(dummyData);
+  root = stratify(initializedDummyData);
   addMargin(root, xMargin, yMargin);
+
+  console.log("=== After addMargin ===");
+  root.descendants().forEach(node => {
+    if (node.data?.leaves) {
+      console.log(`Dummy: ${node.id}, columns: ${node.data.columns}, leavesNum: ${node.data.leavesNum}, size: ${node.data.width}x${node.data.height}`);
+    }
+  });
+
   root = stratify(vanderploeg(root, stratify));
   root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
 
-  const layoutedData = undoDummyNode(root, xMargin, yMargin);
-  const links = createLinks(root, xMargin, yMargin);
+  console.log("=== After localFoldingLayout ===");
+  root.descendants().forEach(node => {
+    if (node.data?.leaves) {
+      console.log(`Dummy: ${node.id}, columns: ${node.data.columns}, leavesNum: ${node.data.leavesNum}, size: ${node.data.width}x${node.data.height}`);
+    }
+  });
+
+  // ★ undoDummyNode に innerYMargin を渡す
+  const layoutedData = undoDummyNode(root, xMargin, yMargin, innerYMargin);
+  // ★ createLinks に innerYMargin を渡す
+  const links = createLinks(root, xMargin, yMargin, innerYMargin);
 
   root = stratify(layoutedData);
-  format(root, xMargin, yMargin);
+  // ★ format に innerYMargin を渡す
+  format(root, xMargin, yMargin, innerYMargin);
 
-  // normalize - use data (original size) for bounds calculation to match links
   const left =
     d3.min(root.descendants(), (node) => node.data.x - node.data.width / 2) - xMargin;
   const right =
@@ -912,7 +932,6 @@ export function layout(data, width, height) {
   const layoutHeight = bottom - top;
   const scale = Math.min(width / layoutWidth, height / layoutHeight);
 
-  // スケーリング - node.x = node.data.x なので、同じ座標系を使用
   for (const node of root.descendants()) {
     node.x = (node.data.x - left - layoutWidth / 2) * scale + width / 2;
     node.y = (node.data.y - top - layoutHeight / 2) * scale + height / 2;
