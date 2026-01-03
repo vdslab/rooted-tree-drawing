@@ -6,7 +6,7 @@ function generateRandomName() {
 export function generateTree(numNodes, alpha, maxChildrenPerParent = null) {
   const existingNames = new Set();
   existingNames.add("Eve");
-  const nodes = [{ name: "Eve", parent: "", width: 100 + Math.floor(Math.random() * 2000), height: 100 + Math.floor(Math.random() * 2000) }]; // ルートノード
+  const nodes = [{ name: "Eve", parent: "", width: 500, height: 100 + Math.floor(Math.random() * 2000) }]; // ルートノード
   const childrenCount = { "Eve": 0 }; // 各ノードの子の数
 
   while (nodes.length < numNodes) {
@@ -47,7 +47,7 @@ export function generateTree(numNodes, alpha, maxChildrenPerParent = null) {
         newNodeName = generateRandomName();
       } while (existingNames.has(newNodeName)); // 重複回避
       existingNames.add(newNodeName);
-      nodes.push({ name: newNodeName, parent: selectedNode.name, width: 100 + Math.floor(Math.random() * 2000), height: 100 + Math.floor(Math.random() * 2000) });
+      nodes.push({ name: newNodeName, parent: selectedNode.name, width: 100 + Math.floor(Math.random() * 5000), height: 100 + Math.floor(Math.random() * 5000) });
       childrenCount[selectedNode.name] = (childrenCount[selectedNode.name] || 0) + 1;
       childrenCount[newNodeName] = 0; // 新しいノードの子の数は0で初期化
     } else if (nodes.length < numNodes) {
