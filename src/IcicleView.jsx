@@ -1,27 +1,60 @@
 import { useMemo, useRef } from "react";
 import * as d3 from "d3";
-// 行管理版
-// import { layout } from "./SALayout";
-// 列管理版
-import { layout } from "./saColumnLayout";
-// import { layout } from "./layout";
-export default function Tree({ data, width, height }) {
+
+export default function IcicleView({ data, width, height }) {
   const svgRef = useRef(null);
 
-  const { nodes, links } = useMemo(() => {
-    return layout(data, width, height);
+  const { nodes, root } = useMemo(() => {
+    // 階層構造を作成（valueはそのまま使用）
+    const stratify = d3
+      .stratify()
+      .id((d) => d.name)
+      .parentId((d) => d.parent);
+
+    const root = stratify(data);
+
+    // valueを集計（sum()を使って階層構造の値を計算）
+    root.sum((d) => d.value || 0);
+
+    // partitionレイアウト（icicle tree）を適用
+    const partition = d3.partition().size([width, height]).padding(0);
+
+    partition(root);
+
+    // ノードデータを抽出（親のパスも保存）
+    const nodes = root.descendants().map((node) => ({
+      id: node.data.name,
+      x: node.x0,
+      y: node.y0,
+      width: node.x1 - node.x0,
+      height: node.y1 - node.y0,
+      value: node.value,
+      depth: node.depth,
+      parent: node.parent ? node.parent.data.name : null,
+      node: node,
+    }));
+
+    return { nodes, root };
   }, [data, width, height]);
 
-  const line = d3.line();
+  // D3のデフォルト色スケール
+  const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+  // 可視化できるノード（幅または高さが0より大きい）のみフィルタ
+  const visibleNodes = nodes.filter(
+    (node) => node.width > 0 && node.height > 0,
+  );
+
+  console.log(
+    `Total nodes: ${nodes.length}, Visible nodes: ${visibleNodes.length}`,
+  );
 
   const downloadPNG = (scale = 3) => {
     if (!svgRef.current) return;
 
-    const svgElement = svgRef.current;
     const scaledWidth = width * scale;
     const scaledHeight = height * scale;
 
-    // Create canvas
     const canvas = document.createElement("canvas");
     canvas.width = scaledWidth;
     canvas.height = scaledHeight;
@@ -31,35 +64,24 @@ export default function Tree({ data, width, height }) {
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, scaledWidth, scaledHeight);
 
-    // Draw links
-    ctx.strokeStyle = "#888";
-    ctx.lineWidth = 1 * scale;
-    links.forEach((link) => {
-      ctx.beginPath();
-      ctx.moveTo(link.segments[0][0] * scale, link.segments[0][1] * scale);
-      ctx.lineTo(link.segments[1][0] * scale, link.segments[1][1] * scale);
-      ctx.stroke();
-    });
-
-    // Draw nodes
+    // Draw visible nodes
     ctx.fillStyle = "#e3f2fd";
     ctx.strokeStyle = "#1976d2";
     ctx.lineWidth = 1 * scale;
-    nodes.forEach((node) => {
-      const x = (node.x - node.width / 2) * scale;
-      const y = (node.y - node.height / 2) * scale;
+    visibleNodes.forEach((node) => {
+      const x = node.x * scale;
+      const y = node.y * scale;
       const w = node.width * scale;
       const h = node.height * scale;
       ctx.fillRect(x, y, w, h);
       ctx.strokeRect(x, y, w, h);
     });
 
-    // Download
     canvas.toBlob((blob) => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `tree-${scaledWidth}x${scaledHeight}.png`;
+      a.download = `icicle-${scaledWidth}x${scaledHeight}.png`;
       a.click();
       URL.revokeObjectURL(url);
     });
@@ -78,7 +100,7 @@ export default function Tree({ data, width, height }) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `tree-${width}x${height}.svg`;
+    a.download = `icicle-${width}x${height}.svg`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -155,38 +177,27 @@ export default function Tree({ data, width, height }) {
       <svg
         ref={svgRef}
         className="has-ratio"
-        style={{ backgroundColor: d3.gray }}
         viewBox={`0 0 ${width} ${height}`}
+        style={{ width: "100%", height: "100%" }}
       >
         <g>
-          <g>
-            {links.map((link) => {
-              return (
-                <g key={link.id} id={link.id}>
-                  <path d={line(link.segments)} fill="none" stroke="#888" />
-                </g>
-              );
-            })}
-          </g>
-          <g>
-            {nodes.map((node) => {
-              return (
-                <g key={node.id} transform={`translate(${node.x},${node.y})`}>
-                  <rect
-                    x={-node.width / 2}
-                    y={-node.height / 2}
-                    width={node.width}
-                    height={node.height}
-                    fill={"#e3f2fd"}
-                    stroke={"#1976d2"}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <title>{node.id}</title>
-                  </rect>
-                </g>
-              );
-            })}
-          </g>
+          {visibleNodes.map((node) => (
+            <rect
+              key={node.id}
+              x={node.x}
+              y={node.y}
+              width={node.width}
+              height={node.height}
+              // fill={colorScale(node.depth)}
+              // stroke="#fff"
+              fill={"#e3f2fd"}
+              stroke={"#1976d2"}
+              strokeWidth={1}
+              style={{ cursor: "pointer" }}
+            >
+              <title>{node.id}</title>
+            </rect>
+          ))}
         </g>
       </svg>
     </div>

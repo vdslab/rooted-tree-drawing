@@ -1,0 +1,972 @@
+[
+  {
+    "name": "gorm",
+    "parent": "",
+    "value": 0
+  },
+  {
+    "name": "gorm/CODE_OF_CONDUCT.md",
+    "parent": "gorm",
+    "value": 128
+  },
+  {
+    "name": "gorm/migrator",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/soft_delete.go",
+    "parent": "gorm",
+    "value": 170
+  },
+  {
+    "name": "gorm/statement_test.go",
+    "parent": "gorm",
+    "value": 70
+  },
+  {
+    "name": "gorm/logger",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/LICENSE",
+    "parent": "gorm",
+    "value": 21
+  },
+  {
+    "name": "gorm/interfaces.go",
+    "parent": "gorm",
+    "value": 92
+  },
+  {
+    "name": "gorm/chainable_api.go",
+    "parent": "gorm",
+    "value": 471
+  },
+  {
+    "name": "gorm/callbacks",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/tests",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/internal",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/statement.go",
+    "parent": "gorm",
+    "value": 772
+  },
+  {
+    "name": "gorm/utils",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/.golangci.yml",
+    "parent": "gorm",
+    "value": 19
+  },
+  {
+    "name": "gorm/scan.go",
+    "parent": "gorm",
+    "value": 369
+  },
+  {
+    "name": "gorm/README.md",
+    "parent": "gorm",
+    "value": 44
+  },
+  {
+    "name": "gorm/schema",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/finisher_api.go",
+    "parent": "gorm",
+    "value": 780
+  },
+  {
+    "name": "gorm/callbacks.go",
+    "parent": "gorm",
+    "value": 366
+  },
+  {
+    "name": "gorm/.gitignore",
+    "parent": "gorm",
+    "value": 7
+  },
+  {
+    "name": "gorm/prepare_stmt.go",
+    "parent": "gorm",
+    "value": 206
+  },
+  {
+    "name": "gorm/.github",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/association.go",
+    "parent": "gorm",
+    "value": 665
+  },
+  {
+    "name": "gorm/model.go",
+    "parent": "gorm",
+    "value": 16
+  },
+  {
+    "name": "gorm/generics.go",
+    "parent": "gorm",
+    "value": 908
+  },
+  {
+    "name": "gorm/clause",
+    "parent": "gorm",
+    "value": 0
+  },
+  {
+    "name": "gorm/migrator.go",
+    "parent": "gorm",
+    "value": 111
+  },
+  {
+    "name": "gorm/gorm.go",
+    "parent": "gorm",
+    "value": 545
+  },
+  {
+    "name": "gorm/errors.go",
+    "parent": "gorm",
+    "value": 54
+  },
+  {
+    "name": "gorm/migrator/table_type.go",
+    "parent": "gorm/migrator",
+    "value": 33
+  },
+  {
+    "name": "gorm/migrator/index.go",
+    "parent": "gorm/migrator",
+    "value": 43
+  },
+  {
+    "name": "gorm/migrator/column_type.go",
+    "parent": "gorm/migrator",
+    "value": 107
+  },
+  {
+    "name": "gorm/migrator/migrator.go",
+    "parent": "gorm/migrator",
+    "value": 1038
+  },
+  {
+    "name": "gorm/logger/slog.go",
+    "parent": "gorm/logger",
+    "value": 116
+  },
+  {
+    "name": "gorm/logger/logger.go",
+    "parent": "gorm/logger",
+    "value": 225
+  },
+  {
+    "name": "gorm/logger/sql_test.go",
+    "parent": "gorm/logger",
+    "value": 133
+  },
+  {
+    "name": "gorm/logger/slog_test.go",
+    "parent": "gorm/logger",
+    "value": 30
+  },
+  {
+    "name": "gorm/logger/sql.go",
+    "parent": "gorm/logger",
+    "value": 181
+  },
+  {
+    "name": "gorm/callbacks/raw.go",
+    "parent": "gorm/callbacks",
+    "value": 22
+  },
+  {
+    "name": "gorm/callbacks/query.go",
+    "parent": "gorm/callbacks",
+    "value": 314
+  },
+  {
+    "name": "gorm/callbacks/create.go",
+    "parent": "gorm/callbacks",
+    "value": 415
+  },
+  {
+    "name": "gorm/callbacks/helper_test.go",
+    "parent": "gorm/callbacks",
+    "value": 157
+  },
+  {
+    "name": "gorm/callbacks/interfaces.go",
+    "parent": "gorm/callbacks",
+    "value": 39
+  },
+  {
+    "name": "gorm/callbacks/update.go",
+    "parent": "gorm/callbacks",
+    "value": 313
+  },
+  {
+    "name": "gorm/callbacks/delete.go",
+    "parent": "gorm/callbacks",
+    "value": 195
+  },
+  {
+    "name": "gorm/callbacks/create_test.go",
+    "parent": "gorm/callbacks",
+    "value": 71
+  },
+  {
+    "name": "gorm/callbacks/associations.go",
+    "parent": "gorm/callbacks",
+    "value": 453
+  },
+  {
+    "name": "gorm/callbacks/callmethod.go",
+    "parent": "gorm/callbacks",
+    "value": 32
+  },
+  {
+    "name": "gorm/callbacks/preload.go",
+    "parent": "gorm/callbacks",
+    "value": 351
+  },
+  {
+    "name": "gorm/callbacks/transaction.go",
+    "parent": "gorm/callbacks",
+    "value": 32
+  },
+  {
+    "name": "gorm/callbacks/helper.go",
+    "parent": "gorm/callbacks",
+    "value": 152
+  },
+  {
+    "name": "gorm/callbacks/callbacks.go",
+    "parent": "gorm/callbacks",
+    "value": 83
+  },
+  {
+    "name": "gorm/callbacks/row.go",
+    "parent": "gorm/callbacks",
+    "value": 23
+  },
+  {
+    "name": "gorm/tests/table_test.go",
+    "parent": "gorm/tests",
+    "value": 338
+  },
+  {
+    "name": "gorm/tests/prepared_stmt_test.go",
+    "parent": "gorm/tests",
+    "value": 289
+  },
+  {
+    "name": "gorm/tests/migrate_test.go",
+    "parent": "gorm/tests",
+    "value": 2164
+  },
+  {
+    "name": "gorm/tests/query_test.go",
+    "parent": "gorm/tests",
+    "value": 1474
+  },
+  {
+    "name": "gorm/tests/helper_test.go",
+    "parent": "gorm/tests",
+    "value": 294
+  },
+  {
+    "name": "gorm/tests/associations_belongs_to_test.go",
+    "parent": "gorm/tests",
+    "value": 306
+  },
+  {
+    "name": "gorm/tests/upsert_test.go",
+    "parent": "gorm/tests",
+    "value": 375
+  },
+  {
+    "name": "gorm/tests/non_std_test.go",
+    "parent": "gorm/tests",
+    "value": 61
+  },
+  {
+    "name": "gorm/tests/generics_test.go",
+    "parent": "gorm/tests",
+    "value": 1119
+  },
+  {
+    "name": "gorm/tests/sql_builder_test.go",
+    "parent": "gorm/tests",
+    "value": 499
+  },
+  {
+    "name": "gorm/tests/serializer_test.go",
+    "parent": "gorm/tests",
+    "value": 285
+  },
+  {
+    "name": "gorm/tests/distinct_test.go",
+    "parent": "gorm/tests",
+    "value": 74
+  },
+  {
+    "name": "gorm/tests/update_has_one_test.go",
+    "parent": "gorm/tests",
+    "value": 137
+  },
+  {
+    "name": "gorm/tests/tests_test.go",
+    "parent": "gorm/tests",
+    "value": 144
+  },
+  {
+    "name": "gorm/tests/default_value_test.go",
+    "parent": "gorm/tests",
+    "value": 59
+  },
+  {
+    "name": "gorm/tests/submodel_test.go",
+    "parent": "gorm/tests",
+    "value": 46
+  },
+  {
+    "name": "gorm/tests/transaction_test.go",
+    "parent": "gorm/tests",
+    "value": 492
+  },
+  {
+    "name": "gorm/tests/create_test.go",
+    "parent": "gorm/tests",
+    "value": 810
+  },
+  {
+    "name": "gorm/tests/lru_test.go",
+    "parent": "gorm/tests",
+    "value": 530
+  },
+  {
+    "name": "gorm/tests/association_generics_test.go",
+    "parent": "gorm/tests",
+    "value": 1042
+  },
+  {
+    "name": "gorm/tests/tracer_test.go",
+    "parent": "gorm/tests",
+    "value": 34
+  },
+  {
+    "name": "gorm/tests/scopes_test.go",
+    "parent": "gorm/tests",
+    "value": 129
+  },
+  {
+    "name": "gorm/tests/preload_test.go",
+    "parent": "gorm/tests",
+    "value": 630
+  },
+  {
+    "name": "gorm/tests/callbacks_test.go",
+    "parent": "gorm/tests",
+    "value": 254
+  },
+  {
+    "name": "gorm/tests/associations_many2many_test.go",
+    "parent": "gorm/tests",
+    "value": 425
+  },
+  {
+    "name": "gorm/tests/tests_all.sh",
+    "parent": "gorm/tests",
+    "value": 62
+  },
+  {
+    "name": "gorm/tests/multi_primary_keys_test.go",
+    "parent": "gorm/tests",
+    "value": 455
+  },
+  {
+    "name": "gorm/tests/connection_test.go",
+    "parent": "gorm/tests",
+    "value": 45
+  },
+  {
+    "name": "gorm/tests/README.md",
+    "parent": "gorm/tests",
+    "value": 10
+  },
+  {
+    "name": "gorm/tests/update_test.go",
+    "parent": "gorm/tests",
+    "value": 933
+  },
+  {
+    "name": "gorm/tests/named_argument_test.go",
+    "parent": "gorm/tests",
+    "value": 82
+  },
+  {
+    "name": "gorm/tests/error_translator_test.go",
+    "parent": "gorm/tests",
+    "value": 111
+  },
+  {
+    "name": "gorm/tests/soft_delete_test.go",
+    "parent": "gorm/tests",
+    "value": 169
+  },
+  {
+    "name": "gorm/tests/joins_test.go",
+    "parent": "gorm/tests",
+    "value": 478
+  },
+  {
+    "name": "gorm/tests/.gitignore",
+    "parent": "gorm/tests",
+    "value": 1
+  },
+  {
+    "name": "gorm/tests/preload_suits_test.go",
+    "parent": "gorm/tests",
+    "value": 1515
+  },
+  {
+    "name": "gorm/tests/update_many2many_test.go",
+    "parent": "gorm/tests",
+    "value": 54
+  },
+  {
+    "name": "gorm/tests/count_test.go",
+    "parent": "gorm/tests",
+    "value": 190
+  },
+  {
+    "name": "gorm/tests/hooks_test.go",
+    "parent": "gorm/tests",
+    "value": 611
+  },
+  {
+    "name": "gorm/tests/update_has_many_test.go",
+    "parent": "gorm/tests",
+    "value": 82
+  },
+  {
+    "name": "gorm/tests/group_by_test.go",
+    "parent": "gorm/tests",
+    "value": 109
+  },
+  {
+    "name": "gorm/tests/postgres_test.go",
+    "parent": "gorm/tests",
+    "value": 256
+  },
+  {
+    "name": "gorm/tests/connpool_test.go",
+    "parent": "gorm/tests",
+    "value": 174
+  },
+  {
+    "name": "gorm/tests/scanner_valuer_test.go",
+    "parent": "gorm/tests",
+    "value": 393
+  },
+  {
+    "name": "gorm/tests/embedded_struct_test.go",
+    "parent": "gorm/tests",
+    "value": 284
+  },
+  {
+    "name": "gorm/tests/benchmark_test.go",
+    "parent": "gorm/tests",
+    "value": 84
+  },
+  {
+    "name": "gorm/tests/associations_has_one_test.go",
+    "parent": "gorm/tests",
+    "value": 269
+  },
+  {
+    "name": "gorm/tests/named_polymorphic_test.go",
+    "parent": "gorm/tests",
+    "value": 147
+  },
+  {
+    "name": "gorm/tests/delete_test.go",
+    "parent": "gorm/tests",
+    "value": 258
+  },
+  {
+    "name": "gorm/tests/associations_has_many_test.go",
+    "parent": "gorm/tests",
+    "value": 574
+  },
+  {
+    "name": "gorm/tests/scan_test.go",
+    "parent": "gorm/tests",
+    "value": 341
+  },
+  {
+    "name": "gorm/tests/gaussdb_test.go",
+    "parent": "gorm/tests",
+    "value": 248
+  },
+  {
+    "name": "gorm/tests/joins_table_test.go",
+    "parent": "gorm/tests",
+    "value": 116
+  },
+  {
+    "name": "gorm/tests/associations_test.go",
+    "parent": "gorm/tests",
+    "value": 465
+  },
+  {
+    "name": "gorm/tests/compose.yml",
+    "parent": "gorm/tests",
+    "value": 66
+  },
+  {
+    "name": "gorm/tests/gorm_test.go",
+    "parent": "gorm/tests",
+    "value": 103
+  },
+  {
+    "name": "gorm/tests/customize_field_test.go",
+    "parent": "gorm/tests",
+    "value": 192
+  },
+  {
+    "name": "gorm/tests/update_belongs_to_test.go",
+    "parent": "gorm/tests",
+    "value": 59
+  },
+  {
+    "name": "gorm/tests/main_test.go",
+    "parent": "gorm/tests",
+    "value": 53
+  },
+  {
+    "name": "gorm/internal/lru",
+    "parent": "gorm/internal",
+    "value": 0
+  },
+  {
+    "name": "gorm/internal/stmt_store",
+    "parent": "gorm/internal",
+    "value": 0
+  },
+  {
+    "name": "gorm/utils/utils_test.go",
+    "parent": "gorm/utils",
+    "value": 201
+  },
+  {
+    "name": "gorm/utils/utils_windows_test.go",
+    "parent": "gorm/utils",
+    "value": 35
+  },
+  {
+    "name": "gorm/utils/tests",
+    "parent": "gorm/utils",
+    "value": 0
+  },
+  {
+    "name": "gorm/utils/utils.go",
+    "parent": "gorm/utils",
+    "value": 193
+  },
+  {
+    "name": "gorm/utils/utils_unix_test.go",
+    "parent": "gorm/utils",
+    "value": 38
+  },
+  {
+    "name": "gorm/schema/relationship.go",
+    "parent": "gorm/schema",
+    "value": 783
+  },
+  {
+    "name": "gorm/schema/schema_helper_test.go",
+    "parent": "gorm/schema",
+    "value": 242
+  },
+  {
+    "name": "gorm/schema/index.go",
+    "parent": "gorm/schema",
+    "value": 167
+  },
+  {
+    "name": "gorm/schema/relationship_test.go",
+    "parent": "gorm/schema",
+    "value": 1043
+  },
+  {
+    "name": "gorm/schema/utils_test.go",
+    "parent": "gorm/schema",
+    "value": 32
+  },
+  {
+    "name": "gorm/schema/schema_test.go",
+    "parent": "gorm/schema",
+    "value": 352
+  },
+  {
+    "name": "gorm/schema/model_test.go",
+    "parent": "gorm/schema",
+    "value": 64
+  },
+  {
+    "name": "gorm/schema/serializer_test.go",
+    "parent": "gorm/schema",
+    "value": 213
+  },
+  {
+    "name": "gorm/schema/interfaces.go",
+    "parent": "gorm/schema",
+    "value": 42
+  },
+  {
+    "name": "gorm/schema/field.go",
+    "parent": "gorm/schema",
+    "value": 1011
+  },
+  {
+    "name": "gorm/schema/index_test.go",
+    "parent": "gorm/schema",
+    "value": 275
+  },
+  {
+    "name": "gorm/schema/constraint.go",
+    "parent": "gorm/schema",
+    "value": 66
+  },
+  {
+    "name": "gorm/schema/naming_test.go",
+    "parent": "gorm/schema",
+    "value": 219
+  },
+  {
+    "name": "gorm/schema/callbacks_test.go",
+    "parent": "gorm/schema",
+    "value": 39
+  },
+  {
+    "name": "gorm/schema/naming.go",
+    "parent": "gorm/schema",
+    "value": 196
+  },
+  {
+    "name": "gorm/schema/serializer.go",
+    "parent": "gorm/schema",
+    "value": 189
+  },
+  {
+    "name": "gorm/schema/utils.go",
+    "parent": "gorm/schema",
+    "value": 222
+  },
+  {
+    "name": "gorm/schema/schema.go",
+    "parent": "gorm/schema",
+    "value": 413
+  },
+  {
+    "name": "gorm/schema/constraint_test.go",
+    "parent": "gorm/schema",
+    "value": 84
+  },
+  {
+    "name": "gorm/schema/pool.go",
+    "parent": "gorm/schema",
+    "value": 19
+  },
+  {
+    "name": "gorm/schema/field_test.go",
+    "parent": "gorm/schema",
+    "value": 334
+  },
+  {
+    "name": "gorm/.github/FUNDING.yml",
+    "parent": "gorm/.github",
+    "value": 5
+  },
+  {
+    "name": "gorm/.github/labels.json",
+    "parent": "gorm/.github",
+    "value": 166
+  },
+  {
+    "name": "gorm/.github/workflows",
+    "parent": "gorm/.github",
+    "value": 0
+  },
+  {
+    "name": "gorm/.github/release-drafter.yml",
+    "parent": "gorm/.github",
+    "value": 20
+  },
+  {
+    "name": "gorm/.github/dependabot.yml",
+    "parent": "gorm/.github",
+    "value": 15
+  },
+  {
+    "name": "gorm/clause/select_test.go",
+    "parent": "gorm/clause",
+    "value": 72
+  },
+  {
+    "name": "gorm/clause/values.go",
+    "parent": "gorm/clause",
+    "value": 45
+  },
+  {
+    "name": "gorm/clause/with.go",
+    "parent": "gorm/clause",
+    "value": 3
+  },
+  {
+    "name": "gorm/clause/from_test.go",
+    "parent": "gorm/clause",
+    "value": 75
+  },
+  {
+    "name": "gorm/clause/on_conflict.go",
+    "parent": "gorm/clause",
+    "value": 59
+  },
+  {
+    "name": "gorm/clause/update.go",
+    "parent": "gorm/clause",
+    "value": 38
+  },
+  {
+    "name": "gorm/clause/delete.go",
+    "parent": "gorm/clause",
+    "value": 23
+  },
+  {
+    "name": "gorm/clause/limit.go",
+    "parent": "gorm/clause",
+    "value": 46
+  },
+  {
+    "name": "gorm/clause/locking_test.go",
+    "parent": "gorm/clause",
+    "value": 39
+  },
+  {
+    "name": "gorm/clause/returning_test.go",
+    "parent": "gorm/clause",
+    "value": 52
+  },
+  {
+    "name": "gorm/clause/group_by.go",
+    "parent": "gorm/clause",
+    "value": 48
+  },
+  {
+    "name": "gorm/clause/limit_test.go",
+    "parent": "gorm/clause",
+    "value": 80
+  },
+  {
+    "name": "gorm/clause/clause_test.go",
+    "parent": "gorm/clause",
+    "value": 43
+  },
+  {
+    "name": "gorm/clause/where.go",
+    "parent": "gorm/clause",
+    "value": 245
+  },
+  {
+    "name": "gorm/clause/joins.go",
+    "parent": "gorm/clause",
+    "value": 79
+  },
+  {
+    "name": "gorm/clause/values_test.go",
+    "parent": "gorm/clause",
+    "value": 34
+  },
+  {
+    "name": "gorm/clause/clause.go",
+    "parent": "gorm/clause",
+    "value": 89
+  },
+  {
+    "name": "gorm/clause/insert_test.go",
+    "parent": "gorm/clause",
+    "value": 35
+  },
+  {
+    "name": "gorm/clause/set_test.go",
+    "parent": "gorm/clause",
+    "value": 65
+  },
+  {
+    "name": "gorm/clause/update_test.go",
+    "parent": "gorm/clause",
+    "value": 35
+  },
+  {
+    "name": "gorm/clause/insert.go",
+    "parent": "gorm/clause",
+    "value": 39
+  },
+  {
+    "name": "gorm/clause/joins_test.go",
+    "parent": "gorm/clause",
+    "value": 101
+  },
+  {
+    "name": "gorm/clause/locking.go",
+    "parent": "gorm/clause",
+    "value": 38
+  },
+  {
+    "name": "gorm/clause/order_by.go",
+    "parent": "gorm/clause",
+    "value": 54
+  },
+  {
+    "name": "gorm/clause/where_test.go",
+    "parent": "gorm/clause",
+    "value": 139
+  },
+  {
+    "name": "gorm/clause/association.go",
+    "parent": "gorm/clause",
+    "value": 35
+  },
+  {
+    "name": "gorm/clause/group_by_test.go",
+    "parent": "gorm/clause",
+    "value": 42
+  },
+  {
+    "name": "gorm/clause/delete_test.go",
+    "parent": "gorm/clause",
+    "value": 31
+  },
+  {
+    "name": "gorm/clause/expression.go",
+    "parent": "gorm/clause",
+    "value": 378
+  },
+  {
+    "name": "gorm/clause/set.go",
+    "parent": "gorm/clause",
+    "value": 71
+  },
+  {
+    "name": "gorm/clause/benchmarks_test.go",
+    "parent": "gorm/clause",
+    "value": 58
+  },
+  {
+    "name": "gorm/clause/order_by_test.go",
+    "parent": "gorm/clause",
+    "value": 58
+  },
+  {
+    "name": "gorm/clause/select.go",
+    "parent": "gorm/clause",
+    "value": 59
+  },
+  {
+    "name": "gorm/clause/expression_test.go",
+    "parent": "gorm/clause",
+    "value": 247
+  },
+  {
+    "name": "gorm/clause/from.go",
+    "parent": "gorm/clause",
+    "value": 37
+  },
+  {
+    "name": "gorm/clause/returning.go",
+    "parent": "gorm/clause",
+    "value": 37
+  },
+  {
+    "name": "gorm/.github/workflows/missing_playground.yml",
+    "parent": "gorm/.github/workflows",
+    "value": 27
+  },
+  {
+    "name": "gorm/.github/workflows/labeler.yml",
+    "parent": "gorm/.github/workflows",
+    "value": 19
+  },
+  {
+    "name": "gorm/.github/workflows/invalid_question.yml",
+    "parent": "gorm/.github/workflows",
+    "value": 28
+  },
+  {
+    "name": "gorm/.github/workflows/stale.yml",
+    "parent": "gorm/.github/workflows",
+    "value": 28
+  },
+  {
+    "name": "gorm/.github/workflows/create-release.yml",
+    "parent": "gorm/.github/workflows",
+    "value": 31
+  },
+  {
+    "name": "gorm/.github/workflows/tests.yml",
+    "parent": "gorm/.github/workflows",
+    "value": 310
+  },
+  {
+    "name": "gorm/.github/workflows/golangci-lint.yml",
+    "parent": "gorm/.github/workflows",
+    "value": 26
+  },
+  {
+    "name": "gorm/utils/tests/models.go",
+    "parent": "gorm/utils/tests",
+    "value": 104
+  },
+  {
+    "name": "gorm/utils/tests/dummy_dialecter.go",
+    "parent": "gorm/utils/tests",
+    "value": 100
+  },
+  {
+    "name": "gorm/utils/tests/utils.go",
+    "parent": "gorm/utils/tests",
+    "value": 128
+  },
+  {
+    "name": "gorm/internal/lru/lru.go",
+    "parent": "gorm/internal/lru",
+    "value": 493
+  },
+  {
+    "name": "gorm/internal/stmt_store/stmt_store.go",
+    "parent": "gorm/internal/stmt_store",
+    "value": 183
+  }
+]

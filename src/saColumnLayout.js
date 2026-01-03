@@ -880,8 +880,8 @@ function createDummyLinks(dummyNode, xMargin, yMargin, innerYMargin) {
 }
 
 export function layout(data, width, height) {
-  const xMargin = 400;
-  const yMargin = 400;
+  const xMargin = 40;
+  const yMargin = 40;
   // ★ 追加: 内部マージンを半分に設定
   const innerYMargin = yMargin / 2;
 

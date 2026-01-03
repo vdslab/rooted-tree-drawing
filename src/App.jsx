@@ -1,39 +1,85 @@
 import Tree from "./Tree";
+import TreemapView from "./TreemapView";
+import IcicleView from "./IcicleView";
 import { useState } from "react";
-import flareData from "../flareData.json";
-// // import linux from "../linux_kernel_tree_size.json";
-// import re from "../react_tree.json";
-// // import toaruos from "../toaruos_tree.json";
-// import lua from "../lua_tree.json";
-// import xv6 from "../xv6-riscv_tree.json";
+import d3Data from "../d3_tree.json";
+import d3DataLog from "../d3_tree_log.json";
+import gormData from "../gorm_nodelink.json";
+import gormTreemapData from "../gorm_treemap.json";
+
 export default function App() {
-  // シンプルなテストデータ
-  const testData = [
-    { name: "Root", parent: "", width: 500, height: 100 },
-    { name: "A", parent: "Root", width: 500, height: 100 },
-    // Aの子（6つの葉 - 複数列になる可能性が高い）
-    { name: "A1", parent: "A", width: 300, height: 200 },
-    { name: "A2", parent: "A", width: 300, height: 250 },
-    { name: "A3", parent: "A", width: 300, height: 180 },
-    { name: "A4", parent: "A", width: 300, height: 220 },
-    { name: "A5", parent: "A", width: 300, height: 190 },
-    { name: "A6", parent: "A", width: 300, height: 210 },
-  ];
-
-  // const linuxData = xv6.map((item) => ({
-  //   ...item,
-  //   width: item.value === 1 ? 100 : item.value,
-  //   height: 100,
-  // }));
-
   const [width, setWidth] = useState(1000);
   const [height, setHeight] = useState(1000);
+  const [viewType, setViewType] = useState("treemap");
 
+  const renderView = () => {
+    switch (viewType) {
+      case "tree":
+        // const treeData = d3Data.map((item) => ({
+        //   ...item,
+        //   width: item.height,
+        //   height: item.width,
+        // }));
+        return <Tree data={gormData} width={width} height={height} />;
+      case "treemap":
+        return (
+          <TreemapView data={gormTreemapData} width={width} height={height} />
+        );
+      case "icicle":
+        return (
+          <IcicleView data={gormTreemapData} width={width} height={height} />
+        );
+      default:
+        return <Tree data={gormData} width={width} height={height} />;
+    }
+  };
   return (
     <>
       <section className="section">
         <div className="container">
-          <h1 className="title">Rooted Tree Drawing</h1>
+          <h1 className="title">
+            D3 Tree Visualization ({gormTreemapData.length} nodes)
+          </h1>
+
+          <div style={{ marginBottom: "20px" }}>
+            <label style={{ marginRight: "10px" }}>View Type:</label>
+            <button
+              onClick={() => setViewType("treemap")}
+              style={{
+                backgroundColor: viewType === "treemap" ? "#00bfff" : "#ddd",
+                padding: "5px 10px",
+                marginRight: "5px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Treemap
+            </button>
+            <button
+              onClick={() => setViewType("icicle")}
+              style={{
+                backgroundColor: viewType === "icicle" ? "#00bfff" : "#ddd",
+                padding: "5px 10px",
+                marginRight: "5px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Icicle Tree
+            </button>
+            <button
+              onClick={() => setViewType("tree")}
+              style={{
+                backgroundColor: viewType === "tree" ? "#00bfff" : "#ddd",
+                padding: "5px 10px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Node-Link Tree
+            </button>
+          </div>
+
           <form
             className="input"
             onSubmit={(e) => {
@@ -81,7 +127,7 @@ export default function App() {
               className="figure"
               style={{ margin: 0, width: "100%", height: "100%" }}
             >
-              <Tree data={flareData} width={width} height={height} />
+              {renderView()}
             </figure>
           </div>
         </div>
