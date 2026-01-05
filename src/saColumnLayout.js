@@ -7,12 +7,12 @@ import * as d3 from "d3";
  */
 export function saColumn(leaves, colNum) {
   // --- 1. パラメータ設定 ---
-  //100万回以内
+  //1万回以内
   const options = {
-    initialTemp: 443.64638595470666,       // 最適化された値
-    finalTemp: 0.10305869402445039,          // 最適化された値
-    coolingRate: 0.9923474667651442,        // 最適化された値
-    iterationsPerTemp: 782      // 最適化された値
+    initialTemp: 916.5693407083919,
+    finalTemp: 8.823760112359201,
+    coolingRate: 0.9533798833054334,
+    iterationsPerTemp: 102
   };
 
   // --- 2. 初期化 ---
@@ -389,12 +389,13 @@ function leftCountur(root, leftMostNode) {
 }
 
 //ダミーノードを含んだ根付き木で、それぞれのノードサイズを余白付きに変更
-function addMargin(root, xMargin, yMargin) {
+function addMargin(root, xMargin, yMargin, innerYMargin) {
   if (root.data?.leaves) {
     root.data = {
-      ...root.data, ...setDummyNodeSize(root.data.leaves, xMargin, yMargin)
+      ...root.data, ...setDummyNodeSize(root.data.leaves, xMargin, yMargin, innerYMargin)
     };
-  } else {
+  } else if (!root.data.isInner) {
+    // isInner でないノードにのみマージンを追加（isInner は createDammuy で既にマージン追加済み）
     root.data.width = root.data.width + xMargin;
     root.data.height = root.data.height + yMargin * 2;
   }
@@ -403,16 +404,16 @@ function addMargin(root, xMargin, yMargin) {
   root.data.y = root.data.height / 2;
   if (root?.children) {
     for (const child of root.children) {
-      addMargin(child, xMargin, yMargin);
+      addMargin(child, xMargin, yMargin, innerYMargin);
     }
   }
 }
 
 //ダミーノードの余白を計算し設定
-function setDummyMargin(root, xMargin, yMargin) {
+function setDummyMargin(root, xMargin, yMargin, innerYMargin) {
   if (root.data?.leaves) {
     root.data = {
-      ...root.data, ...setDummyNodeSize(root.data.leaves, xMargin, yMargin)
+      ...root.data, ...setDummyNodeSize(root.data.leaves, xMargin, yMargin, innerYMargin)
     };
   }
   // 初期座標を更新（layout.js の setDummyMargin と同様）
@@ -420,7 +421,7 @@ function setDummyMargin(root, xMargin, yMargin) {
   root.data.y = root.data.height / 2;
   if (root?.children) {
     for (const child of root.children) {
-      setDummyMargin(child, xMargin, yMargin);
+      setDummyMargin(child, xMargin, yMargin, innerYMargin);
     }
   }
 }
@@ -439,22 +440,22 @@ function calcDummyDataWidth(leaves, xMargin) {
 }
 
 // 列管理版：ダミーノードの高さを計算（最大列高さ）
-function calcDummyNodeHeight(leaves, yMargin) {
+function calcDummyNodeHeight(leaves, yMargin, innerYMargin) {
   let maxHeight = 0;
   for (const colLeaves of leaves) {
     // 各列の高さ合計（内部ノードはすでに innerYMargin 込みの高さを持っている）
     const colHeight = colLeaves.reduce((sum, node) => sum + (node.height || 0), 0);
     maxHeight = Math.max(maxHeight, colHeight);
   }
-  // 外枠のマージンは yMargin を使用
-  return maxHeight + yMargin * 2;
+  // 外枠のマージンは yMargin を使用し、上部に innerYMargin 分のスペースを追加
+  return maxHeight + yMargin * 2 + innerYMargin;
 }
 
 //ダミーノードの横・縦幅を設定
-function setDummyNodeSize(leaves, xMargin, yMargin) {
+function setDummyNodeSize(leaves, xMargin, yMargin, innerYMargin) {
   return {
     width: calcDummyDataWidth(leaves, xMargin),
-    height: calcDummyNodeHeight(leaves, yMargin)
+    height: calcDummyNodeHeight(leaves, yMargin, innerYMargin)
   };
 }
 
@@ -567,7 +568,7 @@ function calculateColumnsToAdd(currentAspect, targetAspect, currentColumns, maxC
 }
 
 // 列管理版：アスペクト比が最適になるまで列数を増やす関数
-function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
+function localFoldingLayout(root, at, xMargin, yMargin, innerYMargin, stratify) {
   let a = calcAspectRatio(root);
 
 
@@ -594,7 +595,7 @@ function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
       // console.log(`  SA result: maxHeight = ${saResult.maxHeight}, partitions = ${saResult.bestPartition.length}`);
     }
 
-    setDummyMargin(root, xMargin, yMargin);
+    setDummyMargin(root, xMargin, yMargin, innerYMargin);
     root = stratify(vanderploeg(root, stratify));
     a = calcAspectRatio(root);
     // console.log(`  New aspect ratio: ${a}`);
@@ -610,8 +611,11 @@ function undoDummyNode(root, xMargin, yMargin, innerYMargin) {
     if (data?.leaves) {
       const leaves = [];
       const { x, y, height, width } = data;
-      // top座標の計算：ダミーノードの外枠（yMargin）を使用
-      const top = y - height / 2 + yMargin;
+      // ダミーノードの表示上端を計算
+      const displayHeight = height - yMargin * 2;
+      const dummyTop = y - displayHeight / 2;
+      // 葉の配置開始位置：ダミーノード上端から innerYMargin * 2 分下
+      const top = dummyTop + innerYMargin * 2;
       const left = x - width / 2 + xMargin / 2;
 
       if (data?.columns === data?.leavesNum) {
@@ -748,23 +752,16 @@ function createDummyLinks(dummyNode, xMargin, yMargin, innerYMargin) {
     const data = dummyNode.data;
     const { leaves, x, y, height, width } = dummyNode.data;
 
-    // ダミーノードの表示サイズ（マージン抜き）
+    // ダミーノードの表示サイズ（外枠マージン yMargin * 2 を引く）
     const displayHeight = height - yMargin * 2;
     const dummyTop = y - displayHeight / 2; // ダミーノードの上端（親からの接続点）
-    const leafStartY = y - height / 2 + yMargin; // 葉の配置開始位置（内部座標系）
+
+    // 葉の配置開始位置：ダミーノード上端から innerYMargin * 2 分下
+    const leafStartY = dummyTop + innerYMargin * 2;
     const left = x - width / 2 + xMargin / 2;
 
-    // 最初の葉ノードの表示上の上端を計算
-    // ★ 変更: innerYMargin を使用
-    const firstLeafHeight = leaves[0][0].height;
-    const firstLeafDisplayHeight = firstLeafHeight - innerYMargin * 2;
-    const firstLeafTop = leafStartY + firstLeafHeight / 2 - firstLeafDisplayHeight / 2;
-
-    // 水平線の位置: 最初の葉の上端から yMargin 分上に配置
-    const horizonY = firstLeafTop - innerYMargin;
-
-    // 親からの接続点から水平線への縦線
-    links.push(createPath(`${dummyNode.id}FromParent`, x, x, dummyTop, horizonY));
+    // 水平線の位置: ダミーノードの上端（親からの接続点と同じ）
+    const horizonY = dummyTop;
 
     // 各列の最大幅を計算（マージン込み）
     const colMaxWidths = leaves.map(col =>
@@ -894,7 +891,7 @@ export function layout(data, width, height) {
   const dummyData = createDammuy(root, xMargin, yMargin, innerYMargin);
   const initializedDummyData = initDammyData(dummyData);
   root = stratify(initializedDummyData);
-  addMargin(root, xMargin, yMargin);
+  addMargin(root, xMargin, yMargin, innerYMargin);
 
   console.log("=== After addMargin ===");
   root.descendants().forEach(node => {
@@ -904,7 +901,7 @@ export function layout(data, width, height) {
   });
 
   root = stratify(vanderploeg(root, stratify));
-  root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
+  root = localFoldingLayout(root, width / height, xMargin, yMargin, innerYMargin, stratify);
 
   console.log("=== After localFoldingLayout ===");
   root.descendants().forEach(node => {
