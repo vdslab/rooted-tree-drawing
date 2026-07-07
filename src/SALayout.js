@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { sa } from "./sa";
+import { sa } from "./sa.js";
 //葉群をダミーノードにする関数
 function createDammuy(root, xMargin, yMargin) {
   if (root.children) {

@@ -1,84 +1,41 @@
 import Tree from "./Tree";
-import TreemapView from "./TreemapView";
-import IcicleView from "./IcicleView";
-import { useState } from "react";
-import d3Data from "../d3_tree.json";
-import d3DataLog from "../d3_tree_log.json";
-import gormData from "../gorm_nodelink.json";
-import gormTreemapData from "../gorm_treemap.json";
+import { useState, useMemo } from "react";
+import toaruRaw from "../toaruos_tree.json";
 
 export default function App() {
   const [width, setWidth] = useState(1000);
-  const [height, setHeight] = useState(1000);
-  const [viewType, setViewType] = useState("treemap");
+  const [height, setHeight] = useState(750);
 
-  const renderView = () => {
-    switch (viewType) {
-      case "tree":
-        // const treeData = d3Data.map((item) => ({
-        //   ...item,
-        //   width: item.height,
-        //   height: item.width,
-        // }));
-        return <Tree data={gormData} width={width} height={height} />;
-      case "treemap":
-        return (
-          <TreemapView data={gormTreemapData} width={width} height={height} />
-        );
-      case "icicle":
-        return (
-          <IcicleView data={gormTreemapData} width={width} height={height} />
-        );
-      default:
-        return <Tree data={gormData} width={width} height={height} />;
-    }
-  };
+  // toaruos_tree.json をノードリンク用に変換
+  // フォルダ: 固定サイズ (width=1000, height=500)
+  // ファイル: value をそのまま height に使用（変換なし）
+  const data = useMemo(() => {
+    return toaruRaw.map((item) => {
+      if (item.type === "folder") {
+        return {
+          name: item.name,
+          parent: item.parent,
+          width: 1000,
+          height: 500,
+        };
+      } else {
+        return {
+          name: item.name,
+          parent: item.parent,
+          width: 1000,
+          height: Math.max(item.value || 0, 1),
+        };
+      }
+    });
+  }, []);
+
   return (
     <>
       <section className="section">
         <div className="container">
           <h1 className="title">
-            D3 Tree Visualization ({gormTreemapData.length} nodes)
+            Node-Link Tree ({data.length} nodes)
           </h1>
-
-          <div style={{ marginBottom: "20px" }}>
-            <label style={{ marginRight: "10px" }}>View Type:</label>
-            <button
-              onClick={() => setViewType("treemap")}
-              style={{
-                backgroundColor: viewType === "treemap" ? "#00bfff" : "#ddd",
-                padding: "5px 10px",
-                marginRight: "5px",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Treemap
-            </button>
-            <button
-              onClick={() => setViewType("icicle")}
-              style={{
-                backgroundColor: viewType === "icicle" ? "#00bfff" : "#ddd",
-                padding: "5px 10px",
-                marginRight: "5px",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Icicle Tree
-            </button>
-            <button
-              onClick={() => setViewType("tree")}
-              style={{
-                backgroundColor: viewType === "tree" ? "#00bfff" : "#ddd",
-                padding: "5px 10px",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Node-Link Tree
-            </button>
-          </div>
 
           <form
             className="input"
@@ -127,7 +84,7 @@ export default function App() {
               className="figure"
               style={{ margin: 0, width: "100%", height: "100%" }}
             >
-              {renderView()}
+              <Tree data={data} width={width} height={height} />
             </figure>
           </div>
         </div>

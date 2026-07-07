@@ -1,0 +1,5300 @@
+[
+  {
+    "name": "toaruos",
+    "parent": "",
+    "value": 19,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc",
+    "parent": "toaruos",
+    "value": 28,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/boot",
+    "parent": "toaruos",
+    "value": 24,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/LICENSE",
+    "parent": "toaruos",
+    "value": 1624,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util",
+    "parent": "toaruos",
+    "value": 24,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/linker",
+    "parent": "toaruos",
+    "value": 3,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/AUTHORS",
+    "parent": "toaruos",
+    "value": 398,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/Makefile",
+    "parent": "toaruos",
+    "value": 8087,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/.gitmodules",
+    "parent": "toaruos",
+    "value": 225,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/README.md",
+    "parent": "toaruos",
+    "value": 14997,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/.gitignore",
+    "parent": "toaruos",
+    "value": 434,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/.github",
+    "parent": "toaruos",
+    "value": 3,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/lib",
+    "parent": "toaruos",
+    "value": 34,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/build",
+    "parent": "toaruos",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/.mailmap",
+    "parent": "toaruos",
+    "value": 663,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules",
+    "parent": "toaruos",
+    "value": 16,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/apps",
+    "parent": "toaruos",
+    "value": 178,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kuroko",
+    "parent": "toaruos",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base",
+    "parent": "toaruos",
+    "value": 4,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel",
+    "parent": "toaruos",
+    "value": 9,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/ctype",
+    "parent": "toaruos/libc",
+    "value": 15,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/dlfcn",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/errno",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/utime",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/strings",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/libgen",
+    "parent": "toaruos/libc",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/locale",
+    "parent": "toaruos/libc",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/pwd",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/iconv",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/pty",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/dirent",
+    "parent": "toaruos/libc",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/sched",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/assert",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/unistd",
+    "parent": "toaruos/libc",
+    "value": 53,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/math",
+    "parent": "toaruos/libc",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/time",
+    "parent": "toaruos/libc",
+    "value": 9,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/pthread",
+    "parent": "toaruos/libc",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/sys",
+    "parent": "toaruos/libc",
+    "value": 9,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/stdio",
+    "parent": "toaruos/libc",
+    "value": 9,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/main.c",
+    "parent": "toaruos/libc",
+    "value": 2459,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar",
+    "parent": "toaruos/libc",
+    "value": 8,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/arch",
+    "parent": "toaruos/libc",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/stdlib",
+    "parent": "toaruos/libc",
+    "value": 18,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/libintl",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/string",
+    "parent": "toaruos/libc",
+    "value": 7,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/signal",
+    "parent": "toaruos/libc",
+    "value": 8,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/ioctl",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/poll",
+    "parent": "toaruos/libc",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/boot/editor.h",
+    "parent": "toaruos/boot",
+    "value": 59,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/util.c",
+    "parent": "toaruos/boot",
+    "value": 818,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/text.h",
+    "parent": "toaruos/boot",
+    "value": 440,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/menu.c",
+    "parent": "toaruos/boot",
+    "value": 3979,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/video.c",
+    "parent": "toaruos/boot",
+    "value": 6121,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/kbd.h",
+    "parent": "toaruos/boot",
+    "value": 254,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/iso9660.h",
+    "parent": "toaruos/boot",
+    "value": 2323,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/mbr.S",
+    "parent": "toaruos/boot",
+    "value": 1528,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/link.ld",
+    "parent": "toaruos/boot",
+    "value": 444,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/boot.S",
+    "parent": "toaruos/boot",
+    "value": 7972,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/qemu.c",
+    "parent": "toaruos/boot",
+    "value": 2272,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/platform.c",
+    "parent": "toaruos/boot",
+    "value": 5051,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/options.h",
+    "parent": "toaruos/boot",
+    "value": 1028,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/multiboot.h",
+    "parent": "toaruos/boot",
+    "value": 2400,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/elf.h",
+    "parent": "toaruos/boot",
+    "value": 3348,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/README.md",
+    "parent": "toaruos/boot",
+    "value": 1308,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/editor.c",
+    "parent": "toaruos/boot",
+    "value": 2498,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/menu.h",
+    "parent": "toaruos/boot",
+    "value": 58,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/config.c",
+    "parent": "toaruos/boot",
+    "value": 5194,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/util.h",
+    "parent": "toaruos/boot",
+    "value": 1505,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/text.c",
+    "parent": "toaruos/boot",
+    "value": 7002,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/kbd.c",
+    "parent": "toaruos/boot",
+    "value": 4095,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/multiboot.c",
+    "parent": "toaruos/boot",
+    "value": 17177,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/boot/qemu.h",
+    "parent": "toaruos/boot",
+    "value": 36,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/mkdisk.sh",
+    "parent": "toaruos/util",
+    "value": 1074,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/docker",
+    "parent": "toaruos/util",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/util/__init__.krk",
+    "parent": "toaruos/util",
+    "value": 13072,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/gen_wcwidth.krk",
+    "parent": "toaruos/util",
+    "value": 2116,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/libm.c",
+    "parent": "toaruos/util",
+    "value": 11,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/activate.sh",
+    "parent": "toaruos/util",
+    "value": 141,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/auto-dep.krk",
+    "parent": "toaruos/util",
+    "value": 9339,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/make_mbr.krk",
+    "parent": "toaruos/util",
+    "value": 236,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/gcc",
+    "parent": "toaruos/util",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/util/binutils-gdb",
+    "parent": "toaruos/util",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/util/make-version",
+    "parent": "toaruos/util",
+    "value": 158,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/generate-etc-issue.sh",
+    "parent": "toaruos/util",
+    "value": 230,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/build-in-docker-aarch64.sh",
+    "parent": "toaruos/util",
+    "value": 646,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/init.krk",
+    "parent": "toaruos/util",
+    "value": 479,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/update-extents.krk",
+    "parent": "toaruos/util",
+    "value": 1079,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/generate-release-notes.sh",
+    "parent": "toaruos/util",
+    "value": 2532,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/build-in-docker.sh",
+    "parent": "toaruos/util",
+    "value": 619,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/valid-modules.sh",
+    "parent": "toaruos/util",
+    "value": 203,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/createramdisk.py",
+    "parent": "toaruos/util",
+    "value": 2400,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/bochsrc.txt",
+    "parent": "toaruos/util",
+    "value": 2387,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/generate-etc-os-release.sh",
+    "parent": "toaruos/util",
+    "value": 553,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/gensym.krk",
+    "parent": "toaruos/util",
+    "value": 781,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/build-toolchain.sh",
+    "parent": "toaruos/util",
+    "value": 1075,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/arch.sh",
+    "parent": "toaruos/util",
+    "value": 148,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/linker/linker.c",
+    "parent": "toaruos/linker",
+    "value": 30951,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/linker/link.ld",
+    "parent": "toaruos/linker",
+    "value": 516,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/linker/README.md",
+    "parent": "toaruos/linker",
+    "value": 1092,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/.github/FUNDING.yml",
+    "parent": "toaruos/.github",
+    "value": 17,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/.github/workflows",
+    "parent": "toaruos/.github",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/.github/SECURITY.md",
+    "parent": "toaruos/.github",
+    "value": 2090,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/json.c",
+    "parent": "toaruos/lib",
+    "value": 9227,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/icon_cache.c",
+    "parent": "toaruos/lib",
+    "value": 2768,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/list.c",
+    "parent": "toaruos/lib",
+    "value": 5393,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/jpeg.c",
+    "parent": "toaruos/lib",
+    "value": 12434,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/rline.c",
+    "parent": "toaruos/lib",
+    "value": 63098,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/inflate.c",
+    "parent": "toaruos/lib",
+    "value": 13007,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/panel_weather.c",
+    "parent": "toaruos/lib",
+    "value": 6798,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/auth.c",
+    "parent": "toaruos/lib",
+    "value": 2880,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/menu.c",
+    "parent": "toaruos/lib",
+    "value": 29844,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/button.c",
+    "parent": "toaruos/lib",
+    "value": 2806,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/rline_exp.c",
+    "parent": "toaruos/lib",
+    "value": 708,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/graphics.c",
+    "parent": "toaruos/lib",
+    "value": 39879,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/panel_clock.c",
+    "parent": "toaruos/lib",
+    "value": 4117,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/panel_logout.c",
+    "parent": "toaruos/lib",
+    "value": 1456,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/decor-fancy.c",
+    "parent": "toaruos/lib",
+    "value": 11317,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/panel_network.c",
+    "parent": "toaruos/lib",
+    "value": 4951,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/README.md",
+    "parent": "toaruos/lib",
+    "value": 2091,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/decorations.c",
+    "parent": "toaruos/lib",
+    "value": 12768,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/text.c",
+    "parent": "toaruos/lib",
+    "value": 42290,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/panel_volume.c",
+    "parent": "toaruos/lib",
+    "value": 7524,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/confreader.c",
+    "parent": "toaruos/lib",
+    "value": 4162,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/markup_text.c",
+    "parent": "toaruos/lib",
+    "value": 9985,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/markup.c",
+    "parent": "toaruos/lib",
+    "value": 4688,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/kbd.c",
+    "parent": "toaruos/lib",
+    "value": 10763,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/pex.c",
+    "parent": "toaruos/lib",
+    "value": 1964,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/termemu.c",
+    "parent": "toaruos/lib",
+    "value": 16091,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/png.c",
+    "parent": "toaruos/lib",
+    "value": 15006,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/yutani.c",
+    "parent": "toaruos/lib",
+    "value": 33312,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/kuroko",
+    "parent": "toaruos/lib",
+    "value": 3,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/lib/panel_windowlist.c",
+    "parent": "toaruos/lib",
+    "value": 7325,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/hashmap.c",
+    "parent": "toaruos/lib",
+    "value": 4827,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/panel_appmenu.c",
+    "parent": "toaruos/lib",
+    "value": 1675,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/panel_date.c",
+    "parent": "toaruos/lib",
+    "value": 6492,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/tree.c",
+    "parent": "toaruos/lib",
+    "value": 5630,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/build/aarch64.mk",
+    "parent": "toaruos/build",
+    "value": 2893,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/build/x86_64.mk",
+    "parent": "toaruos/build",
+    "value": 4919,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/es1371.c",
+    "parent": "toaruos/modules",
+    "value": 9523,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/ac97.c",
+    "parent": "toaruos/modules",
+    "value": 11939,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/e1000.c",
+    "parent": "toaruos/modules",
+    "value": 17970,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/piix4.c",
+    "parent": "toaruos/modules",
+    "value": 2172,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/xhci.c",
+    "parent": "toaruos/modules",
+    "value": 14420,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/ahci.c",
+    "parent": "toaruos/modules",
+    "value": 4867,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/vmware.c",
+    "parent": "toaruos/modules",
+    "value": 11980,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/ext2.c",
+    "parent": "toaruos/modules",
+    "value": 49393,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/ata.c",
+    "parent": "toaruos/modules",
+    "value": 29215,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/i965.c",
+    "parent": "toaruos/modules",
+    "value": 4121,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/dospart.c",
+    "parent": "toaruos/modules",
+    "value": 3805,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/vbox.c",
+    "parent": "toaruos/modules",
+    "value": 13638,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/pcspkr.c",
+    "parent": "toaruos/modules",
+    "value": 1997,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/test.c",
+    "parent": "toaruos/modules",
+    "value": 1052,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/iso9660.c",
+    "parent": "toaruos/modules",
+    "value": 12269,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/modules/hda.c",
+    "parent": "toaruos/modules",
+    "value": 2611,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-sigsuspend.c",
+    "parent": "toaruos/apps",
+    "value": 674,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/qemu-display-hack.c",
+    "parent": "toaruos/apps",
+    "value": 1850,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/cp.c",
+    "parent": "toaruos/apps",
+    "value": 4192,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/toaru_logo.h",
+    "parent": "toaruos/apps",
+    "value": 5727,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/font-preview.c",
+    "parent": "toaruos/apps",
+    "value": 5335,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/irc.c",
+    "parent": "toaruos/apps",
+    "value": 11290,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/esh.c",
+    "parent": "toaruos/apps",
+    "value": 55009,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/imgviewer.c",
+    "parent": "toaruos/apps",
+    "value": 7225,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/panel.c",
+    "parent": "toaruos/apps",
+    "value": 26365,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/migrate.c",
+    "parent": "toaruos/apps",
+    "value": 5260,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/fgrep.c",
+    "parent": "toaruos/apps",
+    "value": 985,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/fetch.c",
+    "parent": "toaruos/apps",
+    "value": 10730,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-printf.c",
+    "parent": "toaruos/apps",
+    "value": 447,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/splash-log.c",
+    "parent": "toaruos/apps",
+    "value": 3716,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/gsudo.c",
+    "parent": "toaruos/apps",
+    "value": 7474,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/session.c",
+    "parent": "toaruos/apps",
+    "value": 1132,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/calculator.c",
+    "parent": "toaruos/apps",
+    "value": 13438,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/top.c",
+    "parent": "toaruos/apps",
+    "value": 19055,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/nslookup.c",
+    "parent": "toaruos/apps",
+    "value": 707,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/pidof.c",
+    "parent": "toaruos/apps",
+    "value": 2281,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/nyancat",
+    "parent": "toaruos/apps",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/apps/killall.c",
+    "parent": "toaruos/apps",
+    "value": 4571,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/live-session.c",
+    "parent": "toaruos/apps",
+    "value": 1384,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/strings.c",
+    "parent": "toaruos/apps",
+    "value": 1797,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-lock.c",
+    "parent": "toaruos/apps",
+    "value": 922,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/upload.krk",
+    "parent": "toaruos/apps",
+    "value": 389,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/snow.c",
+    "parent": "toaruos/apps",
+    "value": 4197,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/hello.c",
+    "parent": "toaruos/apps",
+    "value": 324,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-conf.c",
+    "parent": "toaruos/apps",
+    "value": 668,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/stty.c",
+    "parent": "toaruos/apps",
+    "value": 12492,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-badwrite.c",
+    "parent": "toaruos/apps",
+    "value": 499,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/ls.c",
+    "parent": "toaruos/apps",
+    "value": 11494,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/dhclient.c",
+    "parent": "toaruos/apps",
+    "value": 11225,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/du.c",
+    "parent": "toaruos/apps",
+    "value": 2745,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/tee.c",
+    "parent": "toaruos/apps",
+    "value": 1226,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/bim.c",
+    "parent": "toaruos/apps",
+    "value": 348560,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/terminal.c",
+    "parent": "toaruos/apps",
+    "value": 77451,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/krk_test_noise.krk",
+    "parent": "toaruos/apps",
+    "value": 1045,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-sigwait.c",
+    "parent": "toaruos/apps",
+    "value": 512,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/ps.c",
+    "parent": "toaruos/apps",
+    "value": 7667,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-udp-recv.krk",
+    "parent": "toaruos/apps",
+    "value": 194,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/which.c",
+    "parent": "toaruos/apps",
+    "value": 1673,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/uptime.c",
+    "parent": "toaruos/apps",
+    "value": 2105,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/highlight-source.krk",
+    "parent": "toaruos/apps",
+    "value": 266,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/hostname.c",
+    "parent": "toaruos/apps",
+    "value": 815,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/wallpaper-picker.c",
+    "parent": "toaruos/apps",
+    "value": 12235,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/weather-configurator.c",
+    "parent": "toaruos/apps",
+    "value": 1693,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/init.c",
+    "parent": "toaruos/apps",
+    "value": 3897,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-sigsegv.c",
+    "parent": "toaruos/apps",
+    "value": 500,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/serial-console.c",
+    "parent": "toaruos/apps",
+    "value": 2979,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/pong.c",
+    "parent": "toaruos/apps",
+    "value": 7470,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/sort.c",
+    "parent": "toaruos/apps",
+    "value": 2061,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/getty.c",
+    "parent": "toaruos/apps",
+    "value": 1772,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/drawlines.c",
+    "parent": "toaruos/apps",
+    "value": 3119,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/cpu-name.krk",
+    "parent": "toaruos/apps",
+    "value": 1095,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/toast.krk",
+    "parent": "toaruos/apps",
+    "value": 1236,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/weather-tool.c",
+    "parent": "toaruos/apps",
+    "value": 4058,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/plasma.c",
+    "parent": "toaruos/apps",
+    "value": 5177,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/yutani-tty-pipe.c",
+    "parent": "toaruos/apps",
+    "value": 1679,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/glogin-provider.c",
+    "parent": "toaruos/apps",
+    "value": 14376,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/piano.c",
+    "parent": "toaruos/apps",
+    "value": 1760,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/mount.c",
+    "parent": "toaruos/apps",
+    "value": 587,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/more.c",
+    "parent": "toaruos/apps",
+    "value": 4597,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/rm.c",
+    "parent": "toaruos/apps",
+    "value": 1916,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/login-loop.c",
+    "parent": "toaruos/apps",
+    "value": 4351,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/set-wallpaper.sh",
+    "parent": "toaruos/apps",
+    "value": 324,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/kcmdline.c",
+    "parent": "toaruos/apps",
+    "value": 1880,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/maybe-pdfviewer.krk",
+    "parent": "toaruos/apps",
+    "value": 445,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/cat.c",
+    "parent": "toaruos/apps",
+    "value": 1506,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/wc.c",
+    "parent": "toaruos/apps",
+    "value": 2835,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-fpclassify.c",
+    "parent": "toaruos/apps",
+    "value": 446,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/reload_desktop.sh",
+    "parent": "toaruos/apps",
+    "value": 113,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/nyancat.c",
+    "parent": "toaruos/apps",
+    "value": 29123,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/login.c",
+    "parent": "toaruos/apps",
+    "value": 3088,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/block-dev-stats.c",
+    "parent": "toaruos/apps",
+    "value": 896,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/groups.c",
+    "parent": "toaruos/apps",
+    "value": 860,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/true.c",
+    "parent": "toaruos/apps",
+    "value": 248,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/package-manager.c",
+    "parent": "toaruos/apps",
+    "value": 21798,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/ping.c",
+    "parent": "toaruos/apps",
+    "value": 4588,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/help-browser.c",
+    "parent": "toaruos/apps",
+    "value": 16531,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/cpuwidget.c",
+    "parent": "toaruos/apps",
+    "value": 19318,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/insmod.c",
+    "parent": "toaruos/apps",
+    "value": 600,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/ununicode.h",
+    "parent": "toaruos/apps",
+    "value": 4323,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/show-toasts.krk",
+    "parent": "toaruos/apps",
+    "value": 1301,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/cal.c",
+    "parent": "toaruos/apps",
+    "value": 2058,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/hexify.c",
+    "parent": "toaruos/apps",
+    "value": 4816,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/reboot.c",
+    "parent": "toaruos/apps",
+    "value": 488,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/tutorial.c",
+    "parent": "toaruos/apps",
+    "value": 15992,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/reset.c",
+    "parent": "toaruos/apps",
+    "value": 473,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/dirname.c",
+    "parent": "toaruos/apps",
+    "value": 500,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/crc32.c",
+    "parent": "toaruos/apps",
+    "value": 4037,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/basename.c",
+    "parent": "toaruos/apps",
+    "value": 680,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/dbg.c",
+    "parent": "toaruos/apps",
+    "value": 18556,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/beep.c",
+    "parent": "toaruos/apps",
+    "value": 2720,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/font-tool.c",
+    "parent": "toaruos/apps",
+    "value": 2833,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/msk.c",
+    "parent": "toaruos/apps",
+    "value": 13969,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/play.c",
+    "parent": "toaruos/apps",
+    "value": 1042,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/yutani-query.c",
+    "parent": "toaruos/apps",
+    "value": 1959,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/set-resolution.c",
+    "parent": "toaruos/apps",
+    "value": 1236,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/mkdir.c",
+    "parent": "toaruos/apps",
+    "value": 1358,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/mixerctl.c",
+    "parent": "toaruos/apps",
+    "value": 3251,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/sudo.c",
+    "parent": "toaruos/apps",
+    "value": 4439,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/yutani-test.c",
+    "parent": "toaruos/apps",
+    "value": 5206,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/polygons.c",
+    "parent": "toaruos/apps",
+    "value": 9844,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/sleep.c",
+    "parent": "toaruos/apps",
+    "value": 676,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/yutani-clipboard.c",
+    "parent": "toaruos/apps",
+    "value": 2727,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/strace.c",
+    "parent": "toaruos/apps",
+    "value": 29007,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/toastd.c",
+    "parent": "toaruos/apps",
+    "value": 6858,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/about.c",
+    "parent": "toaruos/apps",
+    "value": 6244,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/env.c",
+    "parent": "toaruos/apps",
+    "value": 940,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/head.c",
+    "parent": "toaruos/apps",
+    "value": 1325,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/mines.krk",
+    "parent": "toaruos/apps",
+    "value": 13209,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/pwd.c",
+    "parent": "toaruos/apps",
+    "value": 402,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/free.c",
+    "parent": "toaruos/apps",
+    "value": 1755,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/terminal-palette.h",
+    "parent": "toaruos/apps",
+    "value": 4514,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/clear.c",
+    "parent": "toaruos/apps",
+    "value": 570,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/path_demo.krk",
+    "parent": "toaruos/apps",
+    "value": 7529,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/false.c",
+    "parent": "toaruos/apps",
+    "value": 260,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/sync.c",
+    "parent": "toaruos/apps",
+    "value": 1143,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/julia.c",
+    "parent": "toaruos/apps",
+    "value": 16502,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/kill.c",
+    "parent": "toaruos/apps",
+    "value": 2674,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/chmod.c",
+    "parent": "toaruos/apps",
+    "value": 2457,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/prompt_and_delete.krk",
+    "parent": "toaruos/apps",
+    "value": 1004,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/kbd-test.c",
+    "parent": "toaruos/apps",
+    "value": 1746,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-tty-read.c",
+    "parent": "toaruos/apps",
+    "value": 1092,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/krk_yutani_test.krk",
+    "parent": "toaruos/apps",
+    "value": 5709,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/color-picker.c",
+    "parent": "toaruos/apps",
+    "value": 12843,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/uname.c",
+    "parent": "toaruos/apps",
+    "value": 2935,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/tty.c",
+    "parent": "toaruos/apps",
+    "value": 436,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/readlink.c",
+    "parent": "toaruos/apps",
+    "value": 688,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/bim.h",
+    "parent": "toaruos/apps",
+    "value": 15542,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/terminal-font.h",
+    "parent": "toaruos/apps",
+    "value": 117307,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/json-test.c",
+    "parent": "toaruos/apps",
+    "value": 2570,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/gunzip.c",
+    "parent": "toaruos/apps",
+    "value": 2753,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/mktemp.c",
+    "parent": "toaruos/apps",
+    "value": 1348,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/chown.c",
+    "parent": "toaruos/apps",
+    "value": 2469,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/yutani-kbd.c",
+    "parent": "toaruos/apps",
+    "value": 2473,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/nproc.c",
+    "parent": "toaruos/apps",
+    "value": 385,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-localtime.c",
+    "parent": "toaruos/apps",
+    "value": 774,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/mv.c",
+    "parent": "toaruos/apps",
+    "value": 1106,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-loop.c",
+    "parent": "toaruos/apps",
+    "value": 315,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/stat.c",
+    "parent": "toaruos/apps",
+    "value": 3323,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/demo.c",
+    "parent": "toaruos/apps",
+    "value": 1861,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/date.c",
+    "parent": "toaruos/apps",
+    "value": 3758,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/sysfunc.c",
+    "parent": "toaruos/apps",
+    "value": 638,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-tls.c",
+    "parent": "toaruos/apps",
+    "value": 1179,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/cat-img.c",
+    "parent": "toaruos/apps",
+    "value": 3822,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/find-timezone.c",
+    "parent": "toaruos/apps",
+    "value": 1194,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/tar.c",
+    "parent": "toaruos/apps",
+    "value": 9627,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/whoami.c",
+    "parent": "toaruos/apps",
+    "value": 524,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/touch.c",
+    "parent": "toaruos/apps",
+    "value": 645,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/lspci.c",
+    "parent": "toaruos/apps",
+    "value": 9025,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/demo.krk",
+    "parent": "toaruos/apps",
+    "value": 117,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/toggle-abs-mouse.c",
+    "parent": "toaruos/apps",
+    "value": 1311,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/sysinfo.c",
+    "parent": "toaruos/apps",
+    "value": 4749,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/ttysize.c",
+    "parent": "toaruos/apps",
+    "value": 2311,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/t_mbstowcs.c",
+    "parent": "toaruos/apps",
+    "value": 623,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/showdialog.c",
+    "parent": "toaruos/apps",
+    "value": 8079,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/netty.c",
+    "parent": "toaruos/apps",
+    "value": 3088,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/ln.c",
+    "parent": "toaruos/apps",
+    "value": 1365,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-ptrace-syscall.c",
+    "parent": "toaruos/apps",
+    "value": 1609,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/grep.c",
+    "parent": "toaruos/apps",
+    "value": 9282,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/pstree.c",
+    "parent": "toaruos/apps",
+    "value": 3613,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/qemu-fwcfg.c",
+    "parent": "toaruos/apps",
+    "value": 4236,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/logname.c",
+    "parent": "toaruos/apps",
+    "value": 492,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/cursor-off.c",
+    "parent": "toaruos/apps",
+    "value": 898,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/yes.c",
+    "parent": "toaruos/apps",
+    "value": 477,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/readelf.c",
+    "parent": "toaruos/apps",
+    "value": 22893,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/compositor.c",
+    "parent": "toaruos/apps",
+    "value": 98009,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/misaka-test.c",
+    "parent": "toaruos/apps",
+    "value": 1689,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/terminal-vga.c",
+    "parent": "toaruos/apps",
+    "value": 34954,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/show-tutorial.sh",
+    "parent": "toaruos/apps",
+    "value": 64,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/glogin.c",
+    "parent": "toaruos/apps",
+    "value": 3038,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/file-browser.c",
+    "parent": "toaruos/apps",
+    "value": 75978,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/vga-palette.h",
+    "parent": "toaruos/apps",
+    "value": 8152,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/ifconfig.c",
+    "parent": "toaruos/apps",
+    "value": 6804,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/test-syscall-sysret.c",
+    "parent": "toaruos/apps",
+    "value": 598,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/echo.c",
+    "parent": "toaruos/apps",
+    "value": 2354,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home",
+    "parent": "toaruos/base",
+    "value": 3,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr",
+    "parent": "toaruos/base",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/etc",
+    "parent": "toaruos/base",
+    "value": 11,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/lib",
+    "parent": "toaruos/base",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/misc",
+    "parent": "toaruos/kernel",
+    "value": 15,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/video",
+    "parent": "toaruos/kernel",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/vfs",
+    "parent": "toaruos/kernel",
+    "value": 13,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/net",
+    "parent": "toaruos/kernel",
+    "value": 6,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/sys",
+    "parent": "toaruos/kernel",
+    "value": 7,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/audio",
+    "parent": "toaruos/kernel",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/generic.c",
+    "parent": "toaruos/kernel",
+    "value": 2414,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch",
+    "parent": "toaruos/kernel",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/binfmt.c",
+    "parent": "toaruos/kernel",
+    "value": 5055,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/args.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 4138,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/list.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 5486,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/ksym.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 997,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/pci.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 4968,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/string.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 10053,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/ringbuffer.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 6054,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/assert.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 557,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/gzip.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 12860,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/kprintf.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 8311,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/elf64.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 13401,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/malloc.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 28057,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/tokenize.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 658,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/fbterm.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 7986,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/hashmap.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 4907,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/misc/tree.c",
+    "parent": "toaruos/kernel/misc",
+    "value": 5652,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/video/lfbvideo.c",
+    "parent": "toaruos/kernel/video",
+    "value": 15827,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/ramdisk.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 3722,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/pipe.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 7631,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/zero.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 2166,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/portio.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 1844,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/random.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 1296,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/tmpfs.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 14746,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/tarfs.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 12437,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/procfs.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 21420,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/console.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 3239,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/packetfs.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 13642,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/tty.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 20355,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/unixpipe.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 3384,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/vfs/vfs.c",
+    "parent": "toaruos/kernel/vfs",
+    "value": 28597,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/net/arp.c",
+    "parent": "toaruos/kernel/net",
+    "value": 4491,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/net/loop.c",
+    "parent": "toaruos/kernel/net",
+    "value": 3144,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/net/socket.c",
+    "parent": "toaruos/kernel/net",
+    "value": 9937,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/net/netif.c",
+    "parent": "toaruos/kernel/net",
+    "value": 1613,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/net/ipv4.c",
+    "parent": "toaruos/kernel/net",
+    "value": 33348,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/net/eth.c",
+    "parent": "toaruos/kernel/net",
+    "value": 2474,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/sys/process.c",
+    "parent": "toaruos/kernel/sys",
+    "value": 45958,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/sys/ptrace.c",
+    "parent": "toaruos/kernel/sys",
+    "value": 15860,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/sys/shm.c",
+    "parent": "toaruos/kernel/sys",
+    "value": 8154,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/sys/mutex.c",
+    "parent": "toaruos/kernel/sys",
+    "value": 1347,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/sys/syscall.c",
+    "parent": "toaruos/kernel/sys",
+    "value": 37844,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/sys/version.c",
+    "parent": "toaruos/kernel/sys",
+    "value": 1795,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/sys/signal.c",
+    "parent": "toaruos/kernel/sys",
+    "value": 14739,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/audio/snd.c",
+    "parent": "toaruos/kernel/audio",
+    "value": 7675,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64",
+    "parent": "toaruos/kernel/arch",
+    "value": 18,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64",
+    "parent": "toaruos/kernel/arch",
+    "value": 15,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/gic.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 3294,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/virtio.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 12883,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/rpi.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 1602,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/bootstub",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 3,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/traceback.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 3254,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/context.S",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 2197,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/link.ld",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 662,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/arch.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 17998,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/pl011.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 3014,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/entry.S",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 368,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/fwcfg.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 3977,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/rpi_miniuart.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 4675,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/main.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 18593,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/irq.S",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 5292,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/rpi400",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 4,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/smp.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 7570,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/mmu.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 30266,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/dtb.c",
+    "parent": "toaruos/kernel/arch/aarch64",
+    "value": 7206,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/pic.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 1662,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/serial.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 6231,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/user.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 7917,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/gdt.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 2982,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/link.ld",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 832,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/bootstrap.S",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 5823,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/cmos.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 11957,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/main.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 14583,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/idt.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 21114,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/irq.S",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 5556,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/ports.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 1390,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/ps2hid.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 9700,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/smp.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 15517,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/mmu.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 41637,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/x86_64/pit.c",
+    "parent": "toaruos/kernel/arch/x86_64",
+    "value": 1622,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/bootstub/link.ld",
+    "parent": "toaruos/kernel/arch/aarch64/bootstub",
+    "value": 654,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/bootstub/bootstrap.S",
+    "parent": "toaruos/kernel/arch/aarch64/bootstub",
+    "value": 132,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/bootstub/main.c",
+    "parent": "toaruos/kernel/arch/aarch64/bootstub",
+    "value": 13494,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/rpi400/link.ld",
+    "parent": "toaruos/kernel/arch/aarch64/rpi400",
+    "value": 724,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/rpi400/start.S",
+    "parent": "toaruos/kernel/arch/aarch64/rpi400",
+    "value": 564,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/rpi400/main.c",
+    "parent": "toaruos/kernel/arch/aarch64/rpi400",
+    "value": 10724,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/kernel/arch/aarch64/rpi400/fbterm.c",
+    "parent": "toaruos/kernel/arch/aarch64/rpi400",
+    "value": 6399,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local",
+    "parent": "toaruos/base/home",
+    "value": 7,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/home/guest",
+    "parent": "toaruos/base/home",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/home/root",
+    "parent": "toaruos/base/home",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include",
+    "parent": "toaruos/base/usr",
+    "value": 47,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share",
+    "parent": "toaruos/base/usr",
+    "value": 8,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/etc/group",
+    "parent": "toaruos/base/etc",
+    "value": 42,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/demo.conf",
+    "parent": "toaruos/base/etc",
+    "value": 74,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/panel.menu",
+    "parent": "toaruos/base/etc",
+    "value": 749,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/sudoers",
+    "parent": "toaruos/base/etc",
+    "value": 6,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/weather.json",
+    "parent": "toaruos/base/etc",
+    "value": 348,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/hostname",
+    "parent": "toaruos/base/etc",
+    "value": 7,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/master.passwd",
+    "parent": "toaruos/base/etc",
+    "value": 174,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/msk.conf",
+    "parent": "toaruos/base/etc",
+    "value": 192,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d",
+    "parent": "toaruos/base/etc",
+    "value": 9,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/etc/passwd",
+    "parent": "toaruos/base/etc",
+    "value": 257,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/motd",
+    "parent": "toaruos/base/etc",
+    "value": 186,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/lib/.dummy",
+    "parent": "toaruos/base/lib",
+    "value": 0,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/00_startuplog.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 46,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/03_tmpfs.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 123,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/50_msk.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 129,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/02_hostname.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 184,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/04_modprobe.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 686,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/05_mountcd.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 339,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/99_runstart.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 560,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/01_migrate.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 118,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/etc/startup.d/40_dhcp.sh",
+    "parent": "toaruos/base/etc/startup.d",
+    "value": 121,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/time.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 1443,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/pwd.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 637,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/va_list.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 305,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/utime.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 221,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/pty.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 210,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/inttypes.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 418,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/stdlib.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 2267,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/net",
+    "parent": "toaruos/base/usr/include",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/locale.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 814,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/limits.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 50,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/unistd.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 2994,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/wait.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 138,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/fcntl.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 974,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/_cheader.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 165,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/signal.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 958,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/dirent.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 39,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/arpa",
+    "parent": "toaruos/base/usr/include",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/netinet",
+    "parent": "toaruos/base/usr/include",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/libgen.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 143,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/setjmp.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 253,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/getopt.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 436,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/dlfcn.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 422,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/strings.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 209,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/alloca.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 185,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys",
+    "parent": "toaruos/base/usr/include",
+    "value": 19,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/iconv.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 325,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/bits",
+    "parent": "toaruos/base/usr/include",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/syscall_nums.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 1856,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/ctype.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 667,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/termio.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 57,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/wchar.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 1235,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru",
+    "parent": "toaruos/base/usr/include",
+    "value": 30,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/sched.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 97,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/libintl.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 616,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/netdb.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 1197,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/pthread.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 1560,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/math.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 2036,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/memory.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 33,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/errno.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 7308,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/termios.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 39,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/poll.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 399,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/stdio.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 2910,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/assert.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 345,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/syscall.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 7644,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/stdint.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 12251,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel",
+    "parent": "toaruos/base/usr/include",
+    "value": 40,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/string.h",
+    "parent": "toaruos/base/usr/include",
+    "value": 2082,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/ttk",
+    "parent": "toaruos/base/usr/share",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/cursor",
+    "parent": "toaruos/base/usr/share",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/wallpapers",
+    "parent": "toaruos/base/usr/share",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/icons",
+    "parent": "toaruos/base/usr/share",
+    "value": 4,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim",
+    "parent": "toaruos/base/usr/share",
+    "value": 3,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/fonts",
+    "parent": "toaruos/base/usr/share",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/games",
+    "parent": "toaruos/base/usr/share",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/help",
+    "parent": "toaruos/base/usr/share",
+    "value": 6,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/ttk/toast",
+    "parent": "toaruos/base/usr/share/ttk",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/ttk/fancy",
+    "parent": "toaruos/base/usr/share/ttk",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/icons/16",
+    "parent": "toaruos/base/usr/share/icons",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/icons/weather",
+    "parent": "toaruos/base/usr/share/icons",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/icons/48",
+    "parent": "toaruos/base/usr/share/icons",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/icons/24",
+    "parent": "toaruos/base/usr/share/icons",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/site",
+    "parent": "toaruos/base/usr/share/bim",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax",
+    "parent": "toaruos/base/usr/share/bim",
+    "value": 34,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes",
+    "parent": "toaruos/base/usr/share/bim",
+    "value": 8,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/fonts/truetype",
+    "parent": "toaruos/base/usr/share/fonts",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/games/pong",
+    "parent": "toaruos/base/usr/share/games",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/help/terminal.trt",
+    "parent": "toaruos/base/usr/share/help",
+    "value": 227,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/help/help-browser.trt",
+    "parent": "toaruos/base/usr/share/help",
+    "value": 188,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/help/package-manager.trt",
+    "parent": "toaruos/base/usr/share/help",
+    "value": 171,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/help/0_index.trt",
+    "parent": "toaruos/base/usr/share/help",
+    "value": 229,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/help/file-browser.trt",
+    "parent": "toaruos/base/usr/share/help",
+    "value": 209,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/help/calculator.trt",
+    "parent": "toaruos/base/usr/share/help",
+    "value": 272,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/fonts/truetype/dejavu",
+    "parent": "toaruos/base/usr/share/fonts/truetype",
+    "value": 0,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/site/__init__.krk",
+    "parent": "toaruos/base/usr/share/bim/site",
+    "value": 58,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/graphql.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 2895,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/__init__.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1661,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/man.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1314,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/gas.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 19257,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/latex.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 666,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/css.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 9895,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/c.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 11502,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/dirent.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 610,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/krk.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 8202,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/json.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1771,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/hosts.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 474,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/ld.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 4948,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/diff.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 506,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/ctags.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 633,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/git.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1253,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/docker.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1191,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/make.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 5688,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/dlang.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1003,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/biminfo.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 556,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/markdown.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 4674,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/lua.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1309,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/esh.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 3475,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/groovy.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 2985,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/protobuf.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1733,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/javascript.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 5114,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/xml.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 4076,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/rust.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 3592,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/py.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 7031,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/java.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 6133,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/doxygen.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 2810,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/bash.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 6197,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/issue.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 2632,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/conf.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 809,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/syntax/lisp.krk",
+    "parent": "toaruos/base/usr/share/bim/syntax",
+    "value": 1422,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes/sunsmoke.krk",
+    "parent": "toaruos/base/usr/share/bim/themes",
+    "value": 2270,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes/__init__.krk",
+    "parent": "toaruos/base/usr/share/bim/themes",
+    "value": 0,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes/light.krk",
+    "parent": "toaruos/base/usr/share/bim/themes",
+    "value": 1294,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes/solarized.krk",
+    "parent": "toaruos/base/usr/share/bim/themes",
+    "value": 1202,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes/strawberry.krk",
+    "parent": "toaruos/base/usr/share/bim/themes",
+    "value": 1387,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes/citylights.krk",
+    "parent": "toaruos/base/usr/share/bim/themes",
+    "value": 1227,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes/wombat.krk",
+    "parent": "toaruos/base/usr/share/bim/themes",
+    "value": 1162,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/share/bim/themes/ansi.krk",
+    "parent": "toaruos/base/usr/share/bim/themes",
+    "value": 1393,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/net/if.h",
+    "parent": "toaruos/base/usr/include/net",
+    "value": 1236,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/arpa/inet.h",
+    "parent": "toaruos/base/usr/include/arpa",
+    "value": 430,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/netinet/in.h",
+    "parent": "toaruos/base/usr/include/netinet",
+    "value": 554,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/time.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 435,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/ioctl.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 312,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/types.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 684,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/times.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 230,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/wait.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 609,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/stat.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 2623,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/sysfunc.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 842,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/signal.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 1098,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/signal_defs.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 2097,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/mman.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 76,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/fswait.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 229,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/utsname.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 385,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/param.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 298,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/shm.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 194,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/ptrace.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 521,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/termios.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 5038,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/mount.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 162,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/uregs.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 2715,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/sys/socket.h",
+    "parent": "toaruos/base/usr/include/sys",
+    "value": 3089,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/bits/dirent.h",
+    "parent": "toaruos/base/usr/include/bits",
+    "value": 316,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/spinlock.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 234,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/decodeutf8.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 1627,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/decorations.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 2488,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/confreader.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 2403,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/text.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 3867,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/drawstring.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 211,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/markup.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 792,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/markup_text.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 970,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/kbd.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 3336,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/tree.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 1250,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/hashmap.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 1492,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/yutani.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 16744,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/png.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 162,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/termemu.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 4287,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/pex.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 827,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/mouse.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 382,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/jpeg.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 161,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/list.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 1694,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/trace.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 312,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/icon_cache.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 198,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/yutani-server.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 7483,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/panel.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 2108,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/json.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 1021,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/yutani-internal.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 9963,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/button.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 462,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/menu.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 4303,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/inflate.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 924,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/rline.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 1830,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/auth.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 1059,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/toaru/graphics.h",
+    "parent": "toaruos/base/usr/include/toaru",
+    "value": 6379,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/time.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 198,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/generic.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 741,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/procfs.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 348,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/spinlock.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 909,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/gzip.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 500,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/pty.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 1051,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/version.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 470,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/net",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 4,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/types.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 281,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/misc.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 321,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/tokenize.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 70,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/signal.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 686,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/tree.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 1198,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/hashmap.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 1365,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/mmu.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 2238,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/symboltable.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 154,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/multiboot.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 2224,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/elf.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 11161,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/vfs.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 5210,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/mouse.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 349,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/args.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 125,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/list.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 1719,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/printf.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 561,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/shm.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 707,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/ptrace.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 158,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/video.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 741,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/pipe.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 572,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/ksym.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 255,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/ramdisk.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 132,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/process.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 8504,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/mutex.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 610,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/module.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 293,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/pci.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 2415,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/assert.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 227,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/syscall.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 1227,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/tmpfs.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 662,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/mod",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 4,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/ringbuffer.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 1112,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/string.h",
+    "parent": "toaruos/base/usr/include/kernel",
+    "value": 1609,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/net/netif.h",
+    "parent": "toaruos/base/usr/include/kernel/net",
+    "value": 2122,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/net/eth.h",
+    "parent": "toaruos/base/usr/include/kernel/net",
+    "value": 1208,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/net/ipv4.h",
+    "parent": "toaruos/base/usr/include/kernel/net",
+    "value": 1156,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/net/e1000.h",
+    "parent": "toaruos/base/usr/include/kernel/net",
+    "value": 5041,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/aarch64",
+    "parent": "toaruos/base/usr/include/kernel/arch",
+    "value": 5,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/x86_64",
+    "parent": "toaruos/base/usr/include/kernel/arch",
+    "value": 6,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/mod/sound.h",
+    "parent": "toaruos/base/usr/include/kernel/mod",
+    "value": 861,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/mod/shell.h",
+    "parent": "toaruos/base/usr/include/kernel/mod",
+    "value": 998,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/mod/snd.h",
+    "parent": "toaruos/base/usr/include/kernel/mod",
+    "value": 1388,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/mod/rtl.h",
+    "parent": "toaruos/base/usr/include/kernel/mod",
+    "value": 58,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/aarch64/pml.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/aarch64",
+    "value": 745,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/aarch64/dtb.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/aarch64",
+    "value": 1383,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/aarch64/gic.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/aarch64",
+    "value": 619,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/aarch64/rpi.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/aarch64",
+    "value": 316,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/aarch64/regs.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/aarch64",
+    "value": 366,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/x86_64/cmos.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/x86_64",
+    "value": 67,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/x86_64/ports.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/x86_64",
+    "value": 563,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/x86_64/pml.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/x86_64",
+    "value": 655,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/x86_64/acpi.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/x86_64",
+    "value": 1008,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/x86_64/irq.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/x86_64",
+    "value": 3087,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/usr/include/kernel/arch/x86_64/regs.h",
+    "parent": "toaruos/base/usr/include/kernel/arch/x86_64",
+    "value": 362,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/.yutanirc",
+    "parent": "toaruos/base/home/local",
+    "value": 327,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/.wallpaper.conf",
+    "parent": "toaruos/base/home/local",
+    "value": 89,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/Desktop",
+    "parent": "toaruos/base/home/local",
+    "value": 4,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/base/home/local/README.md",
+    "parent": "toaruos/base/home/local",
+    "value": 1189,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/.eshrc",
+    "parent": "toaruos/base/home/local",
+    "value": 467,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/.bim3rc",
+    "parent": "toaruos/base/home/local",
+    "value": 803,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/text_layout.krk",
+    "parent": "toaruos/base/home/local",
+    "value": 9248,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/guest/hello",
+    "parent": "toaruos/base/home/guest",
+    "value": 0,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/root/.bimrc",
+    "parent": "toaruos/base/home/root",
+    "value": 46,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/root/hello",
+    "parent": "toaruos/base/home/root",
+    "value": 13,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/Desktop/3_read_me.launcher",
+    "parent": "toaruos/base/home/local/Desktop",
+    "value": 58,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/Desktop/1_terminal.launcher",
+    "parent": "toaruos/base/home/local/Desktop",
+    "value": 64,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/Desktop/2_packages.launcher",
+    "parent": "toaruos/base/home/local/Desktop",
+    "value": 59,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/base/home/local/Desktop/0_file_browser.launcher",
+    "parent": "toaruos/base/home/local/Desktop",
+    "value": 60,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/nyancat/animation.h",
+    "parent": "toaruos/apps/nyancat",
+    "value": 52846,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/apps/nyancat/telnet.h",
+    "parent": "toaruos/apps/nyancat",
+    "value": 2842,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/kuroko/_waitpid.c",
+    "parent": "toaruos/lib/kuroko",
+    "value": 940,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/kuroko/_yutani2.c",
+    "parent": "toaruos/lib/kuroko",
+    "value": 66343,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/lib/kuroko/yutani_mainloop.krk",
+    "parent": "toaruos/lib/kuroko",
+    "value": 5865,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/.github/workflows/aarch64.yml",
+    "parent": "toaruos/.github/workflows",
+    "value": 1078,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/.github/workflows/x86_64.yml",
+    "parent": "toaruos/.github/workflows",
+    "value": 1756,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/docker/Dockerfile",
+    "parent": "toaruos/util/docker",
+    "value": 307,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/util/docker/README.md",
+    "parent": "toaruos/util/docker",
+    "value": 482,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isdigit.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 55,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isascii.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 44,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isxdigit.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 113,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isprint.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 78,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/ispunct.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 81,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isalpha.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 86,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/toupper.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 91,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/islower.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 58,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isgraph.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 58,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isupper.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 58,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/_ctype.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 634,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/tolower.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 90,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/iscntrl.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 74,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isspace.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 111,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ctype/isalnum.c",
+    "parent": "toaruos/libc/ctype",
+    "value": 80,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/dlfcn/dlfcn.c",
+    "parent": "toaruos/libc/dlfcn",
+    "value": 545,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/errno/errorno.c",
+    "parent": "toaruos/libc/errno",
+    "value": 35,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/utime/utime.c",
+    "parent": "toaruos/libc/utime",
+    "value": 155,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/strings/strcasecmp.c",
+    "parent": "toaruos/libc/strings",
+    "value": 448,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/libgen/dirname.c",
+    "parent": "toaruos/libc/libgen",
+    "value": 610,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/libgen/basename.c",
+    "parent": "toaruos/libc/libgen",
+    "value": 298,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/locale/localeconv.c",
+    "parent": "toaruos/libc/locale",
+    "value": 585,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/locale/setlocale.c",
+    "parent": "toaruos/libc/locale",
+    "value": 117,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/pwd/pwd.c",
+    "parent": "toaruos/libc/pwd",
+    "value": 2485,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/iconv/iconv.c",
+    "parent": "toaruos/libc/iconv",
+    "value": 673,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/pty/pty.c",
+    "parent": "toaruos/libc/pty",
+    "value": 399,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/dirent/dir.c",
+    "parent": "toaruos/libc/dirent",
+    "value": 897,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/dirent/mkdir.c",
+    "parent": "toaruos/libc/dirent",
+    "value": 248,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sched/sched_yield.c",
+    "parent": "toaruos/libc/sched",
+    "value": 178,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/assert/assert.c",
+    "parent": "toaruos/libc/assert",
+    "value": 234,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getopt_long.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 2827,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getgroups.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 232,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/fstat.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 234,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/pread.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 267,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/pipe.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 198,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/pathconf.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 231,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/hostname.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 428,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/access.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 317,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/fork.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 145,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getcwd.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 256,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/link.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 161,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/setgroups.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 245,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/usleep.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 239,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/execvp.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 1610,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getwd.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 74,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/exit.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 96,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/read.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 234,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/creat.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 137,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getuid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 154,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getegid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 158,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/setuid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 202,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/sleep.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 107,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/unlink.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 218,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/truncate.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 143,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/umask.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 166,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/chdir.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 205,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/lseek.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 225,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/sync.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 96,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/dup2.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 230,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/setsid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 180,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/chmod.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 232,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getgid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 154,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getpid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 227,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/readlink.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 269,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/geteuid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 157,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/chown.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 262,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/setgid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 203,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/alarm.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 174,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/setpgid.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 341,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/symlink.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 255,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/stat.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 637,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/isatty.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 197,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/fcntl.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 184,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/sbrk.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 182,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/pwrite.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 282,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getpgrp.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 59,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/write.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 251,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/rmdir.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 106,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getopt.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 235,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/open.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 620,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/ttyname.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 460,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/close.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 160,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/unistd/getlogin.c",
+    "parent": "toaruos/libc/unistd",
+    "value": 667,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/math/math.c",
+    "parent": "toaruos/libc/math",
+    "value": 9319,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/math/bad.c",
+    "parent": "toaruos/libc/math",
+    "value": 1295,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/gettimeofday.c",
+    "parent": "toaruos/libc/time",
+    "value": 218,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/ctime.c",
+    "parent": "toaruos/libc/time",
+    "value": 168,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/localtime.c",
+    "parent": "toaruos/libc/time",
+    "value": 4836,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/settimeofday.c",
+    "parent": "toaruos/libc/time",
+    "value": 219,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/clock.c",
+    "parent": "toaruos/libc/time",
+    "value": 141,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/strftime.c",
+    "parent": "toaruos/libc/time",
+    "value": 5086,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/time.c",
+    "parent": "toaruos/libc/time",
+    "value": 233,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/times.c",
+    "parent": "toaruos/libc/time",
+    "value": 210,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/time/clock_gettime.c",
+    "parent": "toaruos/libc/time",
+    "value": 484,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/pthread/pthread.c",
+    "parent": "toaruos/libc/pthread",
+    "value": 3358,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/pthread/pthread_rwlock.c",
+    "parent": "toaruos/libc/pthread",
+    "value": 1455,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/network.c",
+    "parent": "toaruos/libc/sys",
+    "value": 11527,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/ptrace.c",
+    "parent": "toaruos/libc/sys",
+    "value": 291,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/shm.c",
+    "parent": "toaruos/libc/sys",
+    "value": 355,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/mount.c",
+    "parent": "toaruos/libc/sys",
+    "value": 305,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/reboot.c",
+    "parent": "toaruos/libc/sys",
+    "value": 132,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/uname.c",
+    "parent": "toaruos/libc/sys",
+    "value": 192,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/sysfunc.c",
+    "parent": "toaruos/libc/sys",
+    "value": 241,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/wait.c",
+    "parent": "toaruos/libc/sys",
+    "value": 315,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/sys/fswait.c",
+    "parent": "toaruos/libc/sys",
+    "value": 559,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/printf.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 10798,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/scanf.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 2463,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/rename.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 128,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/tmpnam.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 221,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/stdio.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 10636,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/tmpfile.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 231,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/perror.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 120,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/remove.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 128,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdio/puts.c",
+    "parent": "toaruos/libc/stdio",
+    "value": 154,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar/wcscmp.c",
+    "parent": "toaruos/libc/wchar",
+    "value": 340,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar/wcscpy.c",
+    "parent": "toaruos/libc/wchar",
+    "value": 170,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar/wcscat.c",
+    "parent": "toaruos/libc/wchar",
+    "value": 461,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar/wcstok.c",
+    "parent": "toaruos/libc/wchar",
+    "value": 1225,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar/wcslen.c",
+    "parent": "toaruos/libc/wchar",
+    "value": 120,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar/wcwidth.c",
+    "parent": "toaruos/libc/wchar",
+    "value": 69214,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar/wcsncpy.c",
+    "parent": "toaruos/libc/wchar",
+    "value": 207,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/wchar/wcstol.c",
+    "parent": "toaruos/libc/wchar",
+    "value": 1880,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/aarch64",
+    "parent": "toaruos/libc/arch",
+    "value": 7,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/arch/x86_64",
+    "parent": "toaruos/libc/arch",
+    "value": 7,
+    "type": "folder"
+  },
+  {
+    "name": "toaruos/libc/stdlib/rand.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 447,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/labs.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 56,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/system.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 464,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/putenv.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 1657,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/mbstowcs.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 2059,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/abort.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 108,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/div.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 651,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/getenv.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 293,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/qsort.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 1668,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/setenv.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 334,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/realpath.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 2143,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/strtoul.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 1804,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/mktemp.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 531,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/malloc.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 20099,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/bsearch.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 339,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/atexit.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 380,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/strtod.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 1224,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/stdlib/atof.c",
+    "parent": "toaruos/libc/stdlib",
+    "value": 107,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/libintl/libintl.c",
+    "parent": "toaruos/libc/libintl",
+    "value": 815,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/string/strxfrm.c",
+    "parent": "toaruos/libc/string",
+    "value": 299,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/string/str.c",
+    "parent": "toaruos/libc/string",
+    "value": 9108,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/string/strncmp.c",
+    "parent": "toaruos/libc/string",
+    "value": 233,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/string/memmove.c",
+    "parent": "toaruos/libc/string",
+    "value": 976,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/string/strsignal.c",
+    "parent": "toaruos/libc/string",
+    "value": 1691,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/string/strerror.c",
+    "parent": "toaruos/libc/string",
+    "value": 4971,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/string/strncpy.c",
+    "parent": "toaruos/libc/string",
+    "value": 257,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/signal/sigaction.c",
+    "parent": "toaruos/libc/signal",
+    "value": 311,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/signal/raise.c",
+    "parent": "toaruos/libc/signal",
+    "value": 93,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/signal/sigset.c",
+    "parent": "toaruos/libc/signal",
+    "value": 616,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/signal/sigsuspend.c",
+    "parent": "toaruos/libc/signal",
+    "value": 511,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/signal/kill.c",
+    "parent": "toaruos/libc/signal",
+    "value": 200,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/signal/sigprocmask.c",
+    "parent": "toaruos/libc/signal",
+    "value": 345,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/signal/signal.c",
+    "parent": "toaruos/libc/signal",
+    "value": 320,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/signal/sigpending.c",
+    "parent": "toaruos/libc/signal",
+    "value": 224,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/ioctl/ioctl.c",
+    "parent": "toaruos/libc/ioctl",
+    "value": 1581,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/poll/poll.c",
+    "parent": "toaruos/libc/poll",
+    "value": 1815,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/aarch64/memcpy.c",
+    "parent": "toaruos/libc/arch/aarch64",
+    "value": 497,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/aarch64/crti.S",
+    "parent": "toaruos/libc/arch/aarch64",
+    "value": 144,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/aarch64/memset.c",
+    "parent": "toaruos/libc/arch/aarch64",
+    "value": 150,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/aarch64/crtn.S",
+    "parent": "toaruos/libc/arch/aarch64",
+    "value": 86,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/aarch64/crt0.S",
+    "parent": "toaruos/libc/arch/aarch64",
+    "value": 113,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/aarch64/setjmp.c",
+    "parent": "toaruos/libc/arch/aarch64",
+    "value": 903,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/aarch64/bad.c",
+    "parent": "toaruos/libc/arch/aarch64",
+    "value": 1274,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/x86_64/memcpy.c",
+    "parent": "toaruos/libc/arch/x86_64",
+    "value": 251,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/x86_64/math.c",
+    "parent": "toaruos/libc/arch/x86_64",
+    "value": 1355,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/x86_64/crti.S",
+    "parent": "toaruos/libc/arch/x86_64",
+    "value": 129,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/x86_64/memset.c",
+    "parent": "toaruos/libc/arch/x86_64",
+    "value": 233,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/x86_64/crtn.S",
+    "parent": "toaruos/libc/arch/x86_64",
+    "value": 62,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/x86_64/crt0.S",
+    "parent": "toaruos/libc/arch/x86_64",
+    "value": 113,
+    "type": "file"
+  },
+  {
+    "name": "toaruos/libc/arch/x86_64/setjmp.c",
+    "parent": "toaruos/libc/arch/x86_64",
+    "value": 1051,
+    "type": "file"
+  }
+]

@@ -1154,13 +1154,13 @@
   {
     "name": "gorm/internal/lru/lru.go",
     "parent": "gorm/internal/lru",
-    "width": 30,
+    "width": 70,
     "height": 493
   },
   {
     "name": "gorm/internal/stmt_store/stmt_store.go",
     "parent": "gorm/internal/stmt_store",
-    "width": 30,
+    "width": 70,
     "height": 183
   }
 ]

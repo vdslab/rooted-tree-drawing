@@ -1,0 +1,972 @@
+[
+  {
+    "name": "d3",
+    "parent": "",
+    "value": 4331.51
+  },
+  {
+    "name": "d3/API.md",
+    "parent": "d3",
+    "value": 10.06
+  },
+  {
+    "name": "d3/prebuild.sh",
+    "parent": "d3",
+    "value": 109.06
+  },
+  {
+    "name": "d3/LICENSE",
+    "parent": "d3",
+    "value": 11.18
+  },
+  {
+    "name": "d3/test",
+    "parent": "d3",
+    "value": 35.59
+  },
+  {
+    "name": "d3/bundle.js",
+    "parent": "d3",
+    "value": 10.0
+  },
+  {
+    "name": "d3/docs",
+    "parent": "d3",
+    "value": 3470.69
+  },
+  {
+    "name": "d3/README.md",
+    "parent": "d3",
+    "value": 12.08
+  },
+  {
+    "name": "d3/img",
+    "parent": "d3",
+    "value": 10
+  },
+  {
+    "name": "d3/rollup.config.js",
+    "parent": "d3",
+    "value": 12.3
+  },
+  {
+    "name": "d3/yarn.lock",
+    "parent": "d3",
+    "value": 232.49
+  },
+  {
+    "name": "d3/.gitignore",
+    "parent": "d3",
+    "value": 49.54
+  },
+  {
+    "name": "d3/package.json",
+    "parent": "d3",
+    "value": 14.18
+  },
+  {
+    "name": "d3/.github",
+    "parent": "d3",
+    "value": 32.71
+  },
+  {
+    "name": "d3/CHANGES.md",
+    "parent": "d3",
+    "value": 300.22
+  },
+  {
+    "name": "d3/.eslintrc.json",
+    "parent": "d3",
+    "value": 10.07
+  },
+  {
+    "name": "d3/src",
+    "parent": "d3",
+    "value": 11.34
+  },
+  {
+    "name": "d3/test/d3-test.js",
+    "parent": "d3/test",
+    "value": 11.07
+  },
+  {
+    "name": "d3/test/docs-test.js",
+    "parent": "d3/test",
+    "value": 14.32
+  },
+  {
+    "name": "d3/test/.eslintrc.json",
+    "parent": "d3/test",
+    "value": 10.2
+  },
+  {
+    "name": "d3/docs/d3-contour",
+    "parent": "d3/docs",
+    "value": 43.81
+  },
+  {
+    "name": "d3/docs/d3-shape",
+    "parent": "d3/docs",
+    "value": 290.73
+  },
+  {
+    "name": "d3/docs/d3-dispatch.md",
+    "parent": "d3/docs",
+    "value": 17.63
+  },
+  {
+    "name": "d3/docs/d3-shape.md",
+    "parent": "d3/docs",
+    "value": 13.58
+  },
+  {
+    "name": "d3/docs/d3-path.md",
+    "parent": "d3/docs",
+    "value": 21.02
+  },
+  {
+    "name": "d3/docs/d3-geo.md",
+    "parent": "d3/docs",
+    "value": 16.81
+  },
+  {
+    "name": "d3/docs/d3-selection.md",
+    "parent": "d3/docs",
+    "value": 12.5
+  },
+  {
+    "name": "d3/docs/api.md",
+    "parent": "d3/docs",
+    "value": 209.91
+  },
+  {
+    "name": "d3/docs/d3-array",
+    "parent": "d3/docs",
+    "value": 211.41
+  },
+  {
+    "name": "d3/docs/d3-brush.md",
+    "parent": "d3/docs",
+    "value": 34.36
+  },
+  {
+    "name": "d3/docs/d3-delaunay.md",
+    "parent": "d3/docs",
+    "value": 12.52
+  },
+  {
+    "name": "d3/docs/d3-time-format.md",
+    "parent": "d3/docs",
+    "value": 32.08
+  },
+  {
+    "name": "d3/docs/.vitepress",
+    "parent": "d3/docs",
+    "value": 171.31
+  },
+  {
+    "name": "d3/docs/community.md",
+    "parent": "d3/docs",
+    "value": 14.69
+  },
+  {
+    "name": "d3/docs/d3-quadtree.md",
+    "parent": "d3/docs",
+    "value": 36.32
+  },
+  {
+    "name": "d3/docs/d3-scale",
+    "parent": "d3/docs",
+    "value": 279.03
+  },
+  {
+    "name": "d3/docs/d3-scale-chromatic",
+    "parent": "d3/docs",
+    "value": 86.07000000000001
+  },
+  {
+    "name": "d3/docs/d3-polygon.md",
+    "parent": "d3/docs",
+    "value": 14.88
+  },
+  {
+    "name": "d3/docs/d3-scale.md",
+    "parent": "d3/docs",
+    "value": 13.2
+  },
+  {
+    "name": "d3/docs/d3-geo",
+    "parent": "d3/docs",
+    "value": 172.64
+  },
+  {
+    "name": "d3/docs/d3-interpolate",
+    "parent": "d3/docs",
+    "value": 83.28
+  },
+  {
+    "name": "d3/docs/d3-ease.md",
+    "parent": "d3/docs",
+    "value": 31.09
+  },
+  {
+    "name": "d3/docs/d3-selection",
+    "parent": "d3/docs",
+    "value": 172.02
+  },
+  {
+    "name": "d3/docs/d3-format.md",
+    "parent": "d3/docs",
+    "value": 36.81
+  },
+  {
+    "name": "d3/docs/d3-array.md",
+    "parent": "d3/docs",
+    "value": 11.67
+  },
+  {
+    "name": "d3/docs/d3-random.md",
+    "parent": "d3/docs",
+    "value": 36.44
+  },
+  {
+    "name": "d3/docs/d3-chord.md",
+    "parent": "d3/docs",
+    "value": 13.76
+  },
+  {
+    "name": "d3/docs/getting-started.md",
+    "parent": "d3/docs",
+    "value": 33.43
+  },
+  {
+    "name": "d3/docs/d3-drag.md",
+    "parent": "d3/docs",
+    "value": 42.22
+  },
+  {
+    "name": "d3/docs/d3-color.md",
+    "parent": "d3/docs",
+    "value": 35.95
+  },
+  {
+    "name": "d3/docs/components",
+    "parent": "d3/docs",
+    "value": 270.99
+  },
+  {
+    "name": "d3/docs/d3-scale-chromatic.md",
+    "parent": "d3/docs",
+    "value": 11.26
+  },
+  {
+    "name": "d3/docs/d3-force.md",
+    "parent": "d3/docs",
+    "value": 13.71
+  },
+  {
+    "name": "d3/docs/public",
+    "parent": "d3/docs",
+    "value": 134.99
+  },
+  {
+    "name": "d3/docs/d3-delaunay",
+    "parent": "d3/docs",
+    "value": 59.769999999999996
+  },
+  {
+    "name": "d3/docs/d3-hierarchy",
+    "parent": "d3/docs",
+    "value": 141.25
+  },
+  {
+    "name": "d3/docs/index.md",
+    "parent": "d3/docs",
+    "value": 36.05
+  },
+  {
+    "name": "d3/docs/d3-hierarchy.md",
+    "parent": "d3/docs",
+    "value": 14.41
+  },
+  {
+    "name": "d3/docs/d3-fetch.md",
+    "parent": "d3/docs",
+    "value": 20.76
+  },
+  {
+    "name": "d3/docs/d3-transition.md",
+    "parent": "d3/docs",
+    "value": 13.73
+  },
+  {
+    "name": "d3/docs/d3-transition",
+    "parent": "d3/docs",
+    "value": 105.53999999999999
+  },
+  {
+    "name": "d3/docs/d3-force",
+    "parent": "d3/docs",
+    "value": 127.69
+  },
+  {
+    "name": "d3/docs/d3-chord",
+    "parent": "d3/docs",
+    "value": 40.53
+  },
+  {
+    "name": "d3/docs/d3-zoom.md",
+    "parent": "d3/docs",
+    "value": 70.39
+  },
+  {
+    "name": "d3/docs/what-is-d3.md",
+    "parent": "d3/docs",
+    "value": 26.28
+  },
+  {
+    "name": "d3/docs/d3-interpolate.md",
+    "parent": "d3/docs",
+    "value": 13.07
+  },
+  {
+    "name": "d3/docs/d3-dsv.md",
+    "parent": "d3/docs",
+    "value": 39.46
+  },
+  {
+    "name": "d3/docs/data",
+    "parent": "d3/docs",
+    "value": 10.17
+  },
+  {
+    "name": "d3/docs/d3-axis.md",
+    "parent": "d3/docs",
+    "value": 35.18
+  },
+  {
+    "name": "d3/docs/d3-timer.md",
+    "parent": "d3/docs",
+    "value": 18.88
+  },
+  {
+    "name": "d3/docs/d3-time.md",
+    "parent": "d3/docs",
+    "value": 53.69
+  },
+  {
+    "name": "d3/docs/d3-contour.md",
+    "parent": "d3/docs",
+    "value": 11.72
+  },
+  {
+    "name": "d3/.github/eslint.json",
+    "parent": "d3/.github",
+    "value": 10.53
+  },
+  {
+    "name": "d3/.github/workflows",
+    "parent": "d3/.github",
+    "value": 22.18
+  },
+  {
+    "name": "d3/src/index.js",
+    "parent": "d3/src",
+    "value": 11.34
+  },
+  {
+    "name": "d3/.github/workflows/test.yml",
+    "parent": "d3/.github/workflows",
+    "value": 10.78
+  },
+  {
+    "name": "d3/.github/workflows/deploy.yml",
+    "parent": "d3/.github/workflows",
+    "value": 11.4
+  },
+  {
+    "name": "d3/docs/d3-contour/density.md",
+    "parent": "d3/docs/d3-contour",
+    "value": 21.18
+  },
+  {
+    "name": "d3/docs/d3-contour/contour.md",
+    "parent": "d3/docs/d3-contour",
+    "value": 22.63
+  },
+  {
+    "name": "d3/docs/d3-shape/stack.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 39.94
+  },
+  {
+    "name": "d3/docs/d3-shape/curve.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 36.12
+  },
+  {
+    "name": "d3/docs/d3-shape/radial-link.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 12.21
+  },
+  {
+    "name": "d3/docs/d3-shape/area.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 31.51
+  },
+  {
+    "name": "d3/docs/d3-shape/radial-line.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 14.51
+  },
+  {
+    "name": "d3/docs/d3-shape/arc.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 33.61
+  },
+  {
+    "name": "d3/docs/d3-shape/link.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 19.13
+  },
+  {
+    "name": "d3/docs/d3-shape/symbol.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 31.44
+  },
+  {
+    "name": "d3/docs/d3-shape/radial-area.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 20.45
+  },
+  {
+    "name": "d3/docs/d3-shape/pie.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 30.03
+  },
+  {
+    "name": "d3/docs/d3-shape/line.md",
+    "parent": "d3/docs/d3-shape",
+    "value": 21.78
+  },
+  {
+    "name": "d3/docs/d3-array/transform.md",
+    "parent": "d3/docs/d3-array",
+    "value": 17.63
+  },
+  {
+    "name": "d3/docs/d3-array/group.md",
+    "parent": "d3/docs/d3-array",
+    "value": 19.84
+  },
+  {
+    "name": "d3/docs/d3-array/blur.md",
+    "parent": "d3/docs/d3-array",
+    "value": 13.26
+  },
+  {
+    "name": "d3/docs/d3-array/sets.md",
+    "parent": "d3/docs/d3-array",
+    "value": 13.4
+  },
+  {
+    "name": "d3/docs/d3-array/add.md",
+    "parent": "d3/docs/d3-array",
+    "value": 13.67
+  },
+  {
+    "name": "d3/docs/d3-array/bisect.md",
+    "parent": "d3/docs/d3-array",
+    "value": 17.9
+  },
+  {
+    "name": "d3/docs/d3-array/intern.md",
+    "parent": "d3/docs/d3-array",
+    "value": 13.32
+  },
+  {
+    "name": "d3/docs/d3-array/bin.md",
+    "parent": "d3/docs/d3-array",
+    "value": 21.72
+  },
+  {
+    "name": "d3/docs/d3-array/summarize.md",
+    "parent": "d3/docs/d3-array",
+    "value": 41.58
+  },
+  {
+    "name": "d3/docs/d3-array/ticks.md",
+    "parent": "d3/docs/d3-array",
+    "value": 18.35
+  },
+  {
+    "name": "d3/docs/d3-array/sort.md",
+    "parent": "d3/docs/d3-array",
+    "value": 20.74
+  },
+  {
+    "name": "d3/docs/.vitepress/theme",
+    "parent": "d3/docs/.vitepress",
+    "value": 142.16
+  },
+  {
+    "name": "d3/docs/.vitepress/config.ts",
+    "parent": "d3/docs/.vitepress",
+    "value": 29.15
+  },
+  {
+    "name": "d3/docs/d3-scale/sequential.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 18.39
+  },
+  {
+    "name": "d3/docs/d3-scale/point.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 26.16
+  },
+  {
+    "name": "d3/docs/d3-scale/threshold.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 18.15
+  },
+  {
+    "name": "d3/docs/d3-scale/symlog.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 12.76
+  },
+  {
+    "name": "d3/docs/d3-scale/ordinal.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 19.76
+  },
+  {
+    "name": "d3/docs/d3-scale/quantize.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 18.3
+  },
+  {
+    "name": "d3/docs/d3-scale/log.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 18.86
+  },
+  {
+    "name": "d3/docs/d3-scale/quantile.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 19.25
+  },
+  {
+    "name": "d3/docs/d3-scale/time.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 23.87
+  },
+  {
+    "name": "d3/docs/d3-scale/band.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 32.48
+  },
+  {
+    "name": "d3/docs/d3-scale/pow.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 14.09
+  },
+  {
+    "name": "d3/docs/d3-scale/diverging.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 16.68
+  },
+  {
+    "name": "d3/docs/d3-scale/linear.md",
+    "parent": "d3/docs/d3-scale",
+    "value": 40.28
+  },
+  {
+    "name": "d3/docs/d3-scale-chromatic/sequential.md",
+    "parent": "d3/docs/d3-scale-chromatic",
+    "value": 37.45
+  },
+  {
+    "name": "d3/docs/d3-scale-chromatic/categorical.md",
+    "parent": "d3/docs/d3-scale-chromatic",
+    "value": 15.51
+  },
+  {
+    "name": "d3/docs/d3-scale-chromatic/diverging.md",
+    "parent": "d3/docs/d3-scale-chromatic",
+    "value": 20.97
+  },
+  {
+    "name": "d3/docs/d3-scale-chromatic/cyclical.md",
+    "parent": "d3/docs/d3-scale-chromatic",
+    "value": 12.14
+  },
+  {
+    "name": "d3/docs/d3-geo/cylindrical.md",
+    "parent": "d3/docs/d3-geo",
+    "value": 16.66
+  },
+  {
+    "name": "d3/docs/d3-geo/shape.md",
+    "parent": "d3/docs/d3-geo",
+    "value": 22.04
+  },
+  {
+    "name": "d3/docs/d3-geo/path.md",
+    "parent": "d3/docs/d3-geo",
+    "value": 26.89
+  },
+  {
+    "name": "d3/docs/d3-geo/azimuthal.md",
+    "parent": "d3/docs/d3-geo",
+    "value": 15.23
+  },
+  {
+    "name": "d3/docs/d3-geo/math.md",
+    "parent": "d3/docs/d3-geo",
+    "value": 18.1
+  },
+  {
+    "name": "d3/docs/d3-geo/projection.md",
+    "parent": "d3/docs/d3-geo",
+    "value": 41.07
+  },
+  {
+    "name": "d3/docs/d3-geo/conic.md",
+    "parent": "d3/docs/d3-geo",
+    "value": 17.63
+  },
+  {
+    "name": "d3/docs/d3-geo/stream.md",
+    "parent": "d3/docs/d3-geo",
+    "value": 15.02
+  },
+  {
+    "name": "d3/docs/d3-interpolate/transform.md",
+    "parent": "d3/docs/d3-interpolate",
+    "value": 12.41
+  },
+  {
+    "name": "d3/docs/d3-interpolate/value.md",
+    "parent": "d3/docs/d3-interpolate",
+    "value": 33.29
+  },
+  {
+    "name": "d3/docs/d3-interpolate/color.md",
+    "parent": "d3/docs/d3-interpolate",
+    "value": 24.84
+  },
+  {
+    "name": "d3/docs/d3-interpolate/zoom.md",
+    "parent": "d3/docs/d3-interpolate",
+    "value": 12.74
+  },
+  {
+    "name": "d3/docs/d3-selection/locals.md",
+    "parent": "d3/docs/d3-selection",
+    "value": 14.8
+  },
+  {
+    "name": "d3/docs/d3-selection/namespaces.md",
+    "parent": "d3/docs/d3-selection",
+    "value": 12.88
+  },
+  {
+    "name": "d3/docs/d3-selection/joining.md",
+    "parent": "d3/docs/d3-selection",
+    "value": 34.1
+  },
+  {
+    "name": "d3/docs/d3-selection/modifying.md",
+    "parent": "d3/docs/d3-selection",
+    "value": 41.36
+  },
+  {
+    "name": "d3/docs/d3-selection/control-flow.md",
+    "parent": "d3/docs/d3-selection",
+    "value": 15.33
+  },
+  {
+    "name": "d3/docs/d3-selection/selecting.md",
+    "parent": "d3/docs/d3-selection",
+    "value": 33.67
+  },
+  {
+    "name": "d3/docs/d3-selection/events.md",
+    "parent": "d3/docs/d3-selection",
+    "value": 19.88
+  },
+  {
+    "name": "d3/docs/components/UsMap.vue",
+    "parent": "d3/docs/components",
+    "value": 13.02
+  },
+  {
+    "name": "d3/docs/components/PlotRender.js",
+    "parent": "d3/docs/components",
+    "value": 19.84
+  },
+  {
+    "name": "d3/docs/components/quadtreeVisitParent.js",
+    "parent": "d3/docs/components",
+    "value": 11.47
+  },
+  {
+    "name": "d3/docs/components/LogoDiagram.vue",
+    "parent": "d3/docs/components",
+    "value": 14.22
+  },
+  {
+    "name": "d3/docs/components/ExampleCurve.vue",
+    "parent": "d3/docs/components",
+    "value": 12.09
+  },
+  {
+    "name": "d3/docs/components/deferRender.js",
+    "parent": "d3/docs/components",
+    "value": 11.27
+  },
+  {
+    "name": "d3/docs/components/quadtreeNodes.js",
+    "parent": "d3/docs/components",
+    "value": 10.15
+  },
+  {
+    "name": "d3/docs/components/ExampleDisjointForce.vue",
+    "parent": "d3/docs/components",
+    "value": 14.34
+  },
+  {
+    "name": "d3/docs/components/ExampleAxis.vue",
+    "parent": "d3/docs/components",
+    "value": 11.27
+  },
+  {
+    "name": "d3/docs/components/ExampleChord.vue",
+    "parent": "d3/docs/components",
+    "value": 14.64
+  },
+  {
+    "name": "d3/docs/components/ColorSwatches.vue",
+    "parent": "d3/docs/components",
+    "value": 10.79
+  },
+  {
+    "name": "d3/docs/components/ColorRamp.vue",
+    "parent": "d3/docs/components",
+    "value": 10.98
+  },
+  {
+    "name": "d3/docs/components/quadtreeFindVisited.js",
+    "parent": "d3/docs/components",
+    "value": 13.72
+  },
+  {
+    "name": "d3/docs/components/ExampleAnimatedQuadtree.vue",
+    "parent": "d3/docs/components",
+    "value": 14.23
+  },
+  {
+    "name": "d3/docs/components/WorldMap.vue",
+    "parent": "d3/docs/components",
+    "value": 14.14
+  },
+  {
+    "name": "d3/docs/components/ColorSpan.vue",
+    "parent": "d3/docs/components",
+    "value": 11.21
+  },
+  {
+    "name": "d3/docs/components/ExampleLinkForce.vue",
+    "parent": "d3/docs/components",
+    "value": 14.3
+  },
+  {
+    "name": "d3/docs/components/ExampleEase.vue",
+    "parent": "d3/docs/components",
+    "value": 11.55
+  },
+  {
+    "name": "d3/docs/components/ExampleCollideForce.vue",
+    "parent": "d3/docs/components",
+    "value": 12.91
+  },
+  {
+    "name": "d3/docs/components/ExampleBlankChart.vue",
+    "parent": "d3/docs/components",
+    "value": 11.95
+  },
+  {
+    "name": "d3/docs/components/ExampleArcs.vue",
+    "parent": "d3/docs/components",
+    "value": 12.9
+  },
+  {
+    "name": "d3/docs/public/data",
+    "parent": "d3/docs/public",
+    "value": 134.99
+  },
+  {
+    "name": "d3/docs/d3-delaunay/voronoi.md",
+    "parent": "d3/docs/d3-delaunay",
+    "value": 25.05
+  },
+  {
+    "name": "d3/docs/d3-delaunay/delaunay.md",
+    "parent": "d3/docs/d3-delaunay",
+    "value": 34.72
+  },
+  {
+    "name": "d3/docs/d3-hierarchy/cluster.md",
+    "parent": "d3/docs/d3-hierarchy",
+    "value": 16.46
+  },
+  {
+    "name": "d3/docs/d3-hierarchy/partition.md",
+    "parent": "d3/docs/d3-hierarchy",
+    "value": 14.46
+  },
+  {
+    "name": "d3/docs/d3-hierarchy/pack.md",
+    "parent": "d3/docs/d3-hierarchy",
+    "value": 18.28
+  },
+  {
+    "name": "d3/docs/d3-hierarchy/tree.md",
+    "parent": "d3/docs/d3-hierarchy",
+    "value": 16.54
+  },
+  {
+    "name": "d3/docs/d3-hierarchy/hierarchy.md",
+    "parent": "d3/docs/d3-hierarchy",
+    "value": 29.05
+  },
+  {
+    "name": "d3/docs/d3-hierarchy/stratify.md",
+    "parent": "d3/docs/d3-hierarchy",
+    "value": 17.87
+  },
+  {
+    "name": "d3/docs/d3-hierarchy/treemap.md",
+    "parent": "d3/docs/d3-hierarchy",
+    "value": 28.59
+  },
+  {
+    "name": "d3/docs/d3-transition/timing.md",
+    "parent": "d3/docs/d3-transition",
+    "value": 17.47
+  },
+  {
+    "name": "d3/docs/d3-transition/modifying.md",
+    "parent": "d3/docs/d3-transition",
+    "value": 30.18
+  },
+  {
+    "name": "d3/docs/d3-transition/control-flow.md",
+    "parent": "d3/docs/d3-transition",
+    "value": 27.38
+  },
+  {
+    "name": "d3/docs/d3-transition/selecting.md",
+    "parent": "d3/docs/d3-transition",
+    "value": 30.51
+  },
+  {
+    "name": "d3/docs/d3-force/position.md",
+    "parent": "d3/docs/d3-force",
+    "value": 24.3
+  },
+  {
+    "name": "d3/docs/d3-force/collide.md",
+    "parent": "d3/docs/d3-force",
+    "value": 15.27
+  },
+  {
+    "name": "d3/docs/d3-force/many-body.md",
+    "parent": "d3/docs/d3-force",
+    "value": 17.25
+  },
+  {
+    "name": "d3/docs/d3-force/link.md",
+    "parent": "d3/docs/d3-force",
+    "value": 21.03
+  },
+  {
+    "name": "d3/docs/d3-force/simulation.md",
+    "parent": "d3/docs/d3-force",
+    "value": 36.44
+  },
+  {
+    "name": "d3/docs/d3-force/center.md",
+    "parent": "d3/docs/d3-force",
+    "value": 13.4
+  },
+  {
+    "name": "d3/docs/d3-chord/chord.md",
+    "parent": "d3/docs/d3-chord",
+    "value": 18.38
+  },
+  {
+    "name": "d3/docs/d3-chord/ribbon.md",
+    "parent": "d3/docs/d3-chord",
+    "value": 22.15
+  },
+  {
+    "name": "d3/docs/data/volcano.data.js",
+    "parent": "d3/docs/data",
+    "value": 10.17
+  },
+  {
+    "name": "d3/docs/public/data/riaa-us-revenue.csv",
+    "parent": "d3/docs/public/data",
+    "value": 87.74
+  },
+  {
+    "name": "d3/docs/public/data/volcano.json",
+    "parent": "d3/docs/public/data",
+    "value": 47.25
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/ObservablePromo.vue",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 14.99
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/VersionAndStars.vue",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 17.53
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/custom.css",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 13.91
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/CustomFooter.vue",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 34.41
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/CustomLayout.vue",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 12.04
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/stargazers.data.ts",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 11.21
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/index.ts",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 10.67
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/gallery.data.js",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 10.94
+  },
+  {
+    "name": "d3/docs/.vitepress/theme/ExamplesGrid.vue",
+    "parent": "d3/docs/.vitepress/theme",
+    "value": 16.46
+  }
+]

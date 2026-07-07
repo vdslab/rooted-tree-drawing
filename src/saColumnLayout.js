@@ -1,172 +1,216 @@
 import * as d3 from "d3";
-
-/**
- * 列管理の焼きなまし法
- * - 幅固定、高さ可変
- * - 最大列高さを最小化
- */
-export function saColumn(leaves, colNum) {
-  // --- 1. パラメータ設定 ---
-  //1万回以内
-  const options = {
-    initialTemp: 916.5693407083919,
-    finalTemp: 8.823760112359201,
-    coolingRate: 0.9533798833054334,
-    iterationsPerTemp: 102
-  };
-
-  // --- 2. 初期化 ---
-  const arr = to1D(leaves);
-  const leavesNum = arr.length;
-
-  if (leavesNum < colNum) {
-    console.error("エラー: ノード数より列数の方が多いです。");
-    return null;
-  }
-
-  const solution = generateInitialSolutionNoEmpty(colNum, leavesNum);
-  const { eachColHeight, groupCounts } = calcInitialState(arr, solution, colNum);
-  let currentMaxHeight = Math.max(...eachColHeight);
-
-  // ★ 列が1つしかない場合は探索不要で即時リターン
-  if (colNum <= 1) {
-    const resultPartition = Array.from({ length: colNum }, () => []);
-    if (colNum === 1) {
-      resultPartition[0] = arr;
-    }
-    const finalHeights = resultPartition.map(group =>
-      group.reduce((sum, node) => sum + (node.height || 0), 0)
-    );
-
-    return {
-      bestPartition: resultPartition,
-      maxHeight: currentMaxHeight,
-      columnHeights: finalHeights,
-    };
-  }
-
-  // 最良解の保存用
-  let bestSolution = [...solution];
-  let bestMaxHeight = currentMaxHeight;
-  let temp = options.initialTemp;
-
-  // --- 3. 焼きなまし法のメインループ ---
-  while (temp > options.finalTemp) {
-    for (let i = 0; i < options.iterationsPerTemp; i++) {
-      // a. 移動するノードを選択（空列を作らないように）
-      let nodeIndexToMove;
-      let attempts = 0;
-      while (attempts <= leavesNum * 2) {
-        nodeIndexToMove = getRandomInt(leavesNum);
-        const currentGroup = solution[nodeIndexToMove];
-        if (groupCounts[currentGroup] > 1) break;
-        attempts++;
-        if (attempts > leavesNum * 2) { nodeIndexToMove = -1; break; }
-      }
-      if (nodeIndexToMove === -1) continue;
-
-      const currentCol = solution[nodeIndexToMove];
-      const nodeHeight = arr[nodeIndexToMove].height || 0;
-
-      // 移動先を選択
-      let newCol;
-      do {
-        newCol = getRandomInt(colNum);
-      } while (newCol === currentCol);
-
-      // 状態を「仮に」変更
-      solution[nodeIndexToMove] = newCol;
-      eachColHeight[currentCol] -= nodeHeight;
-      eachColHeight[newCol] += nodeHeight;
-      groupCounts[currentCol]--;
-      groupCounts[newCol]++;
-
-      const newMaxHeight = Math.max(...eachColHeight);
-
-      // 評価：最大列高さを最小化
-      const heightDelta = newMaxHeight - currentMaxHeight;
-      const accept =
-        heightDelta < 0 ||
-        Math.random() < Math.exp(-heightDelta / Math.max(temp, 1e-9));
-
-      if (accept) {
-        currentMaxHeight = newMaxHeight;
-      } else {
-        // 不採択: 変更を元に戻す
-        solution[nodeIndexToMove] = currentCol;
-        eachColHeight[currentCol] += nodeHeight;
-        eachColHeight[newCol] -= nodeHeight;
-        groupCounts[currentCol]++;
-        groupCounts[newCol]--;
-      }
-
-      // 最良解の更新
-      if (currentMaxHeight < bestMaxHeight) {
-        bestMaxHeight = currentMaxHeight;
-        bestSolution = [...solution];
-      }
-    }
-    temp *= options.coolingRate;
-  }
-
-  // --- 4. 結果の整形 ---
-  const resultPartition = Array.from({ length: colNum }, () => []);
-  for (let i = 0; i < leavesNum; i++) {
-    resultPartition[bestSolution[i]].push(arr[i]);
-  }
-
-  const finalHeights = resultPartition.map(group =>
-    group.reduce((sum, node) => sum + (node.height || 0), 0)
-  );
-
-  return {
-    bestPartition: resultPartition,
-    maxHeight: bestMaxHeight,
-    columnHeights: finalHeights.sort((a, b) => b - a),
-  };
-}
-
-
-/**
- * 初期状態（各列の高さとノード数）を一度に計算する関数
- */
-function calcInitialState(arr, solution, colNum) {
-  const eachColHeight = new Array(colNum).fill(0);
-  const groupCounts = new Array(colNum).fill(0);
-  solution.forEach((colIndex, nodeIndex) => {
-    eachColHeight[colIndex] += arr[nodeIndex].height || 0;
-    groupCounts[colIndex]++;
-  });
-  return { eachColHeight, groupCounts };
-}
-
-/**
- * 空列を作らない初期解を生成
- */
-function generateInitialSolutionNoEmpty(colNum, leavesNum) {
-  if (colNum === 0) return [];
-  const solution = [];
-  // まず各列に1つずつノードを割り当て
-  for (let i = 0; i < colNum; i++) solution.push(i);
-  // 残りのノードはランダムに割り当て
-  for (let i = colNum; i < leavesNum; i++) solution.push(getRandomInt(colNum));
-  // シャッフル
-  for (let i = solution.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [solution[i], solution[j]] = [solution[j], solution[i]];
-  }
-  return solution;
-}
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
+import { lptColumn, lptColumnFromSorted } from "./lpt.js";
+import { sa } from "./sa.js";
 
 /**
  * 2次元配列を1次元に変換
  */
 function to1D(leaves) {
   return leaves.flat();
+}
+
+// ========================================
+// 支配的ノード検出・幅拡張
+// ========================================
+
+/**
+ * 支配的ノード（列高さを支配するほど大きいノード）を検出する関数
+ *
+ * 判定基準: ノード高さ > (残りノードの高さ合計) / (残り列数)
+ * → そのノードが専用列に入っても、他の列の理想高さより高い場合に「支配的」と判定
+ *
+ * 高さ降順にソートし、一番大きいノードから順に判定していく。
+ * 最初の数ノードが自然に支配的ノードとして選ばれる。
+ *
+ * @param {Array} leaves1D - 全ノード（1次元配列）
+ * @param {number} colNum - 利用可能な列数
+ * @returns {Array} 支配的ノードのリスト [{node, originalIndex}, ...]
+ */
+function detectDominantNodes(leaves1D, colNum) {
+  if (leaves1D.length <= 1 || colNum <= 1) return [];
+
+  // 高さ降順にソート（元の配列は変更しない）
+  const sorted = [...leaves1D]
+    .map((node, originalIndex) => ({ node, originalIndex }))
+    .sort((a, b) => (b.node.height || 0) - (a.node.height || 0));
+
+  const totalHeight = sorted.reduce((s, item) => s + (item.node.height || 0), 0);
+  const dominantNodes = [];
+  let remainingHeight = totalHeight;
+  let remainingCols = colNum;
+
+  for (const item of sorted) {
+    const nodeHeight = item.node.height || 0;
+
+    // このノードを除いた残りの理想列高さ
+    const othersHeight = remainingHeight - nodeHeight;
+    const otherCols = remainingCols - 1;
+
+    if (otherCols <= 0) break; // これ以上列を割けない
+
+    const idealColHeight = othersHeight / otherCols;
+
+    // 判定: ノードの高さが理想列高さより大きいか？
+    if (nodeHeight > idealColHeight) {
+      dominantNodes.push(item);
+      remainingHeight -= nodeHeight;
+      remainingCols--;
+    } else {
+      break; // ソート済みなので、これ以降のノードも条件を満たさない
+    }
+
+    if (remainingCols <= 1) break; // 残り列数が1以下になったら終了
+  }
+
+  return dominantNodes;
+}
+
+/**
+ * 支配的ノードの幅を広げ、高さを縮める（面積保存）
+ *
+ * k = ノード高さ / 理想列高さ
+ * 理想列高さ = 残りノードの高さ合計 / 残り列数
+ *
+ * @param {Object} node - 拡張対象のノード
+ * @param {Array} otherLeaves - 対象ノード以外の全ノード
+ * @param {number} remainingCols - 対象ノードを除いた残り列数
+ * @returns {Object} 幅拡張されたノード
+ */
+function widenDominantNode(node, otherLeaves, remainingCols, maxK = 3.0) {
+  const otherTotalHeight = otherLeaves.reduce((s, n) => s + (n.height || 0), 0);
+  const idealHeight = otherTotalHeight / Math.max(remainingCols, 1);
+  let k = (node.height || 0) / Math.max(idealHeight, 1);
+
+  // ★ 拡張係数に上限を設ける（過剰な圧縮・横延びを防ぐ）
+  if (k > maxK) {
+    k = maxK;
+  }
+
+  if (k <= 1.0) {
+    // 拡張不要（理想高さ以下）
+    return { ...node };
+  }
+
+  return {
+    ...node,
+    width: node.width * k,
+    height: node.height / k,
+    isWidened: true,
+  };
+}
+
+/**
+ * 支配的ノード対応版の LPT 列分配（統合版）
+ *
+ * 1回のソートで支配的ノード検出 + LPT 分配を一貫して行う。
+ *
+ * 流れ:
+ *   1. 全ノードを高さ降順にソート（1回だけ）
+ *   2. ソート済み配列の先頭から支配的ノードを検出
+ *   3. 支配的ノードを専用列に固定 + 幅拡張
+ *   4. 残りノード（ソート済み）を LPT で分配（再ソート不要）
+ *
+ * @param {Array} leaves - 葉ノードの2次元配列
+ * @param {number} colNum - 分配先の列数
+ * @returns {{ bestPartition: Array[], maxHeight: number, columnHeights: number[] }}
+ */
+function lptColumnWithDominant(leaves, colNum) {
+  const arr = to1D(leaves);
+
+  // ノード数が少ない or 1列の場合は通常LPT
+  if (arr.length <= 1 || colNum <= 1) {
+    return lptColumn(leaves, colNum);
+  }
+
+  // === Step 1: 高さ降順にソート（1回だけ） ===
+  const sorted = arr
+    .map((node, originalIndex) => ({ node, height: node.height || 0, originalIndex }))
+    .sort((a, b) => b.height - a.height);
+
+  const totalHeight = sorted.reduce((s, item) => s + item.height, 0);
+
+  // === Step 2: ソート済み配列から支配的ノードを検出 ===
+  const dominantItems = [];
+  let remainingHeight = totalHeight;
+  let remainingCols = colNum;
+
+  for (const item of sorted) {
+    const othersHeight = remainingHeight - item.height;
+    const otherCols = remainingCols - 1;
+
+    if (otherCols <= 0) break;
+
+    const idealColHeight = othersHeight / otherCols;
+
+    if (item.height > idealColHeight) {
+      dominantItems.push(item);
+      remainingHeight -= item.height;
+      remainingCols--;
+    } else {
+      break; // ソート済みなので、これ以降も条件を満たさない
+    }
+
+    if (remainingCols <= 1) break;
+  }
+
+  // 支配的ノードがなければ通常のLPT（ソート済みを流用）
+  if (dominantItems.length === 0) {
+    return lptColumn(leaves, colNum);
+  }
+
+  // === Step 3: 支配的ノードを除いた残りノード（ソート順を維持） ===
+  const dominantIndices = new Set(dominantItems.map(d => d.originalIndex));
+  const otherNodes = sorted
+    .filter(item => !dominantIndices.has(item.originalIndex))
+    .map(item => item.node); // 既にソート済み
+
+  const colsForOthers = colNum - dominantItems.length;
+
+  if (colsForOthers <= 0 || otherNodes.length === 0) {
+    return lptColumn(leaves, colNum);
+  }
+
+  // 支配的ノードそれぞれを幅拡張
+  const widenedDominants = dominantItems.map(d =>
+    widenDominantNode(d.node, otherNodes, colsForOthers)
+  );
+
+  // === Step 4: 残りノードを LPT で分配（再ソート不要） ===
+  let resultPartition;
+  let resultMaxHeight;
+
+  if (colsForOthers === 1) {
+    // 残り1列: 全ノードを1列にまとめる
+    const otherHeight = otherNodes.reduce((s, n) => s + (n.height || 0), 0);
+    resultPartition = [
+      ...widenedDominants.map(n => [n]),
+      otherNodes
+    ];
+    resultMaxHeight = Math.max(
+      ...widenedDominants.map(n => n.height),
+      otherHeight
+    );
+  } else {
+    // 残り2列以上: ソート済み配列から直接LPT（再ソート不要）
+    const lptResult = lptColumnFromSorted(otherNodes, colsForOthers);
+    resultPartition = [
+      ...widenedDominants.map(n => [n]),
+      ...lptResult.bestPartition
+    ];
+    resultMaxHeight = Math.max(
+      ...widenedDominants.map(n => n.height),
+      lptResult.maxHeight
+    );
+  }
+
+  const columnHeights = resultPartition.map(col =>
+    col.reduce((sum, node) => sum + (node.height || 0), 0)
+  );
+  return {
+    bestPartition: resultPartition,
+    maxHeight: resultMaxHeight,
+    columnHeights,
+  };
 }
 
 // ========================================
@@ -571,34 +615,51 @@ function calculateColumnsToAdd(currentAspect, targetAspect, currentColumns, maxC
 function localFoldingLayout(root, at, xMargin, yMargin, innerYMargin, stratify) {
   let a = calcAspectRatio(root);
 
-
   // 列管理：アスペクト比が目標より小さい（縦長すぎる）場合、列を増やして横長にする
   let iteration = 0;
   while (a < at) {
     iteration++;
     const bottomNode = searchBottomNode(root);
-    // console.log(`Iteration ${iteration}: bottomNode = ${bottomNode?.id}, columns = ${bottomNode?.data?.columns}, leavesNum = ${bottomNode?.data?.leavesNum}`);
 
-    // ダミーノードがない、または全てのダミーノードが展開済みの場合は終了
-    if (!bottomNode || bottomNode.data?.columns >= bottomNode.data?.leavesNum) {
-      break;
-    }
+    // ダミーノードがない場合は終了
+    if (!bottomNode) break;
 
-    // 列数を1つ増やす（layout.jsと同様）
-    bottomNode.data.columns += 1;
-    // console.log(`  Expanding columns to: ${bottomNode.data.columns}`);
+    if (bottomNode.data?.columns >= bottomNode.data?.leavesNum) {
+      // 列数が最大に達している → 支配的ノードの幅拡張を試みる
+      const arr = to1D(bottomNode.data.leaves);
+      const dominants = detectDominantNodes(arr, bottomNode.data.columns);
+      // 支配的ノードがない、または既に全て拡張済みなら終了
+      if (dominants.length === 0 || dominants.every(d => d.node.isWidened)) break;
 
-    // saColumnで最適化
-    const saResult = saColumn(bottomNode.data.leaves, bottomNode.data.columns);
-    if (saResult) {
-      bottomNode.data.leaves = saResult.bestPartition;
-      // console.log(`  SA result: maxHeight = ${saResult.maxHeight}, partitions = ${saResult.bestPartition.length}`);
+      // 未拡張の支配的ノードを幅拡張版に置き換え
+      const dominantSet = new Set(dominants.filter(d => !d.node.isWidened).map(d => d.node));
+      const otherLeaves = arr.filter(n => !dominantSet.has(n));
+      const remainingCols = bottomNode.data.columns - dominantSet.size;
+
+      const newLeaves = bottomNode.data.leaves.map(col =>
+        col.map(node => {
+          if (dominantSet.has(node)) {
+            return widenDominantNode(node, otherLeaves, Math.max(remainingCols, 1));
+          }
+          return node;
+        })
+      );
+      bottomNode.data.leaves = newLeaves;
+    } else {
+      // 列数を1つ増やす
+      bottomNode.data.columns += 1;
+
+      // LPT + 支配的ノード対応版で最適化
+      const lptResult = lptColumnWithDominant(bottomNode.data.leaves, bottomNode.data.columns);
+
+      if (lptResult) {
+        bottomNode.data.leaves = lptResult.bestPartition;
+      }
     }
 
     setDummyMargin(root, xMargin, yMargin, innerYMargin);
     root = stratify(vanderploeg(root, stratify));
     a = calcAspectRatio(root);
-    // console.log(`  New aspect ratio: ${a}`);
   }
 
   return root;
@@ -877,8 +938,8 @@ function createDummyLinks(dummyNode, xMargin, yMargin, innerYMargin) {
 }
 
 export function layout(data, width, height) {
-  const xMargin = 40;
-  const yMargin = 40;
+  const xMargin = 500;
+  const yMargin = 500;
   // ★ 追加: 内部マージンを半分に設定
   const innerYMargin = yMargin / 2;
 

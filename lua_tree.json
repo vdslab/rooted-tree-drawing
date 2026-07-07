@@ -1,0 +1,698 @@
+[
+  {
+    "name": "lua",
+    "parent": "",
+    "value": 69,
+    "type": "folder"
+  },
+  {
+    "name": "lua/lauxlib.c",
+    "parent": "lua",
+    "value": 35956,
+    "type": "file"
+  },
+  {
+    "name": "lua/lmem.h",
+    "parent": "lua",
+    "value": 3435,
+    "type": "file"
+  },
+  {
+    "name": "lua/llimits.h",
+    "parent": "lua",
+    "value": 9780,
+    "type": "file"
+  },
+  {
+    "name": "lua/luaconf.h",
+    "parent": "lua",
+    "value": 20002,
+    "type": "file"
+  },
+  {
+    "name": "lua/lzio.h",
+    "parent": "lua",
+    "value": 1503,
+    "type": "file"
+  },
+  {
+    "name": "lua/lgc.h",
+    "parent": "lua",
+    "value": 9007,
+    "type": "file"
+  },
+  {
+    "name": "lua/liolib.c",
+    "parent": "lua",
+    "value": 22402,
+    "type": "file"
+  },
+  {
+    "name": "lua/lopcodes.c",
+    "parent": "lua",
+    "value": 4981,
+    "type": "file"
+  },
+  {
+    "name": "lua/lstate.c",
+    "parent": "lua",
+    "value": 11078,
+    "type": "file"
+  },
+  {
+    "name": "lua/lobject.c",
+    "parent": "lua",
+    "value": 24091,
+    "type": "file"
+  },
+  {
+    "name": "lua/lualib.h",
+    "parent": "lua",
+    "value": 1593,
+    "type": "file"
+  },
+  {
+    "name": "lua/lmathlib.c",
+    "parent": "lua",
+    "value": 19049,
+    "type": "file"
+  },
+  {
+    "name": "lua/lopnames.h",
+    "parent": "lua",
+    "value": 1169,
+    "type": "file"
+  },
+  {
+    "name": "lua/loadlib.c",
+    "parent": "lua",
+    "value": 22892,
+    "type": "file"
+  },
+  {
+    "name": "lua/lvm.c",
+    "parent": "lua",
+    "value": 61419,
+    "type": "file"
+  },
+  {
+    "name": "lua/lfunc.c",
+    "parent": "lua",
+    "value": 9153,
+    "type": "file"
+  },
+  {
+    "name": "lua/lstrlib.c",
+    "parent": "lua",
+    "value": 58129,
+    "type": "file"
+  },
+  {
+    "name": "lua/makefile",
+    "parent": "lua",
+    "value": 7716,
+    "type": "file"
+  },
+  {
+    "name": "lua/lua.c",
+    "parent": "lua",
+    "value": 22814,
+    "type": "file"
+  },
+  {
+    "name": "lua/ldebug.h",
+    "parent": "lua",
+    "value": 2283,
+    "type": "file"
+  },
+  {
+    "name": "lua/linit.c",
+    "parent": "lua",
+    "value": 1529,
+    "type": "file"
+  },
+  {
+    "name": "lua/lcode.h",
+    "parent": "lua",
+    "value": 3901,
+    "type": "file"
+  },
+  {
+    "name": "lua/lapi.h",
+    "parent": "lua",
+    "value": 1635,
+    "type": "file"
+  },
+  {
+    "name": "lua/lstring.c",
+    "parent": "lua",
+    "value": 9726,
+    "type": "file"
+  },
+  {
+    "name": "lua/ldo.h",
+    "parent": "lua",
+    "value": 3568,
+    "type": "file"
+  },
+  {
+    "name": "lua/lundump.c",
+    "parent": "lua",
+    "value": 11028,
+    "type": "file"
+  },
+  {
+    "name": "lua/all",
+    "parent": "lua",
+    "value": 205,
+    "type": "file"
+  },
+  {
+    "name": "lua/lctype.c",
+    "parent": "lua",
+    "value": 2461,
+    "type": "file"
+  },
+  {
+    "name": "lua/ltests.h",
+    "parent": "lua",
+    "value": 3588,
+    "type": "file"
+  },
+  {
+    "name": "lua/ljumptab.h",
+    "parent": "lua",
+    "value": 1694,
+    "type": "file"
+  },
+  {
+    "name": "lua/llex.h",
+    "parent": "lua",
+    "value": 2535,
+    "type": "file"
+  },
+  {
+    "name": "lua/ltm.h",
+    "parent": "lua",
+    "value": 3080,
+    "type": "file"
+  },
+  {
+    "name": "lua/ltable.c",
+    "parent": "lua",
+    "value": 43193,
+    "type": "file"
+  },
+  {
+    "name": "lua/lparser.h",
+    "parent": "lua",
+    "value": 7070,
+    "type": "file"
+  },
+  {
+    "name": "lua/ldump.c",
+    "parent": "lua",
+    "value": 7900,
+    "type": "file"
+  },
+  {
+    "name": "lua/README.md",
+    "parent": "lua",
+    "value": 442,
+    "type": "file"
+  },
+  {
+    "name": "lua/lobject.h",
+    "parent": "lua",
+    "value": 24245,
+    "type": "file"
+  },
+  {
+    "name": "lua/lstate.h",
+    "parent": "lua",
+    "value": 15948,
+    "type": "file"
+  },
+  {
+    "name": "lua/lopcodes.h",
+    "parent": "lua",
+    "value": 13962,
+    "type": "file"
+  },
+  {
+    "name": "lua/loslib.c",
+    "parent": "lua",
+    "value": 11861,
+    "type": "file"
+  },
+  {
+    "name": "lua/lgc.c",
+    "parent": "lua",
+    "value": 57766,
+    "type": "file"
+  },
+  {
+    "name": "lua/lzio.c",
+    "parent": "lua",
+    "value": 1809,
+    "type": "file"
+  },
+  {
+    "name": "lua/ldblib.c",
+    "parent": "lua",
+    "value": 13211,
+    "type": "file"
+  },
+  {
+    "name": "lua/lutf8lib.c",
+    "parent": "lua",
+    "value": 8440,
+    "type": "file"
+  },
+  {
+    "name": "lua/manual",
+    "parent": "lua",
+    "value": 2,
+    "type": "folder"
+  },
+  {
+    "name": "lua/lmem.c",
+    "parent": "lua",
+    "value": 6245,
+    "type": "file"
+  },
+  {
+    "name": "lua/lauxlib.h",
+    "parent": "lua",
+    "value": 8638,
+    "type": "file"
+  },
+  {
+    "name": "lua/.gitignore",
+    "parent": "lua",
+    "value": 115,
+    "type": "file"
+  },
+  {
+    "name": "lua/lvm.h",
+    "parent": "lua",
+    "value": 4067,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes",
+    "parent": "lua",
+    "value": 36,
+    "type": "folder"
+  },
+  {
+    "name": "lua/lcorolib.c",
+    "parent": "lua",
+    "value": 5290,
+    "type": "file"
+  },
+  {
+    "name": "lua/lstring.h",
+    "parent": "lua",
+    "value": 2100,
+    "type": "file"
+  },
+  {
+    "name": "lua/lcode.c",
+    "parent": "lua",
+    "value": 56691,
+    "type": "file"
+  },
+  {
+    "name": "lua/ltablib.c",
+    "parent": "lua",
+    "value": 13162,
+    "type": "file"
+  },
+  {
+    "name": "lua/lapi.c",
+    "parent": "lua",
+    "value": 36733,
+    "type": "file"
+  },
+  {
+    "name": "lua/lbaselib.c",
+    "parent": "lua",
+    "value": 15833,
+    "type": "file"
+  },
+  {
+    "name": "lua/lua.h",
+    "parent": "lua",
+    "value": 16674,
+    "type": "file"
+  },
+  {
+    "name": "lua/ldebug.c",
+    "parent": "lua",
+    "value": 30045,
+    "type": "file"
+  },
+  {
+    "name": "lua/lfunc.h",
+    "parent": "lua",
+    "value": 1699,
+    "type": "file"
+  },
+  {
+    "name": "lua/onelua.c",
+    "parent": "lua",
+    "value": 2475,
+    "type": "file"
+  },
+  {
+    "name": "lua/lprefix.h",
+    "parent": "lua",
+    "value": 828,
+    "type": "file"
+  },
+  {
+    "name": "lua/lparser.c",
+    "parent": "lua",
+    "value": 65709,
+    "type": "file"
+  },
+  {
+    "name": "lua/llex.c",
+    "parent": "lua",
+    "value": 17852,
+    "type": "file"
+  },
+  {
+    "name": "lua/ltable.h",
+    "parent": "lua",
+    "value": 6449,
+    "type": "file"
+  },
+  {
+    "name": "lua/ltm.c",
+    "parent": "lua",
+    "value": 9559,
+    "type": "file"
+  },
+  {
+    "name": "lua/ltests.c",
+    "parent": "lua",
+    "value": 59092,
+    "type": "file"
+  },
+  {
+    "name": "lua/lctype.h",
+    "parent": "lua",
+    "value": 2115,
+    "type": "file"
+  },
+  {
+    "name": "lua/ldo.c",
+    "parent": "lua",
+    "value": 38990,
+    "type": "file"
+  },
+  {
+    "name": "lua/lundump.h",
+    "parent": "lua",
+    "value": 903,
+    "type": "file"
+  },
+  {
+    "name": "lua/manual/manual.of",
+    "parent": "lua/manual",
+    "value": 301543,
+    "type": "file"
+  },
+  {
+    "name": "lua/manual/2html",
+    "parent": "lua/manual",
+    "value": 11875,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/bitwise.lua",
+    "parent": "lua/testes",
+    "value": 10141,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/goto.lua",
+    "parent": "lua/testes",
+    "value": 10668,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/errors.lua",
+    "parent": "lua/testes",
+    "value": 22247,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/code.lua",
+    "parent": "lua/testes",
+    "value": 14715,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/vararg.lua",
+    "parent": "lua/testes",
+    "value": 5050,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/main.lua",
+    "parent": "lua/testes",
+    "value": 15406,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/utf8.lua",
+    "parent": "lua/testes",
+    "value": 7851,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/closure.lua",
+    "parent": "lua/testes",
+    "value": 5784,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/nextvar.lua",
+    "parent": "lua/testes",
+    "value": 22750,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/all.lua",
+    "parent": "lua/testes",
+    "value": 7047,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/files.lua",
+    "parent": "lua/testes",
+    "value": 27804,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/pm.lua",
+    "parent": "lua/testes",
+    "value": 13859,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/tpack.lua",
+    "parent": "lua/testes",
+    "value": 10641,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/gc.lua",
+    "parent": "lua/testes",
+    "value": 18567,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/events.lua",
+    "parent": "lua/testes",
+    "value": 12809,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/calls.lua",
+    "parent": "lua/testes",
+    "value": 14294,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/big.lua",
+    "parent": "lua/testes",
+    "value": 2148,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/literals.lua",
+    "parent": "lua/testes",
+    "value": 11669,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/gengc.lua",
+    "parent": "lua/testes",
+    "value": 6070,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/coroutine.lua",
+    "parent": "lua/testes",
+    "value": 34640,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/libs",
+    "parent": "lua/testes",
+    "value": 7,
+    "type": "folder"
+  },
+  {
+    "name": "lua/testes/constructs.lua",
+    "parent": "lua/testes",
+    "value": 9946,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/math.lua",
+    "parent": "lua/testes",
+    "value": 33144,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/cstack.lua",
+    "parent": "lua/testes",
+    "value": 5391,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/strings.lua",
+    "parent": "lua/testes",
+    "value": 19405,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/db.lua",
+    "parent": "lua/testes",
+    "value": 26429,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/packtests",
+    "parent": "lua/testes",
+    "value": 1021,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/sort.lua",
+    "parent": "lua/testes",
+    "value": 9217,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/api.lua",
+    "parent": "lua/testes",
+    "value": 40029,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/tracegc.lua",
+    "parent": "lua/testes",
+    "value": 681,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/memerr.lua",
+    "parent": "lua/testes",
+    "value": 7084,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/verybig.lua",
+    "parent": "lua/testes",
+    "value": 3724,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/heavy.lua",
+    "parent": "lua/testes",
+    "value": 4431,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/locals.lua",
+    "parent": "lua/testes",
+    "value": 30652,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/bwcoercion.lua",
+    "parent": "lua/testes",
+    "value": 1792,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/attrib.lua",
+    "parent": "lua/testes",
+    "value": 14029,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/libs/lib22.c",
+    "parent": "lua/testes/libs",
+    "value": 1810,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/libs/makefile",
+    "parent": "lua/testes/libs",
+    "value": 781,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/libs/lib21.c",
+    "parent": "lua/testes/libs",
+    "value": 129,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/libs/lib11.c",
+    "parent": "lua/testes/libs",
+    "value": 164,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/libs/P1",
+    "parent": "lua/testes/libs",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "lua/testes/libs/lib2.c",
+    "parent": "lua/testes/libs",
+    "value": 385,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/libs/lib1.c",
+    "parent": "lua/testes/libs",
+    "value": 835,
+    "type": "file"
+  },
+  {
+    "name": "lua/testes/libs/P1/dummy",
+    "parent": "lua/testes/libs/P1",
+    "value": 101,
+    "type": "file"
+  }
+]

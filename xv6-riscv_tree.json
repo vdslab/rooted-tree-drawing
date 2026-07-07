@@ -1,0 +1,500 @@
+[
+  {
+    "name": "xv6-riscv",
+    "parent": "",
+    "value": 11,
+    "type": "folder"
+  },
+  {
+    "name": "xv6-riscv/.dir-locals.el",
+    "parent": "xv6-riscv",
+    "value": 86,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/LICENSE",
+    "parent": "xv6-riscv",
+    "value": 1174,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/Makefile",
+    "parent": "xv6-riscv",
+    "value": 5441,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/mkfs",
+    "parent": "xv6-riscv",
+    "value": 1,
+    "type": "folder"
+  },
+  {
+    "name": "xv6-riscv/user",
+    "parent": "xv6-riscv",
+    "value": 25,
+    "type": "folder"
+  },
+  {
+    "name": "xv6-riscv/README",
+    "parent": "xv6-riscv",
+    "value": 2425,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/.editorconfig",
+    "parent": "xv6-riscv",
+    "value": 248,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/.gdbinit.tmpl-riscv",
+    "parent": "xv6-riscv",
+    "value": 171,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/.gitignore",
+    "parent": "xv6-riscv",
+    "value": 142,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/test-xv6.py",
+    "parent": "xv6-riscv",
+    "value": 5561,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel",
+    "parent": "xv6-riscv",
+    "value": 45,
+    "type": "folder"
+  },
+  {
+    "name": "xv6-riscv/mkfs/mkfs.c",
+    "parent": "xv6-riscv/mkfs",
+    "value": 6397,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/printf.c",
+    "parent": "xv6-riscv/user",
+    "value": 2778,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/forktest.c",
+    "parent": "xv6-riscv/user",
+    "value": 752,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/ls.c",
+    "parent": "xv6-riscv/user",
+    "value": 1634,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/init.c",
+    "parent": "xv6-riscv/user",
+    "value": 1104,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/user.ld",
+    "parent": "xv6-riscv/user",
+    "value": 642,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/rm.c",
+    "parent": "xv6-riscv/user",
+    "value": 345,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/cat.c",
+    "parent": "xv6-riscv/user",
+    "value": 624,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/wc.c",
+    "parent": "xv6-riscv/user",
+    "value": 867,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/umalloc.c",
+    "parent": "xv6-riscv/user",
+    "value": 1679,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/grind.c",
+    "parent": "xv6-riscv/user",
+    "value": 7777,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/zombie.c",
+    "parent": "xv6-riscv/user",
+    "value": 234,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/mkdir.c",
+    "parent": "xv6-riscv/user",
+    "value": 350,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/user.h",
+    "parent": "xv6-riscv/user",
+    "value": 1217,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/kill.c",
+    "parent": "xv6-riscv/user",
+    "value": 254,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/sh.c",
+    "parent": "xv6-riscv/user",
+    "value": 8473,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/forphan.c",
+    "parent": "xv6-riscv/user",
+    "value": 784,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/ulib.c",
+    "parent": "xv6-riscv/user",
+    "value": 2104,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/dorphan.c",
+    "parent": "xv6-riscv/user",
+    "value": 608,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/ln.c",
+    "parent": "xv6-riscv/user",
+    "value": 287,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/grep.c",
+    "parent": "xv6-riscv/user",
+    "value": 2057,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/logstress.c",
+    "parent": "xv6-riscv/user",
+    "value": 991,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/stressfs.c",
+    "parent": "xv6-riscv/user",
+    "value": 1054,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/usys.pl",
+    "parent": "xv6-riscv/user",
+    "value": 772,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/usertests.c",
+    "parent": "xv6-riscv/user",
+    "value": 65617,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/user/echo.c",
+    "parent": "xv6-riscv/user",
+    "value": 296,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/swtch.S",
+    "parent": "xv6-riscv/kernel",
+    "value": 794,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/log.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 5761,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/printf.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 2991,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/spinlock.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 199,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/defs.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 6103,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/sysproc.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 1523,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/pipe.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 2651,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/proc.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 3482,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/exec.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 4204,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/types.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 234,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/vm.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 11254,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/trampoline.S",
+    "parent": "xv6-riscv/kernel",
+    "value": 3770,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/fcntl.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 120,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/file.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 999,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/stat.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 303,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/sysfile.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 8489,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/sleeplock.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 797,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/string.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 1412,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/buf.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 251,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/fs.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 16831,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/memlayout.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 1795,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/kernel.ld",
+    "parent": "xv6-riscv/kernel",
+    "value": 891,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/syscall.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 3469,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/elf.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 777,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/entry.S",
+    "parent": "xv6-riscv/kernel",
+    "value": 609,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/virtio.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 3486,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/kernelvec.S",
+    "parent": "xv6-riscv/kernel",
+    "value": 1513,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/trap.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 5403,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/console.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 4076,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/param.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 799,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/spinlock.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 2729,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/main.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 1232,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/bio.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 3325,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/plic.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 908,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/proc.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 14564,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/riscv.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 7189,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/virtio_disk.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 8664,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/sleeplock.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 265,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/file.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 3504,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/vm.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 42,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/syscall.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 485,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/kalloc.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 1655,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/start.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 1537,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/fs.h",
+    "parent": "xv6-riscv/kernel",
+    "value": 1919,
+    "type": "file"
+  },
+  {
+    "name": "xv6-riscv/kernel/uart.c",
+    "parent": "xv6-riscv/kernel",
+    "value": 3964,
+    "type": "file"
+  }
+]

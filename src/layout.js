@@ -712,8 +712,8 @@ function isNotEmptyObject(obj) {
 export function layout(data, width, height) {
   // const nodeWidth = 1000;
   // const nodeHeight = 500;
-  const xMargin = 200;
-  const yMargin = 200;
+  const xMargin = 70;
+  const yMargin = 70;
   const stratify = d3
     .stratify()
     .id((d) => d.name)
