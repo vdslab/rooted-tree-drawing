@@ -1,15 +1,15 @@
 import { useMemo, useRef } from "react";
 import * as d3 from "d3";
-// 行管理版
-// import { layout } from "./SALayout";
-// 列管理版
-import { layout } from "./saColumnLayout";
-// import { layout } from "./layout";
+// 旧手法（未使用、archiveへ退避、比較用にbenchmark.jsから参照）
+// import { layout } from "./archive/SALayout";
+// import { layout } from "./archive/layout";
+// import { layout } from "./archive/saColumnLayout";
+import { layout } from "./globalBudgetLayout";
 export default function Tree({ data, width, height }) {
   const svgRef = useRef(null);
 
   const { nodes, links } = useMemo(() => {
-    return layout(data, width, height);
+    return layout(data, width, height, { packing: "bfd" });
   }, [data, width, height]);
 
   const line = d3.line();

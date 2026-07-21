@@ -33,9 +33,7 @@ export default function App() {
     <>
       <section className="section">
         <div className="container">
-          <h1 className="title">
-            Node-Link Tree ({data.length} nodes)
-          </h1>
+          <h1 className="title">Node-Link Tree ({data.length} nodes)</h1>
 
           <form
             className="input"
