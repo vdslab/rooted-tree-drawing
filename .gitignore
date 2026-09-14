@@ -128,3 +128,30 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# ---------------------------------------------------------------
+# rooted-tree-drawing 固有
+# ---------------------------------------------------------------
+
+# 実験結果は再生成できる派生物なので追跡しない。
+# 特に <prefix>_<epoch>_trials.json は1ファイル235〜313MBになり、
+# 過去には .git を578MBまで膨らませた。図が必要なら plot_*.py で作り直す。
+# 実行条件を再現したいときは SEED を指定して回すこと（experiments/CLAUDE.md 参照）。
+experiments/results/
+
+# /run-experiments ドライバーの出力（既定でカレントディレクトリに出る）
+render_*.svg
+compare_*.svg
+tree_*.json
+
+# 論文はこのリポジトリの成果物ではない（実装が目的）。
+# 原稿テキスト（*.md）は追跡し、PDFと図のバイナリは追跡しない。
+*.pdf
+docs/paper/talk/*.png
+
+# Python
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store

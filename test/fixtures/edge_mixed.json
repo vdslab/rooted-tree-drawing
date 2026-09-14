@@ -1,0 +1,44 @@
+[
+ {
+  "name": "Eve",
+  "parent": "",
+  "width": 1000,
+  "height": 400
+ },
+ {
+  "name": "P1",
+  "parent": "Eve",
+  "width": 1000,
+  "height": 400
+ },
+ {
+  "name": "S1",
+  "parent": "P1",
+  "width": 1000,
+  "height": 1000
+ },
+ {
+  "name": "P2",
+  "parent": "Eve",
+  "width": 1000,
+  "height": 400
+ },
+ {
+  "name": "T1",
+  "parent": "P2",
+  "width": 1000,
+  "height": 1500
+ },
+ {
+  "name": "T2",
+  "parent": "P2",
+  "width": 1000,
+  "height": 700
+ },
+ {
+  "name": "T3",
+  "parent": "P2",
+  "width": 1000,
+  "height": 300
+ }
+]

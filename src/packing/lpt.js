@@ -42,6 +42,8 @@ class ColumnMinHeap {
 
   _sinkDown(index) {
     const length = this.heap.length;
+    // 子が無くなるまで下ろす。脱出は下の break（交換が起きなければ確定）。
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       let leftIndex = 2 * index + 1;
       let rightIndex = 2 * index + 2;

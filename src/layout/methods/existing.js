@@ -1,6 +1,31 @@
+/**
+ * 既存手法（Misue の Monotone Local Folding Layout）。
+ *
+ * 論文の比較対象。提案手法（methods/growth.js, methods/binpacking.js）とは
+ * **パイプラインが別物**なので core/pipeline.js は使わない:
+ *   - ダミーノード内部の innerYMargin という概念を持たない（全ノード一律 yMargin）
+ *   - ダミーの展開が「折りたたみ配置」（undoDummyNode が227行ある理由）
+ *   - normalize が node.data.* ではなく node.* を見る
+ * 共有しているのは van der Ploeg と輪郭追跡（core/tree.js）だけ。
+ *
+ * このファイルは experiments/lib/existingPaper.js（evaluationブランチ由来の実装）を
+ * そのまま移したもの。関数の中身は変更していない（layout() のマージンを引数化しただけ）。
+ * 挙動が変わっていないことは test/golden.mjs の existing 24ケースで担保している。
+ *
+ * 注: 元実装には rightCountur / leftCountur に `.heigh`（height の綴り誤り）があったが、
+ * 該当の条件節は「y + h/2 < B かつ y - h/2 > B」という h > 0 では成立しない式なので、
+ * core/tree.js の綴りが正しい版に置き換えても評価結果は変わらない（実測でも一致）。
+ */
 import * as d3 from "d3";
+import {
+  vanderploeg,
+  calcAspectRatio,
+  rightMostSiblingNode,
+  leftMostSiblingNode,
+} from "../core/tree.js";
+// createPath は4手法とも完全に同じコード
+import { createPath } from "../core/render.js";
 
-//葉群をダミーノードにする関数
 function createDammuy(root) {
   if (root.children) {
     let data = [{ ...root.data }];
@@ -28,183 +53,6 @@ function createDammuy(root) {
   }
 }
 
-//van der ploegのアルゴリズムを実装する関数
-function vanderploeg(root, startify) {
-  if (root.children) {
-    let leftData = [{ ...root.data }];
-    const t = leftData[0].parent;
-    leftData[0].parent = "";
-    let leftSiblings;
-    let currentTree;
-    for (const child of root.children) {
-      let currentData = [{ ...root.data }];
-      currentData[0].parent = "";
-      child.data.y = root.data.y + root.data.height / 2 + child.data.height / 2;
-      currentData.push(...vanderploeg(child, startify));
-      currentTree = startify(currentData);
-      leftSiblings = startify(leftData);
-      const move = separate(
-        leftSiblings.children
-          ? rightCountur(
-            leftSiblings,
-            rightMostSiblingNode(leftSiblings.children),
-          )
-          : [],
-        leftCountur(currentTree, leftMostSiblingNode(currentTree.children)),
-      );
-      for (let item of currentData) {
-        item.x += move;
-      }
-      currentData.shift();
-      leftData.push(...currentData);
-    }
-    leftSiblings = startify(leftData);
-    const leftMostNode = leftMostSiblingNode(leftSiblings.children);
-    const rightMostNode = rightMostSiblingNode(leftSiblings.children);
-    leftData[0].x =
-      (leftMostNode.data.x -
-        leftMostNode.data.width / 2 +
-        rightMostNode.data.x +
-        rightMostNode.data.width / 2) /
-      2;
-    leftData[0].parent = t;
-    return leftData;
-  } else {
-    return [root.data];
-  }
-}
-
-//左の兄弟ツリーに現在のサブツリーを、左からくっつけるための最小移動距離を返す関数
-function separate(leftSiblingsRightCounturList, curentSubTreeLeftCounturList) {
-  let currentRightCounturNode = leftSiblingsRightCounturList;
-  let currentLeftCounturNode = curentSubTreeLeftCounturList;
-  let l = 0;
-  let r = 0;
-  let diffSum = 0;
-  while (currentRightCounturNode[r] && currentLeftCounturNode[l]) {
-    let xl =
-      currentLeftCounturNode[l].data.x -
-      currentLeftCounturNode[l].data.width / 2;
-    let xr =
-      currentRightCounturNode[r].data.x +
-      currentRightCounturNode[r].data.width / 2;
-    if (xl + diffSum < xr) {
-      const diff = xr - xl - diffSum;
-      diffSum += diff;
-    }
-    let yl =
-      currentLeftCounturNode[l].data.y +
-      currentLeftCounturNode[l].data.height / 2;
-    let yr =
-      currentRightCounturNode[r].data.y +
-      currentRightCounturNode[r].data.height / 2;
-    if (yl <= yr) {
-      l += 1;
-    }
-    if (yl >= yr) {
-      r += 1;
-    }
-  }
-  return diffSum;
-}
-
-//兄弟の右端を返す関数
-function rightMostSiblingNode(children) {
-  let rightMost = children[0];
-  for (let i = 1; i < children.length; i++) {
-    rightMost =
-      rightMost.data.x + rightMost.data.width / 2 <
-        children[i].data.x + children[i].data.width / 2
-        ? children[i]
-        : rightMost;
-  }
-  return rightMost;
-}
-
-//兄弟の左端を返す関数
-function leftMostSiblingNode(children) {
-  let leftMost = children[0];
-  for (let i = 1; i < children.length; i++) {
-    leftMost =
-      leftMost.data.x - leftMost.data.width / 2 >
-        children[i].data.x - children[i].data.width / 2
-        ? children[i]
-        : leftMost;
-  }
-  return leftMost;
-}
-
-//rightMostNodeからの右輪郭ノードを返す関数
-function rightCountur(root, rightMostNode) {
-  let countur;
-  if (rightMostNode.children) {
-    countur = [
-      rightMostNode,
-      ...rightCountur(root, rightMostSiblingNode(rightMostNode.children)),
-    ];
-    return countur;
-  } else {
-    let kouho = null;
-    for (const node of root.descendants()) {
-      if (
-        rightMostNode.data.y + rightMostNode.data.height / 2 <
-        node.data.y + node.data.height / 2 &&
-        (kouho === null ||
-          (kouho.data.y - kouho.data.width / 2 >=
-            node.data.y - node.data.width / 2 &&
-            kouho.data.x + kouho.data.width / 2 <=
-            node.data.x + node.data.width / 2) ||
-          (rightMostNode.data.y + rightMostNode.data.heigh / 2 <
-            kouho.data.y - kouho.data.heigh / 2 &&
-            rightMostNode.data.y - rightMostNode.data.height / 2 >
-            kouho.data.y - kouho.data.heigh / 2))
-      ) {
-        kouho = node;
-      }
-    }
-    countur = kouho
-      ? [rightMostNode, ...rightCountur(root, kouho)]
-      : [rightMostNode];
-    return countur;
-  }
-}
-
-//leftMostNodeからの左輪郭ノードを返す関数
-function leftCountur(root, leftMostNode) {
-  let countur;
-  if (leftMostNode.children) {
-    countur = [
-      leftMostNode,
-      ...leftCountur(root, leftMostSiblingNode(leftMostNode.children)),
-    ];
-    return countur;
-  } else {
-    let kouho = null;
-    for (const node of root.descendants()) {
-      if (
-        leftMostNode.data.y + leftMostNode.data.height / 2 <
-        node.data.y + node.data.height / 2 &&
-        (kouho === null ||
-          (kouho.data.y - kouho.data.width / 2 >=
-            node.data.y - node.data.width / 2 &&
-            kouho.data.x - kouho.data.width / 2 >=
-            node.data.x - node.data.width / 2) ||
-          (leftMostNode.data.y + leftMostNode.data.heigh / 2 <
-            kouho.data.y - kouho.data.heigh / 2 &&
-            leftMostNode.data.y - leftMostNode.data.height / 2 >
-            kouho.data.y - kouho.data.heigh / 2))
-      ) {
-        kouho = node;
-      }
-    }
-    countur = kouho
-      ? [leftMostNode, ...leftCountur(root, kouho)]
-      : [leftMostNode];
-    return countur;
-  }
-}
-
-//ダミーノードを含んだ根付き木で、それぞれのノードの横幅・縦幅を設定
 function initRoot(root, xMargin, yMargin) {
   if (root.data.leaves) {
     let maxWidth = 0;
@@ -244,7 +92,6 @@ function initRoot(root, xMargin, yMargin) {
   }
 }
 
-//ダミーノードの余白をセット
 function setDummyMargin(root, xMargin, yMargin) {
   if (root.data.leaves) {
     let maxWidth = 0;
@@ -256,16 +103,23 @@ function setDummyMargin(root, xMargin, yMargin) {
       maxWidth = maxWidth < rowSum ? rowSum : maxWidth;
     }
     root.data.width = maxWidth + xMargin;
-    // 各行の最大高さを合計する（グリッド配置に対応）
+    // 高さは「行ごとの最大高さの合計」。undoDummyNode は葉を行単位で積み
+    // (rowMaxHeight を行の最大下端まで進める)、列ごとに独立して詰めるわけでは
+    // ないため、必要な高さは sum_i max_j h[j][i] になる。
+    //
+    // 以前は max_j sum_i h[j][i](列ごとの合計の最大)で数えていた。
+    // 数学的に sum_i max_j >= max_j sum_i なので箱が足りず、葉が箱の下に
+    // はみ出して隣のダミーの葉と重なっていた
+    // (test/fixtures/medium_extreme.json の 2:1 で 8ダミー中5つが不足。
+    //  GAFWFleaves では 4703 足りなかった)。
     let totalHeight = 0;
     for (let i = 0; i < root.data.leaves[0].length; i++) {
-      let maxHeightInRow = 0;
+      let rowMax = 0;
       for (let j = 0; j < root.data.leaves.length; j++) {
-        if (isNotEmptyObject(root.data.leaves[j][i])) {
-          maxHeightInRow = Math.max(maxHeightInRow, root.data.leaves[j][i].height);
-        }
+        const h = root.data.leaves[j][i].height;
+        if (h > rowMax) rowMax = h;
       }
-      totalHeight += maxHeightInRow;
+      totalHeight += rowMax;
     }
     root.data.height = totalHeight + 2 * yMargin;
   }
@@ -278,7 +132,6 @@ function setDummyMargin(root, xMargin, yMargin) {
   }
 }
 
-//余白を取り除く関数
 function format(root, xMargin, yMargin) {
   for (let node of root.descendants()) {
     node.x = node.data.x;
@@ -288,7 +141,6 @@ function format(root, xMargin, yMargin) {
   }
 }
 
-//リンクを作る関数
 function createLinks(root, xMargin, yMargin) {
   if (root.children) {
     let links = [];
@@ -333,17 +185,6 @@ function createLinks(root, xMargin, yMargin) {
   }
 }
 
-function createPath(pathId, x1, x2, y1, y2) {
-  return {
-    id: pathId,
-    segments: [
-      [x1, y1],
-      [x2, y2],
-    ],
-  };
-}
-
-//底辺のノードを返す関数
 function searchBottomNode(root) {
   let descendants = root.descendants();
   let max = 0;
@@ -357,30 +198,6 @@ function searchBottomNode(root) {
   return descendants[max];
 }
 
-//ツリーのアスペクト比を返す関数
-function calcAspectRatio(root) {
-  const left = d3.min(
-    root.descendants(),
-    (node) => node.data.x - node.data.width / 2,
-  );
-  const right = d3.max(
-    root.descendants(),
-    (node) => node.data.x + node.data.width / 2,
-  );
-  const top = d3.min(
-    root.descendants(),
-    (node) => node.data.y - node.data.height / 2,
-  );
-  const bottom = d3.max(
-    root.descendants(),
-    (node) => node.data.y + node.data.height / 2,
-  );
-  const layoutWidth = right - left;
-  const layoutHeight = bottom - top;
-  return layoutWidth / layoutHeight;
-}
-
-//アスペクト比が最適になるまで底辺ノードの列数を増やす関数
 function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
   let a = calcAspectRatio(root);
   while (at > a) {
@@ -528,19 +345,6 @@ function undoDummyNode(root, xMargin, yMargin, links) {
                 rowMaxHeight,
               ),
             );
-            // 親ノードから右側への横線
-            const lastNodeX = isRightOfParentCenter
-              ? node.data.x + node.data.width / 2 - xMargin / 2
-              : mostRightXInRow(node, i);
-            links.push(
-              createPath(
-                `dummyHorizon${node.data.name + i}2`,
-                node.data.x,
-                lastNodeX,
-                rowMaxHeight,
-                rowMaxHeight,
-              ),
-            );
             if (node.data.columns !== node.data.leavesNum) {
               // links.push(createPath(
               //   `dummyHorizon${node.data.name}0`,
@@ -579,7 +383,7 @@ function undoDummyNode(root, xMargin, yMargin, links) {
                 : node.data.x + node.data.width / 2 - xMargin / 2;
             links.push(
               createPath(
-                `dummyHorizon${node.data.name}_${i}`,
+                `dummyHorizon${node.data.name + i}`,
                 node.data.x - node.data.width / 2 + xMargin / 2,
                 node.data.x + node.data.width / 2 - xMargin / 2,
                 rowMaxHeight,
@@ -654,7 +458,6 @@ function undoDummyNode(root, xMargin, yMargin, links) {
   return data;
 }
 
-//ダミーノードで指定された行の一番右のx座標を返す関
 function mostRightXInRow(dummyNode, row) {
   const leaves = dummyNode.data.leaves;
   let max = dummyNode.data.x - dummyNode.data.width / 2;
@@ -666,7 +469,6 @@ function mostRightXInRow(dummyNode, row) {
   return max;
 }
 
-//ダミーノードで指定された行の一番左のx座標を返す関
 function mostLeftXInRow(dummyNode, row) {
   const leaves = dummyNode.data.leaves;
   let min = dummyNode.data.x + dummyNode.data.width / 2;
@@ -678,7 +480,6 @@ function mostLeftXInRow(dummyNode, row) {
   return min;
 }
 
-//2次元配列を1次元にして返す関数
 function to1D(array2D) {
   let array1D = [];
   for (let j = 0; j < array2D[0].length; j++) {
@@ -693,7 +494,6 @@ function to1D(array2D) {
   return array1D;
 }
 
-//の2次元配列を作る関数
 function create2DArray(rowNum, columnNum) {
   let array2D = [];
   for (var j = 0; j < columnNum; j++) {
@@ -709,11 +509,64 @@ function isNotEmptyObject(obj) {
   return obj && typeof obj === "object" && Object.keys(obj).length > 0;
 }
 
-export function layout(data, width, height) {
+function oritatamiCount(root) {
+  let current_node_max_ori = -Infinity; // このノード自身のori、またはサブツリーを含めた最大値の候補
+  let current_node_sum_ori = 0;   // このノード自身のori、またはサブツリーを含めた合計値の候補
+
+  // 1. このノード自身の `ori` を計算
+  if (root.data && typeof root.data.leavesNum === "number" && typeof root.data.rows === "number") {
+    const ori = root.data.leavesNum / Math.ceil(
+      root.data.leavesNum / root.data.columns,
+    );
+    // console.log(`Node: ${root.data.name || 'Unnamed'}, leavesNum: ${root.data.leavesNum}, rows: ${root.data.rows}, ori: ${ori}`); // デバッグ用
+
+    current_node_max_ori = ori; // このノードのoriを最大値の初期候補とする
+    current_node_sum_ori = ori;   // このノードのoriを合計値の初期値とする
+  } else {
+    // このノードでoriが計算できない場合、
+    // maxの初期値は-Infinity (他の有効なoriが見つかれば上書きされる)
+    // sumの初期値は0 (このノードは合計に寄与しない)
+    // console.log(`Node: ${root.data.name || 'Unnamed'}, no leavesNum/rows, ori not calculated.`); // デバッグ用
+  }
+
+  // 2. 子ノードがあれば、再帰的に処理し結果を集約
+  if (root.children && root.children.length > 0) {
+    for (const child of root.children) {
+      const child_result = oritatamiCount(child); // 子のサブツリーの結果を取得
+
+      // console.log(`  Child ${child.data.name || 'Unnamed'} returned: max_ori=${child_result.max_ori}, sum_ori=${child_result.sum_ori}`); // デバッグ用
+
+      // サブツリー全体の最大値を更新
+      // (現在のノードのori、または既に処理した他の兄弟サブツリーのmax、と今処理した子のサブツリーのmaxを比較)
+      current_node_max_ori = Math.max(current_node_max_ori, child_result.max_ori);
+
+      // サブツリー全体の合計値に加算
+      // (現在のノードのoriは既にcurrent_node_sum_oriの初期値として入っているか、0なので、
+      //  子のサブツリーの合計を加えるだけでよい)
+      current_node_sum_ori += child_result.sum_ori;
+    }
+  }
+  // 葉ノード (childrenがない) または oriが計算できないが子孫は持つノードの場合、
+  // current_node_max_ori と current_node_sum_ori は適切に初期化されているか、
+  // 子からの結果で更新されています。
+
+  // console.log(`Returning for ${root.data.name || 'Unnamed'}: max_ori=${current_node_max_ori}, sum_ori=${current_node_sum_ori}`); // デバッグ用
+  return { max_ori: current_node_max_ori, sum_ori: current_node_sum_ori };
+}
+
+/**
+ * @param {Array} data - {name, parent, width, height} の配列
+ * @param {number} width - 目標領域の幅
+ * @param {number} height - 目標領域の高さ
+ * @param {Object} [options]
+ * @param {number} [options.xMargin=300]
+ * @param {number} [options.yMargin=200]
+ */
+export function layout(data, width, height, options = {}) {
   // const nodeWidth = 1000;
   // const nodeHeight = 500;
-  const xMargin = 70;
-  const yMargin = 70;
+  const xMargin = options.xMargin ?? 300;
+  const yMargin = options.yMargin ?? 200;
   const stratify = d3
     .stratify()
     .id((d) => d.name)
@@ -740,6 +593,7 @@ export function layout(data, width, height) {
   initRoot(root, xMargin, yMargin);
   root = stratify(vanderploeg(root, stratify));
   root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
+  const { max_ori, sum_ori } = oritatamiCount(root);
   const links = createLinks(root, xMargin, yMargin);
   root = stratify(undoDummyNode(root, xMargin, yMargin, links));
   format(root, xMargin, yMargin);
@@ -778,5 +632,7 @@ export function layout(data, width, height) {
       return { id, x, y, width, height };
     }),
     links: scaledLinks,
+    max_ori,
+    sum_ori
   };
 }

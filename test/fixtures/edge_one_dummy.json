@@ -1,0 +1,26 @@
+[
+ {
+  "name": "Eve",
+  "parent": "",
+  "width": 1000,
+  "height": 400
+ },
+ {
+  "name": "L1",
+  "parent": "Eve",
+  "width": 1000,
+  "height": 1000
+ },
+ {
+  "name": "L2",
+  "parent": "Eve",
+  "width": 1000,
+  "height": 1000
+ },
+ {
+  "name": "L3",
+  "parent": "Eve",
+  "width": 1000,
+  "height": 1000
+ }
+]

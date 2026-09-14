@@ -1,91 +1,88 @@
 import { useMemo, useRef } from "react";
 import * as d3 from "d3";
-// 旧手法（未使用、archiveへ退避、比較用にbenchmark.jsから参照）
-// import { layout } from "./archive/SALayout";
-// import { layout } from "./archive/layout";
-// import { layout } from "./archive/saColumnLayout";
-import { layout } from "./globalBudgetLayout";
+// 手法の切り替えは src/uiLayout.js の METHOD で行う
+import { layout } from "./uiLayout";
 export default function Tree({ data, width, height }) {
   const svgRef = useRef(null);
 
   const { nodes, links } = useMemo(() => {
-    return layout(data, width, height, { packing: "bfd" });
+    return layout(data, width, height);
   }, [data, width, height]);
 
   const line = d3.line();
 
-  const downloadPNG = (scale = 3) => {
-    if (!svgRef.current) return;
+  // const downloadPNG = (scale = 3) => {
+  //   if (!svgRef.current) return;
 
-    const svgElement = svgRef.current;
-    const scaledWidth = width * scale;
-    const scaledHeight = height * scale;
+  //   const svgElement = svgRef.current;
+  //   const scaledWidth = width * scale;
+  //   const scaledHeight = height * scale;
 
-    // Create canvas
-    const canvas = document.createElement("canvas");
-    canvas.width = scaledWidth;
-    canvas.height = scaledHeight;
-    const ctx = canvas.getContext("2d");
+  //   // Create canvas
+  //   const canvas = document.createElement("canvas");
+  //   canvas.width = scaledWidth;
+  //   canvas.height = scaledHeight;
+  //   const ctx = canvas.getContext("2d");
 
-    // Fill background
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, scaledWidth, scaledHeight);
+  //   // Fill background
+  //   ctx.fillStyle = "white";
+  //   ctx.fillRect(0, 0, scaledWidth, scaledHeight);
 
-    // Draw links
-    ctx.strokeStyle = "#888";
-    ctx.lineWidth = 1 * scale;
-    links.forEach((link) => {
-      ctx.beginPath();
-      ctx.moveTo(link.segments[0][0] * scale, link.segments[0][1] * scale);
-      ctx.lineTo(link.segments[1][0] * scale, link.segments[1][1] * scale);
-      ctx.stroke();
-    });
+  //   // Draw links
+  //   ctx.strokeStyle = "#888";
+  //   ctx.lineWidth = 1 * scale;
+  //   links.forEach((link) => {
+  //     ctx.beginPath();
+  //     ctx.moveTo(link.segments[0][0] * scale, link.segments[0][1] * scale);
+  //     ctx.lineTo(link.segments[1][0] * scale, link.segments[1][1] * scale);
+  //     ctx.stroke();
+  //   });
 
-    // Draw nodes
-    ctx.fillStyle = "#e3f2fd";
-    ctx.strokeStyle = "#1976d2";
-    ctx.lineWidth = 1 * scale;
-    nodes.forEach((node) => {
-      const x = (node.x - node.width / 2) * scale;
-      const y = (node.y - node.height / 2) * scale;
-      const w = node.width * scale;
-      const h = node.height * scale;
-      ctx.fillRect(x, y, w, h);
-      ctx.strokeRect(x, y, w, h);
-    });
+  //   // Draw nodes
+  //   ctx.fillStyle = "#e3f2fd";
+  //   ctx.strokeStyle = "#1976d2";
+  //   ctx.lineWidth = 1 * scale;
+  //   nodes.forEach((node) => {
+  //     const x = (node.x - node.width / 2) * scale;
+  //     const y = (node.y - node.height / 2) * scale;
+  //     const w = node.width * scale;
+  //     const h = node.height * scale;
+  //     ctx.fillRect(x, y, w, h);
+  //     ctx.strokeRect(x, y, w, h);
+  //   });
 
-    // Download
-    canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `tree-${scaledWidth}x${scaledHeight}.png`;
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-  };
+  //   // Download
+  //   canvas.toBlob((blob) => {
+  //     const url = URL.createObjectURL(blob);
+  //     const a = document.createElement("a");
+  //     a.href = url;
+  //     a.download = `tree-${scaledWidth}x${scaledHeight}.png`;
+  //     a.click();
+  //     URL.revokeObjectURL(url);
+  //   });
+  // };
 
-  const downloadSVG = () => {
-    if (!svgRef.current) return;
+  // const downloadSVG = () => {
+  //   if (!svgRef.current) return;
 
-    const svgElement = svgRef.current.cloneNode(true);
-    svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    svgElement.setAttribute("width", width);
-    svgElement.setAttribute("height", height);
+  //   const svgElement = svgRef.current.cloneNode(true);
+  //   svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  //   svgElement.setAttribute("width", width);
+  //   svgElement.setAttribute("height", height);
 
-    const svgString = new XMLSerializer().serializeToString(svgElement);
-    const blob = new Blob([svgString], { type: "image/svg+xml" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `tree-${width}x${height}.svg`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
+  //   const svgString = new XMLSerializer().serializeToString(svgElement);
+  //   const blob = new Blob([svgString], { type: "image/svg+xml" });
+  //   const url = URL.createObjectURL(blob);
+  //   const a = document.createElement("a");
+  //   a.href = url;
+  //   a.download = `tree-${width}x${height}.svg`;
+  //   a.click();
+  //   URL.revokeObjectURL(url);
+  // };
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      <div
+      {/* <div
         style={{
           position: "absolute",
           top: 10,
@@ -151,7 +148,7 @@ export default function Tree({ data, width, height }) {
         >
           SVG
         </button>
-      </div>
+      </div> */}
       <svg
         ref={svgRef}
         className="has-ratio"
