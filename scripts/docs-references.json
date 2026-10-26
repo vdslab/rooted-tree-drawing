@@ -1,0 +1,84 @@
+{
+  "historical": [
+    {
+      "file": "docs/decisions/2026-07-global-budget-design.md",
+      "raw": "./2026-07-global-budget-fix.md",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-global-budget-design.md",
+      "raw": "./2026-07-global-budget-solution.md",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-global-budget-design.md",
+      "raw": "../../src/saColumnLayout.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-global-budget-design.md",
+      "raw": "./2026-06-dominant-node-v1.md",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-global-budget-design.md",
+      "raw": "src/saColumnLayout.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "./2026-07-global-budget-solution.md",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "./2026-07-global-budget-fix.md",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "src/globalBudgetLayout.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "src/saColumnLayout.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "src/archive/saColumnLayout.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "src/archive/SALayout.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "src/lpt.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "src/sa.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-09-layout-core-extraction.md",
+      "raw": "src/globalBudgetLayout.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    }
+  ],
+  "optionalFiles": [
+    "docs/paper/draft.pdf",
+    "docs/references/misue-2024-area-adaptive.pdf",
+    "docs/references/ploeg-2013-tidy-trees.pdf",
+    "docs/references/binpacking-survey.pdf"
+  ],
+  "optionalDirectories": [
+    "experiments/results",
+    "local-references"
+  ]
+}

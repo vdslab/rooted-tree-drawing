@@ -4,24 +4,24 @@
  * 部分問題: 列数 k を固定して、最大列高さ(makespan)を最小化する。
  * インターフェースは lptColumn と同じ (leaves, columns) => { bestPartition, maxHeight }。
  *
- * Math.random() を使うため出力は非決定的(テストではシードを差し替える)。
+ * 乱数関数を引数で注入できる。省略時は Math.random。
  */
 import { to1D } from "../core/dummy.js";
 
-export function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
+export function getRandomInt(max, random = Math.random) {
+  return Math.floor(random() * max);
 }
 
-export function generateInitialSolutionNoEmpty(colNum, leavesNum) {
+export function generateInitialSolutionNoEmpty(colNum, leavesNum, random = Math.random) {
   if (colNum === 0) return [];
   const solution = [];
   // まず各列に1つずつノードを割り当て
   for (let i = 0; i < colNum; i++) solution.push(i);
   // 残りのノードはランダムに割り当て
-  for (let i = colNum; i < leavesNum; i++) solution.push(getRandomInt(colNum));
+  for (let i = colNum; i < leavesNum; i++) solution.push(getRandomInt(colNum, random));
   // シャッフル
   for (let i = solution.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(random() * (i + 1));
     [solution[i], solution[j]] = [solution[j], solution[i]];
   }
   return solution;
@@ -37,7 +37,7 @@ export function calcInitialState(arr, solution, colNum) {
   return { eachColHeight, groupCounts };
 }
 
-export function saColumn(leaves, colNum) {
+export function saColumn(leaves, colNum, random = Math.random) {
   // --- 1. パラメータ設定 ---
   //1万回以内
   const options = {
@@ -56,7 +56,7 @@ export function saColumn(leaves, colNum) {
     return null;
   }
 
-  const solution = generateInitialSolutionNoEmpty(colNum, leavesNum);
+  const solution = generateInitialSolutionNoEmpty(colNum, leavesNum, random);
   const { eachColHeight, groupCounts } = calcInitialState(arr, solution, colNum);
   let currentMaxHeight = Math.max(...eachColHeight);
 
@@ -89,7 +89,7 @@ export function saColumn(leaves, colNum) {
       let nodeIndexToMove;
       let attempts = 0;
       while (attempts <= leavesNum * 2) {
-        nodeIndexToMove = getRandomInt(leavesNum);
+        nodeIndexToMove = getRandomInt(leavesNum, random);
         const currentGroup = solution[nodeIndexToMove];
         if (groupCounts[currentGroup] > 1) break;
         attempts++;
@@ -103,7 +103,7 @@ export function saColumn(leaves, colNum) {
       // 移動先を選択
       let newCol;
       do {
-        newCol = getRandomInt(colNum);
+        newCol = getRandomInt(colNum, random);
       } while (newCol === currentCol);
 
       // 状態を「仮に」変更
@@ -119,7 +119,7 @@ export function saColumn(leaves, colNum) {
       const heightDelta = newMaxHeight - currentMaxHeight;
       const accept =
         heightDelta < 0 ||
-        Math.random() < Math.exp(-heightDelta / Math.max(temp, 1e-9));
+        random() < Math.exp(-heightDelta / Math.max(temp, 1e-9));
 
       if (accept) {
         currentMaxHeight = newMaxHeight;

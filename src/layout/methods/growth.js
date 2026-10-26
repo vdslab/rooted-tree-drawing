@@ -57,6 +57,7 @@ function localFoldingLayout(root, at, xMargin, yMargin, innerYMargin, stratify, 
  * @param {number} [options.xMargin=300]
  * @param {number} [options.yMargin=200]
  * @param {number} [options.innerYMargin] - 既定は yMargin / 2
+ * @param {Function} [options.random=Math.random] - SA用の乱数関数
  */
 export function layout(data, width, height, options = {}) {
   const solve = typeof options.solver === "function"
@@ -76,6 +77,6 @@ export function layout(data, width, height, options = {}) {
     // SA/LPT は isInner にもマージンを足す当時の挙動を保つ(core/dummy.js の addMargin 参照)
     skipInnerMargin: false,
     fold: (root, at, xM, yM, iyM, stratify) =>
-      localFoldingLayout(root, at, xM, yM, iyM, stratify, solve),
+      localFoldingLayout(root, at, xM, yM, iyM, stratify, (leaves, columns) => solve(leaves, columns, options.random ?? Math.random)),
   });
 }

@@ -9,22 +9,26 @@
 //   node experiments/area_efficiency.js
 //   METHOD_SET=growth5 node experiments/area_efficiency.js
 //   TRIALS=5 SEED=1 node experiments/area_efficiency.js      （動作確認用の短縮）
+//   LEVELS=low,medium,high METHOD_SET=growth5 node experiments/area_efficiency.js  （分散を3レベルに絞る）
 import { tnaDa } from "./lib/metrics.js";
-import { ASPECT_RATIOS, resolvePreset } from "./lib/methods.js";
+import { ASPECT_RATIOS, resolvePreset, selectLevels } from "./lib/methods.js";
 import { runExperiment } from "./lib/runner.js";
+import { MARGINS } from "../src/layout/registry.js";
 
 const preset = resolvePreset();
+// 分散レベルはプリセットの既定を LEVELS で絞れる（例 LEVELS=low,medium,high）
+const LEVELS = selectLevels(preset.levels);
 const TRIALS = Number(process.env.TRIALS ?? 1000); // 論文§4の設定。動作確認は TRIALS=5 のように環境変数で下げる
 const NUM_NODES = Number(process.env.NUM_NODES ?? 1000);
 const ALPHA = 0.25;
 const NODE_WIDTH = 1000;
 // 木データも保存するか（後追い分析用。サイズが大きいので SAVE_TRIALS=0 で無効化できる）
-const SAVE_TRIALS = process.env.SAVE_TRIALS !== "0";
+const SAVE_TRIALS = process.env.SAVE_TRIALS === "1";
 
-runExperiment({
+const result = runExperiment({
   prefix: `area_efficiency${preset.suffix}`,
   methods: preset.methods,
-  varianceLevels: preset.levels,
+  varianceLevels: LEVELS,
   cases: ASPECT_RATIOS.map(([label, width, height]) => ({ label, width, height, numNodes: NUM_NODES })),
   trials: TRIALS,
   alpha: ALPHA,
@@ -34,6 +38,9 @@ runExperiment({
   summaryTitle: "TNA/DA 平均値",
   caseHeader: "aspect",
   saveTrials: SAVE_TRIALS,
-  config: { trials: TRIALS, numNodes: NUM_NODES, alpha: ALPHA, nodeWidth: NODE_WIDTH, methodSet: preset.name, varianceLevels: preset.levels },
+  config: { margins: MARGINS.paper, trials: TRIALS, numNodes: NUM_NODES, alpha: ALPHA, nodeWidth: NODE_WIDTH, methodSet: preset.name, varianceLevels: LEVELS },
   note: preset.note,
 });
+
+// 欠測のある実験を正常終了として扱わない。診断結果は上で保存済み。
+if (result.failures.length) process.exitCode = 1;

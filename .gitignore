@@ -155,3 +155,8 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# 手元の参考資料（PDF以外の第三者資料もここに置く）
+/local-references/
+# 個人のGit設定がない環境でもローカル許可設定を共有しない
+**/.claude/settings.local.json

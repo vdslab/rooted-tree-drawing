@@ -9,11 +9,11 @@
  * UI 側（src/uiLayout.js）は 100/100 を使う。
  */
 import { layout as binpackingLayout } from "../../src/layout/methods/binpacking.js";
+import { MARGINS } from "../../src/layout/registry.js";
 
 export function layout(data, width, height, options = {}) {
   return binpackingLayout(data, width, height, {
     ...options,
-    xMargin: 300,
-    yMargin: 200,
+    ...MARGINS.paper,
   });
 }

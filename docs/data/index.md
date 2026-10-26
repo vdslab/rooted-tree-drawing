@@ -1,34 +1,42 @@
 # データセット一覧
 
-リポジトリ直下の `*.json` は全て「レイアウトの入力データ」だが、**形式も使用状況もバラバラ**なので、使う前にここで確認する。実際に生成方法まで記録があるのは `kagawa_river_tree.json` だけ（[kagawa-river-tree.md](kagawa-river-tree.md)）。
+実データの追加候補と構造の実測は [可変サイズ根付き木レイアウトに適した実データ](real-data-candidates.md) を参照。法令の条単位の木を第一候補とし、メモリ支配木などとの適性を比較している。
 
-## 形式は3種類
+[manifest.json](manifest.json) に現在のファイルの件数・SHA-256・出典・生成手順・未確認事項を記録する。
+確認できない出典・取得版・生成seedは null または未記録として残す。名前から上流プロジェクトや利用条件を断定しない。
 
-| 形式 | キー | 意味 |
+| 形式 | キー | 利用方法 |
 |---|---|---|
-| **A: レイアウト直接入力** | `name, parent, width, height` | `layout()` にそのまま渡せる。量は `height` にエンコード済み |
-| **B: 生の階層データ** | `name, parent, value, type` | `value`（ファイルサイズ等）を `height` に変換してから渡す。変換は利用側の責任 |
-| **C: 値のみ** | `name, parent, value` | B から `type` が落ちたもの |
+| A | name, parent, width, height | レイアウトへ直接入力 |
+| B | name, parent, value, type | UIでvalueをheightに変換 |
+| C | name, parent, value | typeを持たない値データ。変換規則を指定して使う |
 
-## 一覧
+| ファイル | 形式 | 件数 | 使用状況 | 出典・生成 |
+|---|---|---|---|---|
+| d3_tree.json | A | 194 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| d3_tree_log.json | C | 194 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| flareData.json | A | 252 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| git_tree.json | A | 4902 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| gorm_nodelink.json | A | 194 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| gorm_treemap.json | C | 194 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| kagawa_river_tree.json | A | 113 | 現在のUI・合成実験から未参照 | 生成手順あり |
+| linux_kernel_tree_size.json | C | 95796 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| lua_tree.json | B | 116 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| react_tree.json | B | 7438 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| toaruos_tree.json | B | 883 | UIで選択可能（既定では未選択） | 出典・生成手順未確認 |
+| xv6-riscv_tree.json | B | 83 | 現在のUI・合成実験から未参照 | 出典・生成手順未確認 |
+| data/examples/inline-tree.json | A | 1000 | UIの既定入力 | 生成手順あり |
 
-| ファイル | 形式 | 件数 | サイズ | 使われている場所 | 由来 |
-|---|---|---|---|---|---|
-| `toaruos_tree.json` | B | 883 | 111KB | **`benchmark.js`（唯一の入力）**。`src/App.jsx` は import しているが変換処理がコメントアウトされていて未使用 | ToaruOS のソースツリー（生成方法の記録なし） |
-| `kagawa_river_tree.json` | A | 113 | 13KB | どのコードからも未参照。[explanation.md](../paper/talk/explanation.md) で言及 | 国土数値情報の河川データ。生成: `scripts/generate_river_tree.py`（[記録あり](kagawa-river-tree.md)） |
-| `linux_kernel_tree_size.json` | C | 95796 | **12.6MB** | 未参照 | Linux カーネルのソースツリーと思われる（記録なし） |
-| `react_tree.json` | B | 7438 | 1.7MB | 未参照 | 記録なし |
-| `git_tree.json` | A | 4902 | 590KB | 未参照 | 記録なし |
-| `flareData.json` | A | 252 | 23KB | 未参照 | D3 の flare サンプルと思われる（記録なし） |
-| `d3_tree.json` | A | 194 | 22KB | 未参照 | 記録なし |
-| `d3_tree_log.json` | C | 194 | 19KB | 未参照 | `d3_tree` の値を対数変換したものと思われる（記録なし） |
-| `gorm_nodelink.json` | A | 194 | 21KB | 未参照 | 記録なし |
-| `gorm_treemap.json` | C | 194 | 17KB | 未参照 | 記録なし |
-| `lua_tree.json` | B | 116 | 11KB | 未参照 | 記録なし |
-| `xv6-riscv_tree.json` | B | 83 | 9KB | 未参照 | 記録なし |
+河川データの生成条件と出典は [kagawa-river-tree.md](kagawa-river-tree.md) にある。
+Appから分離した合成データの値は維持したが、元の生成seedは残っていない。
+論文のバッチ実験とCLIは [generateTree.js](../../experiments/lib/generateTree.js) で生成する合成木を使い、ルートの実データJSONは使わない。
+旧 benchmark.js は削除済みで、現在の評価入口ではない。
 
-## 注意
+出典不明の既存JSONは、この変更で第三者資料と断定して削除しない。由来を確認した際に、取得URL・上流の版・変換スクリプト・利用条件をmanifestへ補う。
+新しい第三者の原資料はGit対象外の local-references に置き、追跡する派生データには再生成手順と出典を添える。
 
-- **論文の実験（`experiments/`）はこれらのJSONを一切使っていない。** `experiments/lib/generateTree.js` が生成する合成スケールフリー木のみを入力にしている。実データでの評価は現状 `benchmark.js`（toaruos のみ）だけ。
-- **UI が描画しているのもこれらではない。** [src/App.jsx](../../src/App.jsx) の `const data = [...]` に1002ノードのランダム生成データが直書きされている。
-- 由来が「記録なし」のものは、思い出したタイミングでこの表に書き足す。生成スクリプトがあるなら `scripts/` に置いて、ここからリンクする。
+## LAYOUT-004 再現fixture
+
+[test/fixtures/regression_budget_lpt_tall.json](../../test/fixtures/regression_budget_lpt_tall.json) はCLIの seed=1 / medium / 1:4 / trial=86。
+nodes=300, alpha=0.25, nodeWidth=1000, heights=[500,1500], treeSeed=2334875884（FNV-1aで導出、mulberry32）。
+[生成器](../../experiments/lib/generateTree.js)へこのシードの乱数関数を渡して再生成できる。

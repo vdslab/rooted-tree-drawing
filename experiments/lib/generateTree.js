@@ -8,12 +8,12 @@
 
 const NAME_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-function generateRandomName() {
-  return Array.from({ length: 5 }, () => NAME_CHARS[Math.floor(Math.random() * NAME_CHARS.length)]).join("");
+function generateRandomName(random) {
+  return Array.from({ length: 5 }, () => NAME_CHARS[Math.floor(random() * NAME_CHARS.length)]).join("");
 }
 
-function uniformSample(min, max) {
-  return min + Math.random() * (max - min);
+function uniformSample(min, max, random) {
+  return min + random() * (max - min);
 }
 
 /**
@@ -22,16 +22,17 @@ function uniformSample(min, max) {
  * @param {number} fixedWidth - 全ノード共通の幅
  * @param {number} heightMin - ノード高さの一様分布の下限
  * @param {number} heightMax - ノード高さの一様分布の上限
+ * @param {Function} [random=Math.random] - 乱数関数。呼び出し元でシードを管理する
  * @returns {Array<{name:string, parent:string, width:number, height:number}>}
  */
-export function generateScaleFreeTree(numNodes, alpha, fixedWidth, heightMin, heightMax) {
+export function generateScaleFreeTree(numNodes, alpha, fixedWidth, heightMin, heightMax, random = Math.random) {
   const existingNames = new Set(["Eve"]);
   const nodes = [
     {
       name: "Eve",
       parent: "",
       width: fixedWidth,
-      height: uniformSample(heightMin, heightMax),
+      height: uniformSample(heightMin, heightMax, random),
     },
   ];
   const childrenCount = { Eve: 0 };
@@ -41,7 +42,7 @@ export function generateScaleFreeTree(numNodes, alpha, fixedWidth, heightMin, he
     let selectedNode = null;
 
     for (const node of nodes) {
-      const s = Math.random();
+      const s = random();
       const weight = s * Math.pow((childrenCount[node.name] || 0) + 1, alpha);
       if (weight > maxWeight) {
         maxWeight = weight;
@@ -53,7 +54,7 @@ export function generateScaleFreeTree(numNodes, alpha, fixedWidth, heightMin, he
 
     let newNodeName;
     do {
-      newNodeName = generateRandomName();
+      newNodeName = generateRandomName(random);
     } while (existingNames.has(newNodeName));
     existingNames.add(newNodeName);
 
@@ -61,7 +62,7 @@ export function generateScaleFreeTree(numNodes, alpha, fixedWidth, heightMin, he
       name: newNodeName,
       parent: selectedNode.name,
       width: fixedWidth,
-      height: uniformSample(heightMin, heightMax),
+      height: uniformSample(heightMin, heightMax, random),
     });
 
     childrenCount[selectedNode.name] = (childrenCount[selectedNode.name] || 0) + 1;

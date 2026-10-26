@@ -1,4 +1,10 @@
 {
+ "existing | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "dc817da1c948d115"
+ },
  "existing | edge_dominant_leaf.json | 1:2": {
   "nodes": 6,
   "links": 11,
@@ -16,6 +22,18 @@
   "links": 11,
   "overlaps": 0,
   "hash": "6dca5cf1eee455c1"
+ },
+ "existing | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "f96f8ca441414e60"
+ },
+ "existing | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "6a545d66cbe360e9"
  },
  "existing | edge_mixed.json | 1:2": {
   "nodes": 7,
@@ -35,6 +53,18 @@
   "overlaps": 0,
   "hash": "e376b80540ceee80"
  },
+ "existing | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "a3a86f7fdfce19ff"
+ },
+ "existing | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "bb8c3b9d6f1bfa8d"
+ },
  "existing | edge_one_dummy.json | 1:2": {
   "nodes": 4,
   "links": 8,
@@ -52,6 +82,18 @@
   "links": 7,
   "overlaps": 0,
   "hash": "80610913ff2a7e66"
+ },
+ "existing | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "ebbe54c857ca496f"
+ },
+ "existing | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "d8b7081251841cd6"
  },
  "existing | edge_single_leaf.json | 1:2": {
   "nodes": 2,
@@ -71,6 +113,18 @@
   "overlaps": 0,
   "hash": "2b1a7e384bfb9306"
  },
+ "existing | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "e16bd502828b5b80"
+ },
+ "existing | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 233,
+  "overlaps": 0,
+  "hash": "054fba7413b1a1c4"
+ },
  "existing | medium_extreme.json | 1:2": {
   "nodes": 150,
   "links": 209,
@@ -88,6 +142,18 @@
   "links": 197,
   "overlaps": 0,
   "hash": "fa27a377e6f3db66"
+ },
+ "existing | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "312ea1ac11514d0a"
+ },
+ "existing | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 261,
+  "overlaps": 0,
+  "hash": "dbbab0425ba3a271"
  },
  "existing | medium_medium.json | 1:2": {
   "nodes": 150,
@@ -107,6 +173,48 @@
   "overlaps": 0,
   "hash": "45d26ee16b4f67b7"
  },
+ "existing | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 203,
+  "overlaps": 0,
+  "hash": "3ed50aab616dc2ce"
+ },
+ "existing | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 523,
+  "overlaps": 0,
+  "hash": "96fa9de92360265a"
+ },
+ "existing | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 517,
+  "overlaps": 0,
+  "hash": "7b67ea3617a0ff88"
+ },
+ "existing | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 451,
+  "overlaps": 0,
+  "hash": "cfad81a92bb11b91"
+ },
+ "existing | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 409,
+  "overlaps": 0,
+  "hash": "6dff6126ac3b0d50"
+ },
+ "existing | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 379,
+  "overlaps": 0,
+  "hash": "8fdbea2db55b6b16"
+ },
+ "existing | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 49,
+  "overlaps": 0,
+  "hash": "29e3dbe0f4923f9c"
+ },
  "existing | small_high.json | 1:2": {
   "nodes": 30,
   "links": 49,
@@ -124,6 +232,18 @@
   "links": 55,
   "overlaps": 0,
   "hash": "edfa6aac87115857"
+ },
+ "existing | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 51,
+  "overlaps": 0,
+  "hash": "5db5183771af0d82"
+ },
+ "existing | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "02a4c6c1c650ad55"
  },
  "existing | small_low.json | 1:2": {
   "nodes": 30,
@@ -143,6 +263,288 @@
   "overlaps": 0,
   "hash": "e957afbb5d60219d"
  },
+ "existing | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "9e760a4a8f39a159"
+ },
+ "ui-existing | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "30d8c8975b24c087"
+ },
+ "ui-existing | edge_dominant_leaf.json | 1:2": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "3dc60baf140c0cd3"
+ },
+ "ui-existing | edge_dominant_leaf.json | 1:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "671bd761dabbe7b9"
+ },
+ "ui-existing | edge_dominant_leaf.json | 2:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "87106c82a93d5490"
+ },
+ "ui-existing | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "d6e3fc7e467f4a3d"
+ },
+ "ui-existing | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "bee2eb93ff47cdd8"
+ },
+ "ui-existing | edge_mixed.json | 1:2": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "7edfe601e104f367"
+ },
+ "ui-existing | edge_mixed.json | 1:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "a550f839125d7773"
+ },
+ "ui-existing | edge_mixed.json | 2:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "fa4b87788b4740e6"
+ },
+ "ui-existing | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "9f397f11d65bfce4"
+ },
+ "ui-existing | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "f5c644c05b18e2bf"
+ },
+ "ui-existing | edge_one_dummy.json | 1:2": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "291b707d179bb3e7"
+ },
+ "ui-existing | edge_one_dummy.json | 1:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "71f8a7b28436208d"
+ },
+ "ui-existing | edge_one_dummy.json | 2:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "141c6e3f22991d12"
+ },
+ "ui-existing | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "7371253334d0cb51"
+ },
+ "ui-existing | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "fec68dc8567230ce"
+ },
+ "ui-existing | edge_single_leaf.json | 1:2": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "6ebb620d84dc14c4"
+ },
+ "ui-existing | edge_single_leaf.json | 1:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "ccc53ee272b213f2"
+ },
+ "ui-existing | edge_single_leaf.json | 2:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "4b0b7dc91dab9fdd"
+ },
+ "ui-existing | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "641629d362ed1282"
+ },
+ "ui-existing | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 223,
+  "overlaps": 0,
+  "hash": "4eb4d2bb348c63cf"
+ },
+ "ui-existing | medium_extreme.json | 1:2": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "4bdcd785bf144daa"
+ },
+ "ui-existing | medium_extreme.json | 1:1": {
+  "nodes": 150,
+  "links": 204,
+  "overlaps": 0,
+  "hash": "c110f6ff0e436db8"
+ },
+ "ui-existing | medium_extreme.json | 2:1": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "561d338d44a0d5a4"
+ },
+ "ui-existing | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "755f7718e5d07ecc"
+ },
+ "ui-existing | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 261,
+  "overlaps": 0,
+  "hash": "e04db314d942e102"
+ },
+ "ui-existing | medium_medium.json | 1:2": {
+  "nodes": 150,
+  "links": 258,
+  "overlaps": 0,
+  "hash": "05902cef2f49dc14"
+ },
+ "ui-existing | medium_medium.json | 1:1": {
+  "nodes": 150,
+  "links": 245,
+  "overlaps": 0,
+  "hash": "9f06f3b434fac692"
+ },
+ "ui-existing | medium_medium.json | 2:1": {
+  "nodes": 150,
+  "links": 217,
+  "overlaps": 0,
+  "hash": "426259b8102da3c7"
+ },
+ "ui-existing | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 201,
+  "overlaps": 0,
+  "hash": "6bf337c878692891"
+ },
+ "ui-existing | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 489,
+  "overlaps": 0,
+  "hash": "13a1b06c33440d2a"
+ },
+ "ui-existing | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 503,
+  "overlaps": 0,
+  "hash": "6f392671ffb98536"
+ },
+ "ui-existing | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 445,
+  "overlaps": 0,
+  "hash": "3bd28e5f03f428ff"
+ },
+ "ui-existing | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 405,
+  "overlaps": 0,
+  "hash": "4c7ff16584c011cd"
+ },
+ "ui-existing | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 377,
+  "overlaps": 0,
+  "hash": "23ee3abe6a1b7b32"
+ },
+ "ui-existing | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 49,
+  "overlaps": 0,
+  "hash": "5edc36c1d6663315"
+ },
+ "ui-existing | small_high.json | 1:2": {
+  "nodes": 30,
+  "links": 49,
+  "overlaps": 0,
+  "hash": "24c19bc831506d4c"
+ },
+ "ui-existing | small_high.json | 1:1": {
+  "nodes": 30,
+  "links": 63,
+  "overlaps": 0,
+  "hash": "4abe15963324e24f"
+ },
+ "ui-existing | small_high.json | 2:1": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "01efc395cf0cbc52"
+ },
+ "ui-existing | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 51,
+  "overlaps": 0,
+  "hash": "78482bcfcc2427cf"
+ },
+ "ui-existing | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "6f9cdab58c025f99"
+ },
+ "ui-existing | small_low.json | 1:2": {
+  "nodes": 30,
+  "links": 62,
+  "overlaps": 0,
+  "hash": "cff7a4034c696316"
+ },
+ "ui-existing | small_low.json | 1:1": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "8bde360df1302327"
+ },
+ "ui-existing | small_low.json | 2:1": {
+  "nodes": 30,
+  "links": 56,
+  "overlaps": 0,
+  "hash": "a96379182d30f47e"
+ },
+ "ui-existing | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "2eee1a402e43a5d1"
+ },
+ "sa | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "d7777faf7a0a895f"
+ },
  "sa | edge_dominant_leaf.json | 1:2": {
   "nodes": 6,
   "links": 11,
@@ -160,6 +562,18 @@
   "links": 11,
   "overlaps": 0,
   "hash": "56c4321547568f2b"
+ },
+ "sa | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "8502c98eb5f32328"
+ },
+ "sa | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "7aa0e65f246639d4"
  },
  "sa | edge_mixed.json | 1:2": {
   "nodes": 7,
@@ -179,6 +593,18 @@
   "overlaps": 0,
   "hash": "76546ae63497e08d"
  },
+ "sa | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "383b3688e155c395"
+ },
+ "sa | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "a57532fe0be5ba78"
+ },
  "sa | edge_one_dummy.json | 1:2": {
   "nodes": 4,
   "links": 9,
@@ -196,6 +622,18 @@
   "links": 7,
   "overlaps": 0,
   "hash": "9748f0acbfb0c6a3"
+ },
+ "sa | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "d0d80980bfeceb6b"
+ },
+ "sa | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "07ec5d779f4f2627"
  },
  "sa | edge_single_leaf.json | 1:2": {
   "nodes": 2,
@@ -215,6 +653,18 @@
   "overlaps": 0,
   "hash": "6fc8d69d63e5d57d"
  },
+ "sa | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "3de698533fe7e8cc"
+ },
+ "sa | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "17f9ee85c9cd28f9"
+ },
  "sa | medium_extreme.json | 1:2": {
   "nodes": 150,
   "links": 205,
@@ -232,6 +682,18 @@
   "links": 207,
   "overlaps": 0,
   "hash": "ab1d7a3e8f0504e9"
+ },
+ "sa | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "fc84700b52ed6036"
+ },
+ "sa | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 184,
+  "overlaps": 0,
+  "hash": "32c0780cdca139ba"
  },
  "sa | medium_medium.json | 1:2": {
   "nodes": 150,
@@ -251,6 +713,48 @@
   "overlaps": 0,
   "hash": "ca8ee4e6786ed529"
  },
+ "sa | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 205,
+  "overlaps": 0,
+  "hash": "df2e66973d3a2bd6"
+ },
+ "sa | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "9d5a30d4de230297"
+ },
+ "sa | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "7cab6344b14ba892"
+ },
+ "sa | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 357,
+  "overlaps": 0,
+  "hash": "f8cf69f27076c431"
+ },
+ "sa | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 365,
+  "overlaps": 0,
+  "hash": "12a663c087821257"
+ },
+ "sa | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 376,
+  "overlaps": 0,
+  "hash": "5a8f7379cb08dc2c"
+ },
+ "sa | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "be9fdbcd2c6f3d3c"
+ },
  "sa | small_high.json | 1:2": {
   "nodes": 30,
   "links": 53,
@@ -268,6 +772,18 @@
   "links": 57,
   "overlaps": 0,
   "hash": "1cec80a648f4a385"
+ },
+ "sa | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 58,
+  "overlaps": 0,
+  "hash": "d5af260301642882"
+ },
+ "sa | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "9cee1b070012a114"
  },
  "sa | small_low.json | 1:2": {
   "nodes": 30,
@@ -287,6 +803,288 @@
   "overlaps": 0,
   "hash": "d1e7145d31967e0f"
  },
+ "sa | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "fce98c20eb253326"
+ },
+ "ui-growth-sa | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "b787d69f5e37421e"
+ },
+ "ui-growth-sa | edge_dominant_leaf.json | 1:2": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "41afc7e3b49b2a1c"
+ },
+ "ui-growth-sa | edge_dominant_leaf.json | 1:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "8cb53ff1de352340"
+ },
+ "ui-growth-sa | edge_dominant_leaf.json | 2:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "fcb987e7572b2c57"
+ },
+ "ui-growth-sa | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "a6cef98ef9586764"
+ },
+ "ui-growth-sa | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "442c1e7c1422ed40"
+ },
+ "ui-growth-sa | edge_mixed.json | 1:2": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "7497ce11da09e725"
+ },
+ "ui-growth-sa | edge_mixed.json | 1:1": {
+  "nodes": 7,
+  "links": 16,
+  "overlaps": 0,
+  "hash": "6f48848965235582"
+ },
+ "ui-growth-sa | edge_mixed.json | 2:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "ac77d832c57abec3"
+ },
+ "ui-growth-sa | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "1abe6d4362ca7e41"
+ },
+ "ui-growth-sa | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "31cb6b786121a452"
+ },
+ "ui-growth-sa | edge_one_dummy.json | 1:2": {
+  "nodes": 4,
+  "links": 9,
+  "overlaps": 0,
+  "hash": "3ba522aac84f60d6"
+ },
+ "ui-growth-sa | edge_one_dummy.json | 1:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "44745a938f3613b8"
+ },
+ "ui-growth-sa | edge_one_dummy.json | 2:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "1fabec49b376c8b6"
+ },
+ "ui-growth-sa | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "5e324c399199a528"
+ },
+ "ui-growth-sa | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "eff03541648418cd"
+ },
+ "ui-growth-sa | edge_single_leaf.json | 1:2": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "3ffe752e9f83f04d"
+ },
+ "ui-growth-sa | edge_single_leaf.json | 1:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "fbc82477d1e68fba"
+ },
+ "ui-growth-sa | edge_single_leaf.json | 2:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "f02c6b26d5fd7f81"
+ },
+ "ui-growth-sa | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "2e9e59a6be442549"
+ },
+ "ui-growth-sa | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 199,
+  "overlaps": 0,
+  "hash": "0e02c7ee914d2731"
+ },
+ "ui-growth-sa | medium_extreme.json | 1:2": {
+  "nodes": 150,
+  "links": 208,
+  "overlaps": 0,
+  "hash": "8debc5f5cfd8ddfb"
+ },
+ "ui-growth-sa | medium_extreme.json | 1:1": {
+  "nodes": 150,
+  "links": 227,
+  "overlaps": 0,
+  "hash": "7a873fbe7c27bbcb"
+ },
+ "ui-growth-sa | medium_extreme.json | 2:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "4e1ec56a11e38667"
+ },
+ "ui-growth-sa | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "bb9935dfa1fd0863"
+ },
+ "ui-growth-sa | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 185,
+  "overlaps": 0,
+  "hash": "1069725ad1ec9747"
+ },
+ "ui-growth-sa | medium_medium.json | 1:2": {
+  "nodes": 150,
+  "links": 187,
+  "overlaps": 0,
+  "hash": "670b201fdb4c8ed5"
+ },
+ "ui-growth-sa | medium_medium.json | 1:1": {
+  "nodes": 150,
+  "links": 191,
+  "overlaps": 0,
+  "hash": "fa5237107b0a261e"
+ },
+ "ui-growth-sa | medium_medium.json | 2:1": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "cb8bf1d878a7f0e8"
+ },
+ "ui-growth-sa | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "7e6bb9db9d9ebb4e"
+ },
+ "ui-growth-sa | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "c8948a747d2e00c4"
+ },
+ "ui-growth-sa | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "9bb25afb3feac268"
+ },
+ "ui-growth-sa | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 359,
+  "overlaps": 0,
+  "hash": "6f59d1f3bd29e3cd"
+ },
+ "ui-growth-sa | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 366,
+  "overlaps": 0,
+  "hash": "e9c7bd655a16bdf1"
+ },
+ "ui-growth-sa | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 378,
+  "overlaps": 0,
+  "hash": "8b3865cba58f0c97"
+ },
+ "ui-growth-sa | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "e3e99b7642028330"
+ },
+ "ui-growth-sa | small_high.json | 1:2": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "6083af7f8180770f"
+ },
+ "ui-growth-sa | small_high.json | 1:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "99e045f60c51b169"
+ },
+ "ui-growth-sa | small_high.json | 2:1": {
+  "nodes": 30,
+  "links": 57,
+  "overlaps": 0,
+  "hash": "0f30f7e4f1e6cebc"
+ },
+ "ui-growth-sa | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 58,
+  "overlaps": 0,
+  "hash": "17214ee003fa9bb4"
+ },
+ "ui-growth-sa | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "2b1132b2522c6615"
+ },
+ "ui-growth-sa | small_low.json | 1:2": {
+  "nodes": 30,
+  "links": 60,
+  "overlaps": 0,
+  "hash": "edee067eb2d7754e"
+ },
+ "ui-growth-sa | small_low.json | 1:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "48afac6c83842333"
+ },
+ "ui-growth-sa | small_low.json | 2:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "a24c266e84fdc68d"
+ },
+ "ui-growth-sa | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "667fb38090861757"
+ },
+ "growth-lpt | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "a362e7b4eaa752d4"
+ },
  "growth-lpt | edge_dominant_leaf.json | 1:2": {
   "nodes": 6,
   "links": 11,
@@ -304,6 +1102,18 @@
   "links": 11,
   "overlaps": 0,
   "hash": "a17e937e3947c1c4"
+ },
+ "growth-lpt | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "cf06bb822c28e781"
+ },
+ "growth-lpt | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "7aa0e65f246639d4"
  },
  "growth-lpt | edge_mixed.json | 1:2": {
   "nodes": 7,
@@ -323,6 +1133,18 @@
   "overlaps": 0,
   "hash": "d1c09fbefa74a5d6"
  },
+ "growth-lpt | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "5fd8b3f83cdf827e"
+ },
+ "growth-lpt | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "a57532fe0be5ba78"
+ },
  "growth-lpt | edge_one_dummy.json | 1:2": {
   "nodes": 4,
   "links": 9,
@@ -340,6 +1162,18 @@
   "links": 7,
   "overlaps": 0,
   "hash": "b1e55bc7eec61eb9"
+ },
+ "growth-lpt | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "dd18c6c6a59dea08"
+ },
+ "growth-lpt | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "07ec5d779f4f2627"
  },
  "growth-lpt | edge_single_leaf.json | 1:2": {
   "nodes": 2,
@@ -359,6 +1193,18 @@
   "overlaps": 0,
   "hash": "6fc8d69d63e5d57d"
  },
+ "growth-lpt | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "3de698533fe7e8cc"
+ },
+ "growth-lpt | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "cce71997f4bf0ad5"
+ },
  "growth-lpt | medium_extreme.json | 1:2": {
   "nodes": 150,
   "links": 205,
@@ -376,6 +1222,18 @@
   "links": 207,
   "overlaps": 0,
   "hash": "bcd1a7ab60d8260f"
+ },
+ "growth-lpt | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "1fea92f0aea648c0"
+ },
+ "growth-lpt | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 184,
+  "overlaps": 0,
+  "hash": "09b740d790b7c1f7"
  },
  "growth-lpt | medium_medium.json | 1:2": {
   "nodes": 150,
@@ -395,6 +1253,48 @@
   "overlaps": 0,
   "hash": "fb4ffaa41cd2bd31"
  },
+ "growth-lpt | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 205,
+  "overlaps": 0,
+  "hash": "991ffa1393049bf4"
+ },
+ "growth-lpt | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "30ec686f814a5f0b"
+ },
+ "growth-lpt | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "7423e6658ec53ecf"
+ },
+ "growth-lpt | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 357,
+  "overlaps": 0,
+  "hash": "2d6e62b2382c08db"
+ },
+ "growth-lpt | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 365,
+  "overlaps": 0,
+  "hash": "50f55529092e6462"
+ },
+ "growth-lpt | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 377,
+  "overlaps": 0,
+  "hash": "fec58a3f7b795000"
+ },
+ "growth-lpt | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "be9fdbcd2c6f3d3c"
+ },
  "growth-lpt | small_high.json | 1:2": {
   "nodes": 30,
   "links": 53,
@@ -412,6 +1312,18 @@
   "links": 57,
   "overlaps": 0,
   "hash": "f5de9e0e8ddfdff7"
+ },
+ "growth-lpt | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 58,
+  "overlaps": 0,
+  "hash": "e3b2460d42465d3a"
+ },
+ "growth-lpt | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "9cee1b070012a114"
  },
  "growth-lpt | small_low.json | 1:2": {
   "nodes": 30,
@@ -431,6 +1343,288 @@
   "overlaps": 0,
   "hash": "43fad62884b912c5"
  },
+ "growth-lpt | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "43e5f01e8a1ae373"
+ },
+ "ui-growth-lpt | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "02e28104a48d4d33"
+ },
+ "ui-growth-lpt | edge_dominant_leaf.json | 1:2": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "71ee74017ca99992"
+ },
+ "ui-growth-lpt | edge_dominant_leaf.json | 1:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "9d0af3e2543ae445"
+ },
+ "ui-growth-lpt | edge_dominant_leaf.json | 2:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "75a14ef171d687c8"
+ },
+ "ui-growth-lpt | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "d8d6e296b47c7428"
+ },
+ "ui-growth-lpt | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "442c1e7c1422ed40"
+ },
+ "ui-growth-lpt | edge_mixed.json | 1:2": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "7497ce11da09e725"
+ },
+ "ui-growth-lpt | edge_mixed.json | 1:1": {
+  "nodes": 7,
+  "links": 16,
+  "overlaps": 0,
+  "hash": "dcf9e35cc15e41c5"
+ },
+ "ui-growth-lpt | edge_mixed.json | 2:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "96f0fa8a8bde718e"
+ },
+ "ui-growth-lpt | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "6ce398e37a47cd2f"
+ },
+ "ui-growth-lpt | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "31cb6b786121a452"
+ },
+ "ui-growth-lpt | edge_one_dummy.json | 1:2": {
+  "nodes": 4,
+  "links": 9,
+  "overlaps": 0,
+  "hash": "0070620ac068dc91"
+ },
+ "ui-growth-lpt | edge_one_dummy.json | 1:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "803112ca1a75939d"
+ },
+ "ui-growth-lpt | edge_one_dummy.json | 2:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "5d09dc676044e825"
+ },
+ "ui-growth-lpt | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "07b7e323a9fafd1a"
+ },
+ "ui-growth-lpt | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "eff03541648418cd"
+ },
+ "ui-growth-lpt | edge_single_leaf.json | 1:2": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "3ffe752e9f83f04d"
+ },
+ "ui-growth-lpt | edge_single_leaf.json | 1:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "fbc82477d1e68fba"
+ },
+ "ui-growth-lpt | edge_single_leaf.json | 2:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "f02c6b26d5fd7f81"
+ },
+ "ui-growth-lpt | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "2e9e59a6be442549"
+ },
+ "ui-growth-lpt | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 199,
+  "overlaps": 0,
+  "hash": "6d07de6b82e886f6"
+ },
+ "ui-growth-lpt | medium_extreme.json | 1:2": {
+  "nodes": 150,
+  "links": 208,
+  "overlaps": 0,
+  "hash": "88cddcaa39996695"
+ },
+ "ui-growth-lpt | medium_extreme.json | 1:1": {
+  "nodes": 150,
+  "links": 227,
+  "overlaps": 0,
+  "hash": "e710fbf55f419f31"
+ },
+ "ui-growth-lpt | medium_extreme.json | 2:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "db9a13dd771cd3ce"
+ },
+ "ui-growth-lpt | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "7b65c1ec0bfcee28"
+ },
+ "ui-growth-lpt | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 185,
+  "overlaps": 0,
+  "hash": "30b80ff82c69bbd1"
+ },
+ "ui-growth-lpt | medium_medium.json | 1:2": {
+  "nodes": 150,
+  "links": 187,
+  "overlaps": 0,
+  "hash": "1a794e8af562629a"
+ },
+ "ui-growth-lpt | medium_medium.json | 1:1": {
+  "nodes": 150,
+  "links": 191,
+  "overlaps": 0,
+  "hash": "a80a240c71776962"
+ },
+ "ui-growth-lpt | medium_medium.json | 2:1": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "422a7edcef596d2b"
+ },
+ "ui-growth-lpt | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "9b50407337958eea"
+ },
+ "ui-growth-lpt | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "71f2cadc728c5bec"
+ },
+ "ui-growth-lpt | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "6115978d67a58064"
+ },
+ "ui-growth-lpt | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 359,
+  "overlaps": 0,
+  "hash": "d83f5341d5d180a0"
+ },
+ "ui-growth-lpt | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 366,
+  "overlaps": 0,
+  "hash": "b4588db27b64dad8"
+ },
+ "ui-growth-lpt | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 379,
+  "overlaps": 0,
+  "hash": "affea07fa02e8468"
+ },
+ "ui-growth-lpt | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "e3e99b7642028330"
+ },
+ "ui-growth-lpt | small_high.json | 1:2": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "6083af7f8180770f"
+ },
+ "ui-growth-lpt | small_high.json | 1:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "1cb9c34c1b4b03d0"
+ },
+ "ui-growth-lpt | small_high.json | 2:1": {
+  "nodes": 30,
+  "links": 57,
+  "overlaps": 0,
+  "hash": "951b59286b8406c2"
+ },
+ "ui-growth-lpt | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "68faaff838bca427"
+ },
+ "ui-growth-lpt | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "2b1132b2522c6615"
+ },
+ "ui-growth-lpt | small_low.json | 1:2": {
+  "nodes": 30,
+  "links": 60,
+  "overlaps": 0,
+  "hash": "af7606b184f0fbd6"
+ },
+ "ui-growth-lpt | small_low.json | 1:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "e384da0a28b706cd"
+ },
+ "ui-growth-lpt | small_low.json | 2:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "598b2277d06263e1"
+ },
+ "ui-growth-lpt | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "139eaa60f95f500f"
+ },
+ "budget-lpt | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "b85767fc17dcfd20"
+ },
  "budget-lpt | edge_dominant_leaf.json | 1:2": {
   "nodes": 6,
   "links": 13,
@@ -448,6 +1642,18 @@
   "links": 13,
   "overlaps": 0,
   "hash": "d1187406481544c7"
+ },
+ "budget-lpt | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "2fcc54c5251891bb"
+ },
+ "budget-lpt | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "2fcb397ffa17a605"
  },
  "budget-lpt | edge_mixed.json | 1:2": {
   "nodes": 7,
@@ -467,6 +1673,18 @@
   "overlaps": 0,
   "hash": "777d2474aad31cef"
  },
+ "budget-lpt | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "25634aa92beaf1b1"
+ },
+ "budget-lpt | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "a57532fe0be5ba78"
+ },
  "budget-lpt | edge_one_dummy.json | 1:2": {
   "nodes": 4,
   "links": 8,
@@ -484,6 +1702,18 @@
   "links": 7,
   "overlaps": 0,
   "hash": "55b245457ec51f70"
+ },
+ "budget-lpt | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "bf0814f1ff7565a7"
+ },
+ "budget-lpt | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "b1c64e16f609c498"
  },
  "budget-lpt | edge_single_leaf.json | 1:2": {
   "nodes": 2,
@@ -503,6 +1733,18 @@
   "overlaps": 0,
   "hash": "90cee6c004f1edf7"
  },
+ "budget-lpt | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "37aaf80455d2485c"
+ },
+ "budget-lpt | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 196,
+  "overlaps": 0,
+  "hash": "831fda592d5078f8"
+ },
  "budget-lpt | medium_extreme.json | 1:2": {
   "nodes": 150,
   "links": 205,
@@ -520,6 +1762,18 @@
   "links": 233,
   "overlaps": 0,
   "hash": "c7e96b6fe29a0797"
+ },
+ "budget-lpt | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 227,
+  "overlaps": 0,
+  "hash": "ee0984375a7f3e87"
+ },
+ "budget-lpt | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 184,
+  "overlaps": 0,
+  "hash": "652461a4d4bbada1"
  },
  "budget-lpt | medium_medium.json | 1:2": {
   "nodes": 150,
@@ -539,6 +1793,48 @@
   "overlaps": 0,
   "hash": "1a4021c259386170"
  },
+ "budget-lpt | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 204,
+  "overlaps": 0,
+  "hash": "e01cf7771eaae35f"
+ },
+ "budget-lpt | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "bd5be20e5464882c"
+ },
+ "budget-lpt | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 352,
+  "overlaps": 0,
+  "hash": "d230066fff839979"
+ },
+ "budget-lpt | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 357,
+  "overlaps": 0,
+  "hash": "b95753a7457c7026"
+ },
+ "budget-lpt | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 365,
+  "overlaps": 0,
+  "hash": "32627afde928572a"
+ },
+ "budget-lpt | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 376,
+  "overlaps": 0,
+  "hash": "fe7ef19af6c8b7a5"
+ },
+ "budget-lpt | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "0b21b34ecffd5b9b"
+ },
  "budget-lpt | small_high.json | 1:2": {
   "nodes": 30,
   "links": 53,
@@ -556,6 +1852,18 @@
   "links": 56,
   "overlaps": 0,
   "hash": "e73707d38a6cd325"
+ },
+ "budget-lpt | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 58,
+  "overlaps": 0,
+  "hash": "8c871ef078d80322"
+ },
+ "budget-lpt | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "9cee1b070012a114"
  },
  "budget-lpt | small_low.json | 1:2": {
   "nodes": 30,
@@ -575,293 +1883,17 @@
   "overlaps": 0,
   "hash": "d7bbebfb802f00e1"
  },
- "budget-ffd | edge_dominant_leaf.json | 1:2": {
+ "budget-lpt | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 54,
+  "overlaps": 0,
+  "hash": "df409ba70cad71aa"
+ },
+ "ui-budget-lpt | edge_dominant_leaf.json | 1:4": {
   "nodes": 6,
   "links": 13,
   "overlaps": 0,
-  "hash": "9d259d9ef9fd5fe6"
- },
- "budget-ffd | edge_dominant_leaf.json | 1:1": {
-  "nodes": 6,
-  "links": 13,
-  "overlaps": 0,
-  "hash": "1a32884cd3d37e68"
- },
- "budget-ffd | edge_dominant_leaf.json | 2:1": {
-  "nodes": 6,
-  "links": 13,
-  "overlaps": 0,
-  "hash": "d1187406481544c7"
- },
- "budget-ffd | edge_mixed.json | 1:2": {
-  "nodes": 7,
-  "links": 15,
-  "overlaps": 0,
-  "hash": "d937ec7220db0657"
- },
- "budget-ffd | edge_mixed.json | 1:1": {
-  "nodes": 7,
-  "links": 16,
-  "overlaps": 0,
-  "hash": "375e9c3b17db54bf"
- },
- "budget-ffd | edge_mixed.json | 2:1": {
-  "nodes": 7,
-  "links": 14,
-  "overlaps": 0,
-  "hash": "777d2474aad31cef"
- },
- "budget-ffd | edge_one_dummy.json | 1:2": {
-  "nodes": 4,
-  "links": 8,
-  "overlaps": 0,
-  "hash": "deb48647df927fa8"
- },
- "budget-ffd | edge_one_dummy.json | 1:1": {
-  "nodes": 4,
-  "links": 9,
-  "overlaps": 0,
-  "hash": "7b8c882ab5832783"
- },
- "budget-ffd | edge_one_dummy.json | 2:1": {
-  "nodes": 4,
-  "links": 7,
-  "overlaps": 0,
-  "hash": "55b245457ec51f70"
- },
- "budget-ffd | edge_single_leaf.json | 1:2": {
-  "nodes": 2,
-  "links": 3,
-  "overlaps": 0,
-  "hash": "24c44cb11360a8b9"
- },
- "budget-ffd | edge_single_leaf.json | 1:1": {
-  "nodes": 2,
-  "links": 3,
-  "overlaps": 0,
-  "hash": "dafbcbd936adff84"
- },
- "budget-ffd | edge_single_leaf.json | 2:1": {
-  "nodes": 2,
-  "links": 3,
-  "overlaps": 0,
-  "hash": "90cee6c004f1edf7"
- },
- "budget-ffd | medium_extreme.json | 1:2": {
-  "nodes": 150,
-  "links": 204,
-  "overlaps": 0,
-  "hash": "34f8b664dcdf69cd"
- },
- "budget-ffd | medium_extreme.json | 1:1": {
-  "nodes": 150,
-  "links": 219,
-  "overlaps": 0,
-  "hash": "546f6b1ade86e039"
- },
- "budget-ffd | medium_extreme.json | 2:1": {
-  "nodes": 150,
-  "links": 232,
-  "overlaps": 0,
-  "hash": "14922164edce3085"
- },
- "budget-ffd | medium_medium.json | 1:2": {
-  "nodes": 150,
-  "links": 186,
-  "overlaps": 0,
-  "hash": "370079bc204b0f23"
- },
- "budget-ffd | medium_medium.json | 1:1": {
-  "nodes": 150,
-  "links": 190,
-  "overlaps": 0,
-  "hash": "ebeb3a471c63fd77"
- },
- "budget-ffd | medium_medium.json | 2:1": {
-  "nodes": 150,
-  "links": 195,
-  "overlaps": 0,
-  "hash": "0e80715c5c10e5f9"
- },
- "budget-ffd | small_high.json | 1:2": {
-  "nodes": 30,
-  "links": 53,
-  "overlaps": 0,
-  "hash": "a66951bfefefd21a"
- },
- "budget-ffd | small_high.json | 1:1": {
-  "nodes": 30,
-  "links": 55,
-  "overlaps": 0,
-  "hash": "9f3c3c24ffc9001d"
- },
- "budget-ffd | small_high.json | 2:1": {
-  "nodes": 30,
-  "links": 57,
-  "overlaps": 0,
-  "hash": "80cfc66c026d1e0a"
- },
- "budget-ffd | small_low.json | 1:2": {
-  "nodes": 30,
-  "links": 59,
-  "overlaps": 0,
-  "hash": "dcd1182ce5830105"
- },
- "budget-ffd | small_low.json | 1:1": {
-  "nodes": 30,
-  "links": 60,
-  "overlaps": 0,
-  "hash": "a6ca1e7af29c8a81"
- },
- "budget-ffd | small_low.json | 2:1": {
-  "nodes": 30,
-  "links": 60,
-  "overlaps": 0,
-  "hash": "76ea22a8564bb576"
- },
- "budget-bfd | edge_dominant_leaf.json | 1:2": {
-  "nodes": 6,
-  "links": 13,
-  "overlaps": 0,
-  "hash": "9d259d9ef9fd5fe6"
- },
- "budget-bfd | edge_dominant_leaf.json | 1:1": {
-  "nodes": 6,
-  "links": 13,
-  "overlaps": 0,
-  "hash": "1a32884cd3d37e68"
- },
- "budget-bfd | edge_dominant_leaf.json | 2:1": {
-  "nodes": 6,
-  "links": 13,
-  "overlaps": 0,
-  "hash": "d1187406481544c7"
- },
- "budget-bfd | edge_mixed.json | 1:2": {
-  "nodes": 7,
-  "links": 15,
-  "overlaps": 0,
-  "hash": "d937ec7220db0657"
- },
- "budget-bfd | edge_mixed.json | 1:1": {
-  "nodes": 7,
-  "links": 16,
-  "overlaps": 0,
-  "hash": "375e9c3b17db54bf"
- },
- "budget-bfd | edge_mixed.json | 2:1": {
-  "nodes": 7,
-  "links": 14,
-  "overlaps": 0,
-  "hash": "777d2474aad31cef"
- },
- "budget-bfd | edge_one_dummy.json | 1:2": {
-  "nodes": 4,
-  "links": 8,
-  "overlaps": 0,
-  "hash": "deb48647df927fa8"
- },
- "budget-bfd | edge_one_dummy.json | 1:1": {
-  "nodes": 4,
-  "links": 9,
-  "overlaps": 0,
-  "hash": "7b8c882ab5832783"
- },
- "budget-bfd | edge_one_dummy.json | 2:1": {
-  "nodes": 4,
-  "links": 7,
-  "overlaps": 0,
-  "hash": "55b245457ec51f70"
- },
- "budget-bfd | edge_single_leaf.json | 1:2": {
-  "nodes": 2,
-  "links": 3,
-  "overlaps": 0,
-  "hash": "24c44cb11360a8b9"
- },
- "budget-bfd | edge_single_leaf.json | 1:1": {
-  "nodes": 2,
-  "links": 3,
-  "overlaps": 0,
-  "hash": "dafbcbd936adff84"
- },
- "budget-bfd | edge_single_leaf.json | 2:1": {
-  "nodes": 2,
-  "links": 3,
-  "overlaps": 0,
-  "hash": "90cee6c004f1edf7"
- },
- "budget-bfd | medium_extreme.json | 1:2": {
-  "nodes": 150,
-  "links": 204,
-  "overlaps": 0,
-  "hash": "7975641c8f9093f0"
- },
- "budget-bfd | medium_extreme.json | 1:1": {
-  "nodes": 150,
-  "links": 219,
-  "overlaps": 0,
-  "hash": "dd3a2f598335be9c"
- },
- "budget-bfd | medium_extreme.json | 2:1": {
-  "nodes": 150,
-  "links": 232,
-  "overlaps": 0,
-  "hash": "c8f807121f26d8a7"
- },
- "budget-bfd | medium_medium.json | 1:2": {
-  "nodes": 150,
-  "links": 186,
-  "overlaps": 0,
-  "hash": "370079bc204b0f23"
- },
- "budget-bfd | medium_medium.json | 1:1": {
-  "nodes": 150,
-  "links": 190,
-  "overlaps": 0,
-  "hash": "ebeb3a471c63fd77"
- },
- "budget-bfd | medium_medium.json | 2:1": {
-  "nodes": 150,
-  "links": 195,
-  "overlaps": 0,
-  "hash": "0e80715c5c10e5f9"
- },
- "budget-bfd | small_high.json | 1:2": {
-  "nodes": 30,
-  "links": 53,
-  "overlaps": 0,
-  "hash": "a66951bfefefd21a"
- },
- "budget-bfd | small_high.json | 1:1": {
-  "nodes": 30,
-  "links": 55,
-  "overlaps": 0,
-  "hash": "9f3c3c24ffc9001d"
- },
- "budget-bfd | small_high.json | 2:1": {
-  "nodes": 30,
-  "links": 57,
-  "overlaps": 0,
-  "hash": "80cfc66c026d1e0a"
- },
- "budget-bfd | small_low.json | 1:2": {
-  "nodes": 30,
-  "links": 59,
-  "overlaps": 0,
-  "hash": "dcd1182ce5830105"
- },
- "budget-bfd | small_low.json | 1:1": {
-  "nodes": 30,
-  "links": 60,
-  "overlaps": 0,
-  "hash": "a6ca1e7af29c8a81"
- },
- "budget-bfd | small_low.json | 2:1": {
-  "nodes": 30,
-  "links": 60,
-  "overlaps": 0,
-  "hash": "76ea22a8564bb576"
+  "hash": "bee395edef253b66"
  },
  "ui-budget-lpt | edge_dominant_leaf.json | 1:2": {
   "nodes": 6,
@@ -881,6 +1913,18 @@
   "overlaps": 0,
   "hash": "9bd9e1d80694c276"
  },
+ "ui-budget-lpt | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "7bc9bb1bd75c88b5"
+ },
+ "ui-budget-lpt | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "eb2d4c8a4037a56d"
+ },
  "ui-budget-lpt | edge_mixed.json | 1:2": {
   "nodes": 7,
   "links": 15,
@@ -898,6 +1942,18 @@
   "links": 14,
   "overlaps": 0,
   "hash": "3d6f5592dbfbeaac"
+ },
+ "ui-budget-lpt | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "e321482ac1a31df4"
+ },
+ "ui-budget-lpt | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "31cb6b786121a452"
  },
  "ui-budget-lpt | edge_one_dummy.json | 1:2": {
   "nodes": 4,
@@ -917,6 +1973,18 @@
   "overlaps": 0,
   "hash": "a53b434f90f44b45"
  },
+ "ui-budget-lpt | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "30319c6c7fd259d0"
+ },
+ "ui-budget-lpt | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "509a587ecb06e9a7"
+ },
  "ui-budget-lpt | edge_single_leaf.json | 1:2": {
   "nodes": 2,
   "links": 3,
@@ -934,6 +2002,18 @@
   "links": 3,
   "overlaps": 0,
   "hash": "2a13c33a4fdf1195"
+ },
+ "ui-budget-lpt | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "128daa41a4afb150"
+ },
+ "ui-budget-lpt | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 198,
+  "overlaps": 0,
+  "hash": "6f612bd76c840536"
  },
  "ui-budget-lpt | medium_extreme.json | 1:2": {
   "nodes": 150,
@@ -953,6 +2033,18 @@
   "overlaps": 0,
   "hash": "acef44ea978081aa"
  },
+ "ui-budget-lpt | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 227,
+  "overlaps": 0,
+  "hash": "cf7f264392cf2a64"
+ },
+ "ui-budget-lpt | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 184,
+  "overlaps": 0,
+  "hash": "acabe332aae35137"
+ },
  "ui-budget-lpt | medium_medium.json | 1:2": {
   "nodes": 150,
   "links": 187,
@@ -970,6 +2062,48 @@
   "links": 197,
   "overlaps": 0,
   "hash": "da010d5c4f8a0143"
+ },
+ "ui-budget-lpt | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "f0584a2e00701138"
+ },
+ "ui-budget-lpt | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "0bf5bdf3ce8936b7"
+ },
+ "ui-budget-lpt | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "10c7efbcc4cbcbf4"
+ },
+ "ui-budget-lpt | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 358,
+  "overlaps": 0,
+  "hash": "ab1c092998821069"
+ },
+ "ui-budget-lpt | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 366,
+  "overlaps": 0,
+  "hash": "7331c38db1f3af04"
+ },
+ "ui-budget-lpt | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 377,
+  "overlaps": 0,
+  "hash": "aa4f93e84a2afaf8"
+ },
+ "ui-budget-lpt | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "e27e5cda0dd8430d"
  },
  "ui-budget-lpt | small_high.json | 1:2": {
   "nodes": 30,
@@ -989,6 +2123,18 @@
   "overlaps": 0,
   "hash": "b60ce49b7b264619"
  },
+ "ui-budget-lpt | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "aa024d782878f0a8"
+ },
+ "ui-budget-lpt | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "2b1132b2522c6615"
+ },
  "ui-budget-lpt | small_low.json | 1:2": {
   "nodes": 30,
   "links": 59,
@@ -1006,6 +2152,828 @@
   "links": 64,
   "overlaps": 0,
   "hash": "39249a52e8d7cc08"
+ },
+ "ui-budget-lpt | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 54,
+  "overlaps": 0,
+  "hash": "f402a94026731164"
+ },
+ "budget-ffd | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "b85767fc17dcfd20"
+ },
+ "budget-ffd | edge_dominant_leaf.json | 1:2": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "9d259d9ef9fd5fe6"
+ },
+ "budget-ffd | edge_dominant_leaf.json | 1:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "1a32884cd3d37e68"
+ },
+ "budget-ffd | edge_dominant_leaf.json | 2:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "d1187406481544c7"
+ },
+ "budget-ffd | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "2fcc54c5251891bb"
+ },
+ "budget-ffd | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "2fcb397ffa17a605"
+ },
+ "budget-ffd | edge_mixed.json | 1:2": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "d937ec7220db0657"
+ },
+ "budget-ffd | edge_mixed.json | 1:1": {
+  "nodes": 7,
+  "links": 16,
+  "overlaps": 0,
+  "hash": "375e9c3b17db54bf"
+ },
+ "budget-ffd | edge_mixed.json | 2:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "777d2474aad31cef"
+ },
+ "budget-ffd | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "25634aa92beaf1b1"
+ },
+ "budget-ffd | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "a57532fe0be5ba78"
+ },
+ "budget-ffd | edge_one_dummy.json | 1:2": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "deb48647df927fa8"
+ },
+ "budget-ffd | edge_one_dummy.json | 1:1": {
+  "nodes": 4,
+  "links": 9,
+  "overlaps": 0,
+  "hash": "7b8c882ab5832783"
+ },
+ "budget-ffd | edge_one_dummy.json | 2:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "55b245457ec51f70"
+ },
+ "budget-ffd | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "bf0814f1ff7565a7"
+ },
+ "budget-ffd | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "b1c64e16f609c498"
+ },
+ "budget-ffd | edge_single_leaf.json | 1:2": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "24c44cb11360a8b9"
+ },
+ "budget-ffd | edge_single_leaf.json | 1:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "dafbcbd936adff84"
+ },
+ "budget-ffd | edge_single_leaf.json | 2:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "90cee6c004f1edf7"
+ },
+ "budget-ffd | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "37aaf80455d2485c"
+ },
+ "budget-ffd | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "c9acc23894997c7b"
+ },
+ "budget-ffd | medium_extreme.json | 1:2": {
+  "nodes": 150,
+  "links": 204,
+  "overlaps": 0,
+  "hash": "34f8b664dcdf69cd"
+ },
+ "budget-ffd | medium_extreme.json | 1:1": {
+  "nodes": 150,
+  "links": 219,
+  "overlaps": 0,
+  "hash": "546f6b1ade86e039"
+ },
+ "budget-ffd | medium_extreme.json | 2:1": {
+  "nodes": 150,
+  "links": 232,
+  "overlaps": 0,
+  "hash": "14922164edce3085"
+ },
+ "budget-ffd | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 226,
+  "overlaps": 0,
+  "hash": "e1015f843c53516e"
+ },
+ "budget-ffd | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 184,
+  "overlaps": 0,
+  "hash": "2bace85357068e75"
+ },
+ "budget-ffd | medium_medium.json | 1:2": {
+  "nodes": 150,
+  "links": 186,
+  "overlaps": 0,
+  "hash": "370079bc204b0f23"
+ },
+ "budget-ffd | medium_medium.json | 1:1": {
+  "nodes": 150,
+  "links": 190,
+  "overlaps": 0,
+  "hash": "ebeb3a471c63fd77"
+ },
+ "budget-ffd | medium_medium.json | 2:1": {
+  "nodes": 150,
+  "links": 195,
+  "overlaps": 0,
+  "hash": "0e80715c5c10e5f9"
+ },
+ "budget-ffd | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 206,
+  "overlaps": 0,
+  "hash": "3d088675d7155b2c"
+ },
+ "budget-ffd | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "0913b710c1e27e53"
+ },
+ "budget-ffd | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "844113e22e064fc0"
+ },
+ "budget-ffd | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 357,
+  "overlaps": 0,
+  "hash": "ec9f8e8d57d3d2a4"
+ },
+ "budget-ffd | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 365,
+  "overlaps": 0,
+  "hash": "74ecf1cb672c90aa"
+ },
+ "budget-ffd | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 377,
+  "overlaps": 0,
+  "hash": "14464189e6578028"
+ },
+ "budget-ffd | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "0b21b34ecffd5b9b"
+ },
+ "budget-ffd | small_high.json | 1:2": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "a66951bfefefd21a"
+ },
+ "budget-ffd | small_high.json | 1:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "9f3c3c24ffc9001d"
+ },
+ "budget-ffd | small_high.json | 2:1": {
+  "nodes": 30,
+  "links": 57,
+  "overlaps": 0,
+  "hash": "80cfc66c026d1e0a"
+ },
+ "budget-ffd | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 58,
+  "overlaps": 0,
+  "hash": "b6422c780fb8fb4a"
+ },
+ "budget-ffd | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "9cee1b070012a114"
+ },
+ "budget-ffd | small_low.json | 1:2": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "dcd1182ce5830105"
+ },
+ "budget-ffd | small_low.json | 1:1": {
+  "nodes": 30,
+  "links": 60,
+  "overlaps": 0,
+  "hash": "a6ca1e7af29c8a81"
+ },
+ "budget-ffd | small_low.json | 2:1": {
+  "nodes": 30,
+  "links": 60,
+  "overlaps": 0,
+  "hash": "76ea22a8564bb576"
+ },
+ "budget-ffd | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 54,
+  "overlaps": 0,
+  "hash": "8a4c53a1c9243595"
+ },
+ "ui-budget-ffd | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "bee395edef253b66"
+ },
+ "ui-budget-ffd | edge_dominant_leaf.json | 1:2": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "1a5a68c0cc8ca3ab"
+ },
+ "ui-budget-ffd | edge_dominant_leaf.json | 1:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "70c4edadaa03ec4b"
+ },
+ "ui-budget-ffd | edge_dominant_leaf.json | 2:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "9bd9e1d80694c276"
+ },
+ "ui-budget-ffd | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "7bc9bb1bd75c88b5"
+ },
+ "ui-budget-ffd | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "eb2d4c8a4037a56d"
+ },
+ "ui-budget-ffd | edge_mixed.json | 1:2": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "ce97339d5c580e2a"
+ },
+ "ui-budget-ffd | edge_mixed.json | 1:1": {
+  "nodes": 7,
+  "links": 16,
+  "overlaps": 0,
+  "hash": "b572f909542505a1"
+ },
+ "ui-budget-ffd | edge_mixed.json | 2:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "3d6f5592dbfbeaac"
+ },
+ "ui-budget-ffd | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "e321482ac1a31df4"
+ },
+ "ui-budget-ffd | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "31cb6b786121a452"
+ },
+ "ui-budget-ffd | edge_one_dummy.json | 1:2": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "eb93e2bbf29154ec"
+ },
+ "ui-budget-ffd | edge_one_dummy.json | 1:1": {
+  "nodes": 4,
+  "links": 9,
+  "overlaps": 0,
+  "hash": "979f5acb29b2f0eb"
+ },
+ "ui-budget-ffd | edge_one_dummy.json | 2:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "a53b434f90f44b45"
+ },
+ "ui-budget-ffd | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "30319c6c7fd259d0"
+ },
+ "ui-budget-ffd | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "509a587ecb06e9a7"
+ },
+ "ui-budget-ffd | edge_single_leaf.json | 1:2": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "2c80decd72daa5d3"
+ },
+ "ui-budget-ffd | edge_single_leaf.json | 1:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "1c50028599c3064d"
+ },
+ "ui-budget-ffd | edge_single_leaf.json | 2:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "2a13c33a4fdf1195"
+ },
+ "ui-budget-ffd | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "128daa41a4afb150"
+ },
+ "ui-budget-ffd | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 199,
+  "overlaps": 0,
+  "hash": "76496e2d7231bdf9"
+ },
+ "ui-budget-ffd | medium_extreme.json | 1:2": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "fbc9fcf816e5859d"
+ },
+ "ui-budget-ffd | medium_extreme.json | 1:1": {
+  "nodes": 150,
+  "links": 224,
+  "overlaps": 0,
+  "hash": "6a34cf14f0802fc9"
+ },
+ "ui-budget-ffd | medium_extreme.json | 2:1": {
+  "nodes": 150,
+  "links": 234,
+  "overlaps": 0,
+  "hash": "8fcafa1ba38e0165"
+ },
+ "ui-budget-ffd | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 227,
+  "overlaps": 0,
+  "hash": "f45df0a0d67142f1"
+ },
+ "ui-budget-ffd | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 185,
+  "overlaps": 0,
+  "hash": "b4f96feb23dca28e"
+ },
+ "ui-budget-ffd | medium_medium.json | 1:2": {
+  "nodes": 150,
+  "links": 187,
+  "overlaps": 0,
+  "hash": "0273014176960b79"
+ },
+ "ui-budget-ffd | medium_medium.json | 1:1": {
+  "nodes": 150,
+  "links": 191,
+  "overlaps": 0,
+  "hash": "24aa2fc7061f97ba"
+ },
+ "ui-budget-ffd | medium_medium.json | 2:1": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "33b98531cb3113f8"
+ },
+ "ui-budget-ffd | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "18a2f494b0fb20b8"
+ },
+ "ui-budget-ffd | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "8a59749c4b96fc1f"
+ },
+ "ui-budget-ffd | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "6abb86c6954d33fa"
+ },
+ "ui-budget-ffd | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 359,
+  "overlaps": 0,
+  "hash": "0574d65170a5f204"
+ },
+ "ui-budget-ffd | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 366,
+  "overlaps": 0,
+  "hash": "9075e82cdc27c45e"
+ },
+ "ui-budget-ffd | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 377,
+  "overlaps": 0,
+  "hash": "10b9e82328614c5e"
+ },
+ "ui-budget-ffd | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "e27e5cda0dd8430d"
+ },
+ "ui-budget-ffd | small_high.json | 1:2": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "834403df704cbd44"
+ },
+ "ui-budget-ffd | small_high.json | 1:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "e3af6495fbb83132"
+ },
+ "ui-budget-ffd | small_high.json | 2:1": {
+  "nodes": 30,
+  "links": 57,
+  "overlaps": 0,
+  "hash": "9b7ef6a0c4bd5efb"
+ },
+ "ui-budget-ffd | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "c1258b12cd1cf834"
+ },
+ "ui-budget-ffd | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "2b1132b2522c6615"
+ },
+ "ui-budget-ffd | small_low.json | 1:2": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "02b0eb931e0e9c7b"
+ },
+ "ui-budget-ffd | small_low.json | 1:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "a9bef642a2e9d1b6"
+ },
+ "ui-budget-ffd | small_low.json | 2:1": {
+  "nodes": 30,
+  "links": 64,
+  "overlaps": 0,
+  "hash": "a45f9e168480a272"
+ },
+ "ui-budget-ffd | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 54,
+  "overlaps": 0,
+  "hash": "3cf7a0dd24aabfd4"
+ },
+ "budget-bfd | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "b85767fc17dcfd20"
+ },
+ "budget-bfd | edge_dominant_leaf.json | 1:2": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "9d259d9ef9fd5fe6"
+ },
+ "budget-bfd | edge_dominant_leaf.json | 1:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "1a32884cd3d37e68"
+ },
+ "budget-bfd | edge_dominant_leaf.json | 2:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "d1187406481544c7"
+ },
+ "budget-bfd | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "2fcc54c5251891bb"
+ },
+ "budget-bfd | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "2fcb397ffa17a605"
+ },
+ "budget-bfd | edge_mixed.json | 1:2": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "d937ec7220db0657"
+ },
+ "budget-bfd | edge_mixed.json | 1:1": {
+  "nodes": 7,
+  "links": 16,
+  "overlaps": 0,
+  "hash": "375e9c3b17db54bf"
+ },
+ "budget-bfd | edge_mixed.json | 2:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "777d2474aad31cef"
+ },
+ "budget-bfd | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "25634aa92beaf1b1"
+ },
+ "budget-bfd | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "a57532fe0be5ba78"
+ },
+ "budget-bfd | edge_one_dummy.json | 1:2": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "deb48647df927fa8"
+ },
+ "budget-bfd | edge_one_dummy.json | 1:1": {
+  "nodes": 4,
+  "links": 9,
+  "overlaps": 0,
+  "hash": "7b8c882ab5832783"
+ },
+ "budget-bfd | edge_one_dummy.json | 2:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "55b245457ec51f70"
+ },
+ "budget-bfd | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "bf0814f1ff7565a7"
+ },
+ "budget-bfd | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "b1c64e16f609c498"
+ },
+ "budget-bfd | edge_single_leaf.json | 1:2": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "24c44cb11360a8b9"
+ },
+ "budget-bfd | edge_single_leaf.json | 1:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "dafbcbd936adff84"
+ },
+ "budget-bfd | edge_single_leaf.json | 2:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "90cee6c004f1edf7"
+ },
+ "budget-bfd | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "37aaf80455d2485c"
+ },
+ "budget-bfd | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "c9acc23894997c7b"
+ },
+ "budget-bfd | medium_extreme.json | 1:2": {
+  "nodes": 150,
+  "links": 204,
+  "overlaps": 0,
+  "hash": "7975641c8f9093f0"
+ },
+ "budget-bfd | medium_extreme.json | 1:1": {
+  "nodes": 150,
+  "links": 219,
+  "overlaps": 0,
+  "hash": "dd3a2f598335be9c"
+ },
+ "budget-bfd | medium_extreme.json | 2:1": {
+  "nodes": 150,
+  "links": 232,
+  "overlaps": 0,
+  "hash": "c8f807121f26d8a7"
+ },
+ "budget-bfd | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 226,
+  "overlaps": 0,
+  "hash": "f9fb4afacb6967a2"
+ },
+ "budget-bfd | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 184,
+  "overlaps": 0,
+  "hash": "2bace85357068e75"
+ },
+ "budget-bfd | medium_medium.json | 1:2": {
+  "nodes": 150,
+  "links": 186,
+  "overlaps": 0,
+  "hash": "370079bc204b0f23"
+ },
+ "budget-bfd | medium_medium.json | 1:1": {
+  "nodes": 150,
+  "links": 190,
+  "overlaps": 0,
+  "hash": "ebeb3a471c63fd77"
+ },
+ "budget-bfd | medium_medium.json | 2:1": {
+  "nodes": 150,
+  "links": 195,
+  "overlaps": 0,
+  "hash": "0e80715c5c10e5f9"
+ },
+ "budget-bfd | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 206,
+  "overlaps": 0,
+  "hash": "3d088675d7155b2c"
+ },
+ "budget-bfd | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "0913b710c1e27e53"
+ },
+ "budget-bfd | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "844113e22e064fc0"
+ },
+ "budget-bfd | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 357,
+  "overlaps": 0,
+  "hash": "ec9f8e8d57d3d2a4"
+ },
+ "budget-bfd | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 365,
+  "overlaps": 0,
+  "hash": "74ecf1cb672c90aa"
+ },
+ "budget-bfd | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 377,
+  "overlaps": 0,
+  "hash": "14464189e6578028"
+ },
+ "budget-bfd | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "0b21b34ecffd5b9b"
+ },
+ "budget-bfd | small_high.json | 1:2": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "a66951bfefefd21a"
+ },
+ "budget-bfd | small_high.json | 1:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "9f3c3c24ffc9001d"
+ },
+ "budget-bfd | small_high.json | 2:1": {
+  "nodes": 30,
+  "links": 57,
+  "overlaps": 0,
+  "hash": "80cfc66c026d1e0a"
+ },
+ "budget-bfd | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 58,
+  "overlaps": 0,
+  "hash": "b6422c780fb8fb4a"
+ },
+ "budget-bfd | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "9cee1b070012a114"
+ },
+ "budget-bfd | small_low.json | 1:2": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "dcd1182ce5830105"
+ },
+ "budget-bfd | small_low.json | 1:1": {
+  "nodes": 30,
+  "links": 60,
+  "overlaps": 0,
+  "hash": "a6ca1e7af29c8a81"
+ },
+ "budget-bfd | small_low.json | 2:1": {
+  "nodes": 30,
+  "links": 60,
+  "overlaps": 0,
+  "hash": "76ea22a8564bb576"
+ },
+ "budget-bfd | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 54,
+  "overlaps": 0,
+  "hash": "8a4c53a1c9243595"
+ },
+ "ui-budget-bfd | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "bee395edef253b66"
  },
  "ui-budget-bfd | edge_dominant_leaf.json | 1:2": {
   "nodes": 6,
@@ -1025,6 +2993,18 @@
   "overlaps": 0,
   "hash": "9bd9e1d80694c276"
  },
+ "ui-budget-bfd | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 13,
+  "overlaps": 0,
+  "hash": "7bc9bb1bd75c88b5"
+ },
+ "ui-budget-bfd | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "eb2d4c8a4037a56d"
+ },
  "ui-budget-bfd | edge_mixed.json | 1:2": {
   "nodes": 7,
   "links": 15,
@@ -1042,6 +3022,18 @@
   "links": 14,
   "overlaps": 0,
   "hash": "3d6f5592dbfbeaac"
+ },
+ "ui-budget-bfd | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "e321482ac1a31df4"
+ },
+ "ui-budget-bfd | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "31cb6b786121a452"
  },
  "ui-budget-bfd | edge_one_dummy.json | 1:2": {
   "nodes": 4,
@@ -1061,6 +3053,18 @@
   "overlaps": 0,
   "hash": "a53b434f90f44b45"
  },
+ "ui-budget-bfd | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "30319c6c7fd259d0"
+ },
+ "ui-budget-bfd | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "509a587ecb06e9a7"
+ },
  "ui-budget-bfd | edge_single_leaf.json | 1:2": {
   "nodes": 2,
   "links": 3,
@@ -1078,6 +3082,18 @@
   "links": 3,
   "overlaps": 0,
   "hash": "2a13c33a4fdf1195"
+ },
+ "ui-budget-bfd | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "128daa41a4afb150"
+ },
+ "ui-budget-bfd | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 199,
+  "overlaps": 0,
+  "hash": "76496e2d7231bdf9"
  },
  "ui-budget-bfd | medium_extreme.json | 1:2": {
   "nodes": 150,
@@ -1097,6 +3113,18 @@
   "overlaps": 0,
   "hash": "abe8d1e9654af690"
  },
+ "ui-budget-bfd | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 227,
+  "overlaps": 0,
+  "hash": "f4595d19b738db80"
+ },
+ "ui-budget-bfd | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 185,
+  "overlaps": 0,
+  "hash": "b4f96feb23dca28e"
+ },
  "ui-budget-bfd | medium_medium.json | 1:2": {
   "nodes": 150,
   "links": 187,
@@ -1114,6 +3142,48 @@
   "links": 197,
   "overlaps": 0,
   "hash": "33b98531cb3113f8"
+ },
+ "ui-budget-bfd | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "18a2f494b0fb20b8"
+ },
+ "ui-budget-bfd | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "8a59749c4b96fc1f"
+ },
+ "ui-budget-bfd | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "6abb86c6954d33fa"
+ },
+ "ui-budget-bfd | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 359,
+  "overlaps": 0,
+  "hash": "d3297e513e1bc6af"
+ },
+ "ui-budget-bfd | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 366,
+  "overlaps": 0,
+  "hash": "9075e82cdc27c45e"
+ },
+ "ui-budget-bfd | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 377,
+  "overlaps": 0,
+  "hash": "d11a123f63b09db4"
+ },
+ "ui-budget-bfd | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "e27e5cda0dd8430d"
  },
  "ui-budget-bfd | small_high.json | 1:2": {
   "nodes": 30,
@@ -1133,6 +3203,18 @@
   "overlaps": 0,
   "hash": "9b7ef6a0c4bd5efb"
  },
+ "ui-budget-bfd | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "c1258b12cd1cf834"
+ },
+ "ui-budget-bfd | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "2b1132b2522c6615"
+ },
  "ui-budget-bfd | small_low.json | 1:2": {
   "nodes": 30,
   "links": 59,
@@ -1150,5 +3232,11 @@
   "links": 64,
   "overlaps": 0,
   "hash": "a45f9e168480a272"
+ },
+ "ui-budget-bfd | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 54,
+  "overlaps": 0,
+  "hash": "3cf7a0dd24aabfd4"
  }
 }

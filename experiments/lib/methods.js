@@ -1,11 +1,10 @@
 /**
  * 実験で比較する手法のレジストリ。
  *
- * ここが「どの実装がどの手法名で論文に出るか」の一次情報。各実験スクリプトが
+ * 手法の実装は src/layout/registry.js、論文での旧名と比較条件はここが一次情報。各実験スクリプトが
  * 個別に手法を並べると food chain がずれるので、定義はこのファイルだけに置く。
  *
- * 全手法とも xMargin=300, yMargin=200 に揃えてある（experiments/lib/*Paper.js の
- * ラッパーがマージンを固定している）。マージンを揃えているのは evaluation ブランチ
+ * 全手法ともレジストリの paper プリセットで xMargin=300, yMargin=200 に揃える。マージンを揃えているのは evaluation ブランチ
  * 実装の条件に合わせるためで、UI 側（src/uiLayout.js, 100/100）とは別条件。
  *
  * 手法名の読み方:
@@ -17,20 +16,13 @@
  * 注意: budget-lpt は旧スクリプトでは単に "lpt" という名前で記録されている。
  * results/ の古いJSONを読むときはこの対応に注意すること。
  */
-import { layout as existingLayout } from "./existingPaper.js";
-import { layout as saLayoutPaper } from "./saColumnPaper.js";
-import { layout as growthLptLayout } from "./growthLPTPaper.js";
-import { layout as gbLayout } from "./globalBudgetPaperMargin.js";
+import { METHODS as DEFINITIONS, layoutMethod } from "../../src/layout/registry.js";
 
-/** 個々の手法。(data, width, height) => layout() の戻り値 */
-export const METHODS = {
-  existing: (d, w, h) => existingLayout(d, w, h),
-  "sa-paper": (d, w, h) => saLayoutPaper(d, w, h),
-  "growth-lpt": (d, w, h) => growthLptLayout(d, w, h),
-  "budget-lpt": (d, w, h) => gbLayout(d, w, h, { packing: "lpt" }),
-  "budget-ffd": (d, w, h) => gbLayout(d, w, h, { packing: "ffd" }),
-  "budget-bfd": (d, w, h) => gbLayout(d, w, h, { packing: "bfd" }),
-};
+// 論文の出力IDのみ互換のため残す。実装の登録は src/layout/registry.js に一元化。
+export const paperId = (id) => id === "growth-sa" ? "sa-paper" : id;
+export const METHODS = Object.fromEntries(Object.keys(DEFINITIONS).map((id) => [
+  paperId(id), (data, width, height, options = {}) => layoutMethod(id, data, width, height, "paper", options),
+]));
 
 /**
  * 実験ごとの手法セット。
@@ -82,6 +74,24 @@ export const PRESETS = {
     note: "growth-lpt(列成長型+LPT)を加えた5手法の比較。extreme分散レベル(10-10000)で巨大ノードの出現を確認する。",
   },
 };
+
+/**
+ * 分散レベルの絞り込み。環境変数 LEVELS（例 "low,medium,high"）で指定する。
+ *
+ * プリセットの並び順を保つ。runner は木用の乱数列をレベル順に消費するので、
+ * 末尾のレベルを外す分には残りのレベルの入力集合が変わらないが、途中を抜くと変わる。
+ */
+export function selectLevels(levels, spec = process.env.LEVELS) {
+  if (spec === undefined || spec === "") return levels;
+  const names = String(spec).split(",").map((s) => s.trim()).filter(Boolean);
+  if (!names.length) throw new Error("LEVELS が空");
+  for (const name of names) {
+    if (!Object.hasOwn(levels, name)) {
+      throw new Error(`Unknown level: "${name}". Available: ${Object.keys(levels).join(", ")}`);
+    }
+  }
+  return Object.fromEntries(Object.keys(levels).filter((n) => names.includes(n)).map((n) => [n, levels[n]]));
+}
 
 /** 環境変数 METHOD_SET からプリセットを取り出す */
 export function resolvePreset(name = process.env.METHOD_SET ?? "paper5") {

@@ -1,0 +1,29 @@
+name: Validate
+on:
+  push:
+    branches: [layout]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm run check:docs
+      - run: python3 -m unittest discover -s test -p 'test_*.py'
+      - name: Keep local references and PDFs out of Git
+        shell: bash
+        run: |
+          if git ls-files '*.pdf' 'local-references/*' '**/.claude/settings.local.json' | grep -q .; then
+            echo 'Local references, PDFs or local settings are tracked.'
+            exit 1
+          fi

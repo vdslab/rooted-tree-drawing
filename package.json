@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "test:golden": "node test/golden.mjs",
     "test:golden:update": "node test/golden.mjs --update",
-    "check:docs": "node scripts/check-docs.mjs"
+    "check:docs": "node scripts/check-docs.mjs",
+    "test": "node --test test/*.test.mjs && npm run test:golden",
+    "experiment": "node experiments/cli.mjs"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +28,8 @@
     "eslint-plugin-react": "^7.34.1",
     "prettier": "^3.2.5",
     "vite": "^5.2.10"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

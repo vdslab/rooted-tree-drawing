@@ -2,6 +2,7 @@
 >
 > **2026-09 追記**: 本文中の `src/globalBudgetLayout.js` は `src/uiLayout.js` に改名した
 > （手法を切り替えられるようにしたため。[2026-09-ui-method-switch.md](2026-09-ui-method-switch.md)）。
+> **2026-09追記（現状）**: 既存手法も src/layout/methods/existing.js へ移動済み。Paper側は互換ラッパー。現在の検証構成は 2026-09-registry-validation.md を参照。
 
 # レイアウト手法の共通コア切り出し（4手法 → core + methods + solvers）
 

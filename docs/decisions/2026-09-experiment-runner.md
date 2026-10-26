@@ -1,4 +1,5 @@
 > **ステータス**: Implemented（2026-09。`experiments/lib/methods.js` + `experiments/lib/runner.js` として実装済み。旧スクリプトとの出力一致をシード固定で確認）
+> **2026-09追記（現状）**: 手法実装は共通レジストリへ集約。現行の記録・欠測処理は 2026-09-experiment-integrity.md を参照。
 
 # 実験スクリプトの共通化（手法レジストリ + 共通ランナー）
 

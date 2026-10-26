@@ -5,7 +5,9 @@
 
 ---
 
-## 1. 列をまたぐ（colspan）ことができない — アーキテクチャ由来
+<a id="layout-001"></a>
+
+## LAYOUT-001: 列をまたぐ（colspan）ことができない — アーキテクチャ由来
 
 現在のレイアウトは「1つの列の中にノードを積む」モデルで、HTMLのテーブルでいう `colspan`
 （複数列の結合）にあたる概念がない。
@@ -23,7 +25,9 @@
 
 ---
 
-## 2. ダミーノード内部の余白が上下非対称 — 面積効率を0.3〜0.7%損している
+<a id="layout-002"></a>
+
+## LAYOUT-002: ダミーノード内部の余白が上下非対称 — 面積効率を0.3〜0.7%損している
 
 [src/layout/core/dummy.js:81](../src/layout/core/dummy.js#L81) の
 `maxHeight + yMargin * 2 + innerYMargin` と、
@@ -40,7 +44,9 @@
 
 ---
 
-## 3. SA / LPT だけ、ダミー内部の葉に二重にマージンが付いている可能性
+<a id="layout-003"></a>
+
+## LAYOUT-003: SA / LPT だけ、ダミー内部の葉に二重にマージンが付いている可能性
 
 `addMargin` の `skipInnerNodes`（[src/layout/core/dummy.js](../src/layout/core/dummy.js)）は
 binpacking では `true`、列成長型（SA / LPT）では `false` になっている。
@@ -51,9 +57,11 @@ binpacking では `true`、列成長型（SA / LPT）では `false` になって
 
 ---
 
-## 4. budget-lpt が縦長（1:4）で稀に破綻する — 平均には出ない裾の事故
+<a id="layout-004"></a>
 
-`.claude/skills/run-experiments/driver.mjs` で 1500 試行（5アスペクト比 × 3分散 × 100試行、
+## LAYOUT-004: budget-lpt が縦長（1:4）で稀に破綻する — 平均には出ない裾の事故
+
+`experiments/cli.mjs` で 1500 試行（5アスペクト比 × 3分散 × 100試行、
 `|V|=300`、`SEED=1`）を回すと、`budget-lpt` が `budget-ffd` に対して **15%以上劣化する試行が
 1:4 に集中する**。
 
@@ -77,8 +85,12 @@ binpacking では `true`、列成長型（SA / LPT）では `false` になって
 再現:
 
 ```bash
-node .claude/skills/run-experiments/driver.mjs run --metric=area --trials=100 --seed=1 --name=area_t100
-node .claude/skills/run-experiments/driver.mjs top area_t100 --by=loss --method=budget-lpt --n=5
-node .claude/skills/run-experiments/driver.mjs compare area_t100 medium/1:4/86 \
+node experiments/cli.mjs run --metric=area --trials=100 --seed=1 --name=area_t100
+node experiments/cli.mjs top area_t100 --by=loss --method=budget-lpt --n=5
+node experiments/cli.mjs compare area_t100 medium/1:4/86 \
   --methods=existing,budget-ffd,budget-lpt --out=/tmp/cmp.svg
 ```
+
+再現入力は [regression_budget_lpt_tall.json](../test/fixtures/regression_budget_lpt_tall.json) に固定した。
+生成条件: CLI seed=1、medium=[500,1500]、aspect=1:4、trial=86、nodes=300、alpha=0.25、nodeWidth=1000、treeSeed=2334875884。
+全手法・両マージンで回帰と不変条件を検査する。これは劣化する挙動の追跡であり、LPTの面積効率問題を解消したという意味ではない。

@@ -18,6 +18,7 @@ import json
 import os
 import re
 import sys
+from plot_input import require_complete
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -32,7 +33,7 @@ VARIANCE_LABEL_MAP = {"low": "Low", "medium": "Medium", "high": "High", "extreme
 # "lpt"/"ffd"/"bfd" は paper5 セットでの budget系の旧名（過去の結果ファイル互換）。
 METHOD_LABEL_MAP = {
     "existing": "Existing Method",
-    "sa-paper": "Proposed (SA, paper)",
+    "sa-paper": "Growth + SA",
     "lpt": "Proposed (LPT)",
     "ffd": "Proposed (FFD)",
     "bfd": "Proposed (BFD)",
@@ -47,7 +48,7 @@ METHOD_ORDER = [
 ]
 COLORS = {
     "Existing Method": "#95a5a6",
-    "Proposed (SA, paper)": "#3498db",
+    "Growth + SA": "#3498db",
     "Proposed (LPT)": "#2ecc71",
     "Proposed (FFD)": "#e67e22",
     "Proposed (BFD)": "#9b59b6",
@@ -85,6 +86,7 @@ def load_dataframe(path):
     with open(path, "r", encoding="utf-8") as f:
         payload = json.load(f)
 
+    require_complete(payload)
     records = []
     for level, by_aspect in payload["results"].items():
         for aspect, by_method in by_aspect.items():

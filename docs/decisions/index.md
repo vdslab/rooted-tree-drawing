@@ -23,6 +23,9 @@
 | 2026-09 | [2026-09-ui-method-switch.md](2026-09-ui-method-switch.md) | Implemented | `globalBudgetLayout.js` → `uiLayout.js`。UI の手法を `METHOD` の1行で切り替えられるようにした |
 | 2026-09 | [2026-09-column-pitch-misue.md](2026-09-column-pitch-misue.md) | Implemented | 列ピッチを Misue 2024 の式(3)(5)の `w'` に。列間ギャップ `2s_h` → `s_h` で既存手法と一致。バス線の余白は「リード線1本分」で論文と整合 |
 | 2026-09 | [2026-09-experiment-rng-streams.md](2026-09-experiment-rng-streams.md) | Implemented | 実験の乱数を木用と手法用に分離。SA の乱数消費で木がずれ、`SEED` を固定しても実装の前後比較ができなかった |
+| 2026-09 | [2026-09-shared-agent-workflow.md](2026-09-shared-agent-workflow.md) | Implemented | AI共通指示・CLI・資料管理・クローン可能な文書検査 |
+| 2026-09 | [2026-09-experiment-integrity.md](2026-09-experiment-integrity.md) | Implemented | 欠測の保存と集計・メモリ使用・乱数注入・provenance |
+| 2026-09 | [2026-09-registry-validation.md](2026-09-registry-validation.md) | Implemented | 手法レジストリの共有・UIデータ分離・不変条件と540ケース |
 
 ## 2026-09 に削除した記録
 
@@ -33,5 +36,5 @@
 |---|---|
 | `2026-06-dominant-node-v1.md` | Superseded。旧・支配的ノード判定の説明で、現行コードに対応物がない |
 | `2026-07-global-budget-solution.md` | implementation.md と内容が重複（同じ `H_t` 方式の解説が2箇所にあった） |
-| `2026-07-global-budget-fix.md` | 修正済みバグの報告書。唯一残っていた未解決の懸念は [known-issues.md](../known-issues.md) §2 に移した |
+| `2026-07-global-budget-fix.md` | 修正済みバグの報告書。唯一残っていた未解決の懸念は [known-issues.md](../known-issues.md#layout-002) LAYOUT-002 に移した |
 | `2026-07-smartphone-validation-necessity.md` | 実装判断ではなく検証計画の弁明。コードに対応しない |

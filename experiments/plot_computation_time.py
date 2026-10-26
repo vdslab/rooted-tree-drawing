@@ -5,6 +5,7 @@ experiments/computation_time.js の出力(experiments/results/computation_time_*
 
 使い方:
     python3 experiments/plot_computation_time.py [結果jsonのパス]
+    python3 experiments/plot_computation_time.py --growth --linear   (線形軸)
     python3 experiments/plot_computation_time.py --growth   (growth_lpt版の最新を自動選択)
 
 パス省略時は experiments/results/ の最新の computation_time_<runId>.json を選ぶ。
@@ -14,6 +15,7 @@ import json
 import os
 import re
 import sys
+from plot_input import require_complete
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -26,7 +28,7 @@ VARIANCE_LABEL_MAP = {"low": "Low", "medium": "Medium", "high": "High", "extreme
 # "lpt"/"ffd"/"bfd" は paper5 セットでの budget系の旧名（過去の結果ファイル互換）。
 METHOD_LABEL_MAP = {
     "existing": "Existing Method",
-    "sa-paper": "Proposed (SA, paper)",
+    "sa-paper": "Growth + SA",
     "lpt": "Proposed (LPT)",
     "ffd": "Proposed (FFD)",
     "bfd": "Proposed (BFD)",
@@ -41,7 +43,7 @@ METHOD_ORDER = [
 ]
 COLORS = {
     "Existing Method": "#95a5a6",
-    "Proposed (SA, paper)": "#3498db",
+    "Growth + SA": "#3498db",
     "Proposed (LPT)": "#2ecc71",
     "Proposed (FFD)": "#e67e22",
     "Proposed (BFD)": "#9b59b6",
@@ -52,7 +54,7 @@ COLORS = {
 }
 MARKERS = {
     "Existing Method": "o",
-    "Proposed (SA, paper)": "s",
+    "Growth + SA": "s",
     "Proposed (LPT)": "^",
     "Proposed (FFD)": "D",
     "Proposed (BFD)": "v",
@@ -89,6 +91,7 @@ def load_dataframe(path):
     with open(path, "r", encoding="utf-8") as f:
         payload = json.load(f)
 
+    require_complete(payload)
     records = []
     for level, by_count in payload["results"].items():
         for node_count, by_method in by_count.items():
@@ -106,7 +109,7 @@ def load_dataframe(path):
     return pd.DataFrame(records), payload.get("config", {})
 
 
-def plot(df, config, out_path):
+def plot(df, config, out_path, linear=False):
     # 結果ファイルに実際に入っている手法・分散レベルだけを描く
     present_methods = set(df["method"])
     method_labels = [
@@ -137,13 +140,18 @@ def plot(df, config, out_path):
                 linewidth=1.8,
             )
 
-        ax.set_xscale("log")
-        ax.set_yscale("log")
+        # 既定は両対数。--linear は線形軸（手法間の絶対差を見るとき）
+        if not linear:
+            ax.set_xscale("log")
+            ax.set_yscale("log")
         ax.set_title(f"Variance: {VARIANCE_LABEL_MAP.get(level, level.capitalize())}", fontsize=12, fontweight="bold")
         ax.set_xlabel("Node Count (|V|)", fontsize=11)
         if idx == 0:
             ax.set_ylabel("Computation Time (s)", fontsize=11, fontweight="bold")
         ax.grid(True, which="both", linestyle="--", alpha=0.4)
+        if linear:
+            ax.set_xticks(sorted(level_df["nodeCount"].unique()))
+            ax.ticklabel_format(style="plain", axis="both")
 
     handles, labels = axes[0].get_legend_handles_labels()
     trials = config.get("trials", "?")
@@ -161,15 +169,16 @@ def plot(df, config, out_path):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if a != "--growth"]
+    args = [a for a in sys.argv[1:] if a not in ("--growth", "--linear")]
     prefix = "computation_time_growth_lpt" if "--growth" in sys.argv else "computation_time"
+    linear = "--linear" in sys.argv
     path = args[0] if args else find_latest_result(prefix)
     print(f"読み込み: {path}")
     df, config = load_dataframe(path)
     print(f"{len(df)}件のデータ点を読み込みました")
 
-    out_path = os.path.splitext(path)[0] + "_scaling.png"
-    plot(df, config, out_path)
+    out_path = os.path.splitext(path)[0] + ("_scaling_linear.png" if linear else "_scaling.png")
+    plot(df, config, out_path, linear=linear)
 
 
 if __name__ == "__main__":
