@@ -179,7 +179,62 @@ function cmdSummary(opts) {
   console.log(`\n試行ごとの勝ち数: ${methods.map((m) => `${m}=${wins[m]}`).join("  ")}`);
 }
 
-/** 特筆すべき試行を拾う */
+/** 基準 by で試行を並べる。対照例の抽出にも同じ基準を使う */
+function rankRows(rows, by, { methods, metric, target, baseline }) {
+  const second = (r, m) => {
+    const others = methods.filter((o) => o !== m).map((o) => r.scores[o]);
+    return metric === "time" ? Math.min(...others) : Math.max(...others);
+  };
+  if (by === "gap") {
+    return { label: "手法間の差が大きい試行", rows: [...rows].sort((a, b) => b.spread - a.spread) };
+  } else if (by === "baseline-wins") {
+    return {
+      label: `${baseline} が全手法に勝った試行（差の大きい順）`,
+      rows: rows.filter((r) => r.best === baseline).map((r) => ({ ...r, margin: Math.abs(r.scores[baseline] - second(r, baseline)) }))
+        .sort((a, b) => b.margin - a.margin),
+    };
+  } else if (by === "loss") {
+    if (!target) throw new Error("--by=loss には --method=<手法名> が要る");
+    return {
+      label: `${target} が最良手法に負けている試行（差の大きい順）`,
+      rows: rows.map((r) => ({ ...r, margin: Math.abs(r.scores[r.best] - r.scores[target]) }))
+        .filter((r) => r.best !== target).sort((a, b) => b.margin - a.margin),
+    };
+  } else if (by === "win") {
+    if (!target) throw new Error("--by=win には --method=<手法名> が要る");
+    return {
+      label: `${target} が最良の試行（2位との差が大きい順）`,
+      rows: rows.filter((r) => r.best === target).map((r) => ({ ...r, margin: Math.abs(second(r, target) - r.scores[target]) }))
+        .sort((a, b) => b.margin - a.margin),
+    };
+  }
+  throw new Error(`Unknown --by=${by}. gap | baseline-wins | loss | win`);
+}
+
+/**
+ * 特筆すべき試行の逆方向の基準。1例だけでは手法の差が読めないので、
+ * 同じ手法が逆の結果になった試行を並べて見比べられるようにする。
+ */
+function contrastOf(by, first, { target, baseline }) {
+  if (by === "baseline-wins") return { by: "loss", target: baseline };
+  if (by === "loss") return { by: "win", target };
+  if (by === "win") return { by: "loss", target };
+  // gap: 大差で最下位だった手法が最良になる試行
+  return { by: "win", target: first.worst };
+}
+
+const conditionOf = (id) => id.split("/").slice(0, -1).join("/");
+
+function printRows(rows, n, methods, metric) {
+  for (const r of rows.slice(0, n)) {
+    const scores = methods.map((m) => `${m}=${fmt(r.scores[m], metric)}`).join("  ");
+    const extra = r.margin !== undefined ? ` margin=${fmt(r.margin, metric)}` : ` spread=${fmt(r.spread, metric)}`;
+    console.log(`  ${r.id.padEnd(18)} best=${r.best.padEnd(11)}${extra}`);
+    console.log(`      ${scores}`);
+  }
+}
+
+/** 特筆すべき試行を拾う。既定で逆方向の対照例も出す（--contrast=0 で省略） */
 function cmdTop(opts, pos) {
   const run = loadRun(pos[0]);
   const { metric, methods } = run.config;
@@ -188,54 +243,45 @@ function cmdTop(opts, pos) {
   const better = metric === "time" ? (a, b) => a < b : (a, b) => a > b;
   const baseline = opts.baseline ?? "existing";
   const target = opts.method;
+  const contrastN = opts.contrast === undefined || opts.contrast === true ? Math.min(n, 3) : Number(opts.contrast);
   if (target && !methods.includes(target)) throw new Error(`Method not in this run: ${target}`);
   if (by === "baseline-wins" && !methods.includes(baseline)) throw new Error(`Baseline not in this run: ${baseline}`);
   if (methods.length < 2) throw new Error("top requires at least two methods");
 
   const completeRows = run.rows.filter((r) => methods.every((m) => Number.isFinite(r.scores[m])));
   if (completeRows.length !== run.rows.length) console.log(`欠測のある ${run.rows.length - completeRows.length} 試行をランキングから除外`);
-  let rows = completeRows.map((r) => {
+  const rows = completeRows.map((r) => {
     const vals = methods.map((m) => r.scores[m]);
     const best = methods.reduce((b, m) => (better(r.scores[m], r.scores[b]) ? m : b));
     const worst = methods.reduce((b, m) => (better(r.scores[b], r.scores[m]) ? m : b));
     return { ...r, best, worst, spread: Math.max(...vals) - Math.min(...vals) };
   });
 
-  let label;
-  if (by === "gap") {
-    label = "手法間の差が大きい試行";
-    rows.sort((a, b) => b.spread - a.spread);
-  } else if (by === "baseline-wins") {
-    label = `${baseline} が全手法に勝った試行（差の大きい順）`;
-    rows = rows.filter((r) => r.best === baseline).map((r) => {
-      const others = methods.filter((m) => m !== baseline).map((m) => r.scores[m]);
-      const second = metric === "time" ? Math.min(...others) : Math.max(...others);
-      return { ...r, margin: Math.abs(r.scores[baseline] - second) };
-    }).sort((a, b) => b.margin - a.margin);
-  } else if (by === "loss") {
-    if (!target) throw new Error("--by=loss には --method=<手法名> が要る");
-    label = `${target} が最良手法に負けている試行（差の大きい順）`;
-    rows = rows.map((r) => ({ ...r, margin: Math.abs(r.scores[r.best] - r.scores[target]) }))
-      .filter((r) => r.best !== target).sort((a, b) => b.margin - a.margin);
-  } else if (by === "win") {
-    if (!target) throw new Error("--by=win には --method=<手法名> が要る");
-    label = `${target} が最良の試行（2位との差が大きい順）`;
-    rows = rows.filter((r) => r.best === target).map((r) => {
-      const others = methods.filter((m) => m !== target).map((m) => r.scores[m]);
-      const second = metric === "time" ? Math.min(...others) : Math.max(...others);
-      return { ...r, margin: Math.abs(second - r.scores[target]) };
-    }).sort((a, b) => b.margin - a.margin);
-  } else throw new Error(`Unknown --by=${by}. gap | baseline-wins | loss | win`);
+  const ctx = { methods, metric, target, baseline };
+  const main = rankRows(rows, by, ctx);
+  console.log(`\n=== ${main.label} （${run._name}, ${metric}） ===`);
+  if (!main.rows.length) return console.log("  該当なし");
+  printRows(main.rows, n, methods, metric);
+  const first = main.rows[0];
+  const compareCmd = (id) => `experiments/cli.mjs compare ${run._name} ${id} --out=compare_${id.replace(/[/:]/g, "_")}.svg`;
 
-  console.log(`\n=== ${label} （${run._name}, ${metric}） ===`);
-  if (!rows.length) return console.log("  該当なし");
-  for (const r of rows.slice(0, n)) {
-    const scores = methods.map((m) => `${m}=${fmt(r.scores[m], metric)}`).join("  ");
-    const extra = r.margin !== undefined ? ` margin=${fmt(r.margin, metric)}` : ` spread=${fmt(r.spread, metric)}`;
-    console.log(`  ${r.id.padEnd(18)} best=${r.best.padEnd(11)}${extra}`);
-    console.log(`      ${scores}`);
+  if (contrastN > 0) {
+    const c = contrastOf(by, first, ctx);
+    const contrast = rankRows(rows, c.by, { ...ctx, target: c.target });
+    console.log(`\n--- 対照例: ${contrast.label} ---`);
+    if (!contrast.rows.length) console.log("  該当なし（この実行では逆の結果が出ていない）");
+    else {
+      printRows(contrast.rows, contrastN, methods, metric);
+      const same = contrast.rows.find((r) => conditionOf(r.id) === conditionOf(first.id));
+      console.log(same
+        ? `  同じ条件 ${conditionOf(first.id)} の対照: ${same.id}`
+        : `  同じ条件 ${conditionOf(first.id)} の対照はない（条件が違うので木の性質の差も混ざる）`);
+      const pair = same ?? contrast.rows[0];
+      console.log(`\n  見比べる:\n    ${compareCmd(first.id)}\n    ${compareCmd(pair.id)}`);
+      return;
+    }
   }
-  console.log(`\n  詳細: experiments/cli.mjs show ${run._name} ${rows[0].id}`);
+  console.log(`\n  詳細: experiments/cli.mjs show ${run._name} ${first.id}`);
 }
 
 function treeStats(tree) {
@@ -401,8 +447,8 @@ const HELP = `実験ドライバー
             --trials=N  --nodes=N  --seed=N  --name=ラベル
   list      保存済みの実行を一覧
   summary   [run]                条件ごとの平均と勝ち数
-  top       [run] --by=gap|baseline-wins|loss|win [--method=M] [--baseline=M] [--n=5]
-            特筆すべき試行を抽出
+  top       [run] --by=gap|baseline-wins|loss|win [--method=M] [--baseline=M] [--n=5] [--contrast=3]
+            特筆すべき試行と、逆の結果になった対照例を抽出（--contrast=0 で対照例なし）
   show      [run] <試行ID>       木の統計と全手法のスコア
   tree      [run] <試行ID> [--out=t.json]        木データを再生成して出力
   render    [run] <試行ID> [--method=M] [--out=x.svg]  レイアウトをSVGにする

@@ -1,12 +1,18 @@
 /** 手法IDと実装の一次情報。表示・実験条件はプリセットで分離する。 */
 import { layout as existing } from "./methods/existing.js";
 import { layout as growth } from "./methods/growth.js";
+import { layout as growthIncremental } from "./methods/growthIncremental.js";
 import { layout as binpacking } from "./methods/binpacking.js";
 
 export const METHODS = {
   existing: { layout: existing, options: {} },
   "growth-sa": { layout: growth, options: { solver: "sa" } },
   "growth-lpt": { layout: growth, options: { solver: "lpt" } },
+  "growth-lpt-incremental": {
+    layout: growthIncremental,
+    options: { solver: "lpt" },
+    experimental: true,
+  },
   "budget-lpt": { layout: binpacking, options: { packing: "lpt" } },
   "budget-ffd": { layout: binpacking, options: { packing: "ffd" } },
   "budget-bfd": { layout: binpacking, options: { packing: "bfd" } },

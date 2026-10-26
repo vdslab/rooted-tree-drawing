@@ -90,6 +90,30 @@ node experiments/cli.mjs top demo_area --by=win  --method=existing --n=2
 
 `--baseline=<手法>` で `baseline-wins` の対象を変えられる（既定 `existing`）。
 
+1例だけでは手法の差が読めないので、`top` は**逆の結果になった対照例**も既定で最大3件出す
+（`--contrast=N` で件数、`--contrast=0` で省略）。
+
+| `--by` | 対照例 |
+|---|---|
+| `baseline-wins` | 基準手法が最良手法に大差で負けた試行 |
+| `loss --method=M` | M が最良の試行 |
+| `win --method=M` | M が負けている試行 |
+| `gap` | 1位の試行で最下位だった手法が最良の試行 |
+
+同じ条件（分散/アスペクト比）の対照があればそれを優先して `compare` のコマンドを2本示す。
+条件が違う対照しかない場合は、木の性質の差も混ざることを明記して比較する。
+
+```
+--- 対照例: existing が最良手法に負けている試行（差の大きい順） ---
+  high/4:1/3         best=budget-lpt  margin=0.0692
+      existing=0.1263  sa-paper=0.1917  growth-lpt=0.1917  budget-lpt=0.1955  ...
+  同じ条件 high/4:1 の対照: high/4:1/3
+
+  見比べる:
+    experiments/cli.mjs compare t high/4:1/0 --out=compare_high_4_1_0.svg
+    experiments/cli.mjs compare t high/4:1/3 --out=compare_high_4_1_3.svg
+```
+
 ### 4. その試行の実データを見る
 
 ```bash

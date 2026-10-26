@@ -23,6 +23,7 @@ flowchart LR
 | 展開・描画サイズ・エッジ | [core/render.js](../src/layout/core/render.js) |
 | H_t 二分探索 | [methods/binpacking.js](../src/layout/methods/binpacking.js) |
 | 列成長型 SA/LPT | [methods/growth.js](../src/layout/methods/growth.js) |
+| 列成長型 LPT（差分更新） | [methods/growthIncremental.js](../src/layout/methods/growthIncremental.js) |
 | 既存手法（独自パイプライン） | [methods/existing.js](../src/layout/methods/existing.js) |
 | 列数固定の makespan ソルバー | [solvers/](../src/layout/solvers/) |
 | 容量固定のパッキング | [packing/](../src/packing/) |
@@ -39,6 +40,7 @@ H_t はダミーの上端から各ダミーの容量を導き、支配的ノー�
 - [inline-tree.json](../data/examples/inline-tree.json): Appから分離した入力データ。元の値とノード順を維持。
 - [データセット一覧](data/index.md): 形式・由来・生成手順と未確認事項。
 - [実データ候補の調査](data/real-data-candidates.md): 法令XML等の適性と構造の記述統計。[集計スクリプト](../experiments/inspect_data_candidates.py)はレイアウトを実行せず、原資料から数量と木構造を検査する。
+- [不規則な実階層の再調査](data/irregular-tree-candidates.md): 組織図・返信木・実行プロファイルの適性。[集計スクリプト](../experiments/inspect_irregular_candidates.py)は公開データの木構造と数量を検査する。
 
 ## 実験
 

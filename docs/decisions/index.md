@@ -26,6 +26,7 @@
 | 2026-09 | [2026-09-shared-agent-workflow.md](2026-09-shared-agent-workflow.md) | Implemented | AI共通指示・CLI・資料管理・クローン可能な文書検査 |
 | 2026-09 | [2026-09-experiment-integrity.md](2026-09-experiment-integrity.md) | Implemented | 欠測の保存と集計・メモリ使用・乱数注入・provenance |
 | 2026-09 | [2026-09-registry-validation.md](2026-09-registry-validation.md) | Implemented | 手法レジストリの共有・UIデータ分離・不変条件と540ケース |
+| 2026-10 | [2026-10-incremental-growth-layout.md](2026-10-incremental-growth-layout.md) | Implemented | 列成長型で部分木のローカル配置をキャッシュし、変更ダミーから根までだけを差分更新する実験的手法 |
 
 ## 2026-09 に削除した記録
 

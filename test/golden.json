@@ -1619,6 +1619,546 @@
   "overlaps": 0,
   "hash": "139eaa60f95f500f"
  },
+ "growth-lpt-incremental | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "a362e7b4eaa752d4"
+ },
+ "growth-lpt-incremental | edge_dominant_leaf.json | 1:2": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "da6ff7b9d23e101c"
+ },
+ "growth-lpt-incremental | edge_dominant_leaf.json | 1:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "55e3caedbf1d6508"
+ },
+ "growth-lpt-incremental | edge_dominant_leaf.json | 2:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "a17e937e3947c1c4"
+ },
+ "growth-lpt-incremental | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "cf06bb822c28e781"
+ },
+ "growth-lpt-incremental | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "7aa0e65f246639d4"
+ },
+ "growth-lpt-incremental | edge_mixed.json | 1:2": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "753ec98c3a3326e7"
+ },
+ "growth-lpt-incremental | edge_mixed.json | 1:1": {
+  "nodes": 7,
+  "links": 16,
+  "overlaps": 0,
+  "hash": "2a1263e6199ce8c5"
+ },
+ "growth-lpt-incremental | edge_mixed.json | 2:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "d1c09fbefa74a5d6"
+ },
+ "growth-lpt-incremental | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "5fd8b3f83cdf827e"
+ },
+ "growth-lpt-incremental | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "a57532fe0be5ba78"
+ },
+ "growth-lpt-incremental | edge_one_dummy.json | 1:2": {
+  "nodes": 4,
+  "links": 9,
+  "overlaps": 0,
+  "hash": "5b711ea24913b4f2"
+ },
+ "growth-lpt-incremental | edge_one_dummy.json | 1:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "4b68c78043ce5edc"
+ },
+ "growth-lpt-incremental | edge_one_dummy.json | 2:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "b1e55bc7eec61eb9"
+ },
+ "growth-lpt-incremental | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "dd18c6c6a59dea08"
+ },
+ "growth-lpt-incremental | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "07ec5d779f4f2627"
+ },
+ "growth-lpt-incremental | edge_single_leaf.json | 1:2": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "b77b4810ec696cb2"
+ },
+ "growth-lpt-incremental | edge_single_leaf.json | 1:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "ea5fee971c140818"
+ },
+ "growth-lpt-incremental | edge_single_leaf.json | 2:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "6fc8d69d63e5d57d"
+ },
+ "growth-lpt-incremental | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "3de698533fe7e8cc"
+ },
+ "growth-lpt-incremental | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "2c8a1b399925abcb"
+ },
+ "growth-lpt-incremental | medium_extreme.json | 1:2": {
+  "nodes": 150,
+  "links": 205,
+  "overlaps": 0,
+  "hash": "73f7e4f5e100e0ea"
+ },
+ "growth-lpt-incremental | medium_extreme.json | 1:1": {
+  "nodes": 150,
+  "links": 219,
+  "overlaps": 0,
+  "hash": "7972fd19dea839a4"
+ },
+ "growth-lpt-incremental | medium_extreme.json | 2:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "4802189826e62207"
+ },
+ "growth-lpt-incremental | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "06af7e74cf497252"
+ },
+ "growth-lpt-incremental | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 184,
+  "overlaps": 0,
+  "hash": "c55352663c605b0a"
+ },
+ "growth-lpt-incremental | medium_medium.json | 1:2": {
+  "nodes": 150,
+  "links": 186,
+  "overlaps": 0,
+  "hash": "f3bfef53933b2f7c"
+ },
+ "growth-lpt-incremental | medium_medium.json | 1:1": {
+  "nodes": 150,
+  "links": 190,
+  "overlaps": 0,
+  "hash": "e8be0bd61a722cc2"
+ },
+ "growth-lpt-incremental | medium_medium.json | 2:1": {
+  "nodes": 150,
+  "links": 196,
+  "overlaps": 0,
+  "hash": "8954a8b182153ff3"
+ },
+ "growth-lpt-incremental | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 205,
+  "overlaps": 0,
+  "hash": "3dd61a90dbb24a16"
+ },
+ "growth-lpt-incremental | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "30ec686f814a5f0b"
+ },
+ "growth-lpt-incremental | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "7423e6658ec53ecf"
+ },
+ "growth-lpt-incremental | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 357,
+  "overlaps": 0,
+  "hash": "2d6e62b2382c08db"
+ },
+ "growth-lpt-incremental | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 365,
+  "overlaps": 0,
+  "hash": "50f55529092e6462"
+ },
+ "growth-lpt-incremental | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 377,
+  "overlaps": 0,
+  "hash": "fec58a3f7b795000"
+ },
+ "growth-lpt-incremental | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "d5db520ceccc3234"
+ },
+ "growth-lpt-incremental | small_high.json | 1:2": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "fbfc52606324949b"
+ },
+ "growth-lpt-incremental | small_high.json | 1:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "5fce7ac78533ee4a"
+ },
+ "growth-lpt-incremental | small_high.json | 2:1": {
+  "nodes": 30,
+  "links": 57,
+  "overlaps": 0,
+  "hash": "e4b515c97cd4b805"
+ },
+ "growth-lpt-incremental | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 58,
+  "overlaps": 0,
+  "hash": "93a310a1be0f668e"
+ },
+ "growth-lpt-incremental | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "5b08d5ed9dae760b"
+ },
+ "growth-lpt-incremental | small_low.json | 1:2": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "4476902fa6a213b2"
+ },
+ "growth-lpt-incremental | small_low.json | 1:1": {
+  "nodes": 30,
+  "links": 60,
+  "overlaps": 0,
+  "hash": "46b62bf38a3efc24"
+ },
+ "growth-lpt-incremental | small_low.json | 2:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "895b07124b42fcf4"
+ },
+ "growth-lpt-incremental | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "bd4a64fd5f05de2e"
+ },
+ "ui-growth-lpt-incremental | edge_dominant_leaf.json | 1:4": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "02e28104a48d4d33"
+ },
+ "ui-growth-lpt-incremental | edge_dominant_leaf.json | 1:2": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "71ee74017ca99992"
+ },
+ "ui-growth-lpt-incremental | edge_dominant_leaf.json | 1:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "9d0af3e2543ae445"
+ },
+ "ui-growth-lpt-incremental | edge_dominant_leaf.json | 2:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "75a14ef171d687c8"
+ },
+ "ui-growth-lpt-incremental | edge_dominant_leaf.json | 4:1": {
+  "nodes": 6,
+  "links": 11,
+  "overlaps": 0,
+  "hash": "d8d6e296b47c7428"
+ },
+ "ui-growth-lpt-incremental | edge_mixed.json | 1:4": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "442c1e7c1422ed40"
+ },
+ "ui-growth-lpt-incremental | edge_mixed.json | 1:2": {
+  "nodes": 7,
+  "links": 15,
+  "overlaps": 0,
+  "hash": "7497ce11da09e725"
+ },
+ "ui-growth-lpt-incremental | edge_mixed.json | 1:1": {
+  "nodes": 7,
+  "links": 16,
+  "overlaps": 0,
+  "hash": "dcf9e35cc15e41c5"
+ },
+ "ui-growth-lpt-incremental | edge_mixed.json | 2:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "96f0fa8a8bde718e"
+ },
+ "ui-growth-lpt-incremental | edge_mixed.json | 4:1": {
+  "nodes": 7,
+  "links": 14,
+  "overlaps": 0,
+  "hash": "6ce398e37a47cd2f"
+ },
+ "ui-growth-lpt-incremental | edge_one_dummy.json | 1:4": {
+  "nodes": 4,
+  "links": 8,
+  "overlaps": 0,
+  "hash": "31cb6b786121a452"
+ },
+ "ui-growth-lpt-incremental | edge_one_dummy.json | 1:2": {
+  "nodes": 4,
+  "links": 9,
+  "overlaps": 0,
+  "hash": "0070620ac068dc91"
+ },
+ "ui-growth-lpt-incremental | edge_one_dummy.json | 1:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "803112ca1a75939d"
+ },
+ "ui-growth-lpt-incremental | edge_one_dummy.json | 2:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "5d09dc676044e825"
+ },
+ "ui-growth-lpt-incremental | edge_one_dummy.json | 4:1": {
+  "nodes": 4,
+  "links": 7,
+  "overlaps": 0,
+  "hash": "07b7e323a9fafd1a"
+ },
+ "ui-growth-lpt-incremental | edge_single_leaf.json | 1:4": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "eff03541648418cd"
+ },
+ "ui-growth-lpt-incremental | edge_single_leaf.json | 1:2": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "3ffe752e9f83f04d"
+ },
+ "ui-growth-lpt-incremental | edge_single_leaf.json | 1:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "fbc82477d1e68fba"
+ },
+ "ui-growth-lpt-incremental | edge_single_leaf.json | 2:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "f02c6b26d5fd7f81"
+ },
+ "ui-growth-lpt-incremental | edge_single_leaf.json | 4:1": {
+  "nodes": 2,
+  "links": 3,
+  "overlaps": 0,
+  "hash": "2e9e59a6be442549"
+ },
+ "ui-growth-lpt-incremental | medium_extreme.json | 1:4": {
+  "nodes": 150,
+  "links": 199,
+  "overlaps": 0,
+  "hash": "241e7443ad550b8f"
+ },
+ "ui-growth-lpt-incremental | medium_extreme.json | 1:2": {
+  "nodes": 150,
+  "links": 208,
+  "overlaps": 0,
+  "hash": "8f42be4e1231f795"
+ },
+ "ui-growth-lpt-incremental | medium_extreme.json | 1:1": {
+  "nodes": 150,
+  "links": 227,
+  "overlaps": 0,
+  "hash": "df4cde9c142f19f9"
+ },
+ "ui-growth-lpt-incremental | medium_extreme.json | 2:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "2e73a7a08ad7db79"
+ },
+ "ui-growth-lpt-incremental | medium_extreme.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "ca4181624e0f8652"
+ },
+ "ui-growth-lpt-incremental | medium_medium.json | 1:4": {
+  "nodes": 150,
+  "links": 185,
+  "overlaps": 0,
+  "hash": "c39f1c980eb8ebdb"
+ },
+ "ui-growth-lpt-incremental | medium_medium.json | 1:2": {
+  "nodes": 150,
+  "links": 187,
+  "overlaps": 0,
+  "hash": "a72406004d36538e"
+ },
+ "ui-growth-lpt-incremental | medium_medium.json | 1:1": {
+  "nodes": 150,
+  "links": 191,
+  "overlaps": 0,
+  "hash": "8c60422e2bef31b4"
+ },
+ "ui-growth-lpt-incremental | medium_medium.json | 2:1": {
+  "nodes": 150,
+  "links": 197,
+  "overlaps": 0,
+  "hash": "bd2649178732b5b1"
+ },
+ "ui-growth-lpt-incremental | medium_medium.json | 4:1": {
+  "nodes": 150,
+  "links": 207,
+  "overlaps": 0,
+  "hash": "25853e242d02b7c3"
+ },
+ "ui-growth-lpt-incremental | regression_budget_lpt_tall.json | 1:4": {
+  "nodes": 300,
+  "links": 349,
+  "overlaps": 0,
+  "hash": "71f2cadc728c5bec"
+ },
+ "ui-growth-lpt-incremental | regression_budget_lpt_tall.json | 1:2": {
+  "nodes": 300,
+  "links": 353,
+  "overlaps": 0,
+  "hash": "6115978d67a58064"
+ },
+ "ui-growth-lpt-incremental | regression_budget_lpt_tall.json | 1:1": {
+  "nodes": 300,
+  "links": 359,
+  "overlaps": 0,
+  "hash": "d83f5341d5d180a0"
+ },
+ "ui-growth-lpt-incremental | regression_budget_lpt_tall.json | 2:1": {
+  "nodes": 300,
+  "links": 366,
+  "overlaps": 0,
+  "hash": "b4588db27b64dad8"
+ },
+ "ui-growth-lpt-incremental | regression_budget_lpt_tall.json | 4:1": {
+  "nodes": 300,
+  "links": 379,
+  "overlaps": 0,
+  "hash": "affea07fa02e8468"
+ },
+ "ui-growth-lpt-incremental | small_high.json | 1:4": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "af1568ec3a3ed7b7"
+ },
+ "ui-growth-lpt-incremental | small_high.json | 1:2": {
+  "nodes": 30,
+  "links": 53,
+  "overlaps": 0,
+  "hash": "2b3cd0e2eefd70d6"
+ },
+ "ui-growth-lpt-incremental | small_high.json | 1:1": {
+  "nodes": 30,
+  "links": 55,
+  "overlaps": 0,
+  "hash": "f508428d60478640"
+ },
+ "ui-growth-lpt-incremental | small_high.json | 2:1": {
+  "nodes": 30,
+  "links": 57,
+  "overlaps": 0,
+  "hash": "2d850ddbfcf7fe23"
+ },
+ "ui-growth-lpt-incremental | small_high.json | 4:1": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "7710d635b7115f15"
+ },
+ "ui-growth-lpt-incremental | small_low.json | 1:4": {
+  "nodes": 30,
+  "links": 59,
+  "overlaps": 0,
+  "hash": "fdadb55a03c2e2e0"
+ },
+ "ui-growth-lpt-incremental | small_low.json | 1:2": {
+  "nodes": 30,
+  "links": 60,
+  "overlaps": 0,
+  "hash": "a4aed59a900e5fa8"
+ },
+ "ui-growth-lpt-incremental | small_low.json | 1:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "440269788ac3c33b"
+ },
+ "ui-growth-lpt-incremental | small_low.json | 2:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "621469e0238a5179"
+ },
+ "ui-growth-lpt-incremental | small_low.json | 4:1": {
+  "nodes": 30,
+  "links": 61,
+  "overlaps": 0,
+  "hash": "06f7c29c4b46dd7f"
+ },
  "budget-lpt | edge_dominant_leaf.json | 1:4": {
   "nodes": 6,
   "links": 13,

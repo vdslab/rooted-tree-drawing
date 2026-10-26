@@ -29,7 +29,10 @@ test("CLI saves provenance, reproduces scores, renders SVG, and reports missing 
   const summary = call("summary", "smoke");
   assert.match(summary.stdout, /INCOMPLETE/);
   assert.match(summary.stdout, /全手法成功 1\/2/);
-  assert.match(call("top", "smoke").stdout, /欠測のある 1 試行/);
+  const top = call("top", "smoke").stdout;
+  assert.match(top, /欠測のある 1 試行/);
+  assert.match(top, /--- 対照例: \S+ が最良の試行/);
+  assert.doesNotMatch(call("top", "smoke", "--contrast=0").stdout, /対照例/);
   assert.equal(call("verify", "smoke").status, 1);
   assert.equal(call("run", "--trials=0").status, 1);
   payload.config.metric = "time";

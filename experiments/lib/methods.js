@@ -20,9 +20,11 @@ import { METHODS as DEFINITIONS, layoutMethod } from "../../src/layout/registry.
 
 // 論文の出力IDのみ互換のため残す。実装の登録は src/layout/registry.js に一元化。
 export const paperId = (id) => id === "growth-sa" ? "sa-paper" : id;
-export const METHODS = Object.fromEntries(Object.keys(DEFINITIONS).map((id) => [
-  paperId(id), (data, width, height, options = {}) => layoutMethod(id, data, width, height, "paper", options),
-]));
+export const METHODS = Object.fromEntries(Object.entries(DEFINITIONS)
+  .filter(([, definition]) => !definition.experimental)
+  .map(([id]) => [
+    paperId(id), (data, width, height, options = {}) => layoutMethod(id, data, width, height, "paper", options),
+  ]));
 
 /**
  * 実験ごとの手法セット。
