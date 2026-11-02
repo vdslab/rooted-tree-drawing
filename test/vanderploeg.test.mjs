@@ -52,8 +52,8 @@ export const HANDMADE = {
     row("c2", "r", 1, 1), row("c3", "r", 1, 1), row("c4", "r", 1, 1),
     row("c5", "r", 2, 2),
   ],
-  // 右の部分木の根が広い子の中央に寄り、最初から左兄弟より右にある。論文の separate は
-  // 右にしか動かさないので、b は左に詰められず原点に残る（隙間 7.5）。
+  // 右の部分木の根が広い子の中央に寄り、最初から左兄弟より右にある。論文付録C の separate は
+  // 右にしか動かさず隙間 7.5 が残ったが、著者の修正後は b を左へ動かして a に接する。
   right_only_gap: [
     row("r", "", 4, 1), row("a", "r", 2, 1),
     row("b", "r", 1, 1), row("b1", "b", 10, 1), row("b2", "b", 10, 1),
@@ -106,9 +106,8 @@ export function runLayout(rows, layout) {
  * 仕様をそのまま書いた素朴な実装（O(n^2)）。差分テストのオラクル。
  *
  * 各部分木を「最初の子だけをたどった先の葉の左端 = 0」の座標系で作り、2番目以降の子の部分木を、
- * 左兄弟の全ノードと y が重なる組の「右端 - 左端」の最大値だけ右へ動かす（0 以下なら動かさない）。
- * 親は最初の子の左端と最後の子の右端の中央に置く。
- * 2026-10 に、置き換え前の core/tree.js（スカイライン版）と全ケースで一致することを確かめた。
+ * 左兄弟の全ノードと y が重なる組の「右端 - 左端」の最大値だけ動かす（負なら左へ動かす）。
+ * 親は最初の子の左端と最後の子の右端の中央に置く。均等配置は含まない。
  */
 export function naiveLayout(root) {
   const place = (node, top) => {
@@ -120,7 +119,7 @@ export function naiveLayout(root) {
     let lastRight = 0;
     node.children.forEach((child, i) => {
       const boxes = place(child, top + d.height);
-      let dist = 0;
+      let dist = i === 0 ? 0 : -Infinity;
       for (const c of boxes) {
         for (const l of forest) {
           if (Math.max(c.top, l.top) < Math.min(c.top + c.h, l.top + l.h)) {
@@ -175,24 +174,15 @@ export function assertTidy(boxes, label, { packing = true } = {}) {
     }
   }
   if (!packing) return;
-  // 詰め方：2番目以降の子の部分木は、左兄弟のどれかと y が重なる位置で接しているか、
-  // 一度も動かされていない。論文の separate は右にしか動かさない（dist > 0 のときだけ）ので、
-  // 最初から左兄弟より右にある部分木は原点に残り、隙間ができる。これは論文どおりの挙動。
-  // 原点：各部分木は「最初の子だけをたどった先の葉の左端」が 0 から始まり、最初の子は動かない。
+  // 詰め方：2番目以降の子の部分木は、左兄弟のどれかと y が重なる位置で接している。
   const subtree = (name) => [name, ...boxes.get(name).children.flatMap(subtree)];
-  const firstLeaf = (name) => {
-    while (boxes.get(name).children.length) name = boxes.get(name).children[0];
-    return boxes.get(name);
-  };
   for (const [name, b] of all) {
-    const origin = b.children.length ? firstLeaf(b.children[0]).left : 0;
     for (let i = 1; i < b.children.length; i++) {
       const left = b.children.slice(0, i).flatMap(subtree).map((n) => boxes.get(n));
       const cur = subtree(b.children[i]).map((n) => boxes.get(n));
       const touches = cur.some((c) => left.some((l) =>
         Math.abs(c.left - l.right) < EPS && Math.min(c.bottom, l.bottom) - Math.max(c.top, l.top) > EPS));
-      const unmoved = Math.abs(firstLeaf(b.children[i]).left - origin) < EPS;
-      assert.ok(touches || unmoved, `${label}: ${name} の子 ${b.children[i]} が接しても原点にもない`);
+      assert.ok(touches, `${label}: ${name} の子 ${b.children[i]} が左兄弟に接していない`);
     }
   }
 }
@@ -211,18 +201,20 @@ export function assertSameLayout(expected, actual, label) {
 
 const allCases = () => [...Object.entries(HANDMADE), ...randomCases()];
 
+const noSpacing = (root) => vanderPloegLayout(root, { spacing: false });
+
 test("オラクル（素朴な実装）は美的基準1〜3と詰め方の規則を満たす", () => {
   for (const [label, rows] of allCases()) assertTidy(runLayout(rows, naiveLayout), label);
 });
 
-test("線形時間実装はオラクルと同じ座標を返す", () => {
+test("線形時間実装は均等配置なしでオラクルと同じ座標を返す", () => {
   for (const [label, rows] of allCases()) {
-    assertSameLayout(runLayout(rows, naiveLayout), runLayout(rows, vanderPloegLayout), label);
+    assertSameLayout(runLayout(rows, naiveLayout), runLayout(rows, noSpacing), label);
   }
 });
 
-test("線形時間実装は美的基準1〜3と詰め方の規則を満たす", () => {
-  for (const [label, rows] of allCases()) assertTidy(runLayout(rows, vanderPloegLayout), label);
+test("線形時間実装は均等配置なしで美的基準1〜3と詰め方の規則を満たす", () => {
+  for (const [label, rows] of allCases()) assertTidy(runLayout(rows, noSpacing), label);
 });
 
 test("座標系：最初の子だけをたどった先の葉の左端が 0（論文の prelim の原点と同じ）", () => {
@@ -234,13 +226,26 @@ test("座標系：最初の子だけをたどった先の葉の左端が 0（論
   }
 });
 
-test("均等配置（spacing）を有効にしても美的基準1〜3を満たす", () => {
-  const layout = (root) => vanderPloegLayout(root, { spacing: true });
-  for (const [label, rows] of allCases()) assertTidy(runLayout(rows, layout), label, { packing: false });
+test("既定（均等配置あり）で美的基準1〜3を満たす", () => {
+  for (const [label, rows] of allCases()) assertTidy(runLayout(rows, vanderPloegLayout), label, { packing: false });
+});
+
+test("美的基準5：反転した木を配置して鏡に映すと元の図と一致する", () => {
+  for (const [label, rows] of allCases()) {
+    const original = runLayout(rows, vanderPloegLayout);
+    const flipped = runLayout([...rows].reverse(), vanderPloegLayout);
+    const left = Math.min(...[...original.values()].map((b) => b.left));
+    const right = Math.max(...[...flipped.values()].map((b) => b.right));
+    for (const [name, b] of original) {
+      const mirroredLeft = right - flipped.get(name).right;
+      const tol = EPS * Math.max(1, Math.abs(b.left));
+      assert.ok(Math.abs(b.left - left - mirroredLeft) <= tol, `${label}: ${name}`);
+    }
+  }
 });
 
 test("均等配置は論文 Figure 7 のとおり、挟まれた兄弟の間隔を揃える", () => {
-  const boxes = runLayout(HANDMADE.figure7, (root) => vanderPloegLayout(root, { spacing: true }));
+  const boxes = runLayout(HANDMADE.figure7, vanderPloegLayout);
   const [c1, c2, c3, c4, c5] = ["c1", "c2", "c3", "c4", "c5"].map((n) => boxes.get(n));
   // c5 は c1 の子 c1a に押されるので、c1 と c5 の間の余白を c2〜c4 に均等に配る
   const gaps = [c2.left - c1.right, c3.left - c2.right, c4.left - c3.right, c5.left - c4.right];

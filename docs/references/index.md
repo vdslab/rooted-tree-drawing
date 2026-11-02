@@ -29,7 +29,8 @@ Gitに残すのは書誌情報・出典URL・自分の要約・実装との対�
 - Reingold-Tilfordのレイヤード木描画を、ノード高さが可変な場合にも対応する非レイヤード（non-layered）木描画に拡張したアルゴリズム。左右輪郭（contour）を使ってサブツリー間の最小間隔を線形時間で決定する。
 - 借用しているもの: `saColumnLayout.js`（2026-09に削除。現行は `src/layout/`） の `vanderploeg` / `rightCountur` / `leftCountur` / `separate` は本論文のアルゴリズムの実装。可変サイズノードを扱う本研究の全体レイアウトの基盤。
 - 手元のPDFは2013年8月5日付のプレプリント（26ページ）。付録Cに Java の全コードがあり、行ごとに拡張の印が付いている（印なし＝Reingold-Tilford 本体、⋆＝非レイヤード拡張、◦＝Buchheim らの中間兄弟の均等配置、•＝IYL による兄弟番号の参照）。著者のコード: https://github.com/cwi-swat/non-layered-tidy-trees
-- 実装との対応: `src/layout/core/vanderPloeg.js` が付録Cの行単位の移植（O(n)）。関数名・フィールド名は付録Cと同じで、印もコメントに残している。◦（均等配置）は `spacing` オプションで、既定では無効（出力を変えないため）。2026-10 にスカイライン版（O(n²) 前後）から置き換えた経緯は [2026-10-linear-vanderploeg.md](../decisions/2026-10-linear-vanderploeg.md)。
+- 実装との対応: `src/layout/core/vanderPloeg.js` が付録Cの行単位の移植（O(n)）。関数名・フィールド名は付録Cと同じで、印もコメントに残している。◦（均等配置）は既定で有効で、`spacing: false` で外せる。2026-10 にスカイライン版（O(n²) 前後）から置き換えた経緯は [2026-10-linear-vanderploeg.md](../decisions/2026-10-linear-vanderploeg.md)。
+- 付録Cとの違い: 著者は公開後に、最初の輪郭の組を必ず動かすよう `separate` を修正した（[issue #2](https://github.com/cwi-swat/non-layered-tidy-trees/issues/2)、README）。本実装も同じ修正を取り込み、`dist` がちょうど 0 の場合の扱いだけ変えている（[2026-11-mirror-symmetry.md](../decisions/2026-11-mirror-symmetry.md)）。著者の `Paper.java` は public domain と明記されている。
 
 ## Bin Packing Survey（書誌情報の同定待ち）
 

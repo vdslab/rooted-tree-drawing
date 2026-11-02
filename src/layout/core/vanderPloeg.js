@@ -26,12 +26,15 @@
  * 「極端ノード」（el / er）だけで、その mod と prelim を逆向きに調整して、thread を辿ったときの
  * mod の合計が本来の経路と一致するようにする。比べる輪郭の組の総数が O(n) に収まる証明は論文 §4。
  *
- * 部分木は右にしか動かさない（separate の dist > 0）。最初から左兄弟より右にある部分木は
- * 原点に残り、左兄弟との間に隙間ができる。論文どおりの挙動。
+ * 付録C からの変更点が1つある。最初の輪郭の組（兄弟の根どうし）は dist が負でも動かす。
+ * 付録C は dist > 0 のときだけ動かすので、最初から左兄弟より右にある部分木に隙間が残り、
+ * 反転した木と絵が変わっていた。著者が公開後に修正した内容で（Paper.java）、著者の条件
+ * first && dist < 0 は dist がちょうど 0 のとき印が次の組へ残り重なるので、最初の組を無条件に扱う。
+ * 結果として部分木の移動量は全ての組の dist の最大値になる（負でもよい）。
  *
- * spacing（◦）: 大きな兄弟に挟まれた小さい部分木を、間に均等に配る（論文 §5、美的基準5）。
- * 有効にすると出力が変わるため既定では無効。IYL（•）はそのための兄弟番号の参照で、
- * 無効のときも論文どおり維持する（コストは子の数に比例するだけ）。
+ * spacing（◦）: 大きな兄弟に挟まれた小さい部分木を、間に均等に配る（論文 §5）。既定で有効。
+ * 上の修正と合わせて美的基準5（左右反転すると鏡像になる）が成り立つ。IYL（•）はそのための
+ * 兄弟番号の参照で、無効のときも論文どおり維持する（コストは子の数に比例するだけ）。
  */
 
 /**
@@ -41,7 +44,7 @@
  * stats を渡すと、処理した輪郭の組の数を stats.contourPairs に足す。論文 §4 の定理
  * （組の総数は 4n 以下）を実時間によらず検査するためのもの。
  */
-export function vanderPloegLayout(root, { spacing = false, stats = null } = {}) {
+export function vanderPloegLayout(root, { spacing = true, stats = null } = {}) {
   const tree = buildTree(root);
   const options = { spacing, stats };
   setY(tree, root.data.y - root.data.height / 2);
@@ -140,15 +143,17 @@ function separate(t, i, ih, { spacing, stats }) {
   let mssr = sr.mod;
   let cl = t.c[i];
   let mscl = cl.mod;
+  let first = true;
   while (sr !== null && cl !== null) {
     if (stats) stats.contourPairs += 1;
     if (bottom(sr) > ih.lowY) ih = ih.nxt; // •
     // cl の左端が sr の右端よりどれだけ左にあるか
     const dist = mssr + sr.prelim + sr.w - (mscl + cl.prelim);
-    if (dist > 0) {
+    if (first || dist > 0) {
       mscl += dist;
       moveSubtree(t, i, ih.index, dist, spacing);
     }
+    first = false;
     const sy = bottom(sr);
     const cy = bottom(cl);
     if (sy <= cy) {
@@ -225,7 +230,7 @@ function secondWalk(t, modsum, spacing) {
  * 距離に比例して右へ配る（論文 §5、付録B）。ここでは shift / change に記録するだけで、
  * 実際の移動は addChildSpacing で子をまとめて処理するときに mod へ反映する。
  */
-function distributeExtra(t, i, si, dist) {
+export function distributeExtra(t, i, si, dist) {
   if (si !== i - 1) {
     const nr = i - si;
     t.c[si + 1].shift += dist / nr;
@@ -235,7 +240,7 @@ function distributeExtra(t, i, si, dist) {
 }
 
 /** ◦ shift / change を累積して、各子の mod に加える。 */
-function addChildSpacing(t) {
+export function addChildSpacing(t) {
   let d = 0;
   let modsumdelta = 0;
   for (const child of t.c) {
@@ -250,7 +255,7 @@ function addChildSpacing(t) {
  * separate で右輪郭を下へ辿るとき、先頭の兄弟の最下端より下に来たら次へ進めば、
  * 今の右輪郭ノードがどの兄弟の部分木に属するかが O(1) で分かる（論文 §6）。
  */
-function updateIYL(minY, i, ih) {
+export function updateIYL(minY, i, ih) {
   // 新しい部分木に隠された兄弟を取り除く
   while (ih !== null && minY >= ih.lowY) ih = ih.nxt;
   return { lowY: minY, index: i, nxt: ih };

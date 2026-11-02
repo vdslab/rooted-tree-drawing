@@ -2569,9 +2569,9 @@
  },
  "ui-budget-lpt | medium_extreme.json | 2:1": {
   "nodes": 150,
-  "links": 235,
+  "links": 234,
   "overlaps": 0,
-  "hash": "1f3af72c8f11a5dd"
+  "hash": "16a2bfddd6b80019"
  },
  "ui-budget-lpt | medium_extreme.json | 4:1": {
   "nodes": 150,
@@ -3109,9 +3109,9 @@
  },
  "ui-budget-ffd | medium_extreme.json | 2:1": {
   "nodes": 150,
-  "links": 234,
+  "links": 233,
   "overlaps": 0,
-  "hash": "8a5dee58d5f4211a"
+  "hash": "11c5885e1c670a41"
  },
  "ui-budget-ffd | medium_extreme.json | 4:1": {
   "nodes": 150,
@@ -3649,9 +3649,9 @@
  },
  "ui-budget-bfd | medium_extreme.json | 2:1": {
   "nodes": 150,
-  "links": 234,
+  "links": 233,
   "overlaps": 0,
-  "hash": "25f045ba936513f6"
+  "hash": "f86a28eb84b27e47"
  },
  "ui-budget-bfd | medium_extreme.json | 4:1": {
   "nodes": 150,

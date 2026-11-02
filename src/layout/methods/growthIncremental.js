@@ -18,7 +18,11 @@
  *   （先頭は自分の上端）。y は全体で固定なので絶対座標のまま持てる。
  * - minLeft / maxRight / maxBottom: 部分木の外枠
  * - offset[j]: 子 j の座標系をこの部分木の座標系へ移すずらし量
- * - prefix[j]: 子 0..j を並べ終えた森の輪郭と外枠
+ * - prefix[j]: 子 0..j を並べ終えた森の輪郭・外枠・IYL
+ * - steps[j]: 子 j を押した各回の { si, dist }（均等配置で中間の兄弟へ配る量の元）
+ *
+ * 均等配置は van der Ploeg と同じく輪郭には影響させず、子の位置（c[j].mod）と外枠にだけ反映する。
+ * 全体を配置し直す版の既定（spacing 有効）と同じ出力になる。
  *
  * 子 i が変わったら、親では prefix[i-1] から再開して子 i 以降だけを並べ直し、親の輪郭を作り直す。
  * これを根まで繰り返す。1反復の手間は「経路上で並べ直す兄弟の数 × 輪郭の長さ」で、
@@ -28,6 +32,7 @@
  * threads は親が子の部分木の中の葉を書き換えるので、部分木を使い回す差分更新には使えない。
  */
 import { growthLayout } from "./growth.js";
+import { addChildSpacing, distributeExtra, updateIYL } from "../core/vanderPloeg.js";
 
 export function incrementalPlacement(root) {
   const work = new Map();
@@ -41,12 +46,16 @@ export function incrementalPlacement(root) {
       h: node.data.height,
       c: [],
       prelim: 0,
+      mod: 0,
+      shift: 0,
+      change: 0,
       left: null,
       right: null,
       minLeft: 0,
       maxRight: 0,
       maxBottom: 0,
       offset: [],
+      steps: [],
       prefix: [],
     };
     work.set(node, t);
@@ -78,26 +87,28 @@ export function incrementalPlacement(root) {
 
 /**
  * 親 p の座標系で子 i を置き、子 0..i の森を prefix[i] に記録する。
- * 子 i の座標系は最初 p の座標系と同じ位置にあり、左兄弟の森と重ならない所まで右へ押す
- * （押すのは dist > 0 のときだけ。van der Ploeg の separate と同じ）。
+ * 子 i の座標系は最初 p の座標系と同じ位置にあり、最初の組（兄弟の根どうし）を接触させたあと、
+ * 左兄弟の森と重ならない所まで右へ押す（van der Ploeg の separate と同じ）。
  */
 function placeChild(p, i) {
   const child = p.c[i];
   if (i === 0) {
     p.offset[0] = 0;
+    p.steps[0] = [];
     p.prefix[0] = {
       left: child.left,
       right: child.right,
       minLeft: child.minLeft,
       maxRight: child.maxRight,
       maxBottom: child.maxBottom,
+      ih: updateIYL(child.maxBottom, 0, null),
     };
     return;
   }
   const forest = p.prefix[i - 1];
-  const dist = separation(forest.right, child.left);
-  const offset = dist > 0 ? dist : 0;
+  const { offset, steps } = separation(forest, child.left);
   p.offset[i] = offset;
+  p.steps[i] = steps;
   const childLeft = shift(child.left, offset);
   const childRight = shift(child.right, offset);
   p.prefix[i] = {
@@ -108,6 +119,7 @@ function placeChild(p, i) {
     minLeft: Math.min(forest.minLeft, child.minLeft + offset),
     maxRight: Math.max(forest.maxRight, child.maxRight + offset),
     maxBottom: Math.max(forest.maxBottom, child.maxBottom),
+    ih: updateIYL(child.maxBottom, i, forest.ih),
   };
 }
 
@@ -133,29 +145,55 @@ function finishSubtree(t) {
   const forest = t.prefix[last];
   t.left = [{ x: t.prelim, bottom }, ...forest.left];
   t.right = [{ x: t.prelim + t.w, bottom }, ...forest.right];
-  t.minLeft = Math.min(t.prelim, forest.minLeft);
-  t.maxRight = Math.max(t.prelim + t.w, forest.maxRight);
+
+  // 均等配置を子の位置へ反映する。van der Ploeg も addChildSpacing は輪郭を比べ終えた後に行うので、
+  // 輪郭には反映しない。外枠は配置後の位置で測る。
+  t.c.forEach((child, i) => {
+    child.mod = t.offset[i];
+    child.shift = 0;
+    child.change = 0;
+  });
+  t.steps.forEach((steps, i) => {
+    for (const { si, dist } of steps) distributeExtra(t, i, si, dist);
+  });
+  addChildSpacing(t);
+  t.minLeft = t.prelim;
+  t.maxRight = t.prelim + t.w;
+  for (const child of t.c) {
+    t.minLeft = Math.min(t.minLeft, child.minLeft + child.mod);
+    t.maxRight = Math.max(t.maxRight, child.maxRight + child.mod);
+  }
   t.maxBottom = Math.max(bottom, forest.maxBottom);
 }
 
 /**
- * 左の森の右輪郭と、右の部分木の左輪郭から、重ならないために必要な右方向の移動量。
- * 両方とも同じ y（兄弟の上端）から始まるので、下端が高い方を進めながら
- * y が重なる区間ごとに「右端 - 左端」を取り、その最大値を返す。
+ * 左の森の右輪郭と、右の部分木の左輪郭を上から同時に辿り、部分木のずらし量を求める。
+ * 両方とも同じ y（兄弟の上端）から始まるので、下端が高い方を進める。最初の組は必ず動かし、
+ * 以降は重なるときだけ右へ押す（van der Ploeg の separate と同じ順で IYL も進める）。
+ * 押した各回を steps に残す。どの兄弟に押されたか（si）は均等配置で使う。
  */
-function separation(right, left) {
-  let dist = -Infinity;
+function separation(forest, left) {
+  const { right } = forest;
+  let { ih } = forest;
+  let offset = 0;
+  const steps = [];
   let r = 0;
   let l = 0;
+  let first = true;
   while (r < right.length && l < left.length) {
-    const need = right[r].x - left[l].x;
-    if (need > dist) dist = need;
     const rb = right[r].bottom;
     const lb = left[l].bottom;
+    if (rb > ih.lowY) ih = ih.nxt;
+    const dist = right[r].x - (left[l].x + offset);
+    if (first || dist > 0) {
+      offset += dist;
+      steps.push({ si: ih.index, dist });
+    }
+    first = false;
     if (rb <= lb) r++;
     if (rb >= lb) l++;
   }
-  return dist;
+  return { offset, steps };
 }
 
 function shift(contour, dx) {
@@ -175,7 +213,7 @@ function concatBelow(upper, lower) {
 function writePositions(t, frame) {
   t.node.data.x = frame + t.prelim + t.w / 2;
   t.node.data.y = t.top + t.h / 2;
-  for (let i = 0; i < t.c.length; i++) writePositions(t.c[i], frame + t.offset[i]);
+  for (const child of t.c) writePositions(child, frame + child.mod);
 }
 
 /**

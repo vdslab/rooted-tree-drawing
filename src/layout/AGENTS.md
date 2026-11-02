@@ -36,8 +36,10 @@ fold(root, targetAspect, xMargin, yMargin, innerYMargin) => root
 
 - **`core/dummy.js` の `addMargin(..., skipInnerNodes)`**: binpacking は `true`、列成長型は `false`。
   揃えると SA/LPT の出力が変わる（golden 24ケース中12件）。当時の実験値との対応を保つための意図的な差。
-- **`core/vanderPloeg.js`**: 論文付録C の行単位の移植で O(n)。出力を変える変更（均等配置 `spacing` の有効化、
-  左への引き戻しなど）は実験値が変わるので、再取得とセットで判断する。変更したら
+- **`core/vanderPloeg.js`**: 論文付録C の行単位の移植で O(n)。付録C との違いは、著者が公開後に直した
+  「最初の輪郭の組は必ず動かす」と、均等配置 `spacing` が既定で有効なことの2点で、美的基準5はこの2つで成り立つ。
+  `methods/growthIncremental.js` は同じ処理を持つので一緒に直すこと。出力を変える変更は実験値が変わるので、
+  再取得とセットで判断する。変更したら
   `test/vanderploeg.test.mjs`（素朴な実装との差分テスト）も通すこと（[設計記録](../../docs/decisions/2026-10-linear-vanderploeg.md)）。
 - **列成長型の2手法（`methods/growth.js` と `methods/growthIncremental.js`）の違いは配置だけ**。
   ダミーの選び方・ソルバーの呼び方・寸法の更新・停止条件は `growColumns` を共有し、差分更新版は
