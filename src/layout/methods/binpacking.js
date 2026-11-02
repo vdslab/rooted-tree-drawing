@@ -9,7 +9,8 @@
  * 容量ベースのソルバーは src/packing/ にある(lpt / ffd / bfd)。
  */
 import * as d3 from "d3";
-import { calcAspectRatio, vanderploeg } from "../core/tree.js";
+import { calcAspectRatio } from "../core/tree.js";
+import { vanderPloegLayout } from "../core/vanderPloeg.js";
 import { setDummyMargin, to1D } from "../core/dummy.js";
 import { runLayout } from "../core/pipeline.js";
 import { resolvePackingStrategy } from "../../packing/index.js";
@@ -105,7 +106,7 @@ export function applyGlobalBudget(root, Ht, xMargin, yMargin, innerYMargin, pack
   setDummyMargin(root, xMargin, yMargin, innerYMargin);
 }
 
-export function globalFoldingLayout(root, at, xMargin, yMargin, innerYMargin, stratify, packStrategy) {
+export function globalFoldingLayout(root, at, xMargin, yMargin, innerYMargin, packStrategy) {
   // Step 1: 初期状態(1列)のアスペクト比を確認
   let a = calcAspectRatio(root);
   if (a >= at) return root;  // 既に目標以上なら何もしない
@@ -137,7 +138,7 @@ export function globalFoldingLayout(root, at, xMargin, yMargin, innerYMargin, st
   const MAX_ITER = 30;
   const TOLERANCE = 0.05;  // アスペクト比の相対誤差 5% 以内で収束
   // 「最良の H_mid」の値そのものを覚えておく(bestH)。bestRoot = root のように
-  // root への参照だけを保存すると、vanderploeg が同じ data オブジェクトを
+  // root への参照だけを保存すると、vanderPloegLayout が同じ data オブジェクトを
   // 直接書き換えるため、後続の反復で中身が上書きされてしまう
   // (JSオブジェクトは参照渡しであり、スナップショットにならない)。
   let bestH = H_max;  // 初期状態(全ダミー1列 = H_t が H_max のときと等価)
@@ -163,7 +164,7 @@ export function globalFoldingLayout(root, at, xMargin, yMargin, innerYMargin, st
     }
 
     applyGlobalBudget(root, H_mid, xMargin, yMargin, innerYMargin, packStrategy);
-    root = stratify(vanderploeg(root, stratify));
+    root = vanderPloegLayout(root);
     a = calcAspectRatio(root);
     const aspectDiff = Math.abs(a - at);
 
@@ -200,7 +201,7 @@ export function globalFoldingLayout(root, at, xMargin, yMargin, innerYMargin, st
     }
   }
   applyGlobalBudget(root, bestH, xMargin, yMargin, innerYMargin, packStrategy);
-  root = stratify(vanderploeg(root, stratify));
+  root = vanderPloegLayout(root);
 
   return root;
 }
@@ -226,7 +227,7 @@ export function layout(data, width, height, options = {}) {
     yMargin,
     innerYMargin,
     skipInnerMargin: true,
-    fold: (root, at, xM, yM, iyM, stratify) =>
-      globalFoldingLayout(root, at, xM, yM, iyM, stratify, packStrategy),
+    fold: (root, at, xM, yM, iyM) =>
+      globalFoldingLayout(root, at, xM, yM, iyM, packStrategy),
   });
 }

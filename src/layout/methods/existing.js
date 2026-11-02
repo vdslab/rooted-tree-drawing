@@ -6,7 +6,7 @@
  *   - ダミーノード内部の innerYMargin という概念を持たない（全ノード一律 yMargin）
  *   - ダミーの展開が「折りたたみ配置」（undoDummyNode が227行ある理由）
  *   - normalize が node.data.* ではなく node.* を見る
- * 共有しているのは van der Ploeg と輪郭追跡（core/tree.js）だけ。
+ * 共有しているのは van der Ploeg（core/vanderPloeg.js）と兄弟探索（core/tree.js）だけ。
  *
  * このファイルは experiments/lib/existingPaper.js（evaluationブランチ由来の実装）を
  * そのまま移したもの。関数の中身は変更していない（layout() のマージンを引数化しただけ）。
@@ -18,11 +18,11 @@
  */
 import * as d3 from "d3";
 import {
-  vanderploeg,
   calcAspectRatio,
   rightMostSiblingNode,
   leftMostSiblingNode,
 } from "../core/tree.js";
+import { vanderPloegLayout } from "../core/vanderPloeg.js";
 // createPath は4手法とも完全に同じコード
 import { createPath } from "../core/render.js";
 
@@ -198,7 +198,7 @@ function searchBottomNode(root) {
   return descendants[max];
 }
 
-function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
+function localFoldingLayout(root, at, xMargin, yMargin) {
   let a = calcAspectRatio(root);
   while (at > a) {
     const bottomNode = searchBottomNode(root);
@@ -221,7 +221,7 @@ function localFoldingLayout(root, at, xMargin, yMargin, stratify) {
       }
       bottomNode.data.leaves = newLeaves;
       setDummyMargin(root, xMargin, yMargin);
-      root = stratify(vanderploeg(root, stratify));
+      root = vanderPloegLayout(root);
       a = calcAspectRatio(root);
     } else {
       break;
@@ -591,8 +591,8 @@ export function layout(data, width, height, options = {}) {
   const dummyData = createDammuy(root);
   root = stratify(dummyData);
   initRoot(root, xMargin, yMargin);
-  root = stratify(vanderploeg(root, stratify));
-  root = localFoldingLayout(root, width / height, xMargin, yMargin, stratify);
+  root = vanderPloegLayout(root);
+  root = localFoldingLayout(root, width / height, xMargin, yMargin);
   const { max_ori, sum_ori } = oritatamiCount(root);
   const links = createLinks(root, xMargin, yMargin);
   root = stratify(undoDummyNode(root, xMargin, yMargin, links));

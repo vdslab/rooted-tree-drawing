@@ -38,9 +38,13 @@ function canonical(result) {
   const nodes = (result?.nodes ?? []).map((n) =>
     [n.id ?? n.name, num(n.x), num(n.y), num(n.width), num(n.height)].join(",")
   ).sort();
-  const links = (result?.links ?? []).map((l) =>
-    typeof l === "string" ? l : JSON.stringify(l, Object.keys(l).sort())
-  ).sort();
+  // エッジの座標もノードと同じく小数6桁で比べる。丸めないと、計算順の違いによる
+  // 最下位桁の差（van der Ploeg の線形化で mod を足す順が変わった、等）でハッシュが変わる。
+  const links = (result?.links ?? []).map((l) => {
+    if (typeof l === "string") return l;
+    const rounded = l.segments ? { ...l, segments: l.segments.map((p) => p.map(num)) } : l;
+    return JSON.stringify(rounded, Object.keys(l).sort());
+  }).sort();
   return { nodes, links };
 }
 

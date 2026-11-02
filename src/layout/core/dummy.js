@@ -120,26 +120,6 @@ export function to1D(leaves) {
   return leaves.flat();
 }
 
-export function searchBottomNode(root) {
-  let descendants = root.descendants();
-  // ダミーノード（leaves を持つノード）のみをフィルタリング
-  let dummyNodes = descendants.filter(node => node.data?.leaves);
-
-  if (dummyNodes.length === 0) {
-    return null; // ダミーノードがない場合
-  }
-
-  let max = 0;
-  for (let i = 1; i < dummyNodes.length; i++) {
-    max =
-      dummyNodes[max].data.y + dummyNodes[max].data.height / 2 <
-        dummyNodes[i].data.y + dummyNodes[i].data.height / 2
-        ? i
-        : max;
-  }
-  return dummyNodes[max];
-}
-
 /**
  * 全ノードにマージンを付与し、初期座標を設定する。
  *

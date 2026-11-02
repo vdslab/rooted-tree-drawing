@@ -8,7 +8,7 @@
 パイプラインは `core/pipeline.js` の `runLayout()` 1本で、**手法が差し替えるのは `fold` だけ**。
 
 ```js
-fold(root, targetAspect, xMargin, yMargin, innerYMargin, stratify) => root
+fold(root, targetAspect, xMargin, yMargin, innerYMargin) => root
 ```
 
 `core/` に手法固有の分岐（`if (method === ...)`）を持ち込まないこと。手法を足すなら
@@ -36,10 +36,16 @@ fold(root, targetAspect, xMargin, yMargin, innerYMargin, stratify) => root
 
 - **`core/dummy.js` の `addMargin(..., skipInnerNodes)`**: binpacking は `true`、列成長型は `false`。
   揃えると SA/LPT の出力が変わる（golden 24ケース中12件）。当時の実験値との対応を保つための意図的な差。
-- **`core/tree.js` の輪郭追跡**: スカイラインによる区間比較を維持する。次元の混在は修正済み（[設計記録](../../docs/decisions/2026-09-contour-skyline.md)）。
+- **`core/vanderPloeg.js`**: 論文付録C の行単位の移植で O(n)。出力を変える変更（均等配置 `spacing` の有効化、
+  左への引き戻しなど）は実験値が変わるので、再取得とセットで判断する。変更したら
+  `test/vanderploeg.test.mjs`（素朴な実装との差分テスト）も通すこと（[設計記録](../../docs/decisions/2026-10-linear-vanderploeg.md)）。
+- **列成長型の2手法（`methods/growth.js` と `methods/growthIncremental.js`）の違いは配置だけ**。
+  ダミーの選び方・ソルバーの呼び方・寸法の更新・停止条件は `growColumns` を共有し、差分更新版は
+  `placement` だけを差し替える。片方だけに処理を足さないこと。両者の出力一致は
+  `test/growth-incremental.test.mjs` で検査する（[設計記録](../../docs/decisions/2026-11-growth-iteration-cost.md)）。
 - **既存手法（`methods/existing.js`）は `core/pipeline.js` を使わない**。innerYMargin の概念が無く、
   ダミー展開が折りたたみ配置で、normalize の見るプロパティも違うため。共有しているのは
-  `core/tree.js`（van der Ploeg と輪郭追跡）と `core/render.js` の `createPath` だけ。
+  `core/vanderPloeg.js`、`core/tree.js` の兄弟探索と `core/render.js` の `createPath` だけ。
   ここに `runLayout` を無理に適用しないこと。
 
 **このディレクトリを1行でも変えたら `npm run test:golden`。** 出力が変わったなら、それが意図した

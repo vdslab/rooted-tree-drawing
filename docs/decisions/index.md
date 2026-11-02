@@ -27,6 +27,8 @@
 | 2026-09 | [2026-09-experiment-integrity.md](2026-09-experiment-integrity.md) | Implemented | 欠測の保存と集計・メモリ使用・乱数注入・provenance |
 | 2026-09 | [2026-09-registry-validation.md](2026-09-registry-validation.md) | Implemented | 手法レジストリの共有・UIデータ分離・不変条件と540ケース |
 | 2026-10 | [2026-10-incremental-growth-layout.md](2026-10-incremental-growth-layout.md) | Implemented | 列成長型で部分木のローカル配置をキャッシュし、変更ダミーから根までだけを差分更新する実験的手法 |
+| 2026-10 | [2026-10-linear-vanderploeg.md](2026-10-linear-vanderploeg.md) | Implemented | van der Ploeg を論文付録Cどおりの O(n) に置き換えた。出力は不変、均等配置は `spacing` オプション（既定で無効） |
+| 2026-11 | [2026-11-growth-iteration-cost.md](2026-11-growth-iteration-cost.md) | Implemented | 列成長型の2手法の違いを配置だけにし、差分配置を輪郭キャッシュに、LPT を O(m log k) に。出力は不変 |
 
 ## 2026-09 に削除した記録
 

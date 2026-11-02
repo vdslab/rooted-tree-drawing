@@ -18,12 +18,14 @@ flowchart LR
 |---|---|
 | 手法ID・実装・UI/論文マージン | [registry.js](../src/layout/registry.js) |
 | 共通パイプライン | [core/pipeline.js](../src/layout/core/pipeline.js) |
-| 木の配置とスカイライン輪郭 | [core/tree.js](../src/layout/core/tree.js) |
+| 木の配置（van der Ploeg、O(n)） | [core/vanderPloeg.js](../src/layout/core/vanderPloeg.js) |
+| 兄弟探索・アスペクト比 | [core/tree.js](../src/layout/core/tree.js) |
+| 優先度を更新できるヒープ | [core/heap.js](../src/layout/core/heap.js) |
 | ダミー生成と余白 | [core/dummy.js](../src/layout/core/dummy.js) |
 | 展開・描画サイズ・エッジ | [core/render.js](../src/layout/core/render.js) |
 | H_t 二分探索 | [methods/binpacking.js](../src/layout/methods/binpacking.js) |
-| 列成長型 SA/LPT | [methods/growth.js](../src/layout/methods/growth.js) |
-| 列成長型 LPT（差分更新） | [methods/growthIncremental.js](../src/layout/methods/growthIncremental.js) |
+| 列成長型 SA/LPT（反復ごとに全体を配置） | [methods/growth.js](../src/layout/methods/growth.js) |
+| 列成長型（輪郭キャッシュによる差分配置） | [methods/growthIncremental.js](../src/layout/methods/growthIncremental.js) |
 | 既存手法（独自パイプライン） | [methods/existing.js](../src/layout/methods/existing.js) |
 | 列数固定の makespan ソルバー | [solvers/](../src/layout/solvers/) |
 | 容量固定のパッキング | [packing/](../src/packing/) |

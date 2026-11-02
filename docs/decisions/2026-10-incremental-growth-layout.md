@@ -1,5 +1,8 @@
 > **ステータス**: Implemented（2026-10、実験的手法 `growth-lpt-incremental` として実装。既存の
 > `growth-lpt` は比較対象として維持し、論文実験の既定手法集合にはまだ含めない）
+> 2026-11: 下の「今後の改善」（輪郭だけのキャッシュ・prefix キャッシュ・stratify の除去）を実装し、
+> 列成長のループを growth.js と共有する形に作り直した。本文のスカイライン版の説明は当時の記録。
+> 現行は [2026-11-growth-iteration-cost.md](2026-11-growth-iteration-cost.md)。
 
 # 列成長型レイアウトを部分木キャッシュで差分更新する
 

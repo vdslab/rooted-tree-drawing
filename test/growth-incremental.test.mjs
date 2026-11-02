@@ -3,8 +3,14 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 
+import * as d3 from "d3";
+
 import { layout as currentLayout } from "../src/layout/methods/growth.js";
-import { layout as incrementalLayout } from "../src/layout/methods/growthIncremental.js";
+import { layout as incrementalLayout, incrementalPlacement } from "../src/layout/methods/growthIncremental.js";
+import { vanderPloegLayout } from "../src/layout/core/vanderPloeg.js";
+import { calcAspectRatio } from "../src/layout/core/tree.js";
+import { seededRandom } from "../experiments/lib/random.js";
+import { randomTree, deepTree, paperSize, skewedSize, spikySize } from "./tree-generators.mjs";
 
 const fixtureDirectory = new URL("./fixtures/", import.meta.url);
 const sizes = [
@@ -17,14 +23,6 @@ const sizes = [
 
 function clone(value) {
   return structuredClone(value);
-}
-
-function seededRandom(seed) {
-  let state = seed >>> 0;
-  return () => {
-    state = (1664525 * state + 1013904223) >>> 0;
-    return state / 0x100000000;
-  };
 }
 
 function assertClose(actual, expected, label) {
@@ -85,4 +83,46 @@ test("incremental SA preserves the solver call and random sequence", async () =>
     random: seededRandom(42),
   });
   assertClose(actual.nodes, expected.nodes, "SA nodes");
+});
+
+/**
+ * 配置エンジン単体の差分テスト。fixture より多様な木で、葉（ダミーに相当）の寸法を何度も変え、
+ * 差分で組み直した結果が、木全体を van der Ploeg で配置し直した結果と一致することを確かめる。
+ * 各反復のアスペクト比（列成長の停止判定に使う値）と、最後に書き戻す全ノードの座標を比べる。
+ */
+test("incremental placement matches full van der Ploeg relayout on random trees", () => {
+  const stratify = d3.stratify().id((d) => d.name).parentId((d) => d.parent);
+  const build = (rows) => {
+    const root = stratify(structuredClone(rows).map((d) => ({ ...d, x: d.width / 2, y: d.height / 2 })));
+    return vanderPloegLayout(root);
+  };
+  const close = (a, b) => Math.abs(a - b) <= 1e-9 * Math.max(1, Math.abs(a), Math.abs(b));
+  const random = seededRandom(31);
+  for (const generate of [randomTree, deepTree]) {
+    for (const size of [paperSize, skewedSize, spikySize]) {
+      for (let i = 0; i < 30; i += 1) {
+        const label = `${generate.name}/${size.name}/${i}`;
+        const rows = generate(2 + Math.floor(random() * 150), random, size);
+        const full = build(rows);
+        const partial = build(rows);
+        const placement = incrementalPlacement(partial);
+        const fullLeaves = full.leaves();
+        const partialLeaves = partial.leaves();
+        for (let u = 0; u < 20; u += 1) {
+          const k = Math.floor(random() * fullLeaves.length);
+          const { width, height } = size(random);
+          for (const leaf of [fullLeaves[k], partialLeaves[k]]) Object.assign(leaf.data, { width, height });
+          vanderPloegLayout(full);
+          placement.update(partialLeaves[k]);
+          assert.ok(close(calcAspectRatio(full), placement.aspectRatio()), `${label} update ${u}: aspect ratio`);
+        }
+        placement.finish();
+        const positions = new Map(partial.descendants().map((n) => [n.id, n.data]));
+        for (const node of full.descendants()) {
+          const d = positions.get(node.id);
+          assert.ok(close(node.data.x, d.x) && close(node.data.y, d.y), `${label}: ${node.id}`);
+        }
+      }
+    }
+  }
 });

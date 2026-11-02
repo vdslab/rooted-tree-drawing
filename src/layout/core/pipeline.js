@@ -11,7 +11,7 @@
  *   - 二分探索型 (methods/binpacking.js) 全体高さ H_t を二分探索する
  */
 import * as d3 from "d3";
-import { vanderploeg } from "./tree.js";
+import { vanderPloegLayout } from "./vanderPloeg.js";
 import { createDammuy, initDammyData, addMargin } from "./dummy.js";
 import { undoDummyNode, createLinks, format } from "./render.js";
 
@@ -24,7 +24,7 @@ import { undoDummyNode, createLinks, format } from "./render.js";
  * @param {number} config.yMargin
  * @param {number} config.innerYMargin - ダミーノード内部のyマージン
  * @param {boolean} config.skipInnerMargin - addMargin の skipInnerNodes に渡す値
- * @param {Function} config.fold - (root, targetAspect, xMargin, yMargin, innerYMargin, stratify) => root
+ * @param {Function} config.fold - (root, targetAspect, xMargin, yMargin, innerYMargin) => root
  * @returns {{nodes: Array, links: Array}}
  */
 export function runLayout(data, width, height, config) {
@@ -40,8 +40,8 @@ export function runLayout(data, width, height, config) {
   root = stratify(initializedDummyData);
   addMargin(root, xMargin, yMargin, innerYMargin, skipInnerMargin);
 
-  root = stratify(vanderploeg(root, stratify));
-  root = fold(root, width / height, xMargin, yMargin, innerYMargin, stratify);
+  root = vanderPloegLayout(root);
+  root = fold(root, width / height, xMargin, yMargin, innerYMargin);
 
   const layoutedData = undoDummyNode(root, xMargin, yMargin, innerYMargin);
   const links = createLinks(root, xMargin, yMargin, innerYMargin);
