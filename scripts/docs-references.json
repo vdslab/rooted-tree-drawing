@@ -69,10 +69,24 @@
       "file": "docs/decisions/2026-09-layout-core-extraction.md",
       "raw": "src/globalBudgetLayout.js",
       "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-07-pluggable-packing.md",
+      "raw": "docs/paper/section-map.md",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-09-layout-core-extraction.md",
+      "raw": "experiments/lib/existingPaper.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
+    },
+    {
+      "file": "docs/decisions/2026-09-ui-method-switch.md",
+      "raw": "experiments/lib/globalBudgetPaperMargin.js",
+      "reason": "過去の設計記録で削除・改名済みの実装を参照。本文は当時の記録として維持。"
     }
   ],
   "optionalFiles": [
-    "docs/paper/draft.pdf",
     "docs/references/misue-2024-area-adaptive.pdf",
     "docs/references/ploeg-2013-tidy-trees.pdf",
     "docs/references/binpacking-survey.pdf"

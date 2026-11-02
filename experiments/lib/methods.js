@@ -31,7 +31,7 @@ export const METHODS = Object.fromEntries(Object.entries(DEFINITIONS)
  *
  * paper5:  論文§4の5手法。budget系を "lpt"/"ffd"/"bfd" という旧名で記録するため、
  *          過去の results/*.json や plot スクリプトとの互換性が保てる。
- * growth5: growth-lpt を加えた5手法（explanation.md 4.5節）。列成長型{既存,SA,LPT}と
+ * growth5: growth-lpt を加えた5手法。列成長型{既存,SA,LPT}と
  *          高さ予算型{LPT,BFD}の対比になっている。
  */
 export const METHOD_SETS = {

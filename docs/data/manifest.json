@@ -1,72 +1,6 @@
 [
   {
-    "path": "d3_tree.json",
-    "format": "A",
-    "nodes": 194,
-    "sha256": "560fe95629247de7a052cf71644e81a6839369c5cd57609485d2f2e6cec87341",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "d3_tree_log.json",
-    "format": "C",
-    "nodes": 194,
-    "sha256": "f451aadb677dd520c988e996b07722f51e60b426a781509290bfe38984098cf4",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "flareData.json",
-    "format": "A",
-    "nodes": 252,
-    "sha256": "4a2f68a22d006771bb9b2f1697cf8e66b0c8db85da5698ca526a171a46e225ae",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "git_tree.json",
-    "format": "A",
-    "nodes": 4902,
-    "sha256": "4c362110834a6c4338d8690dd557c42181f030c7ad1523797647345de2dc05ab",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "gorm_nodelink.json",
-    "format": "A",
-    "nodes": 194,
-    "sha256": "c047fd84323a858b00a6f3f15fd911038646d5ef499337df31c01d43bd987ab6",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "gorm_treemap.json",
-    "format": "C",
-    "nodes": 194,
-    "sha256": "3d2210c6c1113a7cdf778a0e97a7cd8ce6b4798187847e81862ea2780fbc89c6",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "kagawa_river_tree.json",
+    "path": "local-references/kagawa_river_tree.json",
     "format": "A",
     "nodes": 113,
     "sha256": "18435d2d80acbf27c2acfe32fa30737dde73ce58f1a3a401d2939c153bb19881",
@@ -74,57 +8,14 @@
     "sourceUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html",
     "generation": "scripts/generate_river_tree.py; docs/data/kagawa-river-tree.md",
     "sourceRevision": null,
-    "status": "documented"
-  },
-  {
-    "path": "linux_kernel_tree_size.json",
-    "format": "C",
-    "nodes": 95796,
-    "sha256": "78d4c51836eb1c9ae7a073d898548b02962b608ce6bd93132c128120048ae4a2",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "lua_tree.json",
-    "format": "B",
-    "nodes": 116,
-    "sha256": "6daf65076b73f4d549320c542e66e422e6eb1d82559679bbd072a2939297ce4d",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "react_tree.json",
-    "format": "B",
-    "nodes": 7438,
-    "sha256": "3d6f6f7ee16759aeeb74290408d9fabb0fc0c7c223a0bd5e4eb9d9d2ef4385de",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
+    "status": "local-only",
+    "license": "非商用（国土数値情報 W05）"
   },
   {
     "path": "toaruos_tree.json",
     "format": "B",
     "nodes": 883,
     "sha256": "2abeaf4823c630cb8f68cc3a04a446c64fbeb99d31f3eeb8e7f17fe5752ddbf9",
-    "source": null,
-    "sourceUrl": null,
-    "generation": null,
-    "sourceRevision": null,
-    "status": "unverified"
-  },
-  {
-    "path": "xv6-riscv_tree.json",
-    "format": "B",
-    "nodes": 83,
-    "sha256": "d2f2ff9bc6553ae8ad72579134317fdf35693581c3bf7d3fff620a6c78bb4143",
     "source": null,
     "sourceUrl": null,
     "generation": null,

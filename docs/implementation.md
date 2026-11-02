@@ -41,8 +41,6 @@ H_t はダミーの上端から各ダミーの容量を導き、支配的ノー�
 - [uiLayout.js](../src/uiLayout.js): SELECTED で共通レジストリの手法を指定。マージン100/100。
 - [inline-tree.json](../data/examples/inline-tree.json): Appから分離した入力データ。元の値とノード順を維持。
 - [データセット一覧](data/index.md): 形式・由来・生成手順と未確認事項。
-- [実データ候補の調査](data/real-data-candidates.md): 法令XML等の適性と構造の記述統計。[集計スクリプト](../experiments/inspect_data_candidates.py)はレイアウトを実行せず、原資料から数量と木構造を検査する。
-- [不規則な実階層の再調査](data/irregular-tree-candidates.md): 組織図・返信木・実行プロファイルの適性。[集計スクリプト](../experiments/inspect_irregular_candidates.py)は公開データの木構造と数量を検査する。
 
 ## 実験
 
@@ -52,7 +50,6 @@ H_t はダミーの上端から各ダミーの容量を導き、支配的ノー�
 - [runner.js](../experiments/lib/runner.js): バッチ共通処理。欠測はnullと失敗理由、成功数・失敗数を保存。
 - [random.js](../experiments/lib/random.js): 注入可能な乱数。木と手法を分離し、グローバル状態を変更しない。
 - [provenance.js](../experiments/lib/provenance.js): コミット・dirty状態・Node/OS・生成器と依存lockのハッシュ。
-- 実験の旧 *Paper.js エントリは互換ラッパー。既存手法を含むすべてが src/layout を呼ぶ。
 
 ## 検証と資料
 

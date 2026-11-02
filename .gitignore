@@ -144,10 +144,9 @@ render_*.svg
 compare_*.svg
 tree_*.json
 
-# 論文はこのリポジトリの成果物ではない（実装が目的）。
-# 原稿テキスト（*.md）は追跡し、PDFと図のバイナリは追跡しない。
+# 論文・発表資料はこのリポジトリの成果物ではない（実装が目的）。本文も図も置かない。
 *.pdf
-docs/paper/talk/*.png
+/docs/paper/
 
 # Python
 __pycache__/

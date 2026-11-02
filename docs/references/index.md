@@ -3,7 +3,7 @@
 Gitに残すのは書誌情報・出典URL・自分の要約・実装との対応。PDF本体や第三者の原資料は残さない。
 
 新しく取得する資料は `/local-references/` に保存する。このディレクトリ全体と `*.pdf` は .gitignore 対象。
-既存の docs/references のPDFと docs/paper/draft.pdf も任意のローカル資料として扱い、移動・削除は要求しない。
+既存の docs/references のPDFも任意のローカル資料として扱い、移動・削除は要求しない。
 資料がなくてもビルドとテストは動く。文書検査の任意資料・生成物は [docs-references.json](../../scripts/docs-references.json) で明示する。
 画像・スキャン・配布データも第三者の原資料なら local-references に置く。自作コード・自作の説明文・再生成用スクリプトは追跡する。
 
@@ -19,7 +19,7 @@ Gitに残すのは書誌情報・出典URL・自分の要約・実装との対�
 - 出典: [著者の業績一覧](https://www.cs.tsukuba.ac.jp/~misue/misue-publications/index.html)。
 - **本研究の直接の土台**。指定アスペクト比の矩形領域に収まるよう、兄弟の葉ノードを「折れ線」に折り畳んで配置する **Monotone Local Folding Layout** を提案。本リポジトリの `localFoldingLayout` / `createDammuy`（ダミーノード化）はこの手法の実装。
 - 借用しているもの: ダミーノード化によるレイアウト、列数を段階的に増やしてアスペクト比を目標に近づけるループ構造。
-- 本研究が拡張している点: Misueの手法は**ノードサイズが一様**であることを前提にしており、可変サイズノード（量をノード高さでエンコードする場合）では列内の高さのばらつきが無駄な空白を生む。この限界の解消が本研究の主題（[docs/paper/draft.pdf](../paper/draft.pdf) の 2.3 節・3節で直接言及）。
+- 本研究が拡張している点: Misueの手法は**ノードサイズが一様**であることを前提にしており、可変サイズノード（量をノード高さでエンコードする場合）では列内の高さのばらつきが無駄な空白を生む。この限界の解消が本研究の主題。
 
 ## van der Ploeg (2013公開 / 2014掲載) — Drawing Non-layered Tidy Trees in Linear Time
 
@@ -36,13 +36,12 @@ Gitに残すのは書誌情報・出典URL・自分の要約・実装との対�
 - ファイル（任意）: [binpacking-survey.pdf](./binpacking-survey.pdf)
 - 著者・正式題名・出版年・DOIは未記録。ファイル名だけでは特定できないため、同定するまで正式な引用には使わない。
 - ダミーノード内の葉ノードを容量`B_d`の列に分配する問題は、本質的にはビンパッキング（容量制約下でのビン数最小化）に相当すると2026-07に気づき、実際に古典的なビンパッキング近似アルゴリズムである **First-Fit Decreasing** と **Best-Fit Decreasing** を実装した（[src/packing/](../../src/packing/)、[decisions/2026-07-pluggable-packing.md](../decisions/2026-07-pluggable-packing.md)）。デフォルトのLPT（Longest Processing Time）はマルチプロセッサスケジューリング側のアルゴリズムで、列数を探索しながら流用している。SA（焼きなまし法）を含めたこれら4手法の位置づけ・近似比の裏付けに使う。
-- 「3.3 Formulation of the Optimization Problem」「3.4 Optimization by Simulated Annealing」（[section-map.md](../paper/section-map.md)参照）で参照候補。
 
 ---
 
-## 論文が引用する主要な関連研究（`docs/paper/draft.pdf` §2 より、未所持）
+## 主要な関連研究（未所持）
 
-`draft.pdf` の Related Work では以下も引用されている。原文PDFは未取得だが、位置づけをメモしておく。
+原文PDFは未取得だが、位置づけをメモしておく。
 
 - Shneiderman — Treemap（空間充填法の起点）
 - Squarified Treemaps — Treemapのアスペクト比改善

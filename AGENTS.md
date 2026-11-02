@@ -19,7 +19,7 @@
 - `src/layout/core/` は共通処理。手法固有の判断は `methods/` に置く。
 - `solvers/` は列数固定の最大列高さ最小化、`src/packing/` は容量固定の列分配。契約を混同しない。
 - 手法IDと実装は `src/layout/registry.js` が一次情報。UIと論文のマージンは ui/paper プリセットで分離。
-- 既存手法は独自パイプラインを維持する。実験用 `*Paper.js` は互換ラッパーで、重複実装ではない。
+- 既存手法は独自パイプラインを維持する。
 - 乱数関数を引数で渡す。グローバル Math.random は上書きしない。
 
 ## 検証
@@ -50,5 +50,5 @@ npm run check:docs
 - 第三者資料は local-references に置く。Gitに残すのは書誌情報・出典URL・自分の要約・実装との対応。
 - 文献PDFや実験結果がなくてもビルドとテストが通る状態を維持する。
 - 論文の数値には必ず SEED を指定し、コミットIDと実行条件も保存する。実験CLIは `node experiments/cli.mjs`。
-- 論文の本文執筆は別作業。旧SAドラフトと現行H_t実装の対応は [section-map](docs/paper/section-map.md) に記録する。
+- 論文の本文・発表資料・提出前の準備文書はこのリポジトリに置かない。
 - LAYOUT-002/003 の余白修正は実験値を変えるため再取得と一緒に判断する。LAYOUT-004 は再現fixtureで追跡する。

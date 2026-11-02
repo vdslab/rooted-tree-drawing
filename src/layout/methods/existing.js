@@ -8,7 +8,7 @@
  *   - normalize が node.data.* ではなく node.* を見る
  * 共有しているのは van der Ploeg（core/vanderPloeg.js）と兄弟探索（core/tree.js）だけ。
  *
- * このファイルは experiments/lib/existingPaper.js（evaluationブランチ由来の実装）を
+ * このファイルは evaluationブランチの実験用実装を
  * そのまま移したもの。関数の中身は変更していない（layout() のマージンを引数化しただけ）。
  * 挙動が変わっていないことは test/golden.mjs の existing 24ケースで担保している。
  *

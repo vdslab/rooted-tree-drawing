@@ -29,6 +29,7 @@
 | 2026-10 | [2026-10-incremental-growth-layout.md](2026-10-incremental-growth-layout.md) | Implemented | 列成長型で部分木のローカル配置をキャッシュし、変更ダミーから根までだけを差分更新する実験的手法 |
 | 2026-10 | [2026-10-linear-vanderploeg.md](2026-10-linear-vanderploeg.md) | Implemented | van der Ploeg を論文付録Cどおりの O(n) に置き換えた。出力は不変、均等配置は `spacing` オプション（既定で無効） |
 | 2026-11 | [2026-11-growth-iteration-cost.md](2026-11-growth-iteration-cost.md) | Implemented | 列成長型の2手法の違いを配置だけにし、差分配置を輪郭キャッシュに、LPT を O(m log k) に。出力は不変 |
+| 2026-11 | [2026-11-repository-scope.md](2026-11-repository-scope.md) | Implemented | 論文・発表資料・準備文書を外へ移し、未使用データと互換入口を削除した |
 
 ## 2026-09 に削除した記録
 

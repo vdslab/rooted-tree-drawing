@@ -18,7 +18,7 @@ test("checks pass with only shareable files, without local PDFs or generated res
     fs.mkdirSync(path.dirname(path.join(directory, file)), { recursive: true });
     fs.copyFileSync(source, path.join(directory, file));
   }
-  assert.equal(fs.existsSync(path.join(directory, "docs/paper/draft.pdf")), false);
+  assert.equal(fs.existsSync(path.join(directory, "docs/references/misue-2024-area-adaptive.pdf")), false);
   assert.equal(fs.existsSync(path.join(directory, "experiments/results")), false);
   assert.deepEqual(checkDocuments(directory).broken, []);
   // 歴史的リンクを含む文書でも、新しい誤参照は必ず検出する。

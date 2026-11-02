@@ -34,6 +34,7 @@
 国土数値情報 河川データ（W05、shapefile形式）。
 
 - 入手元: https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html
+- 使用許諾: 非商用（取得ページの表示）。生成物は `local-references/` に置き、Gitに追跡しない。
 - 対象: 香川県（`PREF_CODE = "37"`）、土器川水系（水系域コード `880808`）
 - スクリプトが `urllib` で該当県のzipを直接ダウンロードするため、手動での事前ダウンロードは不要（[generate_river_tree.py:64-102](../../scripts/generate_river_tree.py#L64-L102)）
 
@@ -80,7 +81,7 @@ pip install pyshp
 python3 scripts/generate_river_tree.py
 ```
 
-`kagawa_river_tree.json` がリポジトリルートに上書きされる。対象水系や出力先を変えたい場合はスクリプト冒頭の定数（`PREF_CODE`, `TARGET_WATER_SYSTEMS`, `OUTPUT_PATH`, `ROOT_NAME`）を変更する。
+`local-references/kagawa_river_tree.json` に上書きされる。対象水系や出力先を変えたい場合はスクリプト冒頭の定数（`PREF_CODE`, `TARGET_WATER_SYSTEMS`, `OUTPUT_PATH`, `ROOT_NAME`）を変更する。
 
 ## 既知の制約
 

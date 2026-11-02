@@ -1,4 +1,4 @@
-// §4.1 面積効率(TNA/DA)実験。docs/paper/draft.pdf §4.1 の設定を再現する。
+// §4.1 面積効率(TNA/DA)実験。論文 §4.1 の設定を再現する。
 //
 // 手法セットは環境変数 METHOD_SET で切り替える（定義は experiments/lib/methods.js）:
 //   paper5  (既定) existing / sa-paper / lpt / ffd / bfd、分散 low-medium-high

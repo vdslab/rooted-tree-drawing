@@ -42,6 +42,7 @@
 import io
 import json
 import math
+import os
 import sys
 import urllib.request
 import zipfile
@@ -55,7 +56,8 @@ PREF_CODE = "37"  # 香川県
 KSJ_YEAR_CODE = "06"  # w05.htmlで確認したprefコード37の年度コード
 # 対象水系(水系域コード)。土器川水系。空にすると香川県内の全水系を対象にする
 TARGET_WATER_SYSTEMS = {"880808"}
-OUTPUT_PATH = "kagawa_river_tree.json"
+# W05 の使用許諾は非商用なので、生成物は追跡しない local-references に置く
+OUTPUT_PATH = "local-references/kagawa_river_tree.json"
 ROOT_NAME = "土器川水系"
 UNNAMED_LABEL = "名称不明"
 
@@ -287,6 +289,7 @@ def main():
             }
         )
 
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     print(f"wrote {OUTPUT_PATH}: {len(output)} nodes", file=sys.stderr)

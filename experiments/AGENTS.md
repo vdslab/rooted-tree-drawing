@@ -1,7 +1,7 @@
 # experiments/ — 論文の実験
 
-**論文・スライドの図の数値はこの層から出る。** `lib/methods.js` が共通レジストリの paper プリセット
-（`xMargin=300, yMargin=200`）で実装を呼ぶ。`lib/*Paper.js` は旧importパスの互換入口。
+**論文の図の数値はこの層から出る。** `lib/methods.js` が共通レジストリの paper プリセット
+（`xMargin=300, yMargin=200`）で実装を呼ぶ。
 UI（`src/uiLayout.js`）は 100/100 なので、数値は一致しない。
 
 ## 手法と実験条件
@@ -13,9 +13,6 @@ UI（`src/uiLayout.js`）は 100/100 なので、数値は一致しない。
 - `METHOD_SETS` … `paper5`（論文§4の5手法）/ `growth5`（growth-lpt を含む5手法）
 - `PRESETS` … 手法セット + 分散レベル + 出力ファイル名の接尾辞
 - `VARIANCE_LEVELS` / `ASPECT_RATIOS` … 論文§4.1 の条件
-
-`lib/*Paper.js` は4本とも `src/layout/` を呼ぶラッパーで、論文条件のマージンを渡すだけ。
-実装の重複はもう無い。
 
 「既存手法」「SA」と言ったら、それぞれ `src/layout/methods/existing.js` と
 `methods/growth.js` + `solvers/saColumn.js` を指す。かつて `benchmark.js` が別版・別マージンで
